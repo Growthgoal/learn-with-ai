@@ -1,0 +1,12 @@
+# Secrets: the Meta Model API key lives here and never leaves this machine or the server.
+.env
+.env.*
+!.env.example
+
+node_modules/
+dist/
+# Learners' uploads and generated workbooks are personal data.
+uploads/
+output/
+*.log
+.DS_Store
