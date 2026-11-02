@@ -161,7 +161,7 @@ export async function workbookHtml({ workbook: w, skill, level, learner: l, code
 <section class="cover">
   <div class="brand">GrowthGoal · Learn with AI${sample ? ` <span class="sample">${esc(sample.label ?? 'Sample workbook · yours is written for you after a short chat')}</span>` : ''}</div>
   <div>
-    <span class="pill">${esc(skill.name)}</span><span class="pill">${['Basic', 'Advanced', 'Pro'][level - 1] ?? `Level ${level}`}</span>
+    <span class="pill">${esc(skill.name)}</span><span class="pill">${free ? (l.language === 'Hindi' ? 'मुफ़्त गाइड' : 'Free guide') : ['Basic', 'Advanced', 'Pro'][level - 1] ?? `Level ${level}`}</span>
     <h1 style="margin-top:6mm">${esc(w.title)}</h1>
     <p class="sub">${esc(w.subtitle)}</p>
     ${cover ? `<img class="art" src="${cover}" alt="">` : ''}

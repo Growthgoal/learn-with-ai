@@ -23,6 +23,8 @@ export interface Skill {
   prices: { price: number; ai: number }[]
   /** Whether a sample workbook exists for Basic, Advanced, Pro. */
   samples: boolean[]
+  /** How many "Look inside" page pictures each sample has. */
+  samplePages: number[]
   /** Whether Muse Image has drawn this skill's listing picture. */
   cover: boolean
 }

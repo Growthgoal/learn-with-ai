@@ -38,6 +38,7 @@ for (const g of GUIDES) {
       }
       try {
         const { workbook } = await writeWorkbook(skill, 1, learner, 'starter', { ref: `guide-${g.slug}-${lang}` })
+        fs.writeFileSync(pdf.replace(/\.pdf$/, '.json'), JSON.stringify({ learner, workbook }, null, 2))
         const out = await workbookPdf({
           workbook, skill, level: 1, learner, code: `free-${g.slug}`,
           cover: art ? 'data:image/jpeg;base64,' + art.toString('base64') : undefined,

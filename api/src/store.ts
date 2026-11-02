@@ -88,6 +88,8 @@ export const checks = {
 export const catalog = {
   samplePath: (skillId: string, level: number) => path.join(dir(`catalog/samples/${skillId}`), `${level}.pdf`),
   sampleJsonPath: (skillId: string, level: number) => path.join(dir(`catalog/samples/${skillId}`), `${level}.json`),
+  /** "Look inside": pictures of a sample's first pages, made by tools/make-look-inside.sh. */
+  samplePagePath: (skillId: string, level: number, page: number) => path.join(dir(`catalog/samples/${skillId}`), `${level}-p${page}.jpg`),
   coverPath: (skillId: string) => path.join(dir('catalog/covers'), `${skillId}.jpg`),
   guidePath: (slug: string, lang: string) => path.join(dir('catalog/guides'), `${slug}-${lang}.pdf`),
   guideCoverPath: (slug: string) => path.join(dir('catalog/guides'), `${slug}.jpg`),

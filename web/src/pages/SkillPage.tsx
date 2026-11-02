@@ -1,83 +1,221 @@
-import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, Check, FileText } from 'lucide-react'
-import { AGE_LABEL, BASE, PROOF_LABEL } from '../api'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { ArrowRight, Award, Bot, ChevronLeft, ChevronRight, FileText, Mic, QrCode, Sparkles, Sprout, TrendingUp } from 'lucide-react'
+import { AGE_LABEL, BASE, PROOF_LABEL, Skill } from '../api'
 import { useCatalogue } from '../useCatalogue'
-import { PROOF_ICON } from './Home'
-import { Gallery } from '../Gallery'
+import { HOW_IT_WORKS } from '../Gallery'
 
-const SIZE_TEXT = { starter: '4 chapters, about 12 tasks', standard: '6 chapters, about 24 tasks', pro: '8 chapters, about 40 tasks' } as const
+/**
+ * One skill, laid out like a GrowthGoal product page: pictures on the left;
+ * name, price and the choice of workbook on the right; then look inside,
+ * more like this, and what learning it here involves.
+ */
+
+const LEVEL_ICON = [Sprout, TrendingUp, Award]
+const SIZE_TEXT = { starter: '4 chapters · about 12 tasks', standard: '6 chapters · about 24 tasks', pro: '8 chapters · about 40 tasks' } as const
+
+function Pictures({ skill }: { skill: Skill }) {
+  const images = [
+    ...(skill.cover ? [{ src: `${BASE}api/skills/${skill.id}/cover`, alt: `${skill.name} with Learn with AI` }] : []),
+    ...HOW_IT_WORKS.map((i) => ({ src: `${BASE}listing/${i.file}`, alt: i.alt })),
+  ]
+  const [shown, setShown] = useState(0)
+  const step = (d: number) => setShown((i) => (i + d + images.length) % images.length)
+  return (
+    <div className="flex min-w-0 flex-col gap-3">
+      <div className="relative overflow-hidden rounded-4xl bg-white shadow-card">
+        <img src={images[shown].src} alt={images[shown].alt} className="aspect-square w-full object-cover" />
+        <button onClick={() => step(-1)} aria-label="Previous picture" className="absolute left-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 shadow-card"><ChevronLeft size={18} /></button>
+        <button onClick={() => step(1)} aria-label="Next picture" className="absolute right-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 shadow-card"><ChevronRight size={18} /></button>
+      </div>
+      <div className="flex gap-2 overflow-x-auto pb-1">
+        {images.map((im, i) => (
+          <button key={im.src} onClick={() => setShown(i)} aria-label={`Show picture ${i + 1}`} className={`h-16 w-16 shrink-0 overflow-hidden rounded-2xl bg-white ring-2 lg:h-20 lg:w-20 ${i === shown ? 'ring-lime-500' : 'ring-transparent'}`}>
+            <img src={im.src} alt="" loading="lazy" className="h-full w-full object-cover" />
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default function SkillPage() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const cat = useCatalogue()
   const skill = cat?.skills.find((s) => s.id === id)
-  const [picked, setPicked] = useState<number | null>(null)
-  if (!cat) return <div className="h-60 animate-pulse rounded-3xl bg-white/60" />
+  const [level, setLevel] = useState(1)
+  const [showBar, setShowBar] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setShowBar(window.scrollY > 700)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+  useEffect(() => setLevel(1), [id])
+
+  if (!cat) return <div className="h-96 animate-pulse rounded-4xl bg-white/60" />
   if (!skill) return <p className="rounded-3xl bg-cream-dim p-8 text-center">We do not teach that skill yet. <Link className="font-bold text-lime-700" to="/">See all skills</Link></p>
-  const level = picked ?? 1
-  const Icon = PROOF_ICON[skill.proof]
+
+  const lv = cat.levels[level - 1]
+  const price = skill.prices[level - 1]
+  const start = `/start/${skill.id}?level=${level}`
+  const samplePdf = skill.samples[level - 1] ? `${BASE}api/samples/${skill.id}/${level}.pdf` : null
+  const pages = Array.from({ length: skill.samplePages?.[level - 1] ?? 0 }, (_, i) => i + 1)
+  const more = cat.skills.filter((s) => s.group === skill.group && s.id !== skill.id).slice(0, 8)
+  const ages = skill.ages.map((a) => AGE_LABEL[a]).join(', ')
+
   return (
-    <div className="flex flex-col gap-6">
-      <Link to="/" className="text-sm font-bold text-ink-soft hover:text-ink">← All skills</Link>
-      <section className="grid gap-6 rounded-4xl bg-white p-5 shadow-card lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:p-8">
-        <Gallery skill={skill} />
-        <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-10 pb-24">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] lg:gap-12">
+        <div className="flex min-w-0 flex-col gap-3">
+          <button onClick={() => navigate(-1)} aria-label="Back" className="grid h-10 w-10 place-items-center rounded-full bg-white shadow-card"><ChevronLeft size={18} /></button>
+          <Pictures skill={skill} />
+        </div>
+
+        <div className="flex min-w-0 flex-col gap-5 lg:pt-14">
+          <div className="flex flex-wrap gap-2">
+            <span className="rounded-full bg-lime-100 px-3 py-1 text-xs font-bold text-lime-800">{skill.group}</span>
+            <span className="flex items-center gap-1 rounded-full bg-ink px-3 py-1 text-xs font-bold text-white"><Bot size={12} /> AI teacher</span>
+          </div>
+          <h1 className="text-3xl font-extrabold leading-tight lg:text-4xl">{skill.name}</h1>
+          <p className="text-ink-soft">
+            For {ages.toLowerCase()} · English, हिंदी or Hinglish · {PROOF_LABEL[skill.proof].toLowerCase()} · skill badge
+          </p>
+
+          <div className="flex items-baseline gap-2">
+            <span className="font-display text-4xl font-extrabold">₹{price.price}</span>
+            <span className="text-sm font-semibold text-ink-soft">{lv.name} · pay once, no subscription</span>
+          </div>
+
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime-700">{skill.group}</p>
-            <h1 className="mt-1 text-4xl font-extrabold">{skill.name}</h1>
-            <p className="mt-1 text-ink-soft">For {skill.ages.map((a) => AGE_LABEL[a]).join(', ').toLowerCase()}.</p>
+            <p className="mb-2 font-bold">Choose your workbook</p>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {cat.levels.map((l) => {
+                const Icon = LEVEL_ICON[l.n - 1]
+                const on = l.n === level
+                return (
+                  <button
+                    key={l.n}
+                    type="button"
+                    onClick={() => setLevel(l.n)}
+                    aria-pressed={on}
+                    className={`flex flex-col gap-2 rounded-3xl bg-white p-4 text-left transition ${on ? 'ring-2 ring-lime-500 shadow-card' : 'ring-1 ring-ink/10 hover:ring-lime-300'}`}
+                  >
+                    <span className={`grid h-9 w-9 place-items-center rounded-xl ${on ? 'bg-lime-500 text-white' : 'bg-cream-dim text-lime-700'}`}><Icon size={18} /></span>
+                    <span className="font-bold">{l.name}</span>
+                    <span className="text-sm leading-snug text-ink-soft">{l.about}</span>
+                    <span className="mt-auto text-xs text-ink-faint">{SIZE_TEXT[l.size]}</span>
+                    <span className="font-display text-lg font-extrabold">₹{skill.prices[l.n - 1].price}</span>
+                  </button>
+                )
+              })}
+            </div>
           </div>
-          <div className="flex items-start gap-3 rounded-2xl bg-cream p-4">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-lime-100 text-lime-700"><Icon size={18} /></span>
-            <p className="text-sm"><b>How your work is checked:</b> {PROOF_LABEL[skill.proof].toLowerCase()} ({skill.handIn.toLowerCase()}). The AI marks it against your workbook's own checklist and tells you exactly what to fix.</p>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {samplePdf ? (
+              <a href={samplePdf} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-4 font-bold shadow-card ring-1 ring-ink/10 hover:ring-lime-400">
+                <FileText size={18} /> See a sample {lv.name}
+              </a>
+            ) : (
+              <span />
+            )}
+            <Link to={start} className="flex items-center justify-center gap-2 rounded-2xl bg-sun-400 px-5 py-4 font-bold text-ink shadow-[0_5px_0_0_#A16207] hover:bg-sun-300">
+              <Sparkles size={18} /> Start with the AI teacher
+            </Link>
           </div>
-          <ul className="grid gap-2 text-sm">
-            {[
-              'A workbook written for you: your goal, your level, your language (English, Hindi or Hinglish)',
-              'Help on every task: ask our AI teacher, or copy a ready prompt into your own ChatGPT, Gemini or Claude',
-              'Scan the QR on your printed workbook to hand in pages, and check a single page any time',
-              'Pass and get a skill badge you can share. Not yet? A free fix-up workbook for just the gaps',
-            ].map((x) => (
-              <li key={x} className="flex gap-2"><Check size={16} className="mt-0.5 shrink-0 text-lime-600" />{x}</li>
+
+          <ul className="flex flex-col gap-2.5 rounded-3xl bg-white p-5 text-sm shadow-card">
+            <li className="flex gap-3"><Bot size={18} className="shrink-0 text-lime-600" />Written for you after a 3-minute chat: your goal, your level, your language{cat.payments ? '' : '. Free while the hackathon runs.'}</li>
+            <li className="flex gap-3"><Sparkles size={18} className="shrink-0 text-lime-600" />{cat.questions[lv.size]} questions to our AI teacher, and unlimited help from your own ChatGPT, Gemini or Claude</li>
+            <li className="flex gap-3"><QrCode size={18} className="shrink-0 text-lime-600" />Scan the QR on your workbook to hand in: {skill.handIn.toLowerCase()}</li>
+            <li className="flex gap-3"><Award size={18} className="shrink-0 text-lime-600" />Pass for a skill badge; not yet, and you get a free fix-up workbook</li>
+          </ul>
+        </div>
+      </div>
+
+      {pages.length > 0 && (
+        <section className="flex flex-col gap-3">
+          <div className="flex items-end justify-between gap-3">
+            <h2 className="text-2xl font-extrabold">Look inside</h2>
+            <p className="text-sm text-ink-soft">A sample {lv.name} workbook. Yours is written for you.</p>
+          </div>
+          <div className="flex gap-3 overflow-x-auto pb-2">
+            {pages.map((p) => (
+              <a key={p} href={samplePdf ?? '#'} target="_blank" rel="noreferrer" className="relative w-44 shrink-0 overflow-hidden rounded-2xl bg-white shadow-card lg:w-52">
+                <img src={`${BASE}api/samples/${skill.id}/${level}/p${p}.jpg`} alt={`Sample page ${p}`} loading="lazy" className="aspect-[1/1.414] w-full object-cover object-top" />
+                <span className="pointer-events-none absolute inset-0 grid place-items-center">
+                  <span className="-rotate-[30deg] font-display text-2xl font-extrabold text-ink/10">Learn with AI sample</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {more.length > 0 && (
+        <section className="flex flex-col gap-3">
+          <h2 className="text-2xl font-extrabold">More like this</h2>
+          <div className="flex gap-3 overflow-x-auto pb-2">
+            {more.map((s) => (
+              <Link key={s.id} to={`/skill/${s.id}`} className="group flex w-44 shrink-0 flex-col overflow-hidden rounded-3xl bg-white shadow-card lg:w-52">
+                <span className="block aspect-square bg-cream-dim">{s.cover && <img src={`${BASE}api/skills/${s.id}/cover`} alt="" loading="lazy" className="h-full w-full object-cover" />}</span>
+                <span className="flex flex-1 flex-col gap-0.5 p-3">
+                  <span className="line-clamp-2 font-display text-sm font-bold leading-tight group-hover:text-lime-700">{s.name}</span>
+                  <span className="mt-auto pt-1 text-sm font-extrabold text-lime-700">From ₹{s.prices[0].price}</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section className="grid gap-4 lg:grid-cols-2">
+        <div className="rounded-4xl bg-white p-6 shadow-card">
+          <h2 className="text-2xl font-extrabold">About this skill</h2>
+          <p className="mt-2 text-ink-soft">
+            {skill.name}, for {ages.toLowerCase()}. Three workbooks take you from your first steps to doing it well on your own: Basic, Advanced and Pro. Each is
+            written for you from a short chat, in English, Hindi or Hinglish, with examples from your own life and the things you love.
+          </p>
+          <ul className="mt-4 flex flex-col gap-2 text-sm">
+            {cat.levels.map((l) => (
+              <li key={l.n}><b>{l.name}:</b> {l.about} {SIZE_TEXT[l.size]}. ₹{skill.prices[l.n - 1].price}.</li>
             ))}
           </ul>
         </div>
+        <div className="rounded-4xl bg-white p-6 shadow-card">
+          <h2 className="text-2xl font-extrabold">How you learn it</h2>
+          <ol className="mt-3 flex flex-col gap-2.5 text-sm">
+            {[
+              ['Chat for 3 minutes', 'The AI teacher asks about your goal, your level and your language.'],
+              ['Get your workbook', 'As a PDF to print and online, with a QR code on every page.'],
+              ['Stuck? Ask', 'Our AI teacher explains as often as you need, or paste the ready prompt into your own AI.'],
+              ['Hand in', `${PROOF_LABEL[skill.proof]}: scan the QR, then send it. Check one page any time.`],
+              ['Earn your badge', 'Or get a free fix-up workbook for the parts that need more practice.'],
+            ].map(([t, d], i) => (
+              <li key={t} className="flex gap-3">
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sun-400 font-display text-sm font-extrabold">{i + 1}</span>
+                <span><b>{t}.</b> {d}</span>
+              </li>
+            ))}
+          </ol>
+          {skill.proof === 'voice' && <p className="mt-3 flex items-center gap-2 text-sm text-ink-soft"><Mic size={15} /> You record yourself speaking in the browser or on your phone.</p>}
+        </div>
       </section>
 
-      <section className="flex flex-col gap-3">
-        <h2 className="text-2xl font-extrabold">Choose your workbook</h2>
-        <div className="grid gap-3 md:grid-cols-3">
-          {cat.levels.map((l) => {
-            const on = l.n === level
-            const sample = skill.samples?.[l.n - 1]
-            return (
-              <div key={l.n} className={`flex flex-col gap-2 rounded-3xl bg-white p-5 shadow-card ${on ? 'ring-2 ring-lime-500' : 'ring-1 ring-ink/5'}`}>
-                <button type="button" onClick={() => setPicked(l.n)} aria-pressed={on} className="flex flex-col gap-2 text-left">
-                  <span className="flex items-center justify-between gap-2">
-                    <span className="font-display text-xl font-extrabold">{l.name}</span>
-                    {on && <span className="rounded-full bg-lime-500 px-2.5 py-0.5 text-xs font-bold text-white">Selected</span>}
-                  </span>
-                  <span className="text-sm text-ink-soft">{l.about}</span>
-                  <span className="font-display text-4xl font-extrabold">₹{skill.prices[l.n - 1].price}</span>
-                  <span className="text-xs text-ink-soft">{SIZE_TEXT[l.size]} · {cat.questions[l.size]} questions to our AI teacher · unlimited help from your own AI</span>
-                </button>
-                {sample && (
-                  <a href={`${BASE}api/samples/${skill.id}/${l.n}.pdf`} target="_blank" rel="noreferrer" className="mt-1 inline-flex w-fit items-center gap-1.5 text-sm font-bold text-lime-700 hover:underline">
-                    <FileText size={15} /> See a sample {l.name} workbook
-                  </a>
-                )}
-              </div>
-            )
-          })}
+      {/* The same bar a GrowthGoal product page keeps at the bottom once you scroll. */}
+      {showBar && (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-white/95 backdrop-blur">
+          <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
+            {skill.cover && <img src={`${BASE}api/skills/${skill.id}/cover`} alt="" className="hidden h-12 w-12 rounded-xl object-cover sm:block" />}
+            <p className="hidden min-w-0 flex-1 truncate font-display font-bold sm:block">{skill.name} · {lv.name}</p>
+            <span className="font-display text-xl font-extrabold">₹{price.price}</span>
+            <Link to={start} className="ml-auto flex items-center gap-2 rounded-2xl bg-sun-400 px-5 py-3 font-bold text-ink shadow-[0_4px_0_0_#A16207] sm:ml-0">
+              Start <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
-        <p className="text-sm text-ink-soft">
-          Your own workbook is written for you after a short chat; the samples show the kind of pages you get. You pay once for a level. Of the {cat.levels[level - 1].name} price, about ₹{skill.prices[level - 1].ai} is what the AI costs us; the rest keeps GrowthGoal running.
-        </p>
-        <Link to={`/start/${skill.id}?level=${level}`} className="inline-flex w-fit items-center gap-2 rounded-2xl bg-lime-500 px-6 py-4 font-bold text-white shadow-card hover:bg-lime-600">
-          Start {cat.levels[level - 1].name} with the AI teacher <ArrowRight size={18} />
-        </Link>
-      </section>
+      )}
     </div>
   )
 }

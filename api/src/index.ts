@@ -77,6 +77,7 @@ r.get('/api/skills', (_req, res) => {
       ...s,
       prices: LEVELS.map((l) => priceOf(s, l.n)),
       samples: LEVELS.map((l) => fs.existsSync(catalog.samplePath(s.id, l.n))),
+      samplePages: LEVELS.map((l) => [1, 2, 3, 4, 5].filter((p) => fs.existsSync(catalog.samplePagePath(s.id, l.n, p))).length),
       cover: fs.existsSync(catalog.coverPath(s.id)),
     })),
     levels: LEVELS,
@@ -216,6 +217,14 @@ r.get('/api/guides/:slug/:lang.pdf', (req, res) => {
   res.setHeader('Content-Disposition', `inline; filename="growthgoal-${g.slug}-${lang}.pdf"`)
   res.setHeader('Cache-Control', 'public, max-age=86400')
   res.sendFile(file)
+})
+
+r.get('/api/samples/:skill/:level/p:page.jpg', (req, res) => {
+  const skill = skillById(req.params.skill)
+  const file = skill && catalog.samplePagePath(skill.id, Number(req.params.level), Number(req.params.page))
+  if (!skill || !file || !fs.existsSync(file)) return res.status(404).end()
+  res.setHeader('Cache-Control', 'public, max-age=86400')
+  res.type('jpeg').sendFile(file)
 })
 
 r.get('/api/skills/:id/cover', (req, res) => {
