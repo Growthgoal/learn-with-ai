@@ -23,6 +23,8 @@ export const SIZES = {
   starter: { chapters: 4, tasksPerChapter: 3, label: 'Starter' },
   standard: { chapters: 6, tasksPerChapter: 4, label: 'Standard' },
   pro: { chapters: 8, tasksPerChapter: 5, label: 'Pro' },
+  /** After a check that did not pass: just the gaps, free. */
+  fixup: { chapters: 2, tasksPerChapter: 3, label: 'Fix-up' },
 } as const
 export type Size = keyof typeof SIZES
 
@@ -37,7 +39,7 @@ const PROOF_RULES: Record<Skill['proof'], string> = {
     'The learner records themselves speaking on a phone. Each "speak" task gives what to say or talk about and how long (in seconds), and is judged from the transcript and from how complete and fluent it is. Keep a small "lines" space for a written outline when it helps.',
 }
 
-function brief(skill: Skill, level: number, learner: Learner, size: Size) {
+function brief(skill: Skill, level: number, learner: Learner, size: Size, focus?: string) {
   const s = SIZES[size]
   const levelName = LEVELS.find((l) => l.n === level)?.name ?? 'Starter'
   return `Write a personal workbook.
@@ -54,7 +56,14 @@ LEARNER
 - Time: ${learner.minutesPerDay} minutes a day
 - Likes: ${learner.interests.join(', ') || 'not given'}
 
-SIZE: exactly ${s.chapters} chapters, ${s.tasksPerChapter} tasks in each, plus one final task that uses everything.`
+SIZE: exactly ${s.chapters} chapters, ${s.tasksPerChapter} tasks in each, plus one final task that uses everything.${
+    focus
+      ? `
+
+THIS IS A FIX-UP WORKBOOK. The learner handed in their workbook and these parts need more practice. Teach only these, more slowly and with a fresh example each, and make the final task repeat the original task they missed:
+${focus}`
+      : ''
+  }`
 }
 
 const RULES = `You are GrowthGoal's AI teacher. You write workbooks that a learner finishes on their own and comes out able to do something new. You are patient and warm, and you never make anyone feel slow.
@@ -81,13 +90,15 @@ How to write:
 export interface WriteOptions {
   effort?: Effort
   ref?: string
+  /** For a fix-up workbook: what the check said needs more practice. */
+  focus?: string
 }
 
 export async function writeWorkbook(skill: Skill, level: number, learner: Learner, size: Size, o: WriteOptions = {}) {
   const { value, usage } = await chatJson<Workbook>(
     [
       { role: 'system', content: RULES },
-      { role: 'user', content: brief(skill, level, learner, size) },
+      { role: 'user', content: brief(skill, level, learner, size, o.focus) },
     ],
     { task: 'write-workbook', ref: o.ref, effort: o.effort ?? 'low', maxTokens: 48000, schema: WORKBOOK_SCHEMA },
   )

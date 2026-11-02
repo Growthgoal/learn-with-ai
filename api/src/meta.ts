@@ -125,3 +125,66 @@ export async function image(prompt: string, o: { task: string; ref?: string; siz
   if (item?.url) return Buffer.from(await (await fetch(item.url)).arrayBuffer())
   throw new Error('Meta image reply had no image')
 }
+
+/** A segmentation box in the image's own pixels. */
+export interface Box {
+  x1: number
+  y1: number
+  x2: number
+  y2: number
+}
+
+/**
+ * Every match for a short noun phrase ("handwritten letter"), as boxes.
+ * SAM 3.1 streams one record per match: `<0f>0<|box;x1=..;y1=..;x2=..;y2=..;w=..;h=..|><|mask;...|>`.
+ * Masks are left unread; boxes are all the checker measures.
+ */
+export async function segment(imageDataUrl: string, prompt: string, o: { task: string; ref?: string }) {
+  const res = await fetch(BASE + '/responses', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${need('META_API_KEY')}`, 'Content-Type': 'application/json', Accept: 'text/event-stream' },
+    body: JSON.stringify({
+      model: 'sam-3.1',
+      stream: true,
+      input: [{ type: 'message', role: 'user', content: [{ type: 'input_text', text: prompt }, { type: 'input_image', image_url: imageDataUrl }] }],
+    }),
+  })
+  if (!res.ok) throw new Error(`Meta /responses (sam) ${res.status}: ${(await res.text()).slice(0, 300)}`)
+  let text = ''
+  for (const line of (await res.text()).split('\n')) {
+    if (!line.startsWith('data: ')) continue
+    const data = line.slice(6)
+    if (data === '[DONE]') break
+    try {
+      const ev = JSON.parse(data)
+      if (ev.type === 'response.output_text.delta' && ev.delta) text += ev.delta
+    } catch {
+      // keep-alive or partial line
+    }
+  }
+  record({ task: o.task, model: 'sam-3.1', inputTokens: 0, cachedTokens: 0, outputTokens: 0, reasoningTokens: 0, images: 1, costUsd: PRICE.samImage }, o.ref)
+  const boxes: Box[] = []
+  for (const m of text.matchAll(/<\|box;x1=(\d+);y1=(\d+);x2=(\d+);y2=(\d+);w=\d+;h=\d+\|>/g)) {
+    boxes.push({ x1: +m[1], y1: +m[2], x2: +m[3], y2: +m[4] })
+  }
+  return boxes
+}
+
+/** A recording turned into text by Muse Voice Transcribe. WAV in, at most 10 minutes. */
+export async function transcribe(wav: Buffer, seconds: number, o: { task: string; ref?: string; languages?: string[] }) {
+  const form = new FormData()
+  form.append(
+    'request',
+    new Blob([JSON.stringify({ model: 'muse-voice-transcribe-1.0', audioEncoding: 'WAV', mode: 'PUSH_TO_TALK', ...(o.languages ? { languageBias: o.languages } : {}) })], { type: 'application/json' }),
+  )
+  form.append('audio', new Blob([new Uint8Array(wav)], { type: 'audio/wav' }), 'recording.wav')
+  const res = await fetch(BASE + '/asr/transcribe', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${need('META_API_KEY')}`, Accept: 'text/plain' },
+    body: form,
+  })
+  const text = await res.text()
+  if (!res.ok) throw new Error(`Meta /asr/transcribe ${res.status}: ${text.slice(0, 300)}`)
+  record({ task: o.task, model: 'muse-voice-transcribe-1.0', inputTokens: 0, cachedTokens: 0, outputTokens: 0, reasoningTokens: 0, images: 0, costUsd: (Math.floor(seconds) / 3600) * PRICE.voiceHour }, o.ref)
+  return text.trim()
+}
