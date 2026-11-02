@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
 import { AGE_LABEL, PROOF_LABEL, Size } from '../api'
@@ -14,6 +15,10 @@ export default function SkillPage() {
   const { id } = useParams()
   const cat = useCatalogue()
   const skill = cat?.skills.find((s) => s.id === id)
+  // Small children start small; everyone else starts at Standard. Either way it is theirs to change.
+  const kidsOnly = !!skill && skill.ages.every((a) => a === 'kids-3-7')
+  const [picked, setPicked] = useState<Size | null>(null)
+  const size: Size = picked ?? (kidsOnly ? 'starter' : 'standard')
   if (!cat) return <div className="h-60 animate-pulse rounded-3xl bg-white/60" />
   if (!skill) return <p className="rounded-3xl bg-cream-dim p-8 text-center">We do not teach that skill yet. <Link className="font-bold text-lime-700" to="/">See all skills</Link></p>
   const Icon = PROOF_ICON[skill.proof]
@@ -40,17 +45,28 @@ export default function SkillPage() {
         </ul>
       </section>
       <section className="grid gap-3 md:grid-cols-3">
-        {(Object.keys(SIZE_TEXT) as Size[]).map((size) => (
-          <div key={size} className={`flex flex-col gap-2 rounded-3xl bg-white p-5 shadow-card ${size === 'standard' ? 'ring-2 ring-lime-500' : ''}`}>
-            <p className="font-display text-xl font-extrabold">{SIZE_TEXT[size].name}</p>
-            <p className="text-sm text-ink-soft">{SIZE_TEXT[size].for}</p>
-            <p className="font-display text-4xl font-extrabold">₹{cat.prices[size].price}<span className="text-sm font-semibold text-ink-soft"> a level</span></p>
-            <p className="text-xs text-ink-soft">{SIZE_TEXT[size].pages} · {cat.questions[size]} questions to our AI teacher · unlimited help from your own AI</p>
-          </div>
+        {(Object.keys(SIZE_TEXT) as Size[]).map((s) => (
+          <button
+            key={s}
+            type="button"
+            onClick={() => setPicked(s)}
+            aria-pressed={s === size}
+            className={`flex flex-col gap-2 rounded-3xl bg-white p-5 text-left shadow-card transition hover:-translate-y-0.5 ${
+              s === size ? 'ring-2 ring-lime-500' : 'ring-1 ring-ink/5 hover:ring-lime-300'
+            }`}
+          >
+            <span className="flex items-center justify-between gap-2">
+              <span className="font-display text-xl font-extrabold">{SIZE_TEXT[s].name}</span>
+              {s === size && <span className="rounded-full bg-lime-500 px-2.5 py-0.5 text-xs font-bold text-white">Selected</span>}
+            </span>
+            <span className="text-sm text-ink-soft">{SIZE_TEXT[s].for}</span>
+            <span className="font-display text-4xl font-extrabold">₹{cat.prices[s].price}<span className="text-sm font-semibold text-ink-soft"> a level</span></span>
+            <span className="text-xs text-ink-soft">{SIZE_TEXT[s].pages} · {cat.questions[s]} questions to our AI teacher · unlimited help from your own AI</span>
+          </button>
         ))}
       </section>
-      <p className="text-sm text-ink-soft">The AI teacher suggests the size that fits after your chat. You pay once per level: about ₹{cat.prices.standard.ai} of it is what the AI costs us, and the rest keeps GrowthGoal running.</p>
-      <Link to={`/start/${skill.id}`} className="inline-flex w-fit items-center gap-2 rounded-2xl bg-lime-500 px-6 py-4 font-bold text-white shadow-card hover:bg-lime-600">
+      <p className="text-sm text-ink-soft">Pick a size; you can still change it at the end of your chat with the AI teacher. You pay once per level: about ₹{cat.prices[size].ai} of the {SIZE_TEXT[size].name} price is what the AI costs us, and the rest keeps GrowthGoal running.</p>
+      <Link to={`/start/${skill.id}?size=${size}`} className="inline-flex w-fit items-center gap-2 rounded-2xl bg-lime-500 px-6 py-4 font-bold text-white shadow-card hover:bg-lime-600">
         Start with the AI teacher <ArrowRight size={18} />
       </Link>
     </div>
