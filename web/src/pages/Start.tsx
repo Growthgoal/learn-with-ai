@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Send, Sparkles } from 'lucide-react'
-import { api, Learner } from '../api'
+import { api, Learner, Skill } from '../api'
 import { useCatalogue } from '../useCatalogue'
 
 /**
@@ -46,7 +46,13 @@ const field = 'w-full rounded-2xl border border-ink/10 bg-white px-4 py-3 text-[
 export default function Start() {
   const { id = '' } = useParams()
   const cat = useCatalogue()
-  const skill = cat?.skills.find((s) => s.id === id)
+  const listed = cat?.skills.find((s) => s.id === id)
+  // A skill the learner named themselves is not in the catalogue; ask for it alone.
+  const [own, setOwn] = useState<Skill | null | undefined>(undefined)
+  useEffect(() => {
+    if (cat && !listed) api<Skill>(`/skills/${id}`).then(setOwn).catch(() => setOwn(null))
+  }, [cat, listed, id])
+  const skill = listed ?? own ?? undefined
   const navigate = useNavigate()
   const [params] = useSearchParams()
   const asked = Number(params.get('level'))
@@ -77,7 +83,7 @@ export default function Start() {
     api<SkillForm>(`/skills/${id}/form`).then(setForm).catch(() => setForm({ goals: [], questions: [] }))
   }, [id])
 
-  if (!cat || !form) return <div className="h-60 animate-pulse rounded-3xl bg-white/60" />
+  if (!cat || !form || (!listed && own === undefined)) return <div className="h-60 animate-pulse rounded-3xl bg-white/60" />
   if (!skill) return <p>We do not teach that skill yet. <Link to="/">See all skills</Link></p>
 
   const kid = Number(age) > 0 && Number(age) < 10
@@ -206,7 +212,7 @@ export default function Start() {
   const price = skill.prices[level - 1].price
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-4">
-      <Link to={`/skill/${skill.id}`} className="text-sm font-bold text-ink-soft hover:text-ink">← {skill.name}</Link>
+      <Link to={skill.custom ? '/' : `/skill/${skill.id}`} className="text-sm font-bold text-ink-soft hover:text-ink">← {skill.custom ? 'All skills' : skill.name}</Link>
 
       {!ai && !onPrice && (
         <div className="flex flex-col gap-5 rounded-4xl bg-white p-5 shadow-card sm:p-8">

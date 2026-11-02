@@ -1,7 +1,7 @@
 // Fills the shop window: a picture for every skill (Muse Image) and a sample
 // Basic, Advanced and Pro workbook for each, written for a typical learner.
 // Skips anything already made, so it can be stopped and run again.
-// usage: tsx scripts/make-catalog.ts [concurrency] [skill-id ...]
+// usage: tsx scripts/make-catalog.ts [concurrency] [--levels=1,2] [skill-id ...]
 import fs from 'node:fs'
 import { Age, LEVELS, Skill, SKILLS, sizeForLevel } from '../src/catalog/skills.js'
 import { image } from '../src/meta.js'
@@ -9,7 +9,10 @@ import { catalog } from '../src/store.js'
 import { Learner, Size, writeWorkbook } from '../src/workbook/write.js'
 import { SITE, workbookPdf } from '../src/workbook/render.js'
 
-const [conc = '4', ...only] = process.argv.slice(2)
+const [conc = '4', ...rest] = process.argv.slice(2)
+const levelsArg = rest.find((a) => a.startsWith('--levels='))
+const only = rest.filter((a) => a !== levelsArg)
+const levels = levelsArg ? LEVELS.filter((l) => levelsArg.slice(9).split(',').includes(String(l.n))) : LEVELS
 const HINDI = /hindi|sanskrit|hanuman|naam-jaap|aartis/
 
 /** The learner a sample is written for: typical of who takes the skill. */
@@ -65,7 +68,7 @@ for (const skill of SKILLS.filter((s) => !only.length || only.includes(s.id))) {
     } catch (e) {
       console.error('cover', skill.id, (e as Error).message)
     }
-    for (const l of LEVELS) {
+    for (const l of levels) {
       try {
         const r = await sample(skill, l.n, art)
         console.log(r, skill.id, l.name)

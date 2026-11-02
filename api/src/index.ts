@@ -5,7 +5,9 @@ import cors from 'cors'
 import multer from 'multer'
 import { z } from 'zod'
 import { ROOT } from './env.js'
-import { LEVELS, SKILLS, sizeForLevel, skillById } from './catalog/skills.js'
+import { GROUPS, LEVELS, Skill, SKILLS, sizeForLevel, skillById } from './catalog/skills.js'
+import { customSkills, findSkill, makeCustomSkill } from './catalog/custom.js'
+import { GROUP_ICONS, tagsFor } from './catalog/tags.js'
 import { priceOf, QUESTIONS } from './catalog/prices.js'
 import { GUIDES } from './catalog/guides.js'
 import { Learner, Size, SIZES, writeWorkbook } from './workbook/write.js'
@@ -23,6 +25,15 @@ const app = express()
 // Traefik sits in front on the server, so the visitor's address is one hop back.
 app.set('trust proxy', 1)
 app.use(cors())
+// Only our own code runs on these pages: no script, frame or plugin from anywhere else.
+app.use((_req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'",
+  )
+  res.setHeader('X-Content-Type-Options', 'nosniff')
+  next()
+})
 app.use(express.json({ limit: '1mb' }))
 /** Everything lives under growthgoal.in/learn: a page of the shop, not a site of its own. */
 export const BASE = '/learn'
@@ -47,7 +58,7 @@ const learnerSchema = z.object({
  * While workbooks are free (the hackathon), a cap keeps one visitor, or a
  * bot, from spending the AI credit: per address per day, and in all.
  */
-const LIMITS = { workbook: { perIp: 6, total: 300 }, check: { perIp: 40, total: 1500 }, intake: { perIp: 120, total: 6000 } }
+const LIMITS = { workbook: { perIp: 6, total: 300 }, check: { perIp: 40, total: 1500 }, intake: { perIp: 120, total: 6000 }, custom: { perIp: 8, total: 400 } }
 const used = new Map<string, number>()
 let usedDay = ''
 function allow(kind: keyof typeof LIMITS, ip: string) {
@@ -74,15 +85,20 @@ const allTasks = (w: Workbook) => [...w.chapters.flatMap((c) => c.tasks), w.fina
 
 // ---------------------------------------------------------------- catalogue
 
+/** A skill as the shop shows it: prices, samples, picture and search words. */
+const listing = (s: Skill) => ({
+  ...s,
+  ...tagsFor(s.id, s.group),
+  prices: LEVELS.map((l) => priceOf(s, l.n)),
+  samples: LEVELS.map((l) => fs.existsSync(catalog.samplePath(s.id, l.n))),
+  samplePages: LEVELS.map((l) => [1, 2, 3, 4, 5].filter((p) => fs.existsSync(catalog.samplePagePath(s.id, l.n, p))).length),
+  cover: fs.existsSync(catalog.coverPath(s.id)),
+})
+
 r.get('/api/skills', (_req, res) => {
   res.json({
-    skills: SKILLS.map((s) => ({
-      ...s,
-      prices: LEVELS.map((l) => priceOf(s, l.n)),
-      samples: LEVELS.map((l) => fs.existsSync(catalog.samplePath(s.id, l.n))),
-      samplePages: LEVELS.map((l) => [1, 2, 3, 4, 5].filter((p) => fs.existsSync(catalog.samplePagePath(s.id, l.n, p))).length),
-      cover: fs.existsSync(catalog.coverPath(s.id)),
-    })),
+    skills: SKILLS.map(listing),
+    groups: GROUPS.map((name) => ({ name, icon: GROUP_ICONS[name] })),
     levels: LEVELS,
     questions: QUESTIONS,
     payments: process.env.PAYMENTS === 'on',
@@ -91,18 +107,39 @@ r.get('/api/skills', (_req, res) => {
 
 // ------------------------------------------------------------------ intake
 
+/** One skill, listed or a learner's own. */
+r.get('/api/skills/:id', (req, res) => {
+  const skill = findSkill(req.params.id)
+  if (!skill) return res.status(404).json({ error: 'We do not teach that skill yet.' })
+  res.json(listing(skill))
+})
+
 /** The skill's own form; filling it costs nothing. */
 r.get('/api/skills/:id/form', (req, res) => {
-  const skill = skillById(req.params.id)
-  const form = skill && formFor(skill.id)
-  if (!skill || !form) return res.status(404).json({ error: 'No form for this skill yet.' })
+  const form = formFor(req.params.id) ?? customSkills.get(req.params.id)?.form
+  if (!form) return res.status(404).json({ error: 'No form for this skill yet.' })
   res.json(form)
+})
+
+/** A skill we do not list: one AI call checks it is safe and writes its form. */
+r.post('/api/custom-skills', async (req, res) => {
+  const body = z.object({ name: z.string().trim().min(2).max(80), want: z.string().trim().max(400).default('') }).safeParse(req.body)
+  if (!body.success) return res.status(400).json({ error: 'Write the skill in a few words.' })
+  if (!allow('custom', req.ip ?? '')) return res.status(429).json(TOO_MANY)
+  try {
+    const out = await makeCustomSkill(body.data.name, body.data.want)
+    if (!out.ok) return res.status(422).json({ error: out.reason })
+    res.json({ id: out.skill.id, name: out.skill.name })
+  } catch (e) {
+    console.error('custom skill', e)
+    res.status(502).json({ error: 'The AI could not set this up just now. Try again in a moment.' })
+  }
 })
 
 /** One AI call after the form: the few questions it still needs, if any. */
 r.post('/api/followups', async (req, res) => {
   const body = z.object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema }).safeParse(req.body)
-  const skill = body.success ? skillById(body.data.skillId) : undefined
+  const skill = body.success ? findSkill(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Something in the form is missing. Go back and check it.' })
   if (!allow('intake', req.ip ?? '')) return res.status(429).json(TOO_MANY)
   try {
@@ -119,7 +156,7 @@ r.post('/api/followups', async (req, res) => {
 /** Writes and prints a workbook in the background; the page polls for it. */
 async function build(rec: WorkbookRecord, focus?: string) {
   try {
-    const skill = skillById(rec.skillId)!
+    const skill = findSkill(rec.skillId)!
     const { workbook } = await writeWorkbook(skill, rec.level, rec.learner, rec.size, { ref: rec.code, focus })
     // A cover picture drawn for this learner. A workbook without one is still a workbook.
     let cover: string | undefined
@@ -146,7 +183,7 @@ r.post('/api/workbooks', (req, res) => {
   const body = z
     .object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema })
     .safeParse(req.body)
-  const skill = body.success ? skillById(body.data.skillId) : undefined
+  const skill = body.success ? findSkill(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Something is missing about the learner. Go back to the chat and finish it.' })
   if (!allow('workbook', req.ip ?? '')) return res.status(429).json(TOO_MANY)
   // Payment happens on growthgoal.in before this point; during the hackathon it is free.
@@ -171,7 +208,7 @@ r.post('/api/workbooks', (req, res) => {
 r.get('/api/workbooks/:code', (req, res) => {
   const rec = workbooks.get(req.params.code)
   if (!rec) return res.status(404).json({ error: 'No workbook at this address. Check the code printed on your workbook.' })
-  const skill = skillById(rec.skillId)!
+  const skill = findSkill(rec.skillId)!
   res.json({
     code: rec.code,
     status: rec.status,
@@ -277,7 +314,7 @@ r.post('/api/workbooks/:code/ask', async (req, res) => {
     return res.status(402).json({ error: 'You have used the questions included with this workbook. Copy the task prompt into ChatGPT, Gemini or Claude for as much help as you want.' })
   }
   try {
-    const reply = await teacherReply(skillById(rec.skillId)!, rec.learner, task, body.data.messages, rec.code)
+    const reply = await teacherReply(findSkill(rec.skillId)!, rec.learner, task, body.data.messages, rec.code)
     workbooks.put({ ...rec, questions: rec.questions + 1 })
     res.json({ reply, questionsLeft: QUESTIONS[rec.size] - rec.questions - 1 })
   } catch (e) {
@@ -303,12 +340,12 @@ r.post('/api/workbooks/:code/check', upload.array('files', 40), async (req, res)
   const forTask = typeof req.body.forTask === 'string' ? req.body.forTask : undefined
   if (!files.length && !Object.keys(answers).length) return res.status(400).json({ error: 'Add a photo, a file, a recording or your typed answers first.' })
   if (!allow('check', req.ip ?? '')) return res.status(429).json(TOO_MANY)
-  const skill = skillById(rec.skillId)!
+  const skill = findSkill(rec.skillId)!
   const id = newCode()
   try {
     const evidence = await gather(
       files.map((f) => ({ name: f.originalname, mime: f.mimetype, data: f.buffer, taskId: forTask })),
-      { handwriting: skill.group === 'Handwriting and writing' || skill.id === 'pencil-control-and-tracing', ref: rec.code, languages: ['English', 'Hindi'] },
+      { handwriting: skill.group === 'Handwriting' || skill.id === 'pencil-control-and-tracing', ref: rec.code, languages: ['English', 'Hindi'] },
     )
     evidence.notes.push(...typedAnswers(answers))
     const result = await mark({ workbook: rec.workbook, skill, learner: rec.learner, evidence, scope, taskIds: taskIds ?? (forTask ? [forTask] : undefined), ref: rec.code })

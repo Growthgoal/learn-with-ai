@@ -27,10 +27,18 @@ export interface Skill {
   samplePages: number[]
   /** Whether Muse Image has drawn this skill's listing picture. */
   cover: boolean
+  /** A Fluent Emoji name; the file is in /learn/icons. */
+  icon: string
+  /** What people type when they look for it, Hinglish and Hindi too. */
+  keywords: string[]
+  /** A skill a learner asked for that we do not list. */
+  custom?: boolean
 }
 export interface Level { n: number; name: string; size: Size; about: string }
 export interface Catalogue {
   skills: Skill[]
+  /** The shelves in order, each with its icon. */
+  groups: { name: string; icon: string }[]
   levels: Level[]
   questions: Record<Size | 'fixup', number>
   payments: boolean
@@ -56,6 +64,8 @@ export interface WorkbookView {
 }
 export interface Guide { slug: string; title: string; titleHi: string; en: boolean; hi: boolean; cover: boolean }
 export interface Badge { id: string; code: string; learnerName: string; skillId: string; skillName: string; level: number; name: string; canDo: string[]; percent: number; at: string }
+
+export const iconUrl = (name: string) => `${BASE}icons/${name}.svg`
 
 export const AGE_LABEL: Record<Age, string> = { 'kids-3-7': 'Kids 3–7', 'kids-8-12': 'Kids 8–12', teens: 'Teens', college: 'College', working: 'Working', seniors: 'Seniors' }
 export const PROOF_LABEL: Record<Proof, string> = { pages: 'Photo of your pages', file: 'Upload a file', result: 'Photo of what you made', typed: 'Type your answers', voice: 'Record your voice' }

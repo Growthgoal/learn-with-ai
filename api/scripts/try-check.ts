@@ -13,7 +13,7 @@ const skill = skillById(skillId)!
 const ref = `check-${code}-${Date.now().toString(36)}`
 const uploads: Upload[] = files.map((f) => ({ name: path.basename(f), mime: f.endsWith('.jpg') ? 'image/jpeg' : '', data: fs.readFileSync(f), taskId: /\.(xlsx|wav|m4a)$/.test(f) ? taskIds.split(',')[0] : undefined }))
 const t = Date.now()
-const evidence = await gather(uploads, { handwriting: skill.group === 'Handwriting and writing', ref, languages: ['English', 'Hindi'] })
+const evidence = await gather(uploads, { handwriting: skill.group === 'Handwriting', ref, languages: ['English', 'Hindi'] })
 const result = await mark({ workbook, skill, learner, evidence, scope: 'page', taskIds: taskIds.split(','), ref })
 const cost = fs.readFileSync(path.join(OUTPUT, 'usage.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l)).filter((u) => u.ref === ref).reduce((n, u) => n + u.costUsd, 0)
 console.log(JSON.stringify({ seconds: (Date.now() - t) / 1000, costUsd: +cost.toFixed(4), costInr: +(cost * 88).toFixed(2), evidence: evidence.notes, result }, null, 2))

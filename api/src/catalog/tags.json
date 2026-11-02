@@ -1,0 +1,4851 @@
+{
+ "event-management": {
+  "icon": "party-popper",
+  "keywords": [
+   "wedding planning",
+   "birthday party",
+   "shaadi management",
+   "event planing",
+   "decoration",
+   "catering",
+   "stage show",
+   "samaroh",
+   "आयोजन",
+   "उत्सव"
+  ]
+ },
+ "study-abroad-sop-and-applications": {
+  "icon": "airplane-departure",
+  "keywords": [
+   "videsh padhai",
+   "sop writing",
+   "visa process",
+   "ielts gre",
+   "admission essay",
+   "foreign university",
+   "aplikation",
+   "scholarship",
+   "विदेश",
+   "आवेदन"
+  ]
+ },
+ "start-a-small-business-business-plan": {
+  "icon": "briefcase",
+  "keywords": [
+   "dukaan kholna",
+   "startup idea",
+   "shop plan",
+   "new vyapar",
+   "msme registration",
+   "business idea",
+   "buziness plan",
+   "profit",
+   "व्यापार",
+   "योजना",
+   "दुकान"
+  ]
+ },
+ "freelancing-find-your-first-clients": {
+  "icon": "laptop",
+  "keywords": [
+   "ghar se kaam",
+   "upwork fiverr",
+   "online kaam",
+   "freelansing",
+   "first order",
+   "gig work",
+   "remote job",
+   "freelancer",
+   "घर बैठे काम",
+   "ग्राहक"
+  ]
+ },
+ "sell-online-on-amazon-flipkart-and-meesho": {
+  "icon": "shopping-cart",
+  "keywords": [
+   "online bechna",
+   "ecommerce selling",
+   "meesho seller",
+   "flipkart seller",
+   "amazon listing",
+   "onlain seling",
+   "reselling",
+   "product upload",
+   "ऑनलाइन",
+   "बेचना"
+  ]
+ },
+ "sell-from-home-on-whatsapp-and-instagram": {
+  "icon": "mobile-phone",
+  "keywords": [
+   "ghar se bechna",
+   "whatsapp business",
+   "insta shop",
+   "home boutique",
+   "catalogue",
+   "reel selling",
+   "watsapp selling",
+   "homemade food",
+   "घर से व्यापार",
+   "बिक्री"
+  ]
+ },
+ "pricing-your-product-or-service": {
+  "icon": "label",
+  "keywords": [
+   "daam kaise rakhe",
+   "rate fix",
+   "costing",
+   "profit margin",
+   "mrp",
+   "discount",
+   "prise",
+   "charge decide",
+   "दाम",
+   "कीमत",
+   "लागत"
+  ]
+ },
+ "bookkeeping-and-tally-basics": {
+  "icon": "ledger",
+  "keywords": [
+   "hisab kitab",
+   "khata entry",
+   "tally prime",
+   "bahikhata",
+   "accounts",
+   "ledger maintain",
+   "taly",
+   "billing",
+   "हिसाब",
+   "बहीखाता"
+  ]
+ },
+ "gst-basics-for-small-business": {
+  "icon": "receipt",
+  "keywords": [
+   "gst number",
+   "gst return",
+   "gst bill",
+   "tax invoice",
+   "gstr filing",
+   "jst",
+   "input credit",
+   "registration",
+   "कर",
+   "जीएसटी",
+   "बिल"
+  ]
+ },
+ "start-a-tuition-or-coaching-class": {
+  "icon": "teacher",
+  "keywords": [
+   "tution kholna",
+   "coaching centre",
+   "home tution",
+   "tuision",
+   "students admission",
+   "fees",
+   "padhana",
+   "classes",
+   "पढ़ाना",
+   "ट्यूशन",
+   "शिक्षा"
+  ]
+ },
+ "budgeting-and-money-basics": {
+  "icon": "money-bag",
+  "keywords": [
+   "paise bachana",
+   "kharcha control",
+   "monthly budget",
+   "ghar kharcha",
+   "saving trick",
+   "bajat",
+   "expense tracker",
+   "paisa manage",
+   "बचत",
+   "खर्च",
+   "पैसा"
+  ]
+ },
+ "personal-finance-saving-insurance-and-loans": {
+  "icon": "bank",
+  "keywords": [
+   "paise jodna",
+   "lic policy",
+   "health insurance",
+   "ppf nsc",
+   "karz",
+   "emergency fund",
+   "beema",
+   "deposit",
+   "बीमा",
+   "बचत",
+   "कर्ज"
+  ]
+ },
+ "how-the-stock-market-works": {
+  "icon": "chart-increasing",
+  "keywords": [
+   "share bazar",
+   "nse bse",
+   "share kharidna",
+   "trading",
+   "demat account",
+   "equity",
+   "stok market",
+   "investing",
+   "शेयर",
+   "बाज़ार",
+   "निवेश"
+  ]
+ },
+ "mutual-funds-and-sip-basics": {
+  "icon": "bar-chart",
+  "keywords": [
+   "sip karna",
+   "mf invest",
+   "nav return",
+   "groww zerodha",
+   "mutual fund",
+   "sip calculator",
+   "mutal fund",
+   "long term",
+   "म्यूचुअल",
+   "निवेश",
+   "फंड"
+  ]
+ },
+ "credit-score-and-loans": {
+  "icon": "credit-card",
+  "keywords": [
+   "cibil score",
+   "loan lena",
+   "credit card",
+   "emi check",
+   "sibil",
+   "defaulter",
+   "bank loan",
+   "civil score",
+   "ऋण",
+   "उधार",
+   "स्कोर"
+  ]
+ },
+ "income-tax-return-basics": {
+  "icon": "file-folder",
+  "keywords": [
+   "itr bharna",
+   "tax filing",
+   "form 16",
+   "refund check",
+   "ca help",
+   "incometax",
+   "tds",
+   "salary tax",
+   "आयकर",
+   "रिटर्न",
+   "टैक्स"
+  ]
+ },
+ "safe-savings-for-seniors-fd-pension-schemes": {
+  "icon": "coin",
+  "keywords": [
+   "budhape ke liye",
+   "fd interest",
+   "pension yojana",
+   "senior citizen",
+   "post office mis",
+   "scss",
+   "retirement paisa",
+   "sarkari scheme",
+   "पेंशन",
+   "बुजुर्ग",
+   "ब्याज"
+  ]
+ },
+ "money-for-kids-pocket-money-and-saving": {
+  "icon": "pig-face",
+  "keywords": [
+   "baccho ki gulak",
+   "pocket money",
+   "kids saving",
+   "piggy bank",
+   "paiso ki samajh",
+   "gullak",
+   "school expenses",
+   "bacche",
+   "गुल्लक",
+   "बच्चे",
+   "पैसे"
+  ]
+ },
+ "spoken-english": {
+  "icon": "speaking-head",
+  "keywords": [
+   "angrezi bolna",
+   "english speaking",
+   "fluent english",
+   "talk in english",
+   "spoken englis",
+   "conversation",
+   "daily english",
+   "englsh",
+   "अंग्रेज़ी",
+   "बोलना"
+  ]
+ },
+ "english-grammar": {
+  "icon": "open-book",
+  "keywords": [
+   "tense chart",
+   "grammar rules",
+   "angrezi vyakaran",
+   "sentence correction",
+   "parts of speech",
+   "preposition",
+   "grammer",
+   "article",
+   "व्याकरण",
+   "काल"
+  ]
+ },
+ "vocabulary-builder": {
+  "icon": "books",
+  "keywords": [
+   "shabd yaad karna",
+   "daily words",
+   "synonyms antonyms",
+   "word meaning",
+   "vocab",
+   "english words",
+   "vocablary",
+   "dictionary",
+   "शब्द",
+   "शब्दावली"
+  ]
+ },
+ "english-pronunciation": {
+  "icon": "microphone",
+  "keywords": [
+   "bolne ka tarika",
+   "accent training",
+   "phonics sound",
+   "pronounciation",
+   "speaking practice",
+   "voice",
+   "uccharan",
+   "fluent bolo",
+   "उच्चारण",
+   "बोली"
+  ]
+ },
+ "business-english-and-email-writing": {
+  "icon": "e-mail",
+  "keywords": [
+   "office email",
+   "mail likhna",
+   "formal letter",
+   "resume cv",
+   "meeting english",
+   "emial",
+   "official talk",
+   "cover letter",
+   "कार्यालय",
+   "पत्र",
+   "ईमेल"
+  ]
+ },
+ "ielts-preparation": {
+  "icon": "memo",
+  "keywords": [
+   "ielts band",
+   "band 7",
+   "listening reading",
+   "idp british council",
+   "ielt",
+   "visa english test",
+   "mock test",
+   "study material",
+   "परीक्षा",
+   "विदेश"
+  ]
+ },
+ "english-speaking-for-kids": {
+  "icon": "child",
+  "keywords": [
+   "baccho ki english",
+   "kids phonics",
+   "children spoken",
+   "rhymes stories",
+   "school homework",
+   "kidz english",
+   "nursery ukg",
+   "small kids",
+   "बच्चे",
+   "अंग्रेजी"
+  ]
+ },
+ "reading-comprehension": {
+  "icon": "open-book",
+  "keywords": [
+   "passage questions",
+   "unseen passage",
+   "read and answer",
+   "comprehenzion",
+   "reding",
+   "angrezi padhna",
+   "samajh kar padhna",
+   "पढ़ाई",
+   "समझ",
+   "बोध"
+  ]
+ },
+ "spoken-english-for-seniors": {
+  "icon": "speech-balloon",
+  "keywords": [
+   "english speaking for old age",
+   "senior citizens class",
+   "englis spoking",
+   "spokeninglish",
+   "budhon ke liye angrezi",
+   "bado ke liye english bolna",
+   "आवाज़",
+   "बुजुर्ग",
+   "संवाद"
+  ]
+ },
+ "how-to-talk-to-anyone": {
+  "icon": "people-hugging",
+  "keywords": [
+   "conversation starter",
+   "talk with strangers",
+   "social confidence",
+   "pepole skills",
+   "toking",
+   "anjan se baat karna",
+   "logon se baat",
+   "बातचीत",
+   "मेलजोल",
+   "आत्मविश्वास"
+  ]
+ },
+ "public-speaking": {
+  "icon": "megaphone",
+  "keywords": [
+   "stage speech",
+   "mic speaking",
+   "speech delivery",
+   "speking",
+   "pablic speaking",
+   "manch par bolna",
+   "bhashan dena",
+   "भाषण",
+   "मंच",
+   "प्रस्तुति"
+  ]
+ },
+ "interview-speaking-practice": {
+  "icon": "briefcase",
+  "keywords": [
+   "job interview questions",
+   "hr round tips",
+   "mock interview",
+   "intervew",
+   "intreview",
+   "naukri interview dena",
+   "interview ki taiyari",
+   "नौकरी",
+   "साक्षात्कार",
+   "प्रश्न"
+  ]
+ },
+ "small-talk-and-networking": {
+  "icon": "handshake",
+  "keywords": [
+   "casual chat",
+   "office contacts",
+   "social links",
+   "smalltalk",
+   "networkig",
+   "halki phulki baat",
+   "pehchan banana",
+   "जानपहचान",
+   "संपर्क",
+   "बातचीत"
+  ]
+ },
+ "confident-phone-and-video-calls": {
+  "icon": "mobile-phone",
+  "keywords": [
+   "phone etiquette",
+   "zoom meeting talk",
+   "video conferencing",
+   "phon call",
+   "vedio call",
+   "phone par baat karna",
+   "video call bolna",
+   "फ़ोन",
+   "वीडियो",
+   "बात"
+  ]
+ },
+ "storytelling-that-holds-attention": {
+  "icon": "books",
+  "keywords": [
+   "story narration",
+   "kahani sunana",
+   "engaging tales",
+   "storyteling",
+   "storry",
+   "kahani bolna",
+   "kisse sunana",
+   "कहानी",
+   "किस्से",
+   "सुनाना"
+  ]
+ },
+ "anchoring-and-compering": {
+  "icon": "microphone",
+  "keywords": [
+   "stage host",
+   "mc for events",
+   "wedding anchor",
+   "anchorig",
+   "compeering",
+   "manch sanchalan",
+   "event host karna",
+   "संचालन",
+   "मंच",
+   "उद्घोषणा"
+  ]
+ },
+ "debating": {
+  "icon": "crossed-swords",
+  "keywords": [
+   "debate competition",
+   "argument skills",
+   "for and against",
+   "debat",
+   "dibate",
+   "vad vivad karna",
+   "behes karna",
+   "वादविवाद",
+   "तर्क",
+   "बहस"
+  ]
+ },
+ "listening-skills": {
+  "icon": "ear",
+  "keywords": [
+   "active hearing",
+   "focus practice",
+   "understand others",
+   "lisening",
+   "listning",
+   "dhyan se sunna",
+   "sunne ki kala",
+   "सुनना",
+   "ध्यान",
+   "समझ"
+  ]
+ },
+ "body-language": {
+  "icon": "person-standing",
+  "keywords": [
+   "posture gestures",
+   "facial expression",
+   "nonverbal cues",
+   "bodylanguage",
+   "bodi language",
+   "hath pair ke ishare",
+   "bhav bhangima",
+   "हावभाव",
+   "इशारा",
+   "शरीर"
+  ]
+ },
+ "saying-no-politely-assertiveness": {
+  "icon": "raised-hand",
+  "keywords": [
+   "refuse respectfully",
+   "boundaries",
+   "firm reply",
+   "say no",
+   "asertiveness",
+   "mana karna",
+   "naa kehna seekho",
+   "मना",
+   "सीमा",
+   "विनम्रता"
+  ]
+ },
+ "difficult-conversations-and-conflict": {
+  "icon": "right-anger-bubble",
+  "keywords": [
+   "tough talks",
+   "fight resolution",
+   "angry client handling",
+   "conflickt",
+   "conflikt",
+   "mushkil baat karna",
+   "jhagda suljhana",
+   "झगड़ा",
+   "विवाद",
+   "सुलह"
+  ]
+ },
+ "persuasion-and-influence": {
+  "icon": "magnet",
+  "keywords": [
+   "convince others",
+   "negotiation tricks",
+   "get yes",
+   "persuation",
+   "influense",
+   "manana kala",
+   "raazi karna",
+   "मनाना",
+   "प्रभाव",
+   "समझाना"
+  ]
+ },
+ "etiquette-and-good-manners-for-adults": {
+  "icon": "teacup-without-handle",
+  "keywords": [
+   "table manners",
+   "social behavior",
+   "dining rules",
+   "etiket",
+   "manars",
+   "tameez seekhna",
+   "adab se rehna",
+   "तमीज़",
+   "शिष्टाचार",
+   "व्यवहार"
+  ]
+ },
+ "spoken-hindi-for-beginners": {
+  "icon": "left-speech-bubble",
+  "keywords": [
+   "hindi speaking course",
+   "learn hindi phrases",
+   "duolingo hindi",
+   "hindee",
+   "hindhi",
+   "hindi bolna seekho",
+   "hindi me baat",
+   "हिंदी",
+   "बोलचाल",
+   "भाषा"
+  ]
+ },
+ "hindi-vyakaran": {
+  "icon": "pencil",
+  "keywords": [
+   "sangya sarvanam",
+   "sandhi samas",
+   "tatsam tadbhav",
+   "vyakran",
+   "byakaran",
+   "hindi grammar padhna",
+   "ling vachan",
+   "व्याकरण",
+   "संज्ञा",
+   "सर्वनाम"
+  ]
+ },
+ "sanskrit-basics": {
+  "icon": "om",
+  "keywords": [
+   "shloka path",
+   "geeta slokas",
+   "dhatu roop",
+   "sanscrit",
+   "sanskritam",
+   "slok bolna",
+   "ved padhna",
+   "संस्कृत",
+   "श्लोक",
+   "वेद"
+  ]
+ },
+ "spoken-tamil-basics": {
+  "icon": "hindu-temple",
+  "keywords": [
+   "tamil speaking",
+   "vanakkam phrases",
+   "tamil tutor",
+   "tamill",
+   "tamili",
+   "tamil bolna",
+   "tamil seekhna chennai",
+   "तमिल",
+   "वणक्कम",
+   "मद्रास"
+  ]
+ },
+ "spoken-telugu-basics": {
+  "icon": "scroll",
+  "keywords": [
+   "telugu speaking",
+   "namaste phrases",
+   "hyderabad language",
+   "telegu",
+   "telgu",
+   "telugu bolna",
+   "andhra bhasha seekhna",
+   "तेलुगु",
+   "आंध्र",
+   "भाषा"
+  ]
+ },
+ "spoken-kannada-basics": {
+  "icon": "palm-tree",
+  "keywords": [
+   "kannada speaking",
+   "namaskara phrases",
+   "bangalore language",
+   "kanada",
+   "kannad",
+   "kannada bolna",
+   "bangalore bhasha",
+   "कन्नड़",
+   "नमस्कार",
+   "बेंगलुरु"
+  ]
+ },
+ "spoken-malayalam-basics": {
+  "icon": "coconut",
+  "keywords": [
+   "malayalam speaking",
+   "namaskaram phrases",
+   "kerala language",
+   "malayalam tutor",
+   "malayalam",
+   "malayalam bolna",
+   "kerala bhasha",
+   "मलयालम",
+   "केरल",
+   "नमस्कार"
+  ]
+ },
+ "spoken-bengali-basics": {
+  "icon": "fish",
+  "keywords": [
+   "bengali speaking",
+   "nomoshkar phrases",
+   "kolkata language",
+   "bangla bolna",
+   "bengali tutor",
+   "bangla bhasha seekhna",
+   "kolkata me baat",
+   "बांग्ला",
+   "कोलकाता",
+   "भाषा"
+  ]
+ },
+ "spoken-marathi-basics": {
+  "icon": "person-wearing-turban",
+  "keywords": [
+   "marathi speaking",
+   "namaskar phrases",
+   "pune mumbai language",
+   "marati bolna",
+   "marathi tutor",
+   "marathi seekhna",
+   "maharashtra bhasha",
+   "मराठी",
+   "महाराष्ट्र",
+   "नमस्कार"
+  ]
+ },
+ "digilocker-aadhaar-and-online-forms": {
+  "icon": "identification-card",
+  "keywords": [
+   "digilocker app",
+   "adhar card download",
+   "aadhar link",
+   "online sarkari form bharna",
+   "esign document wallet",
+   "pan card download",
+   "driving licence online",
+   "आधार कार्ड",
+   "डिजिलॉकर",
+   "सरकारी फॉर्म"
+  ]
+ },
+ "ai-helpers-for-everyday-life-seniors": {
+  "icon": "robot",
+  "keywords": [
+   "chatgpt for seniors",
+   "voice assistant help",
+   "bard se baat karna",
+   "photo se jankari",
+   "big text phone setting",
+   "online doctor help",
+   "fraud se bachna",
+   "बुजुर्ग सहायता",
+   "आवाज सहायक",
+   "सरल मोबाइल"
+  ]
+ },
+ "excel": {
+  "icon": "bar-chart",
+  "keywords": [
+   "spreadsheet course",
+   "ms office formula",
+   "vlookup pivot table",
+   "exel sikho",
+   "spredsheet formula hindi",
+   "data entry kaam",
+   "billing sheet banana",
+   "स्प्रेडशीट",
+   "हिसाब किताब",
+   "एक्सल फॉर्मूला"
+  ]
+ },
+ "google-sheets": {
+  "icon": "ledger",
+  "keywords": [
+   "online spreadsheet",
+   "drive sheet sharing",
+   "formula vlookup pivot",
+   "gugal sheet sikho",
+   "data entry online",
+   "expense sheet banana",
+   "collaboration sheet",
+   "ऑनलाइन हिसाब",
+   "शीट बनाना",
+   "डेटा एंट्री"
+  ]
+ },
+ "powerpoint-and-presentations": {
+  "icon": "film-projector",
+  "keywords": [
+   "ppt banana",
+   "slideshow design",
+   "canva presentation",
+   "presentetion kaise banaye",
+   "slide template hindi",
+   "office ppt work",
+   "pitch deck design",
+   "प्रेजेंटेशन",
+   "स्लाइड बनाना",
+   "पीपीटी डिजाइन"
+  ]
+ },
+ "resume-and-linkedin": {
+  "icon": "briefcase",
+  "keywords": [
+   "cv banana",
+   "biodata format",
+   "naukri profile",
+   "rejume kaise banaye",
+   "linkdin profile optimise",
+   "cover letter sample",
+   "fresher cv template",
+   "रिज्यूमे",
+   "बायोडाटा",
+   "नौकरी प्रोफाइल"
+  ]
+ },
+ "job-search-strategy": {
+  "icon": "magnifying-glass-tilted-left",
+  "keywords": [
+   "naukri dhundna",
+   "naukari search karna",
+   "fresher jobs portal",
+   "referral kaise mange",
+   "walkin interview alert",
+   "work from home jobs",
+   "govt vacancy update",
+   "नौकरी खोज",
+   "रोजगार",
+   "भर्ती जानकारी"
+  ]
+ },
+ "interview-preparation": {
+  "icon": "microphone",
+  "keywords": [
+   "hr questions answers",
+   "mock interview practice",
+   "tell me about yourself",
+   "intervew taiyari",
+   "body language tips",
+   "salary discussion",
+   "fresher interview guide",
+   "साक्षात्कार",
+   "इंटरव्यू तैयारी",
+   "आत्मविश्वास"
+  ]
+ },
+ "workplace-email-etiquette": {
+  "icon": "e-mail",
+  "keywords": [
+   "official mail writing",
+   "outlook gmail tips",
+   "leave application format",
+   "offis mail kaise likhe",
+   "formal mail sample",
+   "follow up mail",
+   "resignation mail format",
+   "कार्यालयीन पत्र",
+   "ईमेल लिखना",
+   "छुट्टी आवेदन"
+  ]
+ },
+ "communication-at-work": {
+  "icon": "speech-balloon",
+  "keywords": [
+   "office speaking skills",
+   "meeting me kaise bole",
+   "presentation skills hindi",
+   "comunication improve",
+   "english bolna office",
+   "team meeting etiquette",
+   "feedback dena",
+   "कार्यालय संवाद",
+   "बातचीत कौशल",
+   "मीटिंग टिप्स"
+  ]
+ },
+ "project-management": {
+  "icon": "clipboard",
+  "keywords": [
+   "jira trello tool",
+   "gantt chart planning",
+   "task tracking",
+   "mangement course",
+   "project plan banana",
+   "deadline management",
+   "team lead skills",
+   "परियोजना प्रबंधन",
+   "कार्य योजना",
+   "टीम प्रबंधन"
+  ]
+ },
+ "business-analysis": {
+  "icon": "chart-increasing",
+  "keywords": [
+   "requirement gathering",
+   "brd frd document",
+   "data analysis basics",
+   "bisness analyst course",
+   "sql power bi",
+   "process mapping",
+   "stakeholder management",
+   "व्यवसाय विश्लेषण",
+   "डेटा विश्लेषण",
+   "रिपोर्ट बनाना"
+  ]
+ },
+ "product-management": {
+  "icon": "package",
+  "keywords": [
+   "roadmap planning",
+   "user story writing",
+   "jira product backlog",
+   "prodct manager course",
+   "startup idea launch",
+   "mvp development",
+   "prioritization framework",
+   "उत्पाद प्रबंधन",
+   "रोडमैप",
+   "स्टार्टअप"
+  ]
+ },
+ "agile-and-scrum": {
+  "icon": "repeat-button",
+  "keywords": [
+   "scrum master",
+   "sprint planning",
+   "kanban board jira",
+   "ejail method",
+   "standup meeting",
+   "user story points",
+   "retrospective process",
+   "फुर्तीली पद्धति",
+   "स्प्रिंट योजना",
+   "स्क्रम"
+  ]
+ },
+ "software-testing-qa": {
+  "icon": "bug",
+  "keywords": [
+   "manual testing",
+   "automation selenium",
+   "bug reporting jira",
+   "testin course",
+   "api testing postman",
+   "test cases likhna",
+   "qa engineer jobs",
+   "सॉफ्टवेयर परीक्षण",
+   "बग रिपोर्ट",
+   "गुणवत्ता जांच"
+  ]
+ },
+ "digital-marketing": {
+  "icon": "megaphone",
+  "keywords": [
+   "online promotion",
+   "google ads course",
+   "email whatsapp marketing",
+   "degital marketing sikho",
+   "freelance marketing",
+   "brand promotion",
+   "youtube growth",
+   "ऑनलाइन प्रचार",
+   "विज्ञापन",
+   "ब्रांडिंग"
+  ]
+ },
+ "meta-and-instagram-ads": {
+  "icon": "camera",
+  "keywords": [
+   "facebook promotion",
+   "insta reel boost",
+   "ad manager targeting",
+   "instagaram vigyapan",
+   "lead generation ads",
+   "small business promotion",
+   "boost post kaise kare",
+   "फेसबुक विज्ञापन",
+   "इंस्टाग्राम प्रचार",
+   "रील बूस्ट"
+  ]
+ },
+ "social-media-content": {
+  "icon": "video-camera",
+  "keywords": [
+   "reel banana",
+   "content calendar",
+   "canva post design",
+   "soshal media kaam",
+   "youtube shorts growth",
+   "caption hashtag",
+   "page monetization",
+   "सोशल मीडिया",
+   "रील बनाना",
+   "कंटेंट"
+  ]
+ },
+ "seo-basics": {
+  "icon": "magnifying-glass-tilted-right",
+  "keywords": [
+   "google ranking",
+   "keyword research",
+   "backlink building",
+   "vebsite traffic badhana",
+   "blogger rank",
+   "yoast wordpress",
+   "on page optimization",
+   "वेबसाइट रैंक",
+   "खोज अनुकूलन",
+   "ट्रैफिक बढ़ाना"
+  ]
+ },
+ "copywriting": {
+  "icon": "pencil",
+  "keywords": [
+   "content writing",
+   "blog likhna",
+   "ad caption writing",
+   "copywritting course",
+   "freelance likhai kaam",
+   "product description",
+   "headline tagline",
+   "लेखन कला",
+   "विज्ञापन लेखन",
+   "कंटेंट राइटिंग"
+  ]
+ },
+ "video-editing": {
+  "icon": "film-frames",
+  "keywords": [
+   "reel edit karna",
+   "capcut premiere pro",
+   "vn app editing",
+   "vidio editing sikho",
+   "wedding video",
+   "thumbnail music add",
+   "youtube vlog edit",
+   "वीडियो एडिटिंग",
+   "रील एडिट",
+   "मोंटाज"
+  ]
+ },
+ "sales-and-negotiation": {
+  "icon": "handshake",
+  "keywords": [
+   "selling skills",
+   "lead closing",
+   "retail dukaan sales",
+   "selsmanship hindi",
+   "bargaining tips",
+   "target achieve karna",
+   "commission field job",
+   "बिक्री कौशल",
+   "मोलभाव",
+   "सेल्स टारगेट"
+  ]
+ },
+ "customer-service": {
+  "icon": "headphone",
+  "keywords": [
+   "call centre job",
+   "support executive",
+   "complaint handling",
+   "castomer care kaam",
+   "chat support hindi",
+   "telecalling tips",
+   "refund handling",
+   "ग्राहक सेवा",
+   "कॉल सेंटर",
+   "शिकायत समाधान"
+  ]
+ },
+ "hr-and-recruitment-basics": {
+  "icon": "busts-in-silhouette",
+  "keywords": [
+   "human resource job",
+   "hiring onboarding",
+   "payroll attendance",
+   "ech ar course",
+   "interview lena",
+   "staff management",
+   "offer letter format",
+   "मानव संसाधन",
+   "भर्ती प्रक्रिया",
+   "कर्मचारी प्रबंधन"
+  ]
+ },
+ "virtual-assistant-and-office-admin": {
+  "icon": "laptop",
+  "keywords": [
+   "data entry home",
+   "email calendar manage",
+   "ms office admin",
+   "virtual asist ant job",
+   "back office work",
+   "excel sheet typing",
+   "online assistant kaam",
+   "कार्यालय सहायक",
+   "डेटा एंट्री",
+   "ऑनलाइन सहायक"
+  ]
+ },
+ "ai-literacy-how-ai-works-and-how-to-use-it": {
+  "icon": "robot",
+  "keywords": [
+   "artificial intelligence guide",
+   "ai kaise kaam karta",
+   "ai chalana sikho",
+   "chatbot basics",
+   "gemini vs chatgpt",
+   "artifical inteligence",
+   "ai se paise kamana",
+   "naye jamane ki technology",
+   "कृत्रिम बुद्धिमत्ता",
+   "एआई सीखो",
+   "ai tools hindi me"
+  ]
+ },
+ "prompt-engineering-and-ai-tools": {
+  "icon": "magic-wand",
+  "keywords": [
+   "prompt likhna sikho",
+   "best ai prompts",
+   "promt engineering",
+   "chatgpt prompt tricks",
+   "ai se content likhwana",
+   "midjourney commands",
+   "ai tool chalana",
+   "effective questioning",
+   "संकेत लेखन",
+   "एआई निर्देश",
+   "prompt kaise banaye"
+  ]
+ },
+ "chatgpt-and-ai-at-work": {
+  "icon": "speaking-head",
+  "keywords": [
+   "chat gpt se kaam",
+   "office work ai",
+   "chatgpt se letter likhna",
+   "resume banwana",
+   "email drafting",
+   "chatgpt promt",
+   "productivity badhana",
+   "boss ke liye report",
+   "कार्यालय कार्य",
+   "चैटजीपीटी उपयोग",
+   "excel email automation"
+  ]
+ },
+ "ai-for-students": {
+  "icon": "student",
+  "keywords": [
+   "padhai ke liye ai",
+   "homework help",
+   "exam preparation",
+   "notes banana",
+   "project banwana",
+   "ai se sikho",
+   "asignment help",
+   "question answer trick",
+   "पढ़ाई सहायता",
+   "परीक्षा तैयारी",
+   "vidyarthi guide"
+  ]
+ },
+ "ai-image-and-video-creation": {
+  "icon": "artist-palette",
+  "keywords": [
+   "photo banane wala ai",
+   "video kaise banaye",
+   "midjourney hindi",
+   "leonardo ai",
+   "runway reels",
+   "dall e prompt",
+   "thambnel banana",
+   "ai photo editing",
+   "तस्वीर बनाना",
+   "वीडियो निर्माण",
+   "reel editing ai"
+  ]
+ },
+ "python-basics": {
+  "icon": "snake",
+  "keywords": [
+   "pythan course",
+   "pithon programming",
+   "coding shuru karo",
+   "pyton for beginners",
+   "colab setup",
+   "loops functions",
+   "data types sikho",
+   "programming sikhna",
+   "पायथन सीखो",
+   "कोडिंग भाषा",
+   "script likhna"
+  ]
+ },
+ "javascript-basics": {
+  "icon": "laptop",
+  "keywords": [
+   "js course hindi",
+   "javasript tutorial",
+   "java script shuru",
+   "web development coding",
+   "react ke liye base",
+   "dom events",
+   "functions variables",
+   "frontend sikhna",
+   "वेब कोडिंग",
+   "जावास्क्रिप्ट सीखो",
+   "website interactive"
+  ]
+ },
+ "html-and-css": {
+  "icon": "window",
+  "keywords": [
+   "web design shuru",
+   "htm css course",
+   "websight banana",
+   "homepage layout",
+   "flexbox grid",
+   "styling sikhna",
+   "beginner web page",
+   "vs code setup",
+   "वेबसाइट डिजाइन",
+   "वेब पेज बनाना",
+   "html tag sikho"
+  ]
+ },
+ "build-a-website-with-wordpress": {
+  "icon": "globe-with-meridians",
+  "keywords": [
+   "wordpres site",
+   "blog kaise banaye",
+   "bina coding website",
+   "theme plugin setup",
+   "hostinger domain",
+   "online dukan banana",
+   "press wali site",
+   "blogging shuru karo",
+   "वेबसाइट बनाना",
+   "ब्लॉग शुरू",
+   "dukkan online"
+  ]
+ },
+ "sql": {
+  "icon": "file-cabinet",
+  "keywords": [
+   "database query",
+   "sequel language",
+   "mysql tutorial",
+   "select statement",
+   "table join sikho",
+   "data nikalna",
+   "oracle course",
+   "esquel learning",
+   "डेटाबेस सीखो",
+   "क्वेरी लिखना",
+   "data manage"
+  ]
+ },
+ "data-analysis": {
+  "icon": "bar-chart",
+  "keywords": [
+   "data interpritation",
+   "excel analysis",
+   "pandas tutorial",
+   "report banana",
+   "insights nikalna",
+   "mis reporting",
+   "business analytics",
+   "aankde samajhna",
+   "डेटा विश्लेषण",
+   "आंकड़े समझो",
+   "chart padhna"
+  ]
+ },
+ "power-bi-dashboards": {
+  "icon": "chart-increasing",
+  "keywords": [
+   "powerbi course",
+   "pawer bi sikho",
+   "dashboard banana",
+   "dax formula",
+   "report publishing",
+   "mis dashboard",
+   "bi tool training",
+   "graph chart banana",
+   "डैशबोर्ड बनाना",
+   "रिपोर्ट बनाना",
+   "business chart"
+  ]
+ },
+ "machine-learning-basics": {
+  "icon": "brain",
+  "keywords": [
+   "ml course hindi",
+   "machine lerning",
+   "prediction model",
+   "python sklearn",
+   "training testing data",
+   "ai model banana",
+   "regression classification",
+   "mashin learning",
+   "मशीन लर्निंग",
+   "मॉडल प्रशिक्षण",
+   "data science base"
+  ]
+ },
+ "cloud-computing-basics": {
+  "icon": "cloud",
+  "keywords": [
+   "claud course",
+   "aws azure",
+   "google cloud hindi",
+   "server storage",
+   "cloud me data",
+   "ec2 s3 basics",
+   "online server sikhna",
+   "deployment samajhna",
+   "क्लाउड कंप्यूटिंग",
+   "सर्वर स्टोरेज",
+   "aws shuru karo"
+  ]
+ },
+ "ui-and-ux-design": {
+  "icon": "paintbrush",
+  "keywords": [
+   "ui ux course",
+   "figma sikho",
+   "app design karna",
+   "wireframe prototype",
+   "user interface hindi",
+   "canva design",
+   "uix designer",
+   "mobile screen design",
+   "डिजाइन सीखो",
+   "ऐप डिजाइन",
+   "figma tutorial"
+  ]
+ },
+ "build-apps-without-code": {
+  "icon": "mobile-phone",
+  "keywords": [
+   "bina code app",
+   "glide app",
+   "flutterflow tutorial",
+   "play store app banana",
+   "drag drop app",
+   "ap banwana",
+   "no code shuru",
+   "startup app banana",
+   "ऐप बनाना",
+   "बिना कोडिंग",
+   "mobile app khud"
+  ]
+ },
+ "no-code-automation": {
+  "icon": "gear",
+  "keywords": [
+   "zapier tutorial",
+   "make automation",
+   "whatsapp auto reply",
+   "sheet auto update",
+   "kaam automatic karo",
+   "automeshan sikho",
+   "workflow banana",
+   "time bachana",
+   "स्वचालन सीखो",
+   "काम आसान",
+   "repeat kaam auto"
+  ]
+ },
+ "cybersecurity-basics": {
+  "icon": "shield",
+  "keywords": [
+   "hacking se bachao",
+   "cyber suraksha",
+   "password strong",
+   "otp fraud se bacho",
+   "antivirus setup",
+   "cybar security",
+   "ethical hacking base",
+   "safe browsing",
+   "साइबर सुरक्षा",
+   "ऑनलाइन सुरक्षा",
+   "fraud se bachna"
+  ]
+ },
+ "touch-typing": {
+  "icon": "keyboard",
+  "keywords": [
+   "typing speed badhao",
+   "bina dekhe type",
+   "hindi english typing",
+   "taiping course",
+   "government job typing",
+   "keyboard chalana",
+   "mangal font practice",
+   "typing test pass",
+   "टाइपिंग सीखो",
+   "कीबोर्ड अभ्यास",
+   "speed typing"
+  ]
+ },
+ "ms-word-and-documents": {
+  "icon": "memo",
+  "keywords": [
+   "word chalana sikho",
+   "document banana",
+   "resume format",
+   "ms word hindi",
+   "printing setting",
+   "pdf banana",
+   "letter likhna",
+   "msword tutorial",
+   "दस्तावेज़ बनाना",
+   "पत्र लिखना",
+   "file formatting"
+  ]
+ },
+ "coding-for-kids-with-scratch": {
+  "icon": "puzzle-piece",
+  "keywords": [
+   "bacho ki coding",
+   "scratch game banana",
+   "block coding",
+   "kids programming",
+   "cartoon game banao",
+   "childern coding",
+   "computer khel",
+   "school project",
+   "बच्चों की कोडिंग",
+   "खेल बनाना",
+   "scratch sikhna"
+  ]
+ },
+ "computer-basics": {
+  "icon": "desktop-computer",
+  "keywords": [
+   "computer chalana sikho",
+   "laptop shuru karna",
+   "mouse keyboard use",
+   "file folder banana",
+   "internet chalana",
+   "coputer course",
+   "basic computer hindi",
+   "paint notepad sikho",
+   "कंप्यूटर सीखो",
+   "कंप्यूटर चलाना",
+   "leptop sikhna"
+  ]
+ },
+ "smartphone-and-upi-safety": {
+  "icon": "mobile-phone-with-arrow",
+  "keywords": [
+   "phonepe gpay chalana",
+   "upi payment sikho",
+   "qr scan karna",
+   "mobile recharge",
+   "fraud call se bacho",
+   "setting backup",
+   "paytm use karna",
+   "smatphone tips",
+   "मोबाइल भुगतान",
+   "यूपीआई सुरक्षा",
+   "paise transfer"
+  ]
+ },
+ "whatsapp-and-video-calls-for-seniors": {
+  "icon": "speech-balloon",
+  "keywords": [
+   "buzurgo ke liye mobile",
+   "video call karna",
+   "whatsap chalana",
+   "potey se baat",
+   "photo bhejna",
+   "status lagana",
+   "senior citizen help",
+   "bade umar guide",
+   "वीडियो कॉल",
+   "व्हाट्सऐप सीखो",
+   "parivar se judna"
+  ]
+ },
+ "online-banking-and-pension-for-seniors": {
+  "icon": "bank",
+  "keywords": [
+   "budhapa pension online",
+   "bank kaam ghar baithe",
+   "passbook check karna",
+   "jeevan pramaan",
+   "net banking sikho",
+   "atm use karna",
+   "pension slip nikalna",
+   "sarkari yojana",
+   "बैंक कार्य",
+   "पेंशन सेवा",
+   "khata balance"
+  ]
+ },
+ "spoken-gujarati-basics": {
+  "icon": "speech-balloon",
+  "keywords": [
+   "kem cho sikho",
+   "kathiyawadi bolna",
+   "gujrati speaking",
+   "gujrati sikhna",
+   "day to day conversation",
+   "tourist phrasebook",
+   "kemcho",
+   "गुजरात",
+   "बोलचाल",
+   "भाषा"
+  ]
+ },
+ "spoken-punjabi-basics": {
+  "icon": "speaking-head",
+  "keywords": [
+   "sat sri akal sikho",
+   "ki haal bolna",
+   "punjabi speaking",
+   "panjabi sikhna",
+   "gurmukhi conversation",
+   "daily use sentences",
+   "panjabi bolna",
+   "पंजाब",
+   "बोलचाल",
+   "भाषा"
+  ]
+ },
+ "urdu-for-beginners": {
+  "icon": "left-speech-bubble",
+  "keywords": [
+   "sher o shayari",
+   "beginner level speaking",
+   "nastaaliq script",
+   "lukhnavi tehzeeb",
+   "rozmarra jumle",
+   "urudu speaking",
+   "adab arz",
+   "उर्दू",
+   "शायरी",
+   "बोलचाल"
+  ]
+ },
+ "spanish-for-beginners": {
+  "icon": "globe-showing-americas",
+  "keywords": [
+   "hola que tal",
+   "spenish sikho",
+   "espanola bhasha",
+   "europe language course",
+   "tourist phrases",
+   "spenish speaking",
+   "beginner a1 level",
+   "स्पेनिश",
+   "विदेशी भाषा",
+   "बोलचाल"
+  ]
+ },
+ "french-for-beginners": {
+  "icon": "croissant",
+  "keywords": [
+   "bonjour course",
+   "french speaking",
+   "franch sikhna",
+   "frence bhasha",
+   "paris visa language",
+   "a1 level exam",
+   "beginner conversation",
+   "फ्रेंच",
+   "विदेशी भाषा",
+   "बोलचाल"
+  ]
+ },
+ "german-for-beginners": {
+  "icon": "castle",
+  "keywords": [
+   "guten tag course",
+   "deutschland visa",
+   "jarman bhasha",
+   "german speaking",
+   "a1 a2 exam",
+   "deutch sikhna",
+   "berlin job language",
+   "जर्मन",
+   "विदेशी भाषा",
+   "बोलचाल"
+  ]
+ },
+ "japanese-for-beginners": {
+  "icon": "japanese-castle",
+  "keywords": [
+   "konnichiwa course",
+   "anime language",
+   "japani bhasha",
+   "jlpt n5 prep",
+   "tokyo job visa",
+   "japnese speaking",
+   "hiragana katakana",
+   "जापानी",
+   "विदेशी भाषा",
+   "एनीमे"
+  ]
+ },
+ "korean-for-beginners": {
+  "icon": "globe-showing-asia-australia",
+  "keywords": [
+   "annyeonghaseyo",
+   "kdrama language",
+   "bts army course",
+   "seoul work visa",
+   "hangul script",
+   "topik exam",
+   "korian speaking",
+   "कोरियाई",
+   "विदेशी भाषा",
+   "नाटक"
+  ]
+ },
+ "mandarin-chinese-for-beginners": {
+  "icon": "dragon",
+  "keywords": [
+   "ni hao course",
+   "hsk 1 prep",
+   "pinyin tones",
+   "chini bhasha",
+   "china business language",
+   "chinese speaking",
+   "hanzi characters",
+   "चीनी",
+   "विदेशी भाषा",
+   "मंदारिन"
+  ]
+ },
+ "arabic-for-beginners": {
+  "icon": "mosque",
+  "keywords": [
+   "assalamualaikum course",
+   "dubai job language",
+   "arbi bhasha",
+   "quran reading",
+   "gulf visa exam",
+   "arabik speaking",
+   "beginner script",
+   "अरबी",
+   "विदेशी भाषा",
+   "खाड़ी"
+  ]
+ },
+ "russian-for-beginners": {
+  "icon": "nesting-dolls",
+  "keywords": [
+   "privet course",
+   "mbbs abroad language",
+   "rusi bhasha",
+   "moscow study visa",
+   "cyrillic script",
+   "rashiyan speaking",
+   "beginner level",
+   "रूसी",
+   "विदेशी भाषा",
+   "बोलचाल"
+  ]
+ },
+ "italian-for-beginners": {
+  "icon": "pizza",
+  "keywords": [
+   "ciao bella course",
+   "italy visa language",
+   "itli bhasha",
+   "pasta country speaking",
+   "rome tourist phrases",
+   "italiyan speaking",
+   "beginner a1",
+   "इतालवी",
+   "विदेशी भाषा",
+   "यूरोप"
+  ]
+ },
+ "portuguese-for-beginners": {
+  "icon": "sailboat",
+  "keywords": [
+   "ola brasil course",
+   "goa history language",
+   "portugali bhasha",
+   "brazil job visa",
+   "football country speaking",
+   "portugese sikhna",
+   "beginner phrases",
+   "पुर्तगाली",
+   "विदेशी भाषा",
+   "ब्राजील"
+  ]
+ },
+ "indian-sign-language-basics": {
+  "icon": "hand-with-fingers-splayed",
+  "keywords": [
+   "haath se baat",
+   "mook badhir bhasha",
+   "hand gestures",
+   "deaf communication",
+   "isl signs",
+   "sanket bhasha",
+   "silent speaking",
+   "सांकेतिक",
+   "मूक बधिर",
+   "इशारा"
+  ]
+ },
+ "translation-practice-hindi-english": {
+  "icon": "open-book",
+  "keywords": [
+   "anuvad karna",
+   "angrezi bolna",
+   "hindi to english",
+   "english to hindi",
+   "transalation practice",
+   "translasion exercise",
+   "dictionary use",
+   "दुभाषिया",
+   "अनुवाद",
+   "अंग्रेजी"
+  ]
+ },
+ "start-and-grow-a-youtube-channel": {
+  "icon": "video-camera",
+  "keywords": [
+   "youtuber banna",
+   "video banana",
+   "vlog ideas",
+   "channel monetize",
+   "subscriber badhana",
+   "yutub earning",
+   "thumbnail editing",
+   "यूट्यूब",
+   "वीडियो",
+   "कमाई"
+  ]
+ },
+ "instagram-reels-that-people-watch": {
+  "icon": "mobile-phone",
+  "keywords": [
+   "reel banana",
+   "viral hona",
+   "follower badhana",
+   "insta growth",
+   "trending audio",
+   "views kaise laye",
+   "instagraam tips",
+   "इंस्टाग्राम",
+   "रील",
+   "वायरल"
+  ]
+ },
+ "personal-branding-on-linkedin": {
+  "icon": "briefcase",
+  "keywords": [
+   "naukri profile",
+   "job dhoondna",
+   "resume banana",
+   "networking tips",
+   "linkdin profile",
+   "office image",
+   "hr ko impress",
+   "लिंक्डइन",
+   "नौकरी",
+   "पहचान"
+  ]
+ },
+ "blogging-and-content-writing": {
+  "icon": "pencil",
+  "keywords": [
+   "lekh likhna",
+   "article likhna",
+   "blog se kamai",
+   "seo writing",
+   "blogging se paise",
+   "content likhna",
+   "wordpress tips",
+   "लेखन",
+   "ब्लॉग",
+   "कमाई"
+  ]
+ },
+ "podcasting": {
+  "icon": "microphone",
+  "keywords": [
+   "audio show",
+   "anchor app",
+   "spotify show",
+   "awaz record",
+   "podcsting setup",
+   "mic setup",
+   "story sunana",
+   "पॉडकास्ट",
+   "आवाज",
+   "ऑडियो"
+  ]
+ },
+ "voice-over-and-dubbing": {
+  "icon": "studio-microphone",
+  "keywords": [
+   "awaz dena",
+   "mimicry kala",
+   "dubbing artist",
+   "voise over",
+   "cartoon voice",
+   "recording mic",
+   "bol ke sunana",
+   "आवाज",
+   "डबिंग",
+   "उच्चारण"
+  ]
+ },
+ "stand-up-comedy-and-humour-writing": {
+  "icon": "rolling-on-the-floor-laughing",
+  "keywords": [
+   "hasana sikho",
+   "jokes likhna",
+   "comedy video",
+   "stage performance",
+   "funny script",
+   "chutkule sunana",
+   "hasya kavita",
+   "हास्य",
+   "चुटकुले",
+   "मंच"
+  ]
+ },
+ "geography": {
+  "icon": "world-map",
+  "keywords": [
+   "bhugol notes",
+   "naksha study",
+   "upsc gs",
+   "ncert class",
+   "goegraphy",
+   "climate rivers",
+   "map work",
+   "भूगोल",
+   "नक्शा",
+   "परीक्षा"
+  ]
+ },
+ "geology-and-earth-science": {
+  "icon": "mountain",
+  "keywords": [
+   "bhuvigyan notes",
+   "chattane khanij",
+   "earthquake volcano",
+   "jivashm study",
+   "geologgy course",
+   "soil rocks",
+   "upsc optional",
+   "भूविज्ञान",
+   "पृथ्वी",
+   "चट्टान"
+  ]
+ },
+ "indian-history": {
+  "icon": "classical-building",
+  "keywords": [
+   "itihas notes",
+   "pracheen bharat",
+   "mughal british raj",
+   "freedom struggle",
+   "upsc ncert",
+   "histry gk",
+   "raja maharaja",
+   "इतिहास",
+   "भारत",
+   "परीक्षा"
+  ]
+ },
+ "world-history": {
+  "icon": "globe-showing-europe-africa",
+  "keywords": [
+   "ancient civilizations",
+   "morden itihas typo",
+   "freedom movements timeline",
+   "vishwa yuddh notes",
+   "upsc gs timeline",
+   "harappa to cold war",
+   "itihaas padhna",
+   "विश्व इतिहास",
+   "सभ्यता",
+   "कालरेखा"
+  ]
+ },
+ "civics-and-political-science": {
+  "icon": "ballot-box-with-ballot",
+  "keywords": [
+   "constitution of india",
+   "samvidhan notes",
+   "fundamental rights duties",
+   "nagrik shastra",
+   "panchayat system",
+   "election process class 10",
+   "sarkar kaise chalti hai",
+   "लोकतंत्र",
+   "संविधान",
+   "नागरिक"
+  ]
+ },
+ "economics-basics": {
+  "icon": "chart-increasing",
+  "keywords": [
+   "demand supply curve",
+   "mudra sfiti notes",
+   "gdp inflation explained",
+   "budget basics ncert",
+   "arthshastra class 12",
+   "money banking chapter",
+   "paise kaise kaam karta",
+   "अर्थव्यवस्था",
+   "मुद्रास्फीति",
+   "बजट"
+  ]
+ },
+ "science-concepts-class-6-10": {
+  "icon": "test-tube",
+  "keywords": [
+   "ncert chapter summary",
+   "light reflection refraction",
+   "acids bases metals",
+   "vigyan ke sutra",
+   "cell structure diagram",
+   "motion force energy",
+   "class 8 9 10 imp questions",
+   "विज्ञान",
+   "प्रयोग",
+   "सिद्धांत"
+  ]
+ },
+ "science-experiments-journal": {
+  "icon": "microscope",
+  "keywords": [
+   "school lab activity",
+   "prayog copy file",
+   "vinegar baking soda volcano",
+   "observation table format",
+   "working model ideas",
+   "practical file decoration",
+   "ghar par aasan test",
+   "प्रयोगशाला",
+   "निरीक्षण",
+   "गतिविधि"
+  ]
+ },
+ "physics-class-11-12": {
+  "icon": "atom-symbol",
+  "keywords": [
+   "mechanics derivations",
+   "bhautiki numericals",
+   "electrostatics current chapter",
+   "optics semiconductors notes",
+   "neet ncert numerical practice",
+   "motion gravitation laws",
+   "bhoutik vigyan formula",
+   "भौतिकी",
+   "गति",
+   "प्रकाश"
+  ]
+ },
+ "chemistry-class-11-12": {
+  "icon": "alembic",
+  "keywords": [
+   "organic reactions mechanism",
+   "rasayan mole concept",
+   "periodic table trends",
+   "chemical bonding notes",
+   "equilibrium thermodynamics",
+   "salt analysis practical",
+   "rashayan vigyan formula",
+   "रसायन",
+   "अभिक्रिया",
+   "तत्व"
+  ]
+ },
+ "biology-class-11-12": {
+  "icon": "dna",
+  "keywords": [
+   "human physiology diagrams",
+   "jeev vigyan ncert",
+   "genetics evolution notes",
+   "plant anatomy morphology",
+   "cell cycle diagrams",
+   "neet ncert line by line",
+   "jeev vigyan chitra",
+   "जीवविज्ञान",
+   "कोशिका",
+   "शरीर"
+  ]
+ },
+ "maths-class-11-12": {
+  "icon": "abacus",
+  "keywords": [
+   "calculus limits continuity",
+   "ganit integration differentiation",
+   "probability vectors 3d",
+   "trigonometry formulas",
+   "matrices determinants",
+   "sets relations functions",
+   "ganit ke sawal trick",
+   "गणित",
+   "बीजगणित",
+   "ज्यामिति"
+  ]
+ },
+ "accountancy-class-11-12": {
+  "icon": "ledger",
+  "keywords": [
+   "journal ledger entries",
+   "bahi khata tally",
+   "partnership firm dissolution",
+   "cash flow ratio analysis",
+   "trial balance sums",
+   "company final sums practice",
+   "lekhankan seekhna",
+   "लेखांकन",
+   "बहीखाता",
+   "तुलनपत्र"
+  ]
+ },
+ "business-studies-class-11-12": {
+  "icon": "briefcase",
+  "keywords": [
+   "principles of management",
+   "vyapaar adhyayan notes",
+   "marketing finance chapter",
+   "entrepreneurship startup case",
+   "company forms notes",
+   "stock market basics",
+   "vyapar kaise kare",
+   "व्यापार",
+   "प्रबंधन",
+   "उद्यम"
+  ]
+ },
+ "computer-science-for-school": {
+  "icon": "laptop",
+  "keywords": [
+   "python class 12 programs",
+   "kompyuter coding",
+   "html scratch basics",
+   "data structures class 11",
+   "sql queries practice",
+   "ai robotics school project",
+   "coding kaise seekhe",
+   "कंप्यूटर",
+   "प्रोग्रामिंग",
+   "कोडिंग"
+  ]
+ },
+ "environmental-science": {
+  "icon": "seedling",
+  "keywords": [
+   "climate change notes",
+   "paryavaran pradushan",
+   "ecosystem biodiversity chapter",
+   "sustainable development goals",
+   "waste management project",
+   "global warming essay",
+   "ped bachao nibandh",
+   "पर्यावरण",
+   "प्रदूषण",
+   "प्रकृति"
+  ]
+ },
+ "astronomy-and-space": {
+  "icon": "telescope",
+  "keywords": [
+   "solar system planets",
+   "antariksh isro nasa",
+   "black holes galaxies",
+   "chandrayaan mission notes",
+   "stars constellations facts",
+   "tare grah jankari",
+   "brahmand rahasya",
+   "अंतरिक्ष",
+   "तारे",
+   "ग्रह"
+  ]
+ },
+ "psychology-basics": {
+  "icon": "brain",
+  "keywords": [
+   "human behavior mind",
+   "manovigyan notes hindi",
+   "memory learning theories",
+   "stress mental health tips",
+   "freud motivation emotion",
+   "counselling career guide",
+   "mann ko samjhna",
+   "मनोविज्ञान",
+   "मानसिक स्वास्थ्य",
+   "व्यवहार"
+  ]
+ },
+ "philosophy-for-beginners": {
+  "icon": "thought-balloon",
+  "keywords": [
+   "logic ethics basics",
+   "darshan shastra notes",
+   "socrates plato ideas",
+   "indian darshan charvaka",
+   "critical thinking course",
+   "jeevan ka arth",
+   "sochna kaise seekhe",
+   "दर्शन",
+   "तर्क",
+   "नैतिकता"
+  ]
+ },
+ "general-knowledge": {
+  "icon": "light-bulb",
+  "keywords": [
+   "gk quiz hindi english",
+   "samanya gyan book",
+   "static facts list",
+   "inventions sports awards",
+   "india facts capital currency",
+   "lucent manohar pandey",
+   "aam jankari sawal",
+   "सामान्य ज्ञान",
+   "प्रश्नोत्तरी",
+   "तथ्य"
+  ]
+ },
+ "board-exam-answer-writing": {
+  "icon": "memo",
+  "keywords": [
+   "cbse presentation tips",
+   "uttar kaise likhe",
+   "toppers copies pdf",
+   "step marking scheme",
+   "diagram flowchart practice",
+   "time management 3 hours",
+   "10vi 12vi taiyari",
+   "उत्तर लेखन",
+   "परीक्षा",
+   "अंक"
+  ]
+ },
+ "notes-making": {
+  "icon": "notebook-with-decorative-cover",
+  "keywords": [
+   "cornell mindmap method",
+   "sankshep me likhna",
+   "highlight revision technique",
+   "one page summary trick",
+   "ncert summary writing",
+   "handwriting improvement tips",
+   "yaad karne ki trick",
+   "टिप्पणी",
+   "संक्षेपण",
+   "अध्ययन"
+  ]
+ },
+ "jee-and-neet-study-plan": {
+  "icon": "bullseye",
+  "keywords": [
+   "iit medical timetable",
+   "mock test analysis",
+   "ncert pyq practice",
+   "dropper strategy 2026",
+   "coaching without kota",
+   "revision crash course",
+   "taiyari kaise kare",
+   "प्रवेश परीक्षा",
+   "तैयारी",
+   "अभ्यास"
+  ]
+ },
+ "upsc-preparation-plan-and-answer-writing": {
+  "icon": "classical-building",
+  "keywords": [
+   "ias ips study timetable",
+   "mains gs essay test",
+   "prelims csat pyq",
+   "ncert laxmikanth spectrum",
+   "sivil seva taiyari",
+   "daily answer practice",
+   "ias kaise bane",
+   "सिविल सेवा",
+   "पाठ्यक्रम",
+   "उत्तर लेखन"
+  ]
+ },
+ "ssc-and-bank-exam-preparation": {
+  "icon": "bank",
+  "keywords": [
+   "cgl chsl gd constable",
+   "ibps po clerk syllabus",
+   "sarkari naukri taiyari",
+   "previous year papers",
+   "cutoff vacancy update",
+   "speed maths english tricks",
+   "rojgar samachar alerts",
+   "सरकारी नौकरी",
+   "परीक्षा",
+   "पाठ्यक्रम"
+  ]
+ },
+ "olympiad-preparation-maths-and-science": {
+  "icon": "trophy",
+  "keywords": [
+   "imo nso previous papers",
+   "ntse mental ability",
+   "gifted child training",
+   "imo sample paper pdf",
+   "higher order sums",
+   "vedic tricks practice",
+   "pratiyogita taiyari",
+   "ओलंपियाड",
+   "प्रतियोगिता",
+   "पुरस्कार"
+  ]
+ },
+ "aptitude-and-reasoning-for-exams": {
+  "icon": "puzzle-piece",
+  "keywords": [
+   "quant series puzzles",
+   "tark shakti test",
+   "blood relation direction",
+   "syllogism coding decoding",
+   "percentage profit loss trick",
+   "placement interview test",
+   "dimaag tez karna",
+   "योग्यता",
+   "तर्कशक्ति",
+   "पहेली"
+  ]
+ },
+ "current-affairs-for-exams": {
+  "icon": "newspaper",
+  "keywords": [
+   "daily news quiz hindi",
+   "taza khabar analysis",
+   "monthly magazine pdf",
+   "budget summit awards list",
+   "pib yojana update",
+   "government schemes 2026",
+   "roj ki khabre",
+   "समसामयिकी",
+   "ताज़ा खबर",
+   "घटनाक्रम"
+  ]
+ },
+ "abacus": {
+  "icon": "abacus",
+  "keywords": [
+   "mental maths",
+   "abacus classes",
+   "abakus",
+   "uchcharan",
+   "gintara sikhna",
+   "jod ghatav",
+   "beads counting",
+   "ucmas",
+   "sip abacus",
+   "गिनती",
+   "जोड़ घटाव",
+   "गणित"
+  ]
+ },
+ "vedic-maths": {
+  "icon": "atom-symbol",
+  "keywords": [
+   "fast calculation tricks",
+   "mental math sutra",
+   "vedik maths",
+   "vaidik ganit",
+   "ganit trick",
+   "shortcut maths",
+   "speed multiplication",
+   "maths olympiad trick",
+   "vedicmath",
+   "वैदिक गणित",
+   "गुणा भाग",
+   "बीजगणित"
+  ]
+ },
+ "word-problems": {
+  "icon": "memo",
+  "keywords": [
+   "maths story sums",
+   "age profit loss sums",
+   "word problams",
+   "ganit ke sawal",
+   "hisab wale sawal",
+   "pledge sums",
+   "statement questions",
+   "math application",
+   "ncert sums",
+   "सवाल हल",
+   "लाभ हानि",
+   "उम्र वाले सवाल"
+  ]
+ },
+ "logic-and-number-puzzles": {
+  "icon": "puzzle-piece",
+  "keywords": [
+   "number series",
+   "sequence puzzles",
+   "logical reasoning",
+   "logic puzzels",
+   "dimaag wali paheli",
+   "ankon ki paheli",
+   "sudoku numbers",
+   "iq test",
+   "aptitude test",
+   "तर्क शक्ति",
+   "अंक पहेली",
+   "दिमागी कसरत"
+  ]
+ },
+ "chess-tactics": {
+  "icon": "chess-pawn",
+  "keywords": [
+   "shatranj chaal",
+   "ches tricks",
+   "checkmate patterns",
+   "opening gambit",
+   "satranj sikhna",
+   "fide rating",
+   "chessboard moves",
+   "fork pin skewer",
+   "grandmaster course",
+   "शतरंज",
+   "चालें",
+   "मात देना"
+  ]
+ },
+ "critical-thinking-and-problem-solving": {
+  "icon": "brain",
+  "keywords": [
+   "analytical thinking",
+   "problem solving skills",
+   "critikal thinking",
+   "sochne ki shakti",
+   "samajh vikas",
+   "decision puzzles",
+   "reasoning ability",
+   "out of box thinking",
+   "root cause",
+   "सोच",
+   "समझ",
+   "विश्लेषण"
+  ]
+ },
+ "data-interpretation": {
+  "icon": "bar-chart",
+  "keywords": [
+   "charts graphs",
+   "data analysis",
+   "di pie chart",
+   "table chart tricks",
+   "data interpretetion",
+   "ankda vishleshan",
+   "graph padhna",
+   "cat mat",
+   "excel dashboard",
+   "आंकड़े",
+   "ग्राफ",
+   "तालिका"
+  ]
+ },
+ "decision-making": {
+  "icon": "balance-scale",
+  "keywords": [
+   "choice selection",
+   "decison making",
+   "nirnay lena",
+   "faisla kaise le",
+   "pros cons",
+   "leadership skills",
+   "judgement skills",
+   "life choices",
+   "risk analysis",
+   "निर्णय",
+   "फैसला",
+   "सोच समझ"
+  ]
+ },
+ "brain-fitness-for-seniors": {
+  "icon": "light-bulb",
+  "keywords": [
+   "memory power",
+   "senior citizen games",
+   "old age memory",
+   "bhoolne ki bimari",
+   "yaaddasht badhana",
+   "mind sharp",
+   "brain exercise",
+   "dementia care",
+   "concentration",
+   "याददाश्त",
+   "बुजुर्ग",
+   "मानसिक स्वास्थ्य"
+  ]
+ },
+ "english-word-antakshari": {
+  "icon": "musical-notes",
+  "keywords": [
+   "word chain game",
+   "antaksri english",
+   "antakchari",
+   "shabdon ka khel",
+   "angrezi shabd",
+   "vocab game",
+   "spelling chain",
+   "family game",
+   "party game",
+   "अंताक्षरी",
+   "शब्द खेल",
+   "अंग्रेजी शब्द"
+  ]
+ },
+ "wordplay-puns-anagrams-and-riddles": {
+  "icon": "speech-balloon",
+  "keywords": [
+   "shabd khel",
+   "puns jokes",
+   "anagram maker",
+   "wordpley",
+   "chutkule double meaning",
+   "shabdon ki trick",
+   "jumble words",
+   "riddle fun",
+   "vocab fun",
+   "शब्द",
+   "चुटकुले",
+   "पहेली"
+  ]
+ },
+ "scrabble-and-word-games": {
+  "icon": "input-latin-letters",
+  "keywords": [
+   "scrable game",
+   "word building",
+   "woggle boggle",
+   "shabd banao",
+   "angrezi shabd khel",
+   "vocabulary game",
+   "letter tiles",
+   "crossword tiles",
+   "word finder",
+   "शब्द बनाओ",
+   "अक्षर खेल",
+   "वर्तनी"
+  ]
+ },
+ "crosswords": {
+  "icon": "newspaper",
+  "keywords": [
+   "cross word puzzles",
+   "criss cross",
+   "shabd paheli",
+   "crossvord",
+   "the hindu crossword",
+   "vocab puzzle",
+   "daily puzzle",
+   "puzzle book",
+   "word grid",
+   "वर्ग पहेली",
+   "शब्द जाल",
+   "अखबार पहेली"
+  ]
+ },
+ "quizzing": {
+  "icon": "trophy",
+  "keywords": [
+   "gk quiz",
+   "general knowledge",
+   "quize competition",
+   "samanya gyan",
+   "prashnottari",
+   "kaun banega",
+   "current affairs",
+   "trivia questions",
+   "school quiz",
+   "सामान्य ज्ञान",
+   "प्रश्नोत्तरी",
+   "प्रतियोगिता"
+  ]
+ },
+ "spelling-bee": {
+  "icon": "honeybee",
+  "keywords": [
+   "spell bee",
+   "speling competition",
+   "angrezi vartani",
+   "shabd spelling",
+   "diction words",
+   "pronunciation",
+   "vocab spelling",
+   "school contest",
+   "spellathon",
+   "वर्तनी",
+   "हिज्जे",
+   "उच्चारण"
+  ]
+ },
+ "riddles-and-lateral-thinking": {
+  "icon": "thinking-face",
+  "keywords": [
+   "paheliyan",
+   "bujhona",
+   "dimaag ka khel",
+   "riddles with answers",
+   "ridels hindi",
+   "lateral puzzles",
+   "mind trick",
+   "fun paheli",
+   "out of box",
+   "पहेलियाँ",
+   "बूझो तो जानें",
+   "दिमागी खेल"
+  ]
+ },
+ "rubik-s-cube": {
+  "icon": "game-die",
+  "keywords": [
+   "cube solving",
+   "rubix cube",
+   "rubics formula",
+   "cube kaise banaye",
+   "3x3 tricks",
+   "speedcubing",
+   "pyraminx",
+   "cfop method",
+   "cube timer",
+   "रूबिक्स क्यूब",
+   "घन",
+   "जादुई घन"
+  ]
+ },
+ "magic-tricks": {
+  "icon": "magic-wand",
+  "keywords": [
+   "jadu ke khel",
+   "jadugar tricks",
+   "card coin tricks",
+   "majic tricks",
+   "hat tricks",
+   "street magic",
+   "mentalism",
+   "illusion",
+   "party tricks",
+   "जादू",
+   "तरकीब",
+   "खेल तमाशा"
+  ]
+ },
+ "drawing-basics": {
+  "icon": "pencil",
+  "keywords": [
+   "drawing for beginners",
+   "drowing art",
+   "chitrakala",
+   "tasveer banana",
+   "line sketch",
+   "pencil art",
+   "kids drawing",
+   "easy drawings",
+   "art classes",
+   "चित्रकारी",
+   "रेखाचित्र",
+   "कला"
+  ]
+ },
+ "sketching-and-shading": {
+  "icon": "paintbrush",
+  "keywords": [
+   "pencil shading",
+   "sketch art",
+   "sheding",
+   "chhaya prakash",
+   "portrait sketch",
+   "charcoal drawing",
+   "hatching",
+   "still life",
+   "figure drawing",
+   "छायांकन",
+   "रेखांकन",
+   "स्केच"
+  ]
+ },
+ "cartoons-and-comics": {
+  "icon": "clown-face",
+  "keywords": [
+   "cartoon drawing",
+   "comic book art",
+   "caricature",
+   "cartun banana",
+   "chacha chaudhary",
+   "manga anime art",
+   "doodle toons",
+   "story illustrations",
+   "funny faces",
+   "कार्टून",
+   "कॉमिक्स",
+   "चित्रकथा"
+  ]
+ },
+ "colour-theory-and-painting": {
+  "icon": "artist-palette",
+  "keywords": [
+   "watercolor oil acrylic",
+   "painting classes",
+   "rangon ka mel",
+   "color mix",
+   "kaler theory",
+   "canvas painting",
+   "poster colours",
+   "art techniques",
+   "brush strokes",
+   "रंग",
+   "चित्रकला",
+   "पेंटिंग"
+  ]
+ },
+ "rangoli-and-mandala": {
+  "icon": "lotus",
+  "keywords": [
+   "rangoli designs",
+   "mandala art",
+   "diwali decoration",
+   "rangoli banavana",
+   "kolam muggu",
+   "dot art",
+   "festival decor",
+   "zentangle",
+   "alpona",
+   "रंगोली",
+   "मंडला",
+   "अल्पना"
+  ]
+ },
+ "mehndi-design": {
+  "icon": "hand-with-fingers-splayed",
+  "keywords": [
+   "henna art",
+   "mehandi designs",
+   "bridal henna",
+   "mehendi lagana",
+   "arabic cone art",
+   "karva chauth",
+   "tattoo sticker",
+   "simple patterns",
+   "dulhan design",
+   "मेहंदी",
+   "हिना",
+   "श्रृंगार"
+  ]
+ },
+ "doodle-art": {
+  "icon": "crayon",
+  "keywords": [
+   "doodling",
+   "zentangle patterns",
+   "dudle art",
+   "pen doodle",
+   "aesthetic scribbles",
+   "notebook art",
+   "funky drawings",
+   "mandala doodle",
+   "marker art",
+   "डूडल",
+   "नक़्श",
+   "चित्रमाला"
+  ]
+ },
+ "pencil-control-and-tracing": {
+  "icon": "pencil",
+  "keywords": [
+   "tracing worksheets",
+   "prewriting strokes",
+   "pencile grip",
+   "dotted lines",
+   "line tracing",
+   "lkg ukg practice",
+   "kalakand?",
+   "hath ghumana",
+   "lakir kheenchna",
+   "रेखा",
+   "पेंसिल पकड़"
+  ]
+ },
+ "phonics-and-letter-sounds": {
+  "icon": "speaking-head",
+  "keywords": [
+   "phoniks",
+   "abc sounds",
+   "akshar dhvani",
+   "beginning sounds",
+   "blends",
+   "jolly phonics",
+   "angrezi padhna",
+   "uchcharan",
+   "वर्णमाला ध्वनि",
+   "स्वर व्यंजन",
+   "उच्चारण"
+  ]
+ },
+ "sight-words": {
+  "icon": "eye",
+  "keywords": [
+   "high frequency words",
+   "dolch list",
+   "fry words",
+   "sight wards",
+   "flash cards",
+   "ukg english",
+   "jaldi padhna",
+   "yaad wale shabd",
+   "नजर शब्द",
+   "याद करना",
+   "शीघ्र वाचन"
+  ]
+ },
+ "numbers-and-counting": {
+  "icon": "abacus",
+  "keywords": [
+   "gintee",
+   "1 to 100",
+   "counting 1-20",
+   "number names",
+   "numbars",
+   "maths for ukg",
+   "unki ginti",
+   "ank ganna",
+   "गिनती",
+   "अंक",
+   "संख्या ज्ञान"
+  ]
+ },
+ "shapes-and-patterns": {
+  "icon": "puzzle-piece",
+  "keywords": [
+   "akriti",
+   "gol triangle",
+   "shape sorting",
+   "patterns for kg",
+   "sheps",
+   "sequence",
+   "akar pehchano",
+   "design milao",
+   "आकृति",
+   "पैटर्न",
+   "गोल चौकोर"
+  ]
+ },
+ "colouring-and-colour-sense": {
+  "icon": "artist-palette",
+  "keywords": [
+   "coloring pages",
+   "colouring book",
+   "rang bharna",
+   "crayon",
+   "kalaring",
+   "kids painting",
+   "rang pehchano",
+   "rangon ke naam",
+   "रंग भरना",
+   "रंगों के नाम",
+   "चित्रकला"
+  ]
+ },
+ "scissor-skills": {
+  "icon": "scissors",
+  "keywords": [
+   "cutting practice",
+   "sissor",
+   "kainchi chalana",
+   "paper cutting",
+   "fine motor",
+   "preschool craft",
+   "katna seekho",
+   "surakshit katna",
+   "कैंची चलाना",
+   "काटना",
+   "कागज कला"
+  ]
+ },
+ "memory-and-matching": {
+  "icon": "brain",
+  "keywords": [
+   "yaad shakti",
+   "match the pair",
+   "odd one out",
+   "memmory game",
+   "concentration",
+   "puzzle for kids",
+   "joda milao",
+   "yaad karo",
+   "याददाश्त",
+   "जोड़ा मिलाओ",
+   "दिमागी खेल"
+  ]
+ },
+ "good-habits-and-manners": {
+  "icon": "folded-hands",
+  "keywords": [
+   "achhi aadatein",
+   "manners for kids",
+   "thank you sorry",
+   "daily routine",
+   "good habbits",
+   "sanskar",
+   "safai aadat",
+   "namaste karna",
+   "अच्छी आदतें",
+   "शिष्टाचार",
+   "संस्कार"
+  ]
+ },
+ "my-world-evs": {
+  "icon": "globe-showing-asia-australia",
+  "keywords": [
+   "paryavaran",
+   "my family",
+   "parts of body",
+   "animals birds",
+   "fruits vegetables",
+   "season festival",
+   "aaspas ki duniya",
+   "hamara parivar",
+   "हमारी दुनिया",
+   "पर्यावरण",
+   "शरीर के अंग"
+  ]
+ },
+ "reading-aloud": {
+  "icon": "open-book",
+  "keywords": [
+   "zor se padhna",
+   "read aloud practice",
+   "pronunciation",
+   "fluency",
+   "story reading",
+   "reding",
+   "bol kar padho",
+   "shuddh uchcharan",
+   "जोर से पढ़ना",
+   "वाचन",
+   "उच्चारण"
+  ]
+ },
+ "english-handwriting-print": {
+  "icon": "writing-hand",
+  "keywords": [
+   "capital small letters",
+   "abcd writing",
+   "four line copy",
+   "print script",
+   "handriting",
+   "neat writing",
+   "sundar likhna",
+   "akshar sudharo",
+   "अंग्रेजी लिखावट",
+   "सुलेख",
+   "अक्षर सुधार"
+  ]
+ },
+ "cursive-writing": {
+  "icon": "fountain-pen",
+  "keywords": [
+   "jude akshar",
+   "joined letters",
+   "running writing",
+   "cursiv",
+   "capital cursive",
+   "small cursive",
+   "tera likhna",
+   "ghसीट likhna",
+   "घसीट लेखन",
+   "जुड़े अक्षर",
+   "सुंदर लेख"
+  ]
+ },
+ "hindi-sulekh-varnamala-matra-barakhadi": {
+  "icon": "pen",
+  "keywords": [
+   "ka kha ga",
+   "swar vyanjan",
+   "matrayen",
+   "barahkhadi chart",
+   "barnmala",
+   "hindi lekhan",
+   "sulekh pustak",
+   "akshar gyan",
+   "वर्णमाला",
+   "मात्रा ज्ञान",
+   "बारहखड़ी"
+  ]
+ },
+ "calligraphy-and-brush-lettering": {
+  "icon": "paintbrush",
+  "keywords": [
+   "brush pen",
+   "modern lettering",
+   "caligraphy",
+   "ink art",
+   "fancy fonts",
+   "hand lettering",
+   "sundar akshar kala",
+   "kalamkari akshar",
+   "सुलेख कला",
+   "अक्षर सज्जा",
+   "कैलिग्राफी"
+  ]
+ },
+ "speed-writing-for-board-exams": {
+  "icon": "stopwatch",
+  "keywords": [
+   "fast writing",
+   "time management",
+   "presentation skills",
+   "answer sheet",
+   "board preparation",
+   "jaldi likhna",
+   "tezi se likho",
+   "pariksha taiyari",
+   "तेज लेखन",
+   "बोर्ड परीक्षा",
+   "उत्तर पुस्तिका"
+  ]
+ },
+ "essay-writing": {
+  "icon": "memo",
+  "keywords": [
+   "nibandh english",
+   "paragraph writing",
+   "my school",
+   "topics",
+   "essay competitions",
+   "ese",
+   "nibandh likhna",
+   "anuchhed",
+   "निबंध",
+   "अनुच्छेद",
+   "लेखन कौशल"
+  ]
+ },
+ "letter-and-application-writing": {
+  "icon": "envelope",
+  "keywords": [
+   "patra lekhan",
+   "leave application",
+   "principal to letter",
+   "formal informal",
+   "aplikation",
+   "sick leave",
+   "chhutti hetu",
+   "prarthana patra",
+   "पत्र लेखन",
+   "आवेदन पत्र",
+   "छुट्टी पत्र"
+  ]
+ },
+ "creative-writing-and-stories": {
+  "icon": "books",
+  "keywords": [
+   "kahani lekhan",
+   "story ideas",
+   "picture composition",
+   "imagination",
+   "stori",
+   "short tales",
+   "kahani banana",
+   "rachna likhna",
+   "कहानी लेखन",
+   "रचनात्मक",
+   "कल्पना शक्ति"
+  ]
+ },
+ "poetry-writing": {
+  "icon": "feather",
+  "keywords": [
+   "kavita lekhan",
+   "rhymes",
+   "poems for kids",
+   "shayari",
+   "poeitry",
+   "couplet",
+   "tuka milana",
+   "chhand likhna",
+   "कविता",
+   "तुकबंदी",
+   "छंद"
+  ]
+ },
+ "journaling": {
+  "icon": "notebook",
+  "keywords": [
+   "diary writing",
+   "daily dairy",
+   "gratitude",
+   "bullet journal",
+   "jornaling",
+   "my thoughts",
+   "roj likhna",
+   "dincharya",
+   "डायरी लेखन",
+   "रोजनामचा",
+   "विचार लेख"
+  ]
+ },
+ "write-your-life-story": {
+  "icon": "scroll",
+  "keywords": [
+   "aatmakatha",
+   "autobiography",
+   "memoir writing",
+   "life events",
+   "my journey",
+   "jeevan kahani",
+   "aapbeeti likhna",
+   "sansmaran",
+   "आत्मकथा",
+   "जीवन कहानी",
+   "संस्मरण"
+  ]
+ },
+ "school-maths-class-1-5": {
+  "icon": "abacus",
+  "keywords": [
+   "primary maths",
+   "addition subtraction",
+   "tables",
+   "word problems",
+   "ncert solutions",
+   "ganit kaksha",
+   "jod ghatav",
+   "pahada",
+   "प्राथमिक गणित",
+   "जोड़ घटाव",
+   "पहाड़ा"
+  ]
+ },
+ "school-maths-class-6-10": {
+  "icon": "triangular-ruler",
+  "keywords": [
+   "ncert maths",
+   "algebra geometry",
+   "fractions decimals",
+   "board maths",
+   "percentage ratio",
+   "beejganit",
+   "rekhaganit",
+   "sawal hal",
+   "बीजगणित",
+   "ज्यामिति",
+   "गणित हल"
+  ]
+ },
+ "times-tables-and-mental-maths": {
+  "icon": "hundred-points",
+  "keywords": [
+   "pahade 2 to 20",
+   "tables 1-10",
+   "vedic maths",
+   "fast calculation",
+   "multiplication tricks",
+   "mental math",
+   "gunan yaad karo",
+   "dimag se gano",
+   "पहाड़ा याद",
+   "गुणा भाग",
+   "मानसिक गणित"
+  ]
+ },
+ "gentle-yoga-for-seniors": {
+  "icon": "person-in-lotus-position",
+  "keywords": [
+   "chair yoga",
+   "easy yogaa",
+   "budho ke liye yoga",
+   "senior fitness",
+   "joint pain relief",
+   "seniors stretching",
+   "balance exercise",
+   "pranayam",
+   "योग",
+   "बुजुर्ग",
+   "हल्का व्यायाम"
+  ]
+ },
+ "self-defence-basics": {
+  "icon": "boxing-glove",
+  "keywords": [
+   "self defense",
+   "selfdefence tricks",
+   "karate",
+   "atmaraksha",
+   "ladkiyon ki suraksha",
+   "street safety",
+   "pepper spray use",
+   "martial arts",
+   "आत्मरक्षा",
+   "सुरक्षा",
+   "ताकत"
+  ]
+ },
+ "nutrition-and-healthy-eating": {
+  "icon": "green-salad",
+  "keywords": [
+   "balanced diet",
+   "diet chart",
+   "nutrishun",
+   "healthy khana",
+   "protein food",
+   "vitamin",
+   "weight loss diet",
+   "poshan",
+   "पोषण",
+   "स्वस्थ भोजन",
+   "आहार"
+  ]
+ },
+ "first-aid-basics": {
+  "icon": "adhesive-bandage",
+  "keywords": [
+   "firstaid",
+   "emergency care",
+   "chot lagna",
+   "patti bandhna",
+   "cpr",
+   "bleeding control",
+   "burn treatment",
+   "kit box",
+   "प्राथमिक चिकित्सा",
+   "चोट",
+   "इलाज"
+  ]
+ },
+ "stress-management": {
+  "icon": "relieved-face",
+  "keywords": [
+   "tension free",
+   "stres relief",
+   "tanav kam karna",
+   "calm mind",
+   "breathing exercise",
+   "anxiety control",
+   "relaxation",
+   "deep sleep trick",
+   "तनाव",
+   "चिंता",
+   "शांति"
+  ]
+ },
+ "meditation-for-beginners": {
+  "icon": "lotus",
+  "keywords": [
+   "dhyan",
+   "dhyaan lagana",
+   "mindfulness",
+   "meditaion",
+   "morning meditation",
+   "om chanting",
+   "focus increase",
+   "peace of mind",
+   "ध्यान",
+   "साधना",
+   "मन"
+  ]
+ },
+ "sleep-better": {
+  "icon": "sleeping-face",
+  "keywords": [
+   "good sleep",
+   "neend kaise laye",
+   "insomnia cure",
+   "neend nahi aati",
+   "night routine",
+   "sleep tips",
+   "snoring solution",
+   "relaxing music",
+   "नींद",
+   "अनिद्रा",
+   "आराम"
+  ]
+ },
+ "mental-health-self-care": {
+  "icon": "mending-heart",
+  "keywords": [
+   "mansik swasthya",
+   "depression help",
+   "selfcare",
+   "anxiety relief",
+   "mood fresh",
+   "mind healing",
+   "counselling",
+   "positive thinking",
+   "मानसिक स्वास्थ्य",
+   "अवसाद",
+   "देखभाल"
+  ]
+ },
+ "posture-and-back-care-for-desk-workers": {
+  "icon": "chair",
+  "keywords": [
+   "back pain",
+   "kamar dard",
+   "spine care",
+   "sitting posture",
+   "neck pain",
+   "desk exercise",
+   "postur correction",
+   "slip disc",
+   "कमर दर्द",
+   "रीढ़",
+   "आसन"
+  ]
+ },
+ "skin-care-and-grooming": {
+  "icon": "lotion-bottle",
+  "keywords": [
+   "face glow",
+   "skincare routine",
+   "pimple hatana",
+   "sundarta tips",
+   "hair care",
+   "face wash",
+   "glowing skin",
+   "beauty",
+   "त्वचा",
+   "सौंदर्य",
+   "निखार"
+  ]
+ },
+ "emotional-intelligence": {
+  "icon": "heart-hands",
+  "keywords": [
+   "eq skills",
+   "emotion control",
+   "bhavna samjhna",
+   "gussa control",
+   "empathy",
+   "relationship tips",
+   "communication",
+   "self awareness",
+   "भावना",
+   "समझ",
+   "रिश्ता"
+  ]
+ },
+ "mindfulness-journaling": {
+  "icon": "notebook-with-decorative-cover",
+  "keywords": [
+   "diary likhna",
+   "journal writing",
+   "gratitude journal",
+   "jurnal",
+   "daily reflections",
+   "mood tracker",
+   "self discovery",
+   "habit diary",
+   "डायरी",
+   "लेखन",
+   "चिंतन"
+  ]
+ },
+ "study-skills-and-memory-techniques": {
+  "icon": "books",
+  "keywords": [
+   "padhai kaise kare",
+   "memory power",
+   "exam tips",
+   "yaad karne ki trick",
+   "concentration",
+   "notes making",
+   "revision method",
+   "studdy hacks",
+   "पढ़ाई",
+   "याददाश्त",
+   "परीक्षा"
+  ]
+ },
+ "speed-reading": {
+  "icon": "open-book",
+  "keywords": [
+   "fast reading",
+   "tez padhna",
+   "reading tricks",
+   "skimming",
+   "comprehension",
+   "book summary",
+   "focus reading",
+   "speedreading",
+   "तेज़ पढ़ना",
+   "पठन",
+   "किताब"
+  ]
+ },
+ "time-management": {
+  "icon": "alarm-clock",
+  "keywords": [
+   "samay prabandhan",
+   "productivity",
+   "time table",
+   "procrastination",
+   "prioritize work",
+   "pomodoro",
+   "daily planning",
+   "timemanagement",
+   "समय",
+   "प्रबंधन",
+   "काम"
+  ]
+ },
+ "goal-setting-and-habits": {
+  "icon": "bullseye",
+  "keywords": [
+   "lakshya kaise banaye",
+   "new habits",
+   "adat badalna",
+   "resolution",
+   "success tips",
+   "motivation",
+   "discipline",
+   "vision board",
+   "लक्ष्य",
+   "आदत",
+   "सफलता"
+  ]
+ },
+ "cooking-basics": {
+  "icon": "cooking",
+  "keywords": [
+   "khana banana",
+   "easy recipes",
+   "veg sabzi",
+   "dal tadka",
+   "cooking tips",
+   "beginner cook",
+   "cuking",
+   "kitchen skills",
+   "खाना",
+   "रसoi",
+   "पाककला"
+  ]
+ },
+ "baking-basics": {
+  "icon": "bread",
+  "keywords": [
+   "cake banana",
+   "oven recipes",
+   "cookies",
+   "beking",
+   "bread making",
+   "chocolate cake",
+   "eggless cake",
+   "pastry",
+   "केक",
+   "बेकरी",
+   "ओवन"
+  ]
+ },
+ "kitchen-gardening": {
+  "icon": "potted-plant",
+  "keywords": [
+   "ghar me bagwani",
+   "terrace garden",
+   "grow vegetables",
+   "tulsi plant",
+   "organic kheti",
+   "gardening tips",
+   "pots me sabzi",
+   "compost",
+   "बागवानी",
+   "पौधा",
+   "सब्ज़ी"
+  ]
+ },
+ "home-organisation": {
+  "icon": "broom",
+  "keywords": [
+   "ghar safai",
+   "declutter",
+   "home cleaning",
+   "organisation hacks",
+   "storage ideas",
+   "safai tips",
+   "minimalist home",
+   "almari set",
+   "सफाई",
+   "घर",
+   "व्यवस्था"
+  ]
+ },
+ "basic-home-repairs-done-safely": {
+  "icon": "hammer-and-wrench",
+  "keywords": [
+   "ghar repair",
+   "plumbing",
+   "electrician work",
+   "tap fix",
+   "wall paint",
+   "fuse repair",
+   "drill machine",
+   "mistri kaam",
+   "मरम्मत",
+   "बिजली",
+   "औज़ार"
+  ]
+ },
+ "sewing-basics": {
+  "icon": "sewing-needle",
+  "keywords": [
+   "silai sikhna",
+   "stitching",
+   "sewing machine",
+   "kapde silna",
+   "tailoring",
+   "silai",
+   "hem stitch",
+   "button lagana",
+   "सिलाई",
+   "दर्जी",
+   "कपड़ा"
+  ]
+ },
+ "knitting-and-crochet": {
+  "icon": "yarn",
+  "keywords": [
+   "bunai sikhna",
+   "sweater bunna",
+   "crochea",
+   "wool craft",
+   "kniting design",
+   "topi muffler",
+   "handloom",
+   "needle work",
+   "बुनाई",
+   "ऊन",
+   "स्वेटर"
+  ]
+ },
+ "embroidery": {
+  "icon": "thread",
+  "keywords": [
+   "kadai bunai",
+   "phulkari",
+   "chikankari",
+   "stitch design",
+   "embroydery",
+   "kurta design",
+   "needle art",
+   "hand craft",
+   "कढ़ाई",
+   "कला",
+   "डिज़ाइन"
+  ]
+ },
+ "makeup-basics": {
+  "icon": "lipstick",
+  "keywords": [
+   "shringaar tips",
+   "beauty parlour",
+   "foundation",
+   "bridal look",
+   "eyeliner",
+   "meakup tutorial",
+   "skin tone",
+   "lipstick shades",
+   "मेकअप",
+   "श्रृंगार",
+   "सुंदरता"
+  ]
+ },
+ "craft-and-origami": {
+  "icon": "scissors",
+  "keywords": [
+   "paper folding",
+   "diy crafts",
+   "kagaz kala",
+   "origami steps",
+   "oregami",
+   "papar craft",
+   "hastkala",
+   "कागज़ कला",
+   "हस्तकला",
+   "ghar baithe craft"
+  ]
+ },
+ "mobile-photography": {
+  "icon": "camera",
+  "keywords": [
+   "phone camera tips",
+   "mobile se photo",
+   "photography course",
+   "potography",
+   "reels shooting",
+   "lightroom mobile",
+   "फोटो खींचना",
+   "मोबाइल फोटोग्राफी",
+   "camera setting",
+   "photo editing"
+  ]
+ },
+ "graphic-design-with-canva": {
+  "icon": "artist-palette",
+  "keywords": [
+   "canva tutorial",
+   "poster banana",
+   "thumbnail design",
+   "canwa",
+   "grafhic design",
+   "logo maker",
+   "डिज़ाइन बनाना",
+   "पोस्टर",
+   "instagram post design",
+   "visiting card"
+  ]
+ },
+ "fashion-sketching": {
+  "icon": "dress",
+  "keywords": [
+   "dress design",
+   "fashion drawing",
+   "kapde design karna",
+   "fesion sketch",
+   "boutique course",
+   "illustration",
+   "फैशन डिजाइन",
+   "पोशाक",
+   "croquis",
+   "silai design"
+  ]
+ },
+ "interior-decoration-on-a-budget": {
+  "icon": "couch-and-lamp",
+  "keywords": [
+   "ghar sajawat",
+   "home decor",
+   "low budget interior",
+   "decoration ideas",
+   "decore",
+   "rented house decor",
+   "घर सजावट",
+   "सजावट",
+   "wall decor",
+   "diwali decoration"
+  ]
+ },
+ "storytelling-aloud": {
+  "icon": "speaking-head",
+  "keywords": [
+   "kahani sunana",
+   "story narration",
+   "moral stories",
+   "storry telling",
+   "kids storytelling",
+   "podcast voice",
+   "कहानी सुनाना",
+   "किस्से",
+   "stage speaking",
+   "dadi nani kahani"
+  ]
+ },
+ "singing-basics": {
+  "icon": "microphone",
+  "keywords": [
+   "gana gana",
+   "vocal riyaz",
+   "singing course",
+   "singen",
+   "sur taal",
+   "bhajan singing",
+   "गाना सीखना",
+   "सुर",
+   "voice training",
+   "karaoke practice"
+  ]
+ },
+ "music-theory-and-notation": {
+  "icon": "musical-score",
+  "keywords": [
+   "sur lipi",
+   "sargam notes",
+   "tal sangeet",
+   "music theroy",
+   "notation padhna",
+   "harmony basics",
+   "संगीत सिद्धांत",
+   "स्वरलिपि",
+   "scale chord",
+   "raag theory"
+  ]
+ },
+ "guitar-for-beginners": {
+  "icon": "guitar",
+  "keywords": [
+   "gitar bajana",
+   "guitar chords",
+   "guitar sikhna",
+   "gittar",
+   "acoustic guitar",
+   "strumming",
+   "गिटार बजाना",
+   "गिटार",
+   "tabs lessons",
+   "bollywood songs guitar"
+  ]
+ },
+ "keyboard-and-piano": {
+  "icon": "musical-keyboard",
+  "keywords": [
+   "piano bajana",
+   "keyboard sikhna",
+   "piyano lesson",
+   "casio playing",
+   "chords piano",
+   "keybord",
+   "पियानो बजाना",
+   "कीबोर्ड",
+   "sargam on piano",
+   "film songs keys"
+  ]
+ },
+ "harmonium-for-bhajans": {
+  "icon": "accordion",
+  "keywords": [
+   "bhajan bajana",
+   "harmonium sikhna",
+   "harmuniyam",
+   "kirtan playing",
+   "sargam harmonium",
+   "reed organ",
+   "भजन",
+   "हारमोनियम",
+   "palta practice",
+   "mandir bhajan"
+  ]
+ },
+ "tabla-basics": {
+  "icon": "long-drum",
+  "keywords": [
+   "tabla bajana",
+   "tabla sikhna",
+   "teental kayda",
+   "tabala",
+   "dholak rhythm",
+   "percussion",
+   "तबला बजाना",
+   "ताल",
+   "bol practice",
+   "bhajan taal"
+  ]
+ },
+ "flute-bansuri-basics": {
+  "icon": "flute",
+  "keywords": [
+   "bansuri bajana",
+   "flute sikhna",
+   "murli lessons",
+   "basuri",
+   "flut",
+   "krishna flute",
+   "बाँसुरी बजाना",
+   "बांसुरी",
+   "sargam flute",
+   "breath control"
+  ]
+ },
+ "dance-basics-bollywood-and-freestyle": {
+  "icon": "woman-dancing",
+  "keywords": [
+   "naachna sikhna",
+   "bollywood steps",
+   "wedding dance",
+   "dansing",
+   "freestyle moves",
+   "reels dance",
+   "नाचना सीखना",
+   "डांस",
+   "sangeet choreography",
+   "hip hop basics"
+  ]
+ },
+ "acting-basics": {
+  "icon": "performing-arts",
+  "keywords": [
+   "abhinay kala",
+   "acting sikhna",
+   "drama dialogue",
+   "acteing",
+   "audition tips",
+   "expression practice",
+   "अभिनय सीखना",
+   "नाटक",
+   "theatre workshop",
+   "reel acting"
+  ]
+ },
+ "cricket-batting-and-bowling-basics": {
+  "icon": "cricket-game",
+  "keywords": [
+   "cricket sikhna",
+   "batting bowling",
+   "balling tips",
+   "criket",
+   "gully cricket",
+   "spin fast bowling",
+   "क्रिकेट सीखना",
+   "बल्लेबाजी",
+   "batting stance",
+   "ipl trial"
+  ]
+ },
+ "football-skills": {
+  "icon": "soccer-ball",
+  "keywords": [
+   "football sikhna",
+   "soccer tricks",
+   "dribbling passing",
+   "futball",
+   "goal practice",
+   "isl training",
+   "फुटबॉल खेलना",
+   "खेल",
+   "shooting skills",
+   "defence basics"
+  ]
+ },
+ "badminton": {
+  "icon": "badminton",
+  "keywords": [
+   "shuttle",
+   "smash serve",
+   "court game",
+   "bedminton",
+   "badmintan khelna",
+   "racket sport",
+   "शटल",
+   "बैडमिंटन खेल",
+   "footwork",
+   "doubles tips"
+  ]
+ },
+ "table-tennis": {
+  "icon": "ping-pong",
+  "keywords": [
+   "tt",
+   "ping pong",
+   "spin serve",
+   "tebal tennis",
+   "racket game",
+   "indoor game",
+   "टेबल टेनिस",
+   "पिंग पोंग",
+   "backhand push",
+   "smash practice"
+  ]
+ },
+ "prepare-for-school-sports-trials": {
+  "icon": "trophy",
+  "keywords": [
+   "school trial",
+   "sports selection",
+   "khel trial pass",
+   "trail preparation",
+   "athletics test",
+   "fitness test",
+   "खेल चयन",
+   "विद्यालय खेल",
+   "stamina building",
+   "coach tips"
+  ]
+ },
+ "police-and-army-physical-test-preparation": {
+  "icon": "military-helmet",
+  "keywords": [
+   "agniveer taiyari",
+   "police bharti",
+   "1600m running",
+   "army taiyari",
+   "physical test",
+   "fouji training",
+   "पुलिस भर्ती",
+   "सेना भर्ती",
+   "long jump",
+   "pull ups"
+  ]
+ },
+ "running-from-zero-to-5-km": {
+  "icon": "running-shoe",
+  "keywords": [
+   "daudna sikhna",
+   "morning jogging",
+   "5k training",
+   "runing",
+   "stamina kaise badhaye",
+   "weight loss run",
+   "दौड़ना",
+   "दौड़",
+   "breathing run",
+   "marathon prep"
+  ]
+ },
+ "home-workout-without-equipment": {
+  "icon": "flexed-biceps",
+  "keywords": [
+   "ghar par exercise",
+   "bina gym workout",
+   "bodyweight training",
+   "home excercise",
+   "pushup squats",
+   "desi fitness",
+   "घर व्यायाम",
+   "कसरत",
+   "belly fat loss",
+   "morning exercise"
+  ]
+ },
+ "strength-training-in-the-gym": {
+  "icon": "man-lifting-weights",
+  "keywords": [
+   "gym workout",
+   "body banana",
+   "muscle gain",
+   "jim training",
+   "dumbbell dand",
+   "protein diet",
+   "जिम वर्कआउट",
+   "शरीर बनाना",
+   "bench press",
+   "deadlift form"
+  ]
+ },
+ "yoga-for-beginners": {
+  "icon": "woman-in-lotus-position",
+  "keywords": [
+   "yog sikhna",
+   "asan pranayam",
+   "morning yoga",
+   "yogga",
+   "surya namaskar",
+   "meditation",
+   "योग आसन",
+   "प्राणायाम",
+   "weight loss yoga",
+   "baba ramdev yoga"
+  ]
+ },
+ "pet-care": {
+  "icon": "dog",
+  "keywords": [
+   "dog grooming",
+   "cat feeding guide",
+   "puppy training",
+   "vaccination schedule",
+   "pet khana",
+   "janwaro ki dekhbhal",
+   "पालतू जानवर",
+   "कुत्ता बिल्ली",
+   "vet doctor near me",
+   "pett care",
+   "aquarium fish care"
+  ]
+ },
+ "living-on-your-own-hostel-and-first-flat": {
+  "icon": "house",
+  "keywords": [
+   "hostel life tips",
+   "pg room setup",
+   "rent agreement",
+   "cooking for bachelors",
+   "akela rehna",
+   "pehla kamra",
+   "किराये का कमरा",
+   "छात्रावास",
+   "हॉस्टल",
+   "roommate rules",
+   "flat shifting checklist",
+   "mess food"
+  ]
+ },
+ "personal-safety-for-women": {
+  "icon": "shield",
+  "keywords": [
+   "self defence for girls",
+   "pepper spray use",
+   "safe travel night",
+   "emergency helpline number",
+   "mahila suraksha",
+   "ladkiyon ki safety",
+   "महिला सुरक्षा",
+   "आत्मरक्षा",
+   "eve teasing complaint",
+   "gps tracking app",
+   "posh act"
+  ]
+ },
+ "positive-parenting": {
+  "icon": "people-hugging",
+  "keywords": [
+   "gentle discipline",
+   "bacho se pyar se baat",
+   "no beating kids",
+   "child behaviour tips",
+   "parenting mistakes",
+   "अच्छी परवरिश",
+   "सकारात्मक पालन",
+   "toddler tantrum handle",
+   "praise vs punishment",
+   "good habits kids"
+  ]
+ },
+ "parenting-toddlers-1-to-5": {
+  "icon": "child",
+  "keywords": [
+   "toddler food chart",
+   "potty training age",
+   "baby rhymes hindi",
+   "preschool admission",
+   "chhote bacho ki dekhbhal",
+   "angaanwadi",
+   "छोटे बच्चे",
+   "परवरिश",
+   "temper tantrums",
+   "vaccination chart",
+   "play school",
+   "toddler sleep"
+  ]
+ },
+ "parenting-teenagers": {
+  "icon": "boy",
+  "keywords": [
+   "teenage mood swings",
+   "board exam stress",
+   "puberty changes",
+   "mobile addiction teens",
+   "kishore avastha",
+   "teenager samjhana",
+   "किशोर बच्चे",
+   "युवावस्था",
+   "career guidance 10th",
+   "peer pressure",
+   "boyfriend girlfriend issue"
+  ]
+ },
+ "screen-time-a-family-plan": {
+  "icon": "television",
+  "keywords": [
+   "mobile addiction kids",
+   "cartoon limit hours",
+   "youtube parental control",
+   "eye strain children",
+   "bacho ka mobile chhudana",
+   "screen time rules",
+   "मोबाइल की लत",
+   "स्क्रीन टाइम",
+   "video game limit",
+   "family no phone rule"
+  ]
+ },
+ "help-your-child-study-at-home": {
+  "icon": "open-book",
+  "keywords": [
+   "homework help",
+   "padhai me man kaise lagaye",
+   "timetable for kids",
+   "memory techniques",
+   "exam preparation tips",
+   "बच्चों की पढ़ाई",
+   "गृहकार्य",
+   "होमवर्क",
+   "concentration increase",
+   "maths practice",
+   "reading habit"
+  ]
+ },
+ "caring-for-a-new-baby": {
+  "icon": "baby-bottle",
+  "keywords": [
+   "newborn feeding time",
+   "diaper change",
+   "baby massage oil",
+   "vaccination chart newborn",
+   "navjaat shishu dekhbhal",
+   "god me baccha",
+   "नवजात शिशु",
+   "स्तनपान",
+   "mother milk tips",
+   "baby sleep routine",
+   "colic pain"
+  ]
+ },
+ "caring-for-elderly-parents": {
+  "icon": "older-person",
+  "keywords": [
+   "old age care",
+   "bp sugar diet chart",
+   "knee pain remedy",
+   "parents seva",
+   "buzurgo ki dekhbhal",
+   "वृद्ध माता पिता",
+   "बुजुर्गों की सेवा",
+   "old age home",
+   "dementia care",
+   "pension scheme",
+   "walker stick"
+  ]
+ },
+ "relationship-communication-for-couples": {
+  "icon": "two-hearts",
+  "keywords": [
+   "husband wife fight",
+   "पति पत्नी झगड़ा",
+   "marriage tips",
+   "love relationship advice",
+   "couple counselling",
+   "पति पत्नी प्यार",
+   "वैवाहिक जीवन",
+   "in laws problem",
+   "trust building",
+   "shaadi shuda life"
+  ]
+ },
+ "grandparents-stay-close-to-grandchildren": {
+  "icon": "busts-in-silhouette",
+  "keywords": [
+   "dada dadi stories",
+   "nani nana love",
+   "grandchild bonding",
+   "pota poti ke sath",
+   "joint family values",
+   "दादा दादी",
+   "नानी नाना",
+   "पोता पोती",
+   "moral stories kids",
+   "video call family"
+  ]
+ },
+ "body-safety-for-kids-good-touch-bad-touch": {
+  "icon": "prohibited",
+  "keywords": [
+   "good touch bad touch",
+   "child abuse prevention",
+   "pocso act",
+   "bacho ko safe rakhna",
+   "school safety",
+   "गुड टच बैड टच",
+   "बच्चों की सुरक्षा",
+   "यौन शोषण",
+   "stranger danger",
+   "safe unsafe touch"
+  ]
+ },
+ "the-art-of-travelling-plan-a-great-trip": {
+  "icon": "airplane",
+  "keywords": [
+   "trip planning checklist",
+   "holiday packing list",
+   "hotel booking cheap",
+   "ghumne ka plan",
+   "yatra kaise banaye",
+   "घूमना फिरना",
+   "यात्रा योजना",
+   "irctc ticket book",
+   "itinerary maker",
+   "travel insurance"
+  ]
+ },
+ "budget-travel-and-backpacking": {
+  "icon": "backpack",
+  "keywords": [
+   "cheap travel hacks",
+   "sasta safar",
+   "general coach travel",
+   "dharamshala stay",
+   "backpack trip india",
+   "कम खर्च यात्रा",
+   "बजट ट्रिप",
+   "hostel booking",
+   "food travel cost",
+   "goibibo mmt coupon"
+  ]
+ },
+ "solo-travel-safely": {
+  "icon": "compass",
+  "keywords": [
+   "alone trip girl",
+   "akela ghumna",
+   "solo trip places india",
+   "safety tips traveller",
+   "अकेले घूमना",
+   "एकल यात्रा",
+   "hitchhiking india",
+   "hostel dorm safety",
+   "offline map app",
+   "emergency contacts"
+  ]
+ },
+ "travel-abroad-passport-visa-and-packing": {
+  "icon": "passport-control",
+  "keywords": [
+   "passport apply online",
+   "visa process dubai",
+   "immigration check",
+   "forex card",
+   "videsh yatra",
+   "passport banwana",
+   "पासपोर्ट वीजा",
+   "विदेश यात्रा",
+   "packing list international",
+   "flight baggage rules",
+   "work permit"
+  ]
+ },
+ "family-trips-with-kids": {
+  "icon": "bus",
+  "keywords": [
+   "family holiday places",
+   "baccho ke sath ghumna",
+   "kid friendly resorts",
+   "car road trip",
+   "parivar yatra",
+   "परिवार यात्रा",
+   "बच्चों के साथ",
+   "railway child berth",
+   "picnic spots near me",
+   "summer vacation plan"
+  ]
+ },
+ "pilgrimage-trip-planning": {
+  "icon": "hindu-temple",
+  "keywords": [
+   "char dham yatra",
+   "tirupati darshan booking",
+   "vaishno devi trek",
+   "hajj umrah guide",
+   "teerth yatra",
+   "dharmik sthal",
+   "तीर्थ यात्रा",
+   "मंदिर दर्शन",
+   "प्रसाद",
+   "senior citizen yatra",
+   "prasad booking",
+   "dharamshala booking"
+  ]
+ },
+ "trekking-and-camping-basics": {
+  "icon": "tent",
+  "keywords": [
+   "himalayan trek list",
+   "camping tent price",
+   "bonfire safety",
+   "kedarkantha trek",
+   "pahad chadhna",
+   "camp lagana",
+   "ट्रेकिंग",
+   "कैंपिंग तंबू",
+   "sleeping bag",
+   "trek shoes decathlon",
+   "first aid mountain",
+   "oxygen problem"
+  ]
+ },
+ "become-a-tour-guide": {
+  "icon": "megaphone",
+  "keywords": [
+   "tourist guide course",
+   "travel jobs salary",
+   "iitm guide exam",
+   "storytelling skills",
+   "paryatak guide banna",
+   "ghumakkad job",
+   "पर्यटक गाइड",
+   "मार्गदर्शक",
+   "freelance trip leader",
+   "foreign language guide",
+   "incredible india"
+  ]
+ },
+ "know-your-rights-the-indian-constitution": {
+  "icon": "balance-scale",
+  "keywords": [
+   "fundamental rights india",
+   "samvidhan ke adhikar",
+   "article 14 19 21",
+   "citizen duties",
+   "kanoon ki jankari",
+   "भारतीय संविधान",
+   "मौलिक अधिकार",
+   "कर्तव्य",
+   "ambedkar constitution",
+   "police arrest rights",
+   "voting rights"
+  ]
+ },
+ "human-rights-basics": {
+  "icon": "handshake",
+  "keywords": [
+   "manav adhikar",
+   "equality rights",
+   "nhrc complaint",
+   "child labour law",
+   "dalit rights",
+   "मानव अधिकार",
+   "समानता",
+   "न्याय",
+   "discrimination complaint",
+   "right to dignity",
+   "womens rights law"
+  ]
+ },
+ "consumer-rights-and-how-to-complain": {
+  "icon": "receipt",
+  "keywords": [
+   "consumer court complaint",
+   "grahak adhikar",
+   "refund not received",
+   "flipkart amazon fraud",
+   "defective product",
+   "उपभोक्ता अधिकार",
+   "ग्राहक शिकायत",
+   "शिकायत",
+   "helpline 1915",
+   "warranty claim",
+   "builder complaint rera"
+  ]
+ },
+ "rti-ask-the-government-for-information": {
+  "icon": "memo",
+  "keywords": [
+   "rti file online",
+   "suchna ka adhikar",
+   "sarkar se jawab",
+   "rti application fee",
+   "panchayat work details",
+   "सूचना का अधिकार",
+   "आरटीआई आवेदन",
+   "सरकारी जानकारी",
+   "rti status check",
+   "pio appeal process",
+   "gram sabha record"
+  ]
+ },
+ "yoga-teachers-plan-and-lead-a-class": {
+  "icon": "person-in-lotus-position",
+  "keywords": [
+   "asanas sikhana",
+   "coaching certification",
+   "fitness trainer course",
+   "yogaa ticher",
+   "batch lena",
+   "kendra class",
+   "योग शिक्षक",
+   "प्रशिक्षण",
+   "शिक्षण विधि",
+   "lesson planning",
+   "sequence design",
+   "cueing techniques"
+  ]
+ },
+ "train-the-trainer-run-a-workshop": {
+  "icon": "teacher",
+  "keywords": [
+   "facilitation skills",
+   "corporate training",
+   "presentation sikhna",
+   "workshop kaise le",
+   "triainer course",
+   "teaching methods",
+   "समूह प्रशिक्षण",
+   "प्रशिक्षक",
+   "कार्यशाला",
+   "icebreakers activities",
+   "public speaking",
+   "session plan"
+  ]
+ },
+ "hanuman-chalisa-learn-and-write": {
+  "icon": "closed-book",
+  "keywords": [
+   "bajrang baan path",
+   "hanumaan chaalisa",
+   "likhna sikhna",
+   "chalisa yaad karna",
+   "sundarkand paath",
+   "hanumaan mantra",
+   "हनुमान चालीसा",
+   "लेखन",
+   "पाठ",
+   "devotional recitation",
+   "copywriting practice",
+   "mantra writing"
+  ]
+ },
+ "naam-jaap-writing": {
+  "icon": "prayer-beads",
+  "keywords": [
+   "ram ram likhna",
+   "mala jap karna",
+   "jaap counting",
+   "likhit jap sadhna",
+   "naam smaran",
+   "mantra jaap",
+   "नाम जप",
+   "माला",
+   "साधना",
+   "repetitive writing",
+   "devotional practice",
+   "108 times notebook"
+  ]
+ },
+ "aartis-and-shlokas": {
+  "icon": "diya-lamp",
+  "keywords": [
+   "om jai jagdish",
+   "ganpati aarti sangrah",
+   "shlok yaad karna",
+   "aarti likhna",
+   "bhajan lyrics",
+   "pooja paath",
+   "आरती",
+   "श्लोक",
+   "पूजा",
+   "morning prayers",
+   "devotional songs",
+   "stotram mantra"
+  ]
+ },
+ "ramayan-and-mahabharat-stories": {
+  "icon": "bow-and-arrow",
+  "keywords": [
+   "ram katha sikhna",
+   "krishna kahani",
+   "dharmik kahaniyan",
+   "pauranik katha",
+   "moral stories kids",
+   "itihas katha",
+   "रामायण",
+   "महाभारत",
+   "कहानियाँ",
+   "epic tales",
+   "geeta updesh stories",
+   "arjun karna katha"
+  ]
+ },
+ "bhagavad-gita-one-shloka-a-day": {
+  "icon": "flute",
+  "keywords": [
+   "geeta saar",
+   "shlok arth sahit",
+   "krishna updesh",
+   "gita paath",
+   "geetaa sloka",
+   "daily shloka learning",
+   "गीता",
+   "श्लोक",
+   "उपदेश",
+   "sanskrit verses",
+   "spiritual wisdom",
+   "chapter summary"
+  ]
+ },
+ "festivals-and-traditions-of-india": {
+  "icon": "fireworks",
+  "keywords": [
+   "diwali holi info",
+   "tyoharo ke bare",
+   "pooja vidhi",
+   "vrat katha",
+   "indian culture",
+   "festival essay",
+   "त्योहार",
+   "परंपरा",
+   "संस्कृति",
+   "navratri dusshera",
+   "rakhi janmashtami",
+   "ritual customs"
+  ]
+ },
+ "sanskar-values-for-kids": {
+  "icon": "folded-hands",
+  "keywords": [
+   "achche sanskar",
+   "bacho ke sanskar",
+   "moral values",
+   "good habits kids",
+   "parenting tips hindi",
+   "bacho ki parvarish",
+   "संस्कार",
+   "नैतिक मूल्य",
+   "बच्चे",
+   "respect elders",
+   "discipline manners",
+   "character building"
+  ]
+ },
+ "women-s-rights-and-safety-laws": {
+  "icon": "balance-scale",
+  "keywords": [
+   "mahila adhikar",
+   "mahila suraksha",
+   "women helpline number",
+   "domestik violence help",
+   "dowry law",
+   "posh act",
+   "mahilaon ke kanun",
+   "womens commission",
+   "self defence girls",
+   "shakti law"
+  ]
+ },
+ "workers-rights-salary-pf-and-leave": {
+  "icon": "money-bag",
+  "keywords": [
+   "pf kaise nikale",
+   "epfo claim",
+   "salary slip",
+   "majduri kanun",
+   "minimum wages",
+   "gratuity calculation",
+   "labour law",
+   "seleri slip",
+   "chhutti ke niyam",
+   "pf passbook",
+   "श्रमिक अधिकार",
+   "मजदूरी"
+  ]
+ },
+ "police-fir-and-your-rights": {
+  "icon": "police-officer",
+  "keywords": [
+   "fir kaise likhe",
+   "efir online",
+   "police complaint",
+   "kanuni adhikar",
+   "zero fir",
+   "arrest rules",
+   "bail process",
+   "thanedar se shikayat",
+   "nagrik adhikar",
+   "पुलिस शिकायत",
+   "एफआईआर"
+  ]
+ },
+ "rent-agreements-and-tenant-rights": {
+  "icon": "house",
+  "keywords": [
+   "rent agreement format",
+   "kiraya nama",
+   "rental contract",
+   "makaan malik vivad",
+   "security deposit refund",
+   "house rent rules",
+   "kirayedar ke adhikar",
+   "notary agreement",
+   "makaan kiraya",
+   "किराया समझौता",
+   "मकान मालिक"
+  ]
+ },
+ "cyber-law-and-online-safety": {
+  "icon": "locked",
+  "keywords": [
+   "cyber crime report",
+   "online fraud complaint",
+   "1930 helpline",
+   "otp scam",
+   "cyber suraksha",
+   "hacking se bachav",
+   "upi fraud",
+   "it act",
+   "साइबर अपराध",
+   "ऑनलाइन ठगी",
+   "phishing kya hai",
+   "password safety"
+  ]
+ },
+ "road-rules-and-driving-licence-test": {
+  "icon": "automobile",
+  "keywords": [
+   "driving licence apply",
+   "llr test",
+   "rto exam questions",
+   "traffic challan check",
+   "sadak niyam",
+   "gaadi chalana seekhe",
+   "signal rules",
+   "dl status",
+   "सड़क नियम",
+   "ड्राइविंग लाइसेंस",
+   "helmet challan",
+   "fastag fine"
+  ]
+ },
+ "steps-to-become-a-leader": {
+  "icon": "crown",
+  "keywords": [
+   "leadership qualities",
+   "neta kaise bane",
+   "personality development",
+   "public speaking",
+   "decision making",
+   "confidence badhana",
+   "influence people",
+   "netritva kaushal",
+   "नेतृत्व गुण",
+   "नेता बनना",
+   "motivation skills"
+  ]
+ },
+ "first-time-manager": {
+  "icon": "briefcase",
+  "keywords": [
+   "new manager tips",
+   "team handling",
+   "pehli baar manager",
+   "supervisor skills",
+   "delegation work",
+   "performance review",
+   "office management",
+   "boss kaise bane",
+   "प्रबंधन कौशल",
+   "टीम प्रबंधन",
+   "leadership training",
+   "kpi tracking"
+  ]
+ },
+ "teamwork-and-collaboration": {
+  "icon": "handshake",
+  "keywords": [
+   "team work",
+   "milkar kaam karna",
+   "group discussion",
+   "collaboration tools",
+   "office teamwork",
+   "communication skills",
+   "saath me kaam",
+   "team building games",
+   "सहयोग",
+   "टीम भावना",
+   "conflict resolution"
+  ]
+ },
+ "running-a-good-meeting": {
+  "icon": "clipboard",
+  "keywords": [
+   "meeting kaise le",
+   "agenda template",
+   "minutes of meeting",
+   "zoom meeting tips",
+   "office meeting",
+   "presentation skills",
+   "team briefing",
+   "bethak prabandhan",
+   "बैठक संचालन",
+   "कार्यसूची",
+   "time management"
+  ]
+ },
+ "how-politics-and-elections-work": {
+  "icon": "ballot-box-with-ballot",
+  "keywords": [
+   "election process",
+   "chunav kaise hote",
+   "voter id apply",
+   "loksabha vidhansabha",
+   "evm voting",
+   "rajniti samjho",
+   "voter list check",
+   "election commission",
+   "चुनाव प्रक्रिया",
+   "मतदान",
+   "sarkar kaise banti"
+  ]
+ },
+ "political-skills-campaigning-and-public-life": {
+  "icon": "megaphone",
+  "keywords": [
+   "election campaign",
+   "chunav prachar",
+   "bhashan kaise de",
+   "door to door campaign",
+   "padyatra planning",
+   "vote mangna",
+   "poster banner",
+   "jan sampark",
+   "प्रचार कौशल",
+   "राजनीति",
+   "public rally",
+   "social media prachar"
+  ]
+ },
+ "student-council-and-school-elections": {
+  "icon": "graduation-cap",
+  "keywords": [
+   "school election",
+   "head boy head girl",
+   "class monitor",
+   "student leader",
+   "school council",
+   "vote for cr",
+   "skool chunav",
+   "leadership in school",
+   "छात्र परिषद",
+   "विद्यालय चुनाव",
+   "speech for election"
+  ]
+ },
+ "panchayat-ward-and-local-government": {
+  "icon": "classical-building",
+  "keywords": [
+   "sarpanch chunav",
+   "gram panchayat",
+   "ward member",
+   "nagar nigam",
+   "panchayati raj",
+   "gram sabha",
+   "local governance",
+   "parshad ka kaam",
+   "पंचायत",
+   "सरपंच",
+   "नगर पालिका",
+   "rti panchayat"
+  ]
+ },
+ "community-work-and-volunteering": {
+  "icon": "folded-hands",
+  "keywords": [
+   "volunteer kaam",
+   "samaj seva",
+   "ngo join",
+   "social work",
+   "blood donation camp",
+   "swachhata abhiyan",
+   "safai abhiyan",
+   "seva bhav",
+   "समाज सेवा",
+   "स्वयंसेवक",
+   "donation drive",
+   "tree plantation"
+  ]
+ },
+ "classroom-management": {
+  "icon": "teacher",
+  "keywords": [
+   "class control tips",
+   "kaksha prabandhan",
+   "discipline tricks",
+   "attention grabbers",
+   "school teacher training",
+   "bacho ko sambhale",
+   "attendance register",
+   "class rules chart",
+   "कक्षा प्रबंधन",
+   "अनुशासन",
+   "teaching methods",
+   "student behaviour"
+  ]
+ },
+ "lesson-planning": {
+  "icon": "memo",
+  "keywords": [
+   "lesson plan format",
+   "path yojana",
+   "teaching plan",
+   "bed practical file",
+   "learning outcomes",
+   "chapter planning",
+   "paath tippani",
+   "syllabus breakup",
+   "पाठ योजना",
+   "शिक्षण योजना",
+   "activity based teaching"
+  ]
+ },
+ "teaching-with-ai-tools": {
+  "icon": "robot",
+  "keywords": [
+   "chatgpt for teachers",
+   "ai se padhai",
+   "quiz maker",
+   "ppt banane wala app",
+   "question paper generator",
+   "lesson plan ai",
+   "ai tools hindi",
+   "एआई शिक्षण",
+   "कृत्रिम बुद्धिमत्ता",
+   "worksheet maker",
+   "canva for class"
+  ]
+ },
+ "online-teaching-and-tuition": {
+  "icon": "laptop",
+  "keywords": [
+   "online tution",
+   "home tution",
+   "zoom class setup",
+   "google classroom",
+   "youtube se padhana",
+   "mic for teaching",
+   "digital board",
+   "online fees",
+   "ऑनलाइन पढ़ाई",
+   "ट्यूशन पढ़ाना",
+   "demo class tips",
+   "whiteboard app"
+  ]
+ },
+ "teaching-children-who-learn-differently": {
+  "icon": "child",
+  "keywords": [
+   "slow learner",
+   "dyslexia hindi",
+   "special child",
+   "adhd bachche",
+   "inclusive education",
+   "learning disability",
+   "samaveshi shiksha",
+   "remedial teaching",
+   "विशेष आवश्यकता",
+   "धीमी गति से सीखना",
+   "autism support",
+   "phonics activity"
+  ]
+ },
+ "coaching-skills-coaching-conversations": {
+  "icon": "speaking-head",
+  "keywords": [
+   "life coach",
+   "mentoring skills",
+   "coching dena",
+   "active listening",
+   "goal setting",
+   "powerful questions",
+   "career guidance",
+   "motivet karna",
+   "परामर्श कौशल",
+   "मार्गदर्शन",
+   "feedback dena",
+   "one on one talk"
+  ]
+ },
+ "sports-coaching-basics": {
+  "icon": "sports-medal",
+  "keywords": [
+   "khel prashikshan",
+   "pt teacher",
+   "warm up exercise",
+   "drill training",
+   "fitness test",
+   "khel kud",
+   "sports trial",
+   "athlete diet",
+   "खेल प्रशिक्षण",
+   "कोच बनना",
+   "cricket coaching",
+   "football practice"
+  ]
+ },
+ "gym-trainers-program-design-for-clients": {
+  "icon": "flexed-biceps",
+  "keywords": [
+   "workout plan",
+   "gym traner",
+   "weight training",
+   "split routine",
+   "fat loss plan",
+   "muscle gain",
+   "client transformation",
+   "exercise chart",
+   "व्यायाम योजना",
+   "जिम ट्रेनर",
+   "push pull legs",
+   "personal trainer"
+  ]
+ },
+ "gym-trainers-nutrition-coaching-basics": {
+  "icon": "green-salad",
+  "keywords": [
+   "diet chart",
+   "protin diet",
+   "weight loss khana",
+   "calorie count",
+   "veg protein",
+   "supplement guide",
+   "poshan plan",
+   "meal prep",
+   "पोषण आहार",
+   "डाइट चार्ट",
+   "whey protein",
+   "desi diet gym"
+  ]
+ },
+ "gym-trainers-client-communication-and-sales": {
+  "icon": "loudspeaker",
+  "keywords": [
+   "gym membership sales",
+   "client retension",
+   "jim me admission",
+   "personal training fees",
+   "lead conversion",
+   "trial session",
+   "customer handling",
+   "sales pitch",
+   "ग्राहक संवाद",
+   "जिम बिक्री",
+   "whatsapp marketing",
+   "referral program"
+  ]
+ }
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { ArrowRight, Award, Bot, ChevronLeft, ChevronRight, FileText, Mic, QrCode, Sparkles, Sprout, TrendingUp } from 'lucide-react'
-import { AGE_LABEL, BASE, PROOF_LABEL, Skill } from '../api'
+import { AGE_LABEL, BASE, PROOF_LABEL, Skill, iconUrl } from '../api'
 import { useCatalogue } from '../useCatalogue'
 import { HOW_IT_WORKS } from '../Gallery'
 
@@ -159,7 +159,9 @@ export default function SkillPage() {
           <div className="flex gap-3 overflow-x-auto pb-2">
             {more.map((s) => (
               <Link key={s.id} to={`/skill/${s.id}`} className="group flex w-44 shrink-0 flex-col overflow-hidden rounded-3xl bg-white shadow-card lg:w-52">
-                <span className="block aspect-square bg-cream-dim">{s.cover && <img src={`${BASE}api/skills/${s.id}/cover`} alt="" loading="lazy" className="h-full w-full object-cover" />}</span>
+                <span className="grid aspect-square place-items-center bg-cream-dim">
+                  {s.cover ? <img src={`${BASE}api/skills/${s.id}/cover`} alt="" loading="lazy" className="h-full w-full object-cover" /> : <img src={iconUrl(s.icon)} alt="" loading="lazy" className="h-1/2 w-1/2" />}
+                </span>
                 <span className="flex flex-1 flex-col gap-0.5 p-3">
                   <span className="line-clamp-2 font-display text-sm font-bold leading-tight group-hover:text-lime-700">{s.name}</span>
                   <span className="mt-auto pt-1 text-sm font-extrabold text-lime-700">From ₹{s.prices[0].price}</span>

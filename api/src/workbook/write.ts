@@ -104,7 +104,8 @@ How to write:
 - "trace" is only for trace tasks; otherwise null.
 - "plan": spread the chapters over days so each day fits the learner's minutes; the final task gets its own day.
 - "badge": a name for what they earn, and 3 to 5 things they can do once they finish ("can write all 26 capital letters on the line").
-- Safe for every age. No medical, legal or investment advice; money skills teach budgeting and basics only.`
+- Safe for every age. Law, health and money skills teach general knowledge: what the law says, how a system works, and when to see a lawyer, doctor or adviser. Never advice on the learner's own case, never a diagnosis or a medicine dose, never what to buy or invest in.
+- Physical skills (sport, fitness, yoga, self-defence, first aid, repairs) put safety first: warm up, stop if it hurts, and do anything risky only with a trained adult.`
 
 export interface WriteOptions {
   effort?: Effort

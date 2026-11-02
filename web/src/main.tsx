@@ -7,17 +7,20 @@ import SkillPage from './pages/SkillPage'
 import Start from './pages/Start'
 import WorkbookPage from './pages/WorkbookPage'
 import BadgePage from './pages/BadgePage'
+import NewSkill from './pages/NewSkill'
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-dvh">
       <header className="sticky top-0 z-30 border-b border-ink/5 bg-cream/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <Link to="/" className="flex items-baseline gap-2">
+          <Link to="/" className="flex items-baseline gap-2 whitespace-nowrap">
             <span className="font-display text-xl font-extrabold text-ink">Learn with AI</span>
-            <span className="text-xs font-bold text-lime-700">by GrowthGoal</span>
+            <span className="hidden text-xs font-bold text-lime-700 sm:inline">by GrowthGoal</span>
           </Link>
-          <a href="/" className="text-sm font-bold text-ink-soft hover:text-ink">← GrowthGoal shop</a>
+          <a href="/" className="whitespace-nowrap text-sm font-bold text-ink-soft hover:text-ink">
+            ← GrowthGoal<span className="hidden sm:inline"> shop</span>
+          </a>
         </div>
       </header>
       <main className="mx-auto max-w-6xl px-4 pb-20 pt-6">{children}</main>
@@ -36,6 +39,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<Home />} />
           <Route path="/skill/:id" element={<SkillPage />} />
           <Route path="/start/:id" element={<Start />} />
+          <Route path="/new" element={<NewSkill />} />
           <Route path="/w/:code" element={<WorkbookPage />} />
           <Route path="/badge/:id" element={<BadgePage />} />
         </Routes>
