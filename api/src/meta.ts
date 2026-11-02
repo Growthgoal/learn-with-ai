@@ -117,7 +117,7 @@ export async function chatJson<T>(messages: Message[], o: ChatOptions & { schema
 
 /** One illustration, returned as PNG bytes. */
 export async function image(prompt: string, o: { task: string; ref?: string; size?: string }) {
-  const data = await post('/images/generations', { model: 'muse-image-1.0', prompt, n: 1, ...(o.size ? { size: o.size } : {}) })
+  const data = await post('/images/generations', { model: 'muse-image-1.0', prompt, n: 1, output_format: 'jpeg', ...(o.size ? { size: o.size } : {}) })
   const item = data.data?.[0]
   const usage: Usage = { task: o.task, model: 'muse-image-1.0', inputTokens: 0, cachedTokens: 0, outputTokens: 0, reasoningTokens: 0, images: 1, costUsd: PRICE.image }
   record(usage, o.ref)

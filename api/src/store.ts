@@ -78,6 +78,7 @@ export const workbooks = {
   get: (code: string) => load<WorkbookRecord>('workbooks', code),
   put: (w: WorkbookRecord) => save('workbooks', w.code, w),
   pdfPath: (code: string) => path.join(dir('pdf'), `${code}.pdf`),
+  coverPath: (code: string) => path.join(dir('img'), `${code}.jpg`),
 }
 export const checks = {
   get: (id: string) => load<CheckRecord>('checks', id),

@@ -8,6 +8,7 @@ import { ROOT } from './env.js'
 import { LEVELS, SKILLS, skillById } from './catalog/skills.js'
 import { PRICES, QUESTIONS } from './catalog/prices.js'
 import { Learner, Size, SIZES, writeWorkbook } from './workbook/write.js'
+import { image } from './meta.js'
 import { workbookPdf } from './workbook/render.js'
 import { Task, Workbook } from './workbook/schema.js'
 import { intakeTurn } from './teach/intake.js'
@@ -92,7 +93,19 @@ async function build(rec: WorkbookRecord, focus?: string) {
   try {
     const skill = skillById(rec.skillId)!
     const { workbook } = await writeWorkbook(skill, rec.level, rec.learner, rec.size, { ref: rec.code, focus })
-    const { pdf } = await workbookPdf({ workbook, skill, level: rec.level, learner: rec.learner, code: rec.code })
+    // A cover picture drawn for this learner. A workbook without one is still a workbook.
+    let cover: string | undefined
+    try {
+      const art = await image(
+        `A warm, cheerful flat illustration for the cover of a learning workbook called "${workbook.title}" about ${skill.name}, made for a ${rec.learner.age}-year-old in India who loves ${rec.learner.interests.join(' and ') || 'learning'}. Simple bold shapes, soft lime green and sunny yellow tones, plenty of white space. No words, no letters, no numbers, no logos, no real people's faces.`,
+        { task: 'cover-image', ref: rec.code, size: '1536x1024' },
+      )
+      fs.writeFileSync(workbooks.coverPath(rec.code), art)
+      cover = 'data:image/jpeg;base64,' + art.toString('base64')
+    } catch (e) {
+      console.error('cover', rec.code, e)
+    }
+    const { pdf } = await workbookPdf({ workbook, skill, level: rec.level, learner: rec.learner, code: rec.code, cover })
     fs.writeFileSync(workbooks.pdfPath(rec.code), pdf)
     workbooks.put({ ...rec, workbook, status: 'ready' })
   } catch (e) {
@@ -144,6 +157,14 @@ app.get('/api/workbooks/:code', (req, res) => {
     badgeId: rec.badgeId ?? null,
     fixUpOf: rec.fixUpOf ?? null,
   })
+})
+
+app.get('/api/workbooks/:code/cover', (req, res) => {
+  const rec = workbooks.get(req.params.code)
+  const file = rec && workbooks.coverPath(rec.code)
+  if (!rec || !file || !fs.existsSync(file)) return res.status(404).end()
+  res.setHeader('Cache-Control', 'public, max-age=86400')
+  res.type('jpeg').sendFile(file)
 })
 
 app.get('/api/workbooks/:code/pdf', (req, res) => {

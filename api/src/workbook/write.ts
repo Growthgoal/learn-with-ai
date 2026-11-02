@@ -49,7 +49,13 @@ HOW WORK IS HANDED IN: ${skill.proof}. ${PROOF_RULES[skill.proof]}
 
 LEARNER
 - Name: ${learner.name}, age ${learner.age}
-- Writes and reads in: ${learner.language}${learner.language === 'Hindi' ? ' (Devanagari script)' : learner.language === 'Hinglish' ? ' (Hindi words in Roman script, mixed with simple English)' : ''}
+- Writes and reads in: ${learner.language}${
+    learner.language === 'Hindi'
+      ? '. Write EVERY word of the workbook in Hindi, in Devanagari script (हिंदी), even if the details below are typed in Roman letters. English words people use daily (UPI, OTP, Excel) may stay, written in Devanagari or as they are.'
+      : learner.language === 'Hinglish'
+        ? ' (Hindi words in Roman script, mixed with simple English)'
+        : ''
+  }
 - Instructions are read by: ${learner.readBy === 'parent' ? 'a parent, sitting with the child; address the parent in the instructions and the child in the tasks' : 'the learner'}
 - Goal: ${learner.goal}
 - Starting point: ${learner.startingPoint}

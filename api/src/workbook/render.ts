@@ -31,8 +31,8 @@ const WORDS = {
 }
 const words = (l: Learner) => (l.language === 'Hindi' ? WORDS.hi : WORDS.en)
 
-/** Small children write bigger: wider lines, larger type. */
-const young = (l: Learner) => l.age < 8
+/** Small children write bigger, and older eyes read better big: wider lines, larger type. */
+const young = (l: Learner) => l.age < 8 || l.age >= 60
 
 function lines(n: number, l: Learner) {
   return `<div class="lines" style="--n:${Math.max(1, n)}"></div>`
@@ -90,9 +90,11 @@ export interface RenderInput {
   learner: Learner
   /** The workbook's short code, in its online address. */
   code: string
+  /** The cover picture Muse Image drew for this learner, as a data URL. */
+  cover?: string
 }
 
-export async function workbookHtml({ workbook: w, skill, level, learner: l, code }: RenderInput) {
+export async function workbookHtml({ workbook: w, skill, level, learner: l, code, cover }: RenderInput) {
   const url = `${SITE}/w/${code}`
   const qr = await QRCode.toDataURL(url, { margin: 0, width: 240, color: { dark: '#233306', light: '#ffffff' } })
   const totalMin = w.plan.reduce((n, d) => n + d.minutes, 0)
@@ -116,7 +118,8 @@ export async function workbookHtml({ workbook: w, skill, level, learner: l, code
   .cover .sub { font-size: 14pt; color: var(--soft); margin-top: 6mm; }
   .cover .who { border-top: 3px solid var(--sun); padding-top: 6mm; display:grid; grid-template-columns: 1fr auto; gap: 8mm; align-items:end; }
   .cover .who b { font-family:"Baloo 2"; font-size: 18pt; }
-  .cover img { width: 32mm; height: 32mm; }
+  .cover .who img { width: 32mm; height: 32mm; }
+  .cover .art { display:block; width: 100%; max-height: 105mm; object-fit: cover; border-radius: 5mm; margin-top: 8mm; }
   .pill { display:inline-block; background: var(--limebg); color: var(--lime); border-radius: 99px; padding: 1mm 4mm; font-weight:700; font-size: 10pt; margin-right: 2mm; }
   .intro { page-break-after: always; }
   .intro h2, .chapter h2 { font-size: 20pt; margin-bottom: 4mm; }
@@ -156,6 +159,7 @@ export async function workbookHtml({ workbook: w, skill, level, learner: l, code
     <span class="pill">${esc(skill.name)}</span><span class="pill">Level ${level}</span>
     <h1 style="margin-top:6mm">${esc(w.title)}</h1>
     <p class="sub">${esc(w.subtitle)}</p>
+    ${cover ? `<img class="art" src="${cover}" alt="">` : ''}
   </div>
   <div class="who">
     <div><p style="margin:0">${t.madeFor}</p><b>${esc(l.name)}</b><p style="margin:2mm 0 0;font-size:10pt">${t.online}<br><b>${esc(url.replace(/^https?:\/\//, ''))}</b></p></div>
