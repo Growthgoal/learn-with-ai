@@ -1,24 +1,40 @@
+import { Band, Skill } from './skills.js'
 import { Size } from '../workbook/write.js'
 
 /**
- * What a workbook level costs the learner: the AI credit it uses, plus ₹39
- * for everything else (server, team, payment fee), rounded up to end in 9.
- *
- * AI credit per size is measured from real runs (output/usage.jsonl), in
- * rupees, before the 30% safety margin: intake chat, writing, our AI
- * teacher's included answers, checking every page, and a fix-up workbook.
+ * What a workbook costs the learner: set per skill by what the skill is
+ * worth to them (its band) and by level, never below the AI credit it uses
+ * plus ₹39 for everything else (server, team, payment fee).
  */
 export const OUR_SHARE = 39
 const MARGIN = 1.3
+
+/**
+ * AI credit per workbook size, measured from real runs (output/usage.jsonl),
+ * in rupees: intake chat, writing, cover, our AI teacher's included answers,
+ * checking every page, and a fix-up workbook.
+ */
 const AI_RUPEES: Record<Exclude<Size, 'fixup'>, number> = {
-  starter: 0.5 + 8 + 10 * 0.3 + 5 + 2,
-  standard: 0.5 + 10 + 20 * 0.3 + 8 + 2,
-  pro: 0.5 + 14 + 40 * 0.3 + 12 + 3,
+  starter: 0.5 + 8 + 0.9 + 10 * 0.1 + 5 + 2,
+  standard: 0.5 + 10 + 0.9 + 20 * 0.1 + 8 + 2,
+  pro: 0.5 + 14 + 0.9 + 40 * 0.1 + 12 + 3,
 }
 /** Questions to our AI teacher included in the price; their own AI is unlimited. */
 export const QUESTIONS: Record<Size, number> = { starter: 10, standard: 20, pro: 40, fixup: 10 }
 
+/** Basic, Advanced, Pro by band, in rupees. */
+export const BAND_PRICES: Record<Band, [number, number, number]> = {
+  kids: [69, 99, 129],
+  life: [79, 119, 169],
+  career: [99, 149, 199],
+}
+
+const SIZE_OF_LEVEL: Exclude<Size, 'fixup'>[] = ['starter', 'standard', 'pro']
 const nine = (x: number) => Math.ceil((x + 1) / 10) * 10 - 1
-export const PRICES = Object.fromEntries(
-  Object.entries(AI_RUPEES).map(([size, ai]) => [size, { ai: Math.round(ai * MARGIN), price: nine(ai * MARGIN + OUR_SHARE) }]),
-) as Record<Exclude<Size, 'fixup'>, { ai: number; price: number }>
+
+export function priceOf(skill: Pick<Skill, 'band'>, level: number) {
+  const size = SIZE_OF_LEVEL[level - 1] ?? 'standard'
+  const ai = AI_RUPEES[size] * MARGIN
+  const floor = nine(ai + OUR_SHARE)
+  return { price: Math.max(BAND_PRICES[skill.band][level - 1], floor), ai: Math.round(ai) }
+}

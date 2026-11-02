@@ -13,9 +13,9 @@ export default function Start() {
   const skill = cat?.skills.find((s) => s.id === id)
   const navigate = useNavigate()
   const [params] = useSearchParams()
-  // The size picked on the skill page; the AI's suggestion fills in when there is none.
-  const asked = params.get('size')
-  const [size, setSize] = useState<Size | null>(asked === 'starter' || asked === 'standard' || asked === 'pro' ? asked : null)
+  // The level picked on the skill page; the AI's suggestion fills in when there is none.
+  const asked = Number(params.get('level'))
+  const [level, setLevel] = useState<number | null>([1, 2, 3].includes(asked) ? asked : null)
   const [messages, setMessages] = useState<Msg[]>([])
   const [text, setText] = useState('')
   const [busy, setBusy] = useState(false)
@@ -61,7 +61,7 @@ export default function Start() {
     setCreating(true)
     setError(null)
     try {
-      const { code } = await api<{ code: string }>('/workbooks', { method: 'POST', json: { skillId: id, level: plan.level, size: size ?? plan.size, learner: plan.learner } })
+      const { code } = await api<{ code: string }>('/workbooks', { method: 'POST', json: { skillId: id, level: level ?? plan.level, learner: plan.learner } })
       navigate(`/w/${code}`)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Try again.')
@@ -93,21 +93,20 @@ export default function Start() {
               <li><b>Goal:</b> {l.goal}</li>
               <li><b>Starting from:</b> {l.startingPoint}</li>
               <li><b>Language:</b> {l.language} · <b>{l.minutesPerDay} minutes</b> a day</li>
-              <li><b>Level {plan.level}</b></li>
             </ul>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="Workbook size">
-              {(['starter', 'standard', 'pro'] as Size[]).map((s) => {
-                const on = (size ?? plan.size) === s
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Workbook">
+              {cat.levels.map((lv) => {
+                const on = (level ?? plan.level) === lv.n
                 return (
                   <button
-                    key={s}
+                    key={lv.n}
                     type="button"
-                    onClick={() => setSize(s)}
+                    onClick={() => setLevel(lv.n)}
                     aria-pressed={on}
                     className={`rounded-full px-4 py-2 text-sm font-bold ${on ? 'bg-lime-500 text-white' : 'bg-white text-ink-soft ring-1 ring-ink/10 hover:ring-lime-400'}`}
                   >
-                    {s[0].toUpperCase() + s.slice(1)} · ₹{cat.prices[s].price}
-                    {s === plan.size && !on ? ' (suggested)' : ''}
+                    {lv.name} · ₹{skill.prices[lv.n - 1].price}
+                    {lv.n === plan.level && !on ? ' (suggested)' : ''}
                   </button>
                 )
               })}
@@ -117,7 +116,7 @@ export default function Start() {
               disabled={creating}
               className="rounded-2xl bg-lime-500 px-5 py-3.5 font-bold text-white hover:bg-lime-600 disabled:opacity-60"
             >
-              {creating ? 'Starting…' : cat.payments ? `Pay ₹${cat.prices[size ?? plan.size].price} and write my workbook` : `Write my workbook · ₹${cat.prices[size ?? plan.size].price}, free during the hackathon`}
+              {creating ? 'Starting…' : cat.payments ? `Pay ₹${skill.prices[(level ?? plan.level) - 1].price} and write my workbook` : `Write my workbook · ₹${skill.prices[(level ?? plan.level) - 1].price}, free during the hackathon`}
             </button>
           </div>
         )}

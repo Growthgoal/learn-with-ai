@@ -1,13 +1,17 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Camera, FileUp, Keyboard, Mic, Search, Sparkles, Hammer } from 'lucide-react'
-import { Age, AGE_LABEL, Proof, PROOF_LABEL } from '../api'
+import { Age, AGE_LABEL, api, BASE, Guide, Proof, PROOF_LABEL } from '../api'
 import { useCatalogue } from '../useCatalogue'
 
 export const PROOF_ICON: Record<Proof, typeof Camera> = { pages: Camera, file: FileUp, result: Hammer, typed: Keyboard, voice: Mic }
 
 export default function Home() {
   const cat = useCatalogue()
+  const [guides, setGuides] = useState<Guide[]>([])
+  useEffect(() => {
+    api<Guide[]>('/guides').then((g) => setGuides(g.filter((x) => x.en || x.hi))).catch(() => setGuides([]))
+  }, [])
   const [q, setQ] = useState('')
   const [age, setAge] = useState<Age | null>(null)
   const list = useMemo(
@@ -18,7 +22,7 @@ export default function Home() {
     [cat, q, age],
   )
   const groups = [...new Set(list.map((s) => s.group))]
-  const from = cat ? Math.min(...Object.values(cat.prices).map((p) => p.price)) : null
+  const from = cat ? Math.min(...cat.skills.map((s) => s.prices[0].price)) : null
 
   return (
     <div className="flex flex-col gap-10">
@@ -52,6 +56,30 @@ export default function Home() {
           ))}
         </ol>
       </section>
+
+      {guides.length > 0 && (
+        <section className="flex flex-col gap-3">
+          <div>
+            <h2 className="text-2xl font-extrabold">Start free: the basics of learning</h2>
+            <p className="text-ink-soft">Short guides that make every other skill easier. Free to download and print, in English and हिंदी.</p>
+          </div>
+          <div className="flex snap-x gap-3 overflow-x-auto pb-2">
+            {guides.map((g) => (
+              <div key={g.slug} className="flex w-56 shrink-0 snap-start flex-col overflow-hidden rounded-3xl bg-white shadow-card">
+                {g.cover && <img src={`${BASE}api/guides/${g.slug}/cover`} alt="" loading="lazy" className="aspect-square w-full object-cover" />}
+                <div className="flex flex-1 flex-col gap-2 p-4">
+                  <p className="font-display text-lg font-extrabold leading-tight">{g.title}</p>
+                  <p className="text-sm text-ink-soft">{g.titleHi}</p>
+                  <div className="mt-auto flex gap-2">
+                    {g.en && <a href={`${BASE}api/guides/${g.slug}/en.pdf`} target="_blank" rel="noreferrer" className="rounded-xl bg-lime-500 px-3 py-1.5 text-sm font-bold text-white">English</a>}
+                    {g.hi && <a href={`${BASE}api/guides/${g.slug}/hi.pdf`} target="_blank" rel="noreferrer" className="rounded-xl bg-lime-100 px-3 py-1.5 text-sm font-bold text-lime-800">हिंदी</a>}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="flex flex-col gap-4">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">

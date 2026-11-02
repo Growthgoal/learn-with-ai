@@ -92,10 +92,14 @@ export interface RenderInput {
   code: string
   /** The cover picture Muse Image drew for this learner, as a data URL. */
   cover?: string
+  /** A shop-window sample or a free guide: marked as such, its QR leads to its page. */
+  sample?: { url: string; label?: string }
+  /** A free guide: nothing to hand in, so it ends with where to learn more. */
+  free?: boolean
 }
 
-export async function workbookHtml({ workbook: w, skill, level, learner: l, code, cover }: RenderInput) {
-  const url = `${SITE}/w/${code}`
+export async function workbookHtml({ workbook: w, skill, level, learner: l, code, cover, sample, free }: RenderInput) {
+  const url = sample?.url ?? `${SITE}/w/${code}`
   const qr = await QRCode.toDataURL(url, { margin: 0, width: 240, color: { dark: '#233306', light: '#ffffff' } })
   const totalMin = w.plan.reduce((n, d) => n + d.minutes, 0)
   const t = words(l)
@@ -120,6 +124,7 @@ export async function workbookHtml({ workbook: w, skill, level, learner: l, code
   .cover .who b { font-family:"Baloo 2"; font-size: 18pt; }
   .cover .who img { width: 32mm; height: 32mm; }
   .cover .art { display:block; width: 100%; max-height: 105mm; object-fit: cover; border-radius: 5mm; margin-top: 8mm; }
+  .sample { display:inline-block; margin-left: 3mm; padding: 1mm 3mm; border-radius: 99px; background: var(--sun); color: var(--ink); font-family: Quicksand, sans-serif; font-size: 9pt; font-weight: 700; vertical-align: middle; }
   .pill { display:inline-block; background: var(--limebg); color: var(--lime); border-radius: 99px; padding: 1mm 4mm; font-weight:700; font-size: 10pt; margin-right: 2mm; }
   .intro { page-break-after: always; }
   .intro h2, .chapter h2 { font-size: 20pt; margin-bottom: 4mm; }
@@ -154,9 +159,9 @@ export async function workbookHtml({ workbook: w, skill, level, learner: l, code
 </style></head><body>
 
 <section class="cover">
-  <div class="brand">GrowthGoal · Learn with AI</div>
+  <div class="brand">GrowthGoal · Learn with AI${sample ? ` <span class="sample">${esc(sample.label ?? 'Sample workbook · yours is written for you after a short chat')}</span>` : ''}</div>
   <div>
-    <span class="pill">${esc(skill.name)}</span><span class="pill">Level ${level}</span>
+    <span class="pill">${esc(skill.name)}</span><span class="pill">${['Basic', 'Advanced', 'Pro'][level - 1] ?? `Level ${level}`}</span>
     <h1 style="margin-top:6mm">${esc(w.title)}</h1>
     <p class="sub">${esc(w.subtitle)}</p>
     ${cover ? `<img class="art" src="${cover}" alt="">` : ''}
@@ -196,13 +201,25 @@ ${w.chapters
   <p class="pill">${t.final}</p>
   <h2 style="margin:2mm 0 4mm">${t.together}</h2>
   ${taskBlock(w.finalTask, l)}
-  <div class="badge">
+  ${
+    free
+      ? `<div class="badge">
+    <h3>${l.language === 'Hindi' ? 'आगे क्या?' : 'What next?'}</h3>
+    <p>${
+      l.language === 'Hindi'
+        ? 'अब कोई भी स्किल सीखें: AI टीचर आपके लिए आपकी अपनी कॉपी लिखेगा, अटकने पर मदद करेगा, आपका काम जाँचेगा और स्किल बैज देगा।'
+        : 'Now learn any skill: an AI teacher writes a workbook just for you, helps when you are stuck, checks your work and gives you a skill badge.'
+    }</p>
+    <p><b>growthgoal.in/learn</b></p>
+  </div>`
+      : `<div class="badge">
     <h3>${t.earn}: ${esc(w.badge.name)}</h3>
     <p>${t.handIn} <b>${esc(url.replace(/^https?:\/\//, ''))}</b>. ${esc(HANDED_IN[skill.proof])}</p>
     <p style="margin-bottom:1mm">${t.canDo}</p>
     <ul>${w.badge.canDo.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
     <p style="font-size:9pt;color:var(--soft)">${t.fixUp}</p>
-  </div>
+  </div>`
+  }
 </section>
 </body></html>`
 }
@@ -227,7 +244,7 @@ export async function workbookPdf(input: RenderInput) {
       printBackground: true,
       displayHeaderFooter: true,
       headerTemplate: '<span></span>',
-      footerTemplate: `<div style="width:100%;font-size:8px;color:#5E6B45;padding:0 14mm;display:flex;justify-content:space-between;font-family:sans-serif"><span>${esc(input.learner.name)} · ${esc(input.skill.name)} · Level ${input.level} · ${esc(input.code)}</span><span>growthgoal.in · page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>`,
+      footerTemplate: `<div style="width:100%;font-size:8px;color:#5E6B45;padding:0 14mm;display:flex;justify-content:space-between;font-family:sans-serif"><span>${input.sample ? 'Sample · ' : ''}${esc(input.learner.name)} · ${esc(input.skill.name)} · ${['Basic', 'Advanced', 'Pro'][input.level - 1] ?? ''} · ${esc(input.code)}</span><span>growthgoal.in · page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>`,
       margin: { top: '14mm', bottom: '18mm', left: '14mm', right: '14mm' },
     })
     return { html, pdf: Buffer.from(pdf) }

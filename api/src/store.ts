@@ -84,6 +84,15 @@ export const checks = {
   get: (id: string) => load<CheckRecord>('checks', id),
   put: (c: CheckRecord) => save('checks', c.id, c),
 }
+/** The shop window: one sample workbook per skill and level, and each skill's picture. */
+export const catalog = {
+  samplePath: (skillId: string, level: number) => path.join(dir(`catalog/samples/${skillId}`), `${level}.pdf`),
+  sampleJsonPath: (skillId: string, level: number) => path.join(dir(`catalog/samples/${skillId}`), `${level}.json`),
+  coverPath: (skillId: string) => path.join(dir('catalog/covers'), `${skillId}.jpg`),
+  guidePath: (slug: string, lang: string) => path.join(dir('catalog/guides'), `${slug}-${lang}.pdf`),
+  guideCoverPath: (slug: string) => path.join(dir('catalog/guides'), `${slug}.jpg`),
+}
+
 export const badges = {
   get: (id: string) => load<BadgeRecord>('badges', id),
   put: (b: BadgeRecord) => save('badges', b.id, b),

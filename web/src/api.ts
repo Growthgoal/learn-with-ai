@@ -15,12 +15,21 @@ export async function api<T>(path: string, init?: RequestInit & { json?: unknown
 
 export type Age = 'kids-3-7' | 'kids-8-12' | 'teens' | 'college' | 'working' | 'seniors'
 export type Proof = 'pages' | 'file' | 'result' | 'typed' | 'voice'
-export interface Skill { id: string; group: string; name: string; ages: Age[]; proof: Proof; handIn: string; weSell: boolean }
 export type Size = 'starter' | 'standard' | 'pro'
+export interface Skill {
+  id: string; group: string; name: string; ages: Age[]; proof: Proof; handIn: string; weSell: boolean
+  band: 'kids' | 'life' | 'career'
+  /** Basic, Advanced, Pro. */
+  prices: { price: number; ai: number }[]
+  /** Whether a sample workbook exists for Basic, Advanced, Pro. */
+  samples: boolean[]
+  /** Whether Muse Image has drawn this skill's listing picture. */
+  cover: boolean
+}
+export interface Level { n: number; name: string; size: Size; about: string }
 export interface Catalogue {
   skills: Skill[]
-  levels: { n: number; name: string }[]
-  prices: Record<Size, { ai: number; price: number }>
+  levels: Level[]
   questions: Record<Size | 'fixup', number>
   payments: boolean
 }
@@ -43,6 +52,7 @@ export interface WorkbookView {
   learner: Pick<Learner, 'name' | 'age' | 'language' | 'readBy'>
   workbook: Workbook | null; questionsLeft: number; checks: Check[]; badgeId: string | null; fixUpOf: string | null
 }
+export interface Guide { slug: string; title: string; titleHi: string; en: boolean; hi: boolean; cover: boolean }
 export interface Badge { id: string; code: string; learnerName: string; skillId: string; skillName: string; level: number; name: string; canDo: string[]; percent: number; at: string }
 
 export const AGE_LABEL: Record<Age, string> = { 'kids-3-7': 'Kids 3–7', 'kids-8-12': 'Kids 8–12', teens: 'Teens', college: 'College', working: 'Working', seniors: 'Seniors' }

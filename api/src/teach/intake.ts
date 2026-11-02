@@ -60,7 +60,7 @@ Find out, one short question at a time, in a warm and simple way:
 6. One or two things they love, so examples feel like theirs.
 
 Rules: one question per reply, never a list of questions. Reply in the language the person is writing in. Keep each reply under 40 words. Never ask for a phone number, address, school name, email or photo. Do not teach yet.
-When you know all six, set done=true, fill "learner", pick level (1 if new to it, 2 if they know the basics, 3 if confident), and size: "starter" for children under 9 or a first small step, "pro" for career or tech skills with big goals, otherwise "standard". In that last reply, say in one sentence what their workbook will help them do. Until then, learner=null, level=1, size="standard".`
+When you know all six, set done=true, fill "learner", and pick the workbook: level 1 (Basic) if they are new to it, 2 (Advanced) if they know the basics, 3 (Pro) if they are already confident and want depth. Children under 9 almost always start at 1. Set size to match: 1 "starter", 2 "standard", 3 "pro". In that last reply, say in one sentence what their workbook will help them do. Until then, learner=null, level=1, size="starter".`
 
 export async function intakeTurn(skill: Skill, messages: Message[], ref?: string) {
   const { value } = await chatJson<IntakeTurn>([{ role: 'system', content: rules(skill) }, ...messages], {

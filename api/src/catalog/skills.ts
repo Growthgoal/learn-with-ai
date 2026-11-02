@@ -26,13 +26,22 @@ export interface Skill {
   handIn: string
   /** GrowthGoal already sells a workbook or course for it. */
   weSell: boolean
+  band: Band
 }
 
+/**
+ * Every skill comes in three workbooks. Each level is a bigger book than the
+ * one before, and starts where it ended.
+ */
 export const LEVELS = [
-  { n: 1, name: 'Starter' },
-  { n: 2, name: 'Builder' },
-  { n: 3, name: 'Advanced' },
+  { n: 1, name: 'Basic', size: 'starter', about: 'First steps: the core idea, practised until it is easy.' },
+  { n: 2, name: 'Advanced', size: 'standard', about: 'Builds on Basic: more of the skill, in real situations.' },
+  { n: 3, name: 'Pro', size: 'pro', about: 'The whole skill, done well and on your own.' },
 ] as const
+export const sizeForLevel = (n: number) => LEVELS.find((l) => l.n === n)?.size ?? 'standard'
+
+/** What a skill is worth to the learner decides its price band (see prices.ts). */
+export type Band = 'kids' | 'life' | 'career'
 
 const A: Record<string, Age> = { K1: 'kids-3-7', K2: 'kids-8-12', T: 'teens', C: 'college', W: 'working', S: 'seniors' }
 const P: Record<string, Proof> = { P: 'pages', F: 'file', R: 'result', Y: 'typed', V: 'voice' }
@@ -163,14 +172,21 @@ const ROWS: [string, string, string, string, 0 | 1, string][] = [
 const slug = (s: string) =>
   s.toLowerCase().replace(/[–—]/g, '-').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
-export const SKILLS: Skill[] = ROWS.map(([group, name, ages, proof, weSell, handIn]) => ({
-  id: slug(name),
-  group,
-  name,
-  ages: ages.split(' ').map((a) => A[a]),
-  proof: P[proof],
-  handIn,
-  weSell: weSell === 1,
-}))
+/** Everyday safety skills stay affordable even though they sit under Tech. */
+const EVERYDAY = new Set(['computer-basics', 'smartphone-and-upi-safety', 'cybersecurity-basics'])
+const bandOf = (id: string, group: string, ages: Age[]): Band =>
+  EVERYDAY.has(id)
+    ? 'life'
+    : group === 'Work and career' || group === 'Tech and AI'
+    ? 'career'
+    : group === 'Early learning' || ages.every((a) => a === 'kids-3-7' || a === 'kids-8-12')
+      ? 'kids'
+      : 'life'
+
+export const SKILLS: Skill[] = ROWS.map(([group, name, ages, proof, weSell, handIn]) => {
+  const a = ages.split(' ').map((x) => A[x])
+  const id = slug(name)
+  return { id, group, name, ages: a, proof: P[proof], handIn, weSell: weSell === 1, band: bandOf(id, group, a) }
+})
 
 export const skillById = (id: string) => SKILLS.find((s) => s.id === id)

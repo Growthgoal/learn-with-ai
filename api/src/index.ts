@@ -5,8 +5,9 @@ import cors from 'cors'
 import multer from 'multer'
 import { z } from 'zod'
 import { ROOT } from './env.js'
-import { LEVELS, SKILLS, skillById } from './catalog/skills.js'
-import { PRICES, QUESTIONS } from './catalog/prices.js'
+import { LEVELS, SKILLS, sizeForLevel, skillById } from './catalog/skills.js'
+import { priceOf, QUESTIONS } from './catalog/prices.js'
+import { GUIDES } from './catalog/guides.js'
 import { Learner, Size, SIZES, writeWorkbook } from './workbook/write.js'
 import { image } from './meta.js'
 import { workbookPdf } from './workbook/render.js'
@@ -15,7 +16,7 @@ import { intakeTurn } from './teach/intake.js'
 import { teacherReply } from './teach/teacher.js'
 import { gather, typedAnswers } from './check/evidence.js'
 import { mark } from './check/mark.js'
-import { badges, checks, newCode, WorkbookRecord, workbooks } from './store.js'
+import { badges, catalog, checks, newCode, WorkbookRecord, workbooks } from './store.js'
 
 const app = express()
 // Traefik sits in front on the server, so the visitor's address is one hop back.
@@ -71,7 +72,17 @@ const allTasks = (w: Workbook) => [...w.chapters.flatMap((c) => c.tasks), w.fina
 // ---------------------------------------------------------------- catalogue
 
 r.get('/api/skills', (_req, res) => {
-  res.json({ skills: SKILLS, levels: LEVELS, prices: PRICES, questions: QUESTIONS, payments: process.env.PAYMENTS === 'on' })
+  res.json({
+    skills: SKILLS.map((s) => ({
+      ...s,
+      prices: LEVELS.map((l) => priceOf(s, l.n)),
+      samples: LEVELS.map((l) => fs.existsSync(catalog.samplePath(s.id, l.n))),
+      cover: fs.existsSync(catalog.coverPath(s.id)),
+    })),
+    levels: LEVELS,
+    questions: QUESTIONS,
+    payments: process.env.PAYMENTS === 'on',
+  })
 })
 
 // ------------------------------------------------------------------ intake
@@ -119,7 +130,7 @@ async function build(rec: WorkbookRecord, focus?: string) {
 
 r.post('/api/workbooks', (req, res) => {
   const body = z
-    .object({ skillId: z.string(), level: z.number().int().min(1).max(3), size: z.enum(['starter', 'standard', 'pro']), learner: learnerSchema })
+    .object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema })
     .safeParse(req.body)
   const skill = body.success ? skillById(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Something is missing about the learner. Go back to the chat and finish it.' })
@@ -129,7 +140,8 @@ r.post('/api/workbooks', (req, res) => {
     code: newCode(),
     skillId: skill.id,
     level: body.data.level,
-    size: body.data.size as Size,
+    // The level decides the size: Basic is the short book, Pro the long one.
+    size: sizeForLevel(body.data.level) as Size,
     learner: body.data.learner as Learner,
     status: 'writing',
     workbook: null,
@@ -152,7 +164,7 @@ r.get('/api/workbooks/:code', (req, res) => {
     skill,
     level: rec.level,
     size: rec.size,
-    sizeLabel: SIZES[rec.size].label,
+    sizeLabel: rec.size === 'fixup' ? 'Fix-up' : LEVELS.find((l) => l.n === rec.level)?.name ?? SIZES[rec.size].label,
     learner: { name: rec.learner.name, age: rec.learner.age, language: rec.learner.language, readBy: rec.learner.readBy },
     workbook: rec.workbook ? forLearner(rec.workbook) : null,
     questionsLeft: Math.max(0, QUESTIONS[rec.size] - rec.questions),
@@ -160,6 +172,58 @@ r.get('/api/workbooks/:code', (req, res) => {
     badgeId: rec.badgeId ?? null,
     fixUpOf: rec.fixUpOf ?? null,
   })
+})
+
+r.get('/api/samples/:skill/:level.pdf', (req, res) => {
+  const skill = skillById(req.params.skill)
+  const file = skill && catalog.samplePath(skill.id, Number(req.params.level))
+  if (!skill || !file || !fs.existsSync(file)) return res.status(404).json({ error: 'No sample for this level yet.' })
+  res.setHeader('Content-Type', 'application/pdf')
+  res.setHeader('Content-Disposition', `inline; filename="sample-${skill.id}-${LEVELS[Number(req.params.level) - 1]?.name.toLowerCase()}.pdf"`)
+  res.setHeader('Cache-Control', 'public, max-age=86400')
+  res.sendFile(file)
+})
+
+// ------------------------------------------------------------ free guides
+
+r.get('/api/guides', (_req, res) => {
+  res.json(
+    GUIDES.map((g) => ({
+      slug: g.slug,
+      title: g.title,
+      titleHi: g.titleHi,
+      en: fs.existsSync(catalog.guidePath(g.slug, 'en')),
+      hi: fs.existsSync(catalog.guidePath(g.slug, 'hi')),
+      cover: fs.existsSync(catalog.guideCoverPath(g.slug)),
+    })),
+  )
+})
+
+r.get('/api/guides/:slug/cover', (req, res) => {
+  const g = GUIDES.find((x) => x.slug === req.params.slug)
+  const file = g && catalog.guideCoverPath(g.slug)
+  if (!g || !file || !fs.existsSync(file)) return res.status(404).end()
+  res.setHeader('Cache-Control', 'public, max-age=86400')
+  res.type('jpeg').sendFile(file)
+})
+
+r.get('/api/guides/:slug/:lang.pdf', (req, res) => {
+  const g = GUIDES.find((x) => x.slug === req.params.slug)
+  const lang = req.params.lang === 'hi' ? 'hi' : 'en'
+  const file = g && catalog.guidePath(g.slug, lang)
+  if (!g || !file || !fs.existsSync(file)) return res.status(404).json({ error: 'This guide is not ready yet.' })
+  res.setHeader('Content-Type', 'application/pdf')
+  res.setHeader('Content-Disposition', `inline; filename="growthgoal-${g.slug}-${lang}.pdf"`)
+  res.setHeader('Cache-Control', 'public, max-age=86400')
+  res.sendFile(file)
+})
+
+r.get('/api/skills/:id/cover', (req, res) => {
+  const skill = skillById(req.params.id)
+  const file = skill && catalog.coverPath(skill.id)
+  if (!skill || !file || !fs.existsSync(file)) return res.status(404).end()
+  res.setHeader('Cache-Control', 'public, max-age=86400')
+  res.type('jpeg').sendFile(file)
 })
 
 r.get('/api/workbooks/:code/cover', (req, res) => {

@@ -255,7 +255,7 @@ export default function WorkbookPage() {
     <div className="flex flex-col gap-6">
       <section className="rounded-4xl bg-white p-6 shadow-card lg:p-10">
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime-700">
-          {wb.skill.name} · Level {wb.level} · {wb.sizeLabel}
+          {wb.skill.name} · {wb.sizeLabel}
         </p>
         <img src={`${BASE}api/workbooks/${code}/cover`} alt="" onError={(e) => (e.currentTarget.style.display = 'none')} className="mb-4 mt-3 aspect-[3/2] w-full max-w-xl rounded-3xl object-cover" />
         <h1 className="mt-1 text-3xl font-extrabold lg:text-4xl">{w.title}</h1>
