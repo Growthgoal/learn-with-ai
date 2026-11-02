@@ -12,7 +12,7 @@ COPY web/package.json web/package-lock.json web/
 RUN cd web && npm ci --no-audit --no-fund
 COPY . .
 RUN cd web && npm run build
-ENV NODE_ENV=production PORT=4300 CHROME_PATH=/usr/bin/chromium SITE_URL=https://learn.growthgoal.in
+ENV NODE_ENV=production PORT=4300 CHROME_PATH=/usr/bin/chromium SITE_URL=https://growthgoal.in/learn
 EXPOSE 4300
 WORKDIR /app/api
 CMD ["npx", "tsx", "src/index.ts"]

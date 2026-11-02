@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Award, ChevronDown, Copy, Download, HelpCircle, Loader2, Mic, Send, Square, Upload } from 'lucide-react'
-import { api, Check, PROOF_LABEL, Task, WorkbookView } from '../api'
+import { api, BASE, Check, PROOF_LABEL, Task, WorkbookView } from '../api'
 
 function useWorkbook(code: string) {
   const [wb, setWb] = useState<WorkbookView | null>(null)
@@ -257,13 +257,13 @@ export default function WorkbookPage() {
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime-700">
           {wb.skill.name} · Level {wb.level} · {wb.sizeLabel}
         </p>
-        <img src={`/api/workbooks/${code}/cover`} alt="" onError={(e) => (e.currentTarget.style.display = 'none')} className="mb-4 mt-3 aspect-[3/2] w-full max-w-xl rounded-3xl object-cover" />
+        <img src={`${BASE}api/workbooks/${code}/cover`} alt="" onError={(e) => (e.currentTarget.style.display = 'none')} className="mb-4 mt-3 aspect-[3/2] w-full max-w-xl rounded-3xl object-cover" />
         <h1 className="mt-1 text-3xl font-extrabold lg:text-4xl">{w.title}</h1>
         <p className="mt-1 text-ink-soft">{w.subtitle}</p>
         {wb.fixUpOf && <p className="mt-3 rounded-2xl bg-sun-100 p-3 text-sm">This free fix-up workbook covers just the parts that needed more practice. When it is done, hand in your <Link className="font-bold underline" to={`/w/${wb.fixUpOf}`}>first workbook</Link> again for the badge.</p>}
         <p className="mt-4">{w.welcome}</p>
         <div className="mt-5 flex flex-wrap gap-2">
-          <a href={`/api/workbooks/${code}/pdf`} className="inline-flex items-center gap-2 rounded-2xl bg-lime-500 px-5 py-3 font-bold text-white hover:bg-lime-600"><Download size={18} /> Download the PDF to print</a>
+          <a href={`${BASE}api/workbooks/${code}/pdf`} className="inline-flex items-center gap-2 rounded-2xl bg-lime-500 px-5 py-3 font-bold text-white hover:bg-lime-600"><Download size={18} /> Download the PDF to print</a>
           {wb.badgeId && <Link to={`/badge/${wb.badgeId}`} className="inline-flex items-center gap-2 rounded-2xl bg-sun-400 px-5 py-3 font-bold"><Award size={18} /> See your badge</Link>}
         </div>
         <p className="mt-3 text-xs text-ink-faint">Workbook code {code}. Keep this page: it is your online copy, your help and your hand-in desk.</p>

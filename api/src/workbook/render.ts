@@ -6,7 +6,7 @@ import { Task, Workbook } from './schema.js'
 import { Learner } from './write.js'
 
 /** Where a printed workbook sends its learner: the online copy, prompts and submission. */
-export const SITE = process.env.SITE_URL?.replace(/\/$/, '') || 'https://learn.growthgoal.in'
+export const SITE = process.env.SITE_URL?.replace(/\/$/, '') || 'https://growthgoal.in/learn'
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!)
 

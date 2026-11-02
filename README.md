@@ -6,7 +6,7 @@ A learner tells the AI who they are and what they want to learn. The AI writes a
 
 Built by [GrowthGoal](https://growthgoal.in), an Indian learning shop, for the **Meta Global AI Developer Hackathon 2026**, on the **Meta Model API**: Muse Spark, Muse Image, SAM 3.1 and Muse Voice Transcribe.
 
-Live: **https://learn.growthgoal.in** (free while the hackathon runs)
+Live: **https://growthgoal.in/learn** (free while the hackathon runs)
 
 ---
 

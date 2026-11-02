@@ -1,6 +1,9 @@
+/** The app's own address on growthgoal.in, "/learn/". */
+export const BASE = import.meta.env.BASE_URL
+
 /** Talks to the Learn with AI API; errors carry the server's own message. */
 export async function api<T>(path: string, init?: RequestInit & { json?: unknown }): Promise<T> {
-  const res = await fetch('/api' + path, {
+  const res = await fetch(BASE + 'api' + path, {
     ...init,
     headers: init?.json !== undefined ? { 'Content-Type': 'application/json', ...init?.headers } : init?.headers,
     body: init?.json !== undefined ? JSON.stringify(init.json) : init?.body,

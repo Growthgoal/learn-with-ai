@@ -17,7 +17,7 @@ function Shell({ children }: { children: React.ReactNode }) {
             <span className="font-display text-xl font-extrabold text-ink">Learn with AI</span>
             <span className="text-xs font-bold text-lime-700">by GrowthGoal</span>
           </Link>
-          <a href="https://growthgoal.in" className="text-sm font-bold text-ink-soft hover:text-ink">growthgoal.in</a>
+          <a href="/" className="text-sm font-bold text-ink-soft hover:text-ink">← GrowthGoal shop</a>
         </div>
       </header>
       <main className="mx-auto max-w-6xl px-4 pb-20 pt-6">{children}</main>
@@ -30,7 +30,7 @@ function Shell({ children }: { children: React.ReactNode }) {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/learn">
       <Shell>
         <Routes>
           <Route path="/" element={<Home />} />

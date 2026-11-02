@@ -22,6 +22,9 @@ const app = express()
 app.set('trust proxy', 1)
 app.use(cors())
 app.use(express.json({ limit: '1mb' }))
+/** Everything lives under growthgoal.in/learn: a page of the shop, not a site of its own. */
+export const BASE = '/learn'
+const r = express.Router()
 const upload = multer({ storage: multer.memoryStorage(), limits: { files: 40, fileSize: 25 * 1024 * 1024 } })
 
 const message = z.object({ role: z.enum(['user', 'assistant']), content: z.string().max(4000) })
@@ -67,13 +70,13 @@ const allTasks = (w: Workbook) => [...w.chapters.flatMap((c) => c.tasks), w.fina
 
 // ---------------------------------------------------------------- catalogue
 
-app.get('/api/skills', (_req, res) => {
+r.get('/api/skills', (_req, res) => {
   res.json({ skills: SKILLS, levels: LEVELS, prices: PRICES, questions: QUESTIONS, payments: process.env.PAYMENTS === 'on' })
 })
 
 // ------------------------------------------------------------------ intake
 
-app.post('/api/intake', async (req, res) => {
+r.post('/api/intake', async (req, res) => {
   const body = z.object({ skillId: z.string(), messages: z.array(message).max(30) }).safeParse(req.body)
   const skill = body.success ? skillById(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Pick a skill and say hello.' })
@@ -114,7 +117,7 @@ async function build(rec: WorkbookRecord, focus?: string) {
   }
 }
 
-app.post('/api/workbooks', (req, res) => {
+r.post('/api/workbooks', (req, res) => {
   const body = z
     .object({ skillId: z.string(), level: z.number().int().min(1).max(3), size: z.enum(['starter', 'standard', 'pro']), learner: learnerSchema })
     .safeParse(req.body)
@@ -139,7 +142,7 @@ app.post('/api/workbooks', (req, res) => {
   res.status(202).json({ code: rec.code })
 })
 
-app.get('/api/workbooks/:code', (req, res) => {
+r.get('/api/workbooks/:code', (req, res) => {
   const rec = workbooks.get(req.params.code)
   if (!rec) return res.status(404).json({ error: 'No workbook at this address. Check the code printed on your workbook.' })
   const skill = skillById(rec.skillId)!
@@ -159,7 +162,7 @@ app.get('/api/workbooks/:code', (req, res) => {
   })
 })
 
-app.get('/api/workbooks/:code/cover', (req, res) => {
+r.get('/api/workbooks/:code/cover', (req, res) => {
   const rec = workbooks.get(req.params.code)
   const file = rec && workbooks.coverPath(rec.code)
   if (!rec || !file || !fs.existsSync(file)) return res.status(404).end()
@@ -167,7 +170,7 @@ app.get('/api/workbooks/:code/cover', (req, res) => {
   res.type('jpeg').sendFile(file)
 })
 
-app.get('/api/workbooks/:code/pdf', (req, res) => {
+r.get('/api/workbooks/:code/pdf', (req, res) => {
   const rec = workbooks.get(req.params.code)
   const file = rec && workbooks.pdfPath(rec.code)
   if (!rec || !file || !fs.existsSync(file)) return res.status(404).json({ error: 'The PDF is not ready yet.' })
@@ -178,7 +181,7 @@ app.get('/api/workbooks/:code/pdf', (req, res) => {
 
 // ----------------------------------------------------------------- teacher
 
-app.post('/api/workbooks/:code/ask', async (req, res) => {
+r.post('/api/workbooks/:code/ask', async (req, res) => {
   const rec = workbooks.get(req.params.code)
   const body = z.object({ taskId: z.string(), messages: z.array(message).min(1).max(30) }).safeParse(req.body)
   if (!rec?.workbook || !body.success) return res.status(400).json({ error: 'Ask about a task in a workbook that is ready.' })
@@ -199,7 +202,7 @@ app.post('/api/workbooks/:code/ask', async (req, res) => {
 
 // ------------------------------------------------------------------ checks
 
-app.post('/api/workbooks/:code/check', upload.array('files', 40), async (req, res) => {
+r.post('/api/workbooks/:code/check', upload.array('files', 40), async (req, res) => {
   const rec = workbooks.get(req.params.code)
   if (!rec?.workbook) return res.status(404).json({ error: 'No workbook here to check.' })
   const scope = req.body.scope === 'badge' ? 'badge' : 'page'
@@ -263,7 +266,7 @@ app.post('/api/workbooks/:code/check', upload.array('files', 40), async (req, re
   }
 })
 
-app.get('/api/badges/:id', (req, res) => {
+r.get('/api/badges/:id', (req, res) => {
   const b = badges.get(req.params.id)
   if (!b) return res.status(404).json({ error: 'No badge with this number.' })
   res.json(b)
@@ -273,9 +276,11 @@ app.get('/api/badges/:id', (req, res) => {
 
 const web = path.join(ROOT, 'web', 'dist')
 if (fs.existsSync(web)) {
-  app.use(express.static(web, { index: false, maxAge: '1h' }))
-  app.get(/^(?!\/api\/).*/, (_req, res) => res.sendFile(path.join(web, 'index.html')))
+  r.use(express.static(web, { index: false, maxAge: '1h' }))
+  r.get(/^(?!\/api\/).*/, (_req, res) => res.sendFile(path.join(web, 'index.html')))
 }
+app.use(BASE, r)
+app.get('/', (_req, res) => res.redirect(BASE + '/'))
 
 const port = Number(process.env.PORT) || 4300
 app.listen(port, () => console.log(`Learn with AI on :${port}`))
