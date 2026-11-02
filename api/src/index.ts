@@ -17,6 +17,8 @@ import { mark } from './check/mark.js'
 import { badges, checks, newCode, WorkbookRecord, workbooks } from './store.js'
 
 const app = express()
+// Traefik sits in front on the server, so the visitor's address is one hop back.
+app.set('trust proxy', 1)
 app.use(cors())
 app.use(express.json({ limit: '1mb' }))
 const upload = multer({ storage: multer.memoryStorage(), limits: { files: 40, fileSize: 25 * 1024 * 1024 } })
@@ -32,6 +34,28 @@ const learnerSchema = z.object({
   interests: z.array(z.string().max(60)).max(6),
   readBy: z.enum(['learner', 'parent']),
 })
+
+/**
+ * While workbooks are free (the hackathon), a cap keeps one visitor, or a
+ * bot, from spending the AI credit: per address per day, and in all.
+ */
+const LIMITS = { workbook: { perIp: 6, total: 300 }, check: { perIp: 40, total: 1500 }, intake: { perIp: 120, total: 6000 } }
+const used = new Map<string, number>()
+let usedDay = ''
+function allow(kind: keyof typeof LIMITS, ip: string) {
+  const day = new Date().toISOString().slice(0, 10)
+  if (day !== usedDay) {
+    used.clear()
+    usedDay = day
+  }
+  const mine = `${kind}:${ip}`
+  const all = `${kind}:*`
+  if ((used.get(mine) ?? 0) >= LIMITS[kind].perIp || (used.get(all) ?? 0) >= LIMITS[kind].total) return false
+  used.set(mine, (used.get(mine) ?? 0) + 1)
+  used.set(all, (used.get(all) ?? 0) + 1)
+  return true
+}
+const TOO_MANY = { error: 'That is the limit for today while Learn with AI is free. Come back tomorrow.' }
 
 /** Every task with the answer key removed: what a learner's browser may see. */
 function forLearner(w: Workbook) {
@@ -52,6 +76,7 @@ app.post('/api/intake', async (req, res) => {
   const body = z.object({ skillId: z.string(), messages: z.array(message).max(30) }).safeParse(req.body)
   const skill = body.success ? skillById(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Pick a skill and say hello.' })
+  if (!allow('intake', req.ip ?? '')) return res.status(429).json(TOO_MANY)
   try {
     res.json(await intakeTurn(skill, body.data.messages))
   } catch (e) {
@@ -82,6 +107,7 @@ app.post('/api/workbooks', (req, res) => {
     .safeParse(req.body)
   const skill = body.success ? skillById(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Something is missing about the learner. Go back to the chat and finish it.' })
+  if (!allow('workbook', req.ip ?? '')) return res.status(429).json(TOO_MANY)
   // Payment happens on growthgoal.in before this point; during the hackathon it is free.
   const rec: WorkbookRecord = {
     code: newCode(),
@@ -166,6 +192,7 @@ app.post('/api/workbooks/:code/check', upload.array('files', 40), async (req, re
   const files = (req.files as Express.Multer.File[]) ?? []
   const forTask = typeof req.body.forTask === 'string' ? req.body.forTask : undefined
   if (!files.length && !Object.keys(answers).length) return res.status(400).json({ error: 'Add a photo, a file, a recording or your typed answers first.' })
+  if (!allow('check', req.ip ?? '')) return res.status(429).json(TOO_MANY)
   const skill = skillById(rec.skillId)!
   const id = newCode()
   try {
@@ -193,7 +220,9 @@ app.post('/api/workbooks/:code/check', upload.array('files', 40), async (req, re
       })
     }
     // A badge check that did not pass gets a free fix-up workbook for just the gaps.
-    if (scope === 'badge' && !result.passed && result.readable) {
+    // Only when most of the work came in: a missing hand-in needs the work, not a new workbook.
+    const handedIn = result.tasks.filter((t) => t.found).length / Math.max(1, result.tasks.length)
+    if (scope === 'badge' && !result.passed && result.readable && handedIn >= 0.5) {
       const weak = result.tasks.filter((t) => t.score < (allTasks(rec.workbook!).find((x) => x.id === t.id)?.points ?? 1))
       const focus = [
         ...weak.map((t) => `- Task ${t.id}: ${allTasks(rec.workbook!).find((x) => x.id === t.id)?.instruction} — ${t.feedback}`),
