@@ -1,0 +1,6122 @@
+{
+ "memory-and-matching": {
+  "goals": [
+   "Remember pictures and pairs",
+   "Match same shapes fast",
+   "Recall short stories",
+   "Focus and finish pages",
+   "Learn new words"
+  ],
+  "questions": [
+   {
+    "id": "memory_level",
+    "label": "What can your child do now?",
+    "options": [
+     "Not matching yet",
+     "Matches 2 to 3 pairs",
+     "Matches many pairs",
+     "Remembers full pages"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard for your child?",
+    "options": [
+     "Forgets too fast",
+     "Loses focus",
+     "Mixes up pictures",
+     "Gives up"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What will you practise with?",
+    "options": [
+     "Animals",
+     "Shapes and colors",
+     "Letters and numbers",
+     "Family photos",
+     "Toys at home"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will your child use this?",
+    "options": [
+     "At preschool",
+     "At home play",
+     "Reading time",
+     "Games with friends"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "shapes-and-patterns": {
+  "goals": [
+   "Name circles, squares, and triangles",
+   "Finish simple color and shape patterns",
+   "Sort shapes by size and color",
+   "Make own patterns with blocks",
+   "Find shapes in everyday things"
+  ],
+  "questions": [
+   {
+    "id": "level_now",
+    "label": "What can your child do now?",
+    "options": [
+     "Knows few shapes",
+     "Names basic shapes",
+     "Finishes easy patterns",
+     "Makes own patterns"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hard for your child?",
+    "options": [
+     "Mixing up shape names",
+     "Seeing what comes next",
+     "Sorting by color or size",
+     "Staying focused to finish"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What can your child use to practise?",
+    "options": [
+     "Paper and crayons",
+     "Blocks or toys",
+     "Stickers or cut-outs",
+     "Everyday objects at home"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will your child use this?",
+    "options": [
+     "For school work",
+     "For play and drawing",
+     "For puzzles and games",
+     "For daily life skills"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "pencil-control-and-tracing": {
+  "goals": [
+   "Hold the pencil well",
+   "Trace straight lines neatly",
+   "Trace curves and shapes",
+   "Finish easy mazes",
+   "Get ready to write"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can your child do now?",
+    "options": [
+     "Only scribbles",
+     "Holds pencil but shaky",
+     "Can trace straight lines",
+     "Can trace curves and shapes"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard with the pencil?",
+    "options": [
+     "Pencil slips or falls",
+     "Pushes too hard or soft",
+     "Goes off the line",
+     "Hand gets tired fast"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_have",
+    "label": "What can your child use to practise?",
+    "options": [
+     "Big crayons",
+     "Pencils",
+     "Washable markers",
+     "Printed tracing pages"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will your child use this for?",
+    "options": [
+     "Get ready to write",
+     "Colouring and drawing",
+     "School work",
+     "Fun mazes and games"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "colouring-and-colour-sense": {
+  "goals": [
+   "Stay inside the lines",
+   "Learn colour names well",
+   "Hold crayons the right way",
+   "Make neat pretty pictures",
+   "Pick colours that look nice"
+  ],
+  "questions": [
+   {
+    "id": "colouring_now",
+    "label": "How does your child colour right now?",
+    "options": [
+     "Only scribbles",
+     "Colours but goes out of lines",
+     "Mostly stays in lines",
+     "Colours neatly and carefully"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "colouring_hard",
+    "label": "What is hard about colouring?",
+    "options": [
+     "Goes outside the lines",
+     "Presses too hard or too soft",
+     "Gets tired hands fast",
+     "Does not know colours"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "colour_tools",
+    "label": "What do you have to colour with?",
+    "options": [
+     "Crayons",
+     "Colour pencils",
+     "Markers",
+     "Paints"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "colour_use",
+    "label": "What will the coloured pages be for?",
+    "options": [
+     "Fun at home",
+     "Get ready for school",
+     "Make gifts and cards",
+     "Calm quiet time"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "scissor-skills": {
+  "goals": [
+   "Cut straight lines safely",
+   "Cut circles and curves",
+   "Cut out simple shapes",
+   "Snip and trim with control",
+   "Cut for fun crafts"
+  ],
+  "questions": [
+   {
+    "id": "cutting_now",
+    "label": "What can your child do now?",
+    "options": [
+     "Never used scissors",
+     "Can snip paper",
+     "Can cut straight lines",
+     "Can cut shapes"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hard with cutting?",
+    "options": [
+     "Holding the scissors",
+     "Cutting on the line",
+     "Turning the paper",
+     "Getting tired or unsafe"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_home",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Child safety scissors",
+     "Plain paper",
+     "Colored craft paper",
+     "Printed shapes to cut"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you cut for?",
+    "options": [
+     "School art",
+     "Home crafts fun",
+     "Cut out shapes",
+     "Make cards and gifts"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "sight-words": {
+  "goals": [
+   "Read first 25 sight words",
+   "Read simple little books",
+   "Write sight words neatly",
+   "Keep words in memory",
+   "Read faster and smoother"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How many sight words can your child read now?",
+    "options": [
+     "None yet",
+     "A few words",
+     "Many easy words",
+     "Reads short sentences"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard about sight words?",
+    "options": [
+     "Forgets words fast",
+     "Mixes up letters",
+     "Will not sit still",
+     "Reads slow"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you have to practice with?",
+    "options": [
+     "Word cards",
+     "Picture books",
+     "Crayons and paper",
+     "Letter magnets"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will your child use sight words for?",
+    "options": [
+     "School reading time",
+     "Bedtime story books",
+     "Fun word games",
+     "Write little notes"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "phonics-and-letter-sounds": {
+  "goals": [
+   "Know all letter sounds",
+   "Match letters to sounds",
+   "Read first short words",
+   "Write letters by sound",
+   "Enjoy sounding out books"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can your child do now?",
+    "options": [
+     "Few letter sounds",
+     "Most letter sounds",
+     "Sounds out short words",
+     "Reads small words alone"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard with sounds and letters?",
+    "options": [
+     "Mixes up look-like letters",
+     "Forgets sounds fast",
+     "Cannot blend sounds",
+     "Writes letters wrong way"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "What will you use to practise?",
+    "options": [
+     "Printed matching pages",
+     "Letter cards or blocks",
+     "Songs and rhymes",
+     "Picture books"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will your child use this for?",
+    "options": [
+     "Read picture books",
+     "School work and reading",
+     "Write first words",
+     "Just for fun learning"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "good-habits-and-manners": {
+  "goals": [
+   "Say please and thank you",
+   "Share and take turns",
+   "Brush teeth and wash hands",
+   "Tidy up toys and things",
+   "Listen and speak kindly"
+  ],
+  "questions": [
+   {
+    "id": "manners_now",
+    "label": "What can your child do now?",
+    "options": [
+     "Needs many reminders",
+     "Sometimes remembers",
+     "Mostly good habits"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_moments",
+    "label": "When are manners hardest?",
+    "options": [
+     "At meals",
+     "Sharing with others",
+     "Morning and bedtime",
+     "When upset or tired"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "Who will practise habits with?",
+    "options": [
+     "Mom or dad",
+     "Grandparent",
+     "Brother or sister",
+     "Teacher or helper"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will good manners be used most?",
+    "options": [
+     "At home",
+     "At school",
+     "With friends and family",
+     "Outside in public"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "my-world-evs": {
+  "goals": [
+   "Know animals and plants",
+   "Tell seasons and weather",
+   "Know helpers around us",
+   "Stay clean, safe and healthy",
+   "Care for nature and earth"
+  ],
+  "questions": [
+   {
+    "id": "level_now",
+    "label": "What can your child do now?",
+    "options": [
+     "Just starting",
+     "Says a few words",
+     "Speaks in full ideas",
+     "Writes small pages"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hard for your child?",
+    "options": [
+     "Naming animals and plants",
+     "Seasons and weather",
+     "Helpers and their jobs",
+     "Clean and safe habits"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "What can your child use to practise?",
+    "options": [
+     "Crayons and paper",
+     "Picture books",
+     "Toys at home",
+     "Park or garden"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will the pages be used for?",
+    "options": [
+     "School work",
+     "Learn at home",
+     "Fun activity time",
+     "Show and tell"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "numbers-and-counting": {
+  "goals": [
+   "Count from 1 to 10",
+   "Write numbers 1 to 10",
+   "Count toys and pictures",
+   "Match numbers to groups",
+   "Count to 20 with help"
+  ],
+  "questions": [
+   {
+    "id": "counting_now",
+    "label": "What can your child do now?",
+    "options": [
+     "Not counting yet",
+     "Counts to 5",
+     "Counts to 10",
+     "Counts past 10",
+     "Writes some numbers"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard with counting?",
+    "options": [
+     "Skips numbers",
+     "Mixes up numbers",
+     "Counting things in a row",
+     "Writing numbers",
+     "Holding a pencil"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Crayons and paper",
+     "Blocks or small toys",
+     "Can print pages",
+     "Stickers to count"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will your child use counting?",
+    "options": [
+     "Play at home",
+     "Preschool class",
+     "Get ready for school",
+     "Daily fun tasks"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "reading-aloud": {
+  "goals": [
+   "Read first words and sentences",
+   "Read picture books alone",
+   "Read smoothly and clearly",
+   "Read with feeling and voice",
+   "Read school books with ease"
+  ],
+  "questions": [
+   {
+    "id": "reading_now",
+    "label": "What can you read now?",
+    "options": [
+     "Knows some letters",
+     "Sounds out short words",
+     "Reads short sentences",
+     "Reads small books"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard when you read?",
+    "options": [
+     "Letter sounds",
+     "Sounding out words",
+     "Reading smoothly",
+     "Hard new words",
+     "Understanding the story"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "What can you use to practise?",
+    "options": [
+     "Picture books",
+     "Word cards",
+     "Songs and rhymes",
+     "Easy story books"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you read out loud?",
+    "options": [
+     "Fun stories at home",
+     "School books",
+     "In class for others",
+     "To little brother or sister"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "cursive-writing": {
+  "goals": [
+   "Write neat joined letters",
+   "Write faster in cursive",
+   "Join letters smoothly",
+   "Make writing easy to read",
+   "Finish school work in cursive"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How do you write now?",
+    "options": [
+     "Print only",
+     "Some cursive letters",
+     "Slow cursive words",
+     "Full cursive pages"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard in cursive?",
+    "options": [
+     "Letter shapes",
+     "Joining letters",
+     "Staying on the line",
+     "Writing fast",
+     "Neat and clean"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What will you practise with?",
+    "options": [
+     "Pencil and paper",
+     "Pen and notebook",
+     "Lined workbook",
+     "Whiteboard"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use cursive for?",
+    "options": [
+     "School work",
+     "Notes and diary",
+     "Cards and letters",
+     "Tests and exams"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "essay-writing": {
+  "goals": [
+   "Write neat school essays fast",
+   "Tell stories with clear ideas",
+   "Get better grades and marks",
+   "Share my thoughts with confidence",
+   "Write strong first paragraphs"
+  ],
+  "questions": [
+   {
+    "id": "essay_level",
+    "label": "How do you write essays right now?",
+    "options": [
+     "I am just starting",
+     "I can write some sentences",
+     "I can write one page",
+     "I can write many pages"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "essay_hard_part",
+    "label": "What is hard about essay writing?",
+    "options": [
+     "Starting my ideas",
+     "Putting ideas in order",
+     "Spelling and sentences",
+     "Writing enough words",
+     "Neat handwriting"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "essay_tools",
+    "label": "What do you use to write?",
+    "options": [
+     "Pencil and notebook",
+     "Pen and paper",
+     "Computer or tablet",
+     "Both paper and computer"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "essay_use",
+    "label": "What will you use essays for?",
+    "options": [
+     "School homework",
+     "Tests and exams",
+     "Stories for fun",
+     "College applications"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "hindi-sulekh-varnamala-matra-barakhadi": {
+  "goals": [
+   "Write neat Hindi letters",
+   "Learn all matras correctly",
+   "Write full barakhadi easily",
+   "Write clean Hindi words",
+   "Do neat school homework"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "Where are you now in Hindi writing?",
+    "options": [
+     "Brand new to letters",
+     "Know some varnamala",
+     "Can write small words",
+     "Can write lines and sentences"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong when you write?",
+    "options": [
+     "Matras in wrong place",
+     "Letters not same size",
+     "Shaky or unclean lines",
+     "Too slow to finish"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "write_with",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Pencil and notebook",
+     "Crayons or sketch pens",
+     "Slate and chalk",
+     "Ruled Hindi copy"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use neat Hindi for?",
+    "options": [
+     "School class work",
+     "Exams and tests",
+     "Cards and diary",
+     "Reading and prayer books"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "letter-and-application-writing": {
+  "goals": [
+   "Write neat formal letters",
+   "Write friendly informal letters",
+   "Write strong school applications",
+   "Use correct letter format",
+   "Write clear short sentences"
+  ],
+  "questions": [
+   {
+    "id": "letter_level",
+    "label": "How well can you write letters now?",
+    "options": [
+     "Just starting",
+     "Can write short notes",
+     "Can write full letters",
+     "Can write well"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "big_problem",
+    "label": "What is hardest for you in letters?",
+    "options": [
+     "Starting and ending right",
+     "Correct format and layout",
+     "Spelling and grammar",
+     "Neat handwriting on pages",
+     "Knowing what to say"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What do you use to practise writing?",
+    "options": [
+     "Ruled notebook",
+     "Plain paper",
+     "Letter pads or sheets",
+     "Pen and pencil"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "letter_use",
+    "label": "What will you use letters for?",
+    "options": [
+     "School homework and tests",
+     "Leave and sick applications",
+     "Letters to family and friends",
+     "Complaint and request letters"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "speed-writing-for-board-exams": {
+  "goals": [
+   "Finish full paper on time",
+   "Write fast and still neat",
+   "Feel calm in timed tests",
+   "Get better marks in boards",
+   "Write long answers with ease"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How fast can you write now?",
+    "options": [
+     "Very slow, miss parts",
+     "Okay but feel rushed",
+     "Fast but messy writing",
+     "Fast and mostly neat"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_problem",
+    "label": "What goes wrong when you write fast?",
+    "options": [
+     "Hand hurts or gets tired",
+     "Writing gets hard to read",
+     "Spelling and grammar slip",
+     "Lose ideas or plan"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Pens and paper sheets",
+     "Board exam papers",
+     "Timer or stopwatch",
+     "Lined notebooks"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "exam_use",
+    "label": "Which papers need speed writing most?",
+    "options": [
+     "Science and maths",
+     "History and English",
+     "All board subjects",
+     "Long answer papers"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "english-handwriting-print": {
+  "goals": [
+   "Write clear neat letters",
+   "Hold pencil with ease",
+   "Stay on the line",
+   "Write faster for school",
+   "Space words evenly"
+  ],
+  "questions": [
+   {
+    "id": "print_level",
+    "label": "How is your print writing now?",
+    "options": [
+     "Not writing letters yet",
+     "Big wobbly letters",
+     "Small but messy",
+     "Mostly neat already"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What goes wrong when you write?",
+    "options": [
+     "Letters face wrong way",
+     "Wrong letter sizes",
+     "No spaces between words",
+     "Hand hurts or tires",
+     "Goes off the line"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "write_tools",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Lined paper and pencils",
+     "Plain paper and crayons",
+     "Thick easy-grip pencils",
+     "Whiteboard and markers"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "write_use",
+    "label": "What will you use handwriting for?",
+    "options": [
+     "School work and tests",
+     "Notes and lists",
+     "Cards and drawings",
+     "Work forms and papers"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "poetry-writing": {
+  "goals": [
+   "Write poems that share feelings",
+   "Learn forms like haiku and sonnet",
+   "Find new ideas to write",
+   "Make words sound musical",
+   "Share poems with others"
+  ],
+  "questions": [
+   {
+    "id": "poetry_level",
+    "label": "How do you write poems now?",
+    "options": [
+     "Never wrote one",
+     "A few short poems",
+     "I write often",
+     "I share my poems"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "poetry_hard_part",
+    "label": "What is hardest for you?",
+    "options": [
+     "Starting with blank page",
+     "Rhyming well",
+     "Showing deep feelings",
+     "Making it flow"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "poetry_tools",
+    "label": "What do you have to write with?",
+    "options": [
+     "Phone or computer",
+     "Paper notebook",
+     "Books of poems",
+     "Writing group or class"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "poetry_use",
+    "label": "What will you use your poems for?",
+    "options": [
+     "Just for fun",
+     "School work",
+     "Gift or greeting",
+     "Share online or in print"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "calligraphy-and-brush-lettering": {
+  "goals": [
+   "Write pretty cards and gifts",
+   "Learn brush strokes and letters",
+   "Make journals and art pretty",
+   "Relax and enjoy slow writing",
+   "Make signs and sale posters"
+  ],
+  "questions": [
+   {
+    "id": "skill_now",
+    "label": "How good are you at lettering now?",
+    "options": [
+     "Never tried it",
+     "Can print neatly",
+     "Starting brush strokes",
+     "Can write words"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What goes wrong when you try?",
+    "options": [
+     "Lines shake",
+     "Letters not same size",
+     "Ink blobs or smears",
+     "Hands get tired fast"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_have",
+    "label": "What do you have to write with?",
+    "options": [
+     "Brush pens",
+     "Paint brush and ink",
+     "Pointed pen and nib",
+     "Regular pens and paper"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use it for most?",
+    "options": [
+     "Cards and gifts",
+     "Journal and planner",
+     "Art and posters",
+     "School or work pages"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "creative-writing-and-stories": {
+  "goals": [
+   "Write fun short stories",
+   "Finish my own book",
+   "Make strong story characters",
+   "Write with clear imagination",
+   "Share stories with others"
+  ],
+  "questions": [
+   {
+    "id": "writing_now",
+    "label": "How do you write stories now?",
+    "options": [
+     "I am just starting",
+     "I write a little",
+     "I write a lot",
+     "I finish full stories"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hardest in your stories?",
+    "options": [
+     "Starting ideas",
+     "Making it exciting",
+     "Spelling and sentences",
+     "Finishing the end"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you have to write with?",
+    "options": [
+     "Phone or tablet",
+     "Laptop or computer",
+     "Notebook and pen",
+     "Books to read"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "story_use",
+    "label": "What will you use your stories for?",
+    "options": [
+     "Fun and hobby",
+     "School or class",
+     "Share online",
+     "My own book"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "school-maths-class-1-5": {
+  "goals": [
+   "Count and write numbers well",
+   "Add and subtract with ease",
+   "Learn times tables by heart",
+   "Solve easy word problems",
+   "Tell time and use money"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "Where is the child in maths now?",
+    "options": [
+     "Counts and writes numbers",
+     "Adds and subtracts to 20",
+     "Multiplies and divides small numbers",
+     "Works with big numbers and fractions"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong most in maths?",
+    "options": [
+     "Forgets steps",
+     "Makes small mistakes",
+     "Too slow",
+     "Word problems are hard",
+     "Does not know tables"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What does the child have to practise with?",
+    "options": [
+     "Paper and pencil",
+     "Counting sticks or blocks",
+     "Number cards or games",
+     "School book"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will the child use maths for?",
+    "options": [
+     "School tests and homework",
+     "Shops and daily life",
+     "Maths games and fun",
+     "Get ready for next class"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "vedic-maths": {
+  "goals": [
+   "Do maths fast in head",
+   "Get full marks in exams",
+   "Win maths contests fast",
+   "Stop fear of big numbers",
+   "Learn cool Vedic tricks"
+  ],
+  "questions": [
+   {
+    "id": "maths_now",
+    "label": "What can you do in maths now?",
+    "options": [
+     "Know tables to 10",
+     "Do sums on paper",
+     "Do some mental sums",
+     "Already fast at maths"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong for you?",
+    "options": [
+     "Tables feel slow",
+     "Long sums scare me",
+     "Make silly mistakes",
+     "Forget steps quickly",
+     "Takes too much time"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "What do you practise with?",
+    "options": [
+     "Notebook and pen",
+     "Flashcards or tables",
+     "Phone or tablet",
+     "School books"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will you use Vedic maths?",
+    "options": [
+     "School classwork",
+     "Exams and tests",
+     "Olympiad and contests",
+     "Daily life sums"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "journaling": {
+  "goals": [
+   "Calm stress and clear my mind",
+   "Build a daily writing habit",
+   "Understand my feelings better",
+   "Track goals and personal growth",
+   "Keep memories and life stories",
+   "Be more thankful and positive"
+  ],
+  "questions": [
+   {
+    "id": "journaling_level",
+    "label": "How do you journal right now?",
+    "options": [
+     "I have never started",
+     "I start but stop",
+     "I write sometimes",
+     "I write most days"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "journaling_problem",
+    "label": "What is hard about journaling for you?",
+    "options": [
+     "I do not know what to write",
+     "I have no time",
+     "I worry about spelling",
+     "I cannot stay regular"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "journaling_tools",
+    "label": "What will you write in?",
+    "options": [
+     "Paper notebook",
+     "Blank pages printed",
+     "Phone or tablet app",
+     "Computer document"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "journaling_use",
+    "label": "What will your journal pages be for?",
+    "options": [
+     "Feelings and stress",
+     "School or work growth",
+     "Health and habits",
+     "Memories and thanks",
+     "Ideas and plans"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "school-maths-class-6-10": {
+  "goals": [
+   "Get good marks in exams",
+   "Understand maths without fear",
+   "Solve sums fast and correct",
+   "Do homework all alone",
+   "Get ready for next class"
+  ],
+  "questions": [
+   {
+    "id": "maths_level",
+    "label": "Which class maths are you learning now?",
+    "options": [
+     "Class 6",
+     "Class 7-8",
+     "Class 9-10",
+     "I am behind my class"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_topics",
+    "label": "Which maths parts feel hard? Pick any.",
+    "options": [
+     "Numbers and fractions",
+     "Algebra and formulas",
+     "Geometry and shapes",
+     "Word problems",
+     "Tables and fast sums"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "mistakes",
+    "label": "What goes wrong most when you solve sums?",
+    "options": [
+     "I do not understand steps",
+     "Small silly mistakes",
+     "I forget in exam",
+     "I get scared and stop"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you have to practise maths with?",
+    "options": [
+     "Notebook and pen",
+     "School book only",
+     "Phone for watching",
+     "Helper at home"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use this maths for?",
+    "options": [
+     "School tests",
+     "Homework daily",
+     "Olympiad and contests",
+     "Learn for fun"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "times-tables-and-mental-maths": {
+  "goals": [
+   "Know tables up to 12",
+   "Answer faster in my head",
+   "Feel sure with big numbers",
+   "Stop silly mistakes in tests",
+   "Do division with ease"
+  ],
+  "questions": [
+   {
+    "id": "tables_now",
+    "label": "Which tables can you already say?",
+    "options": [
+     "Only 2s, 5s and 10s",
+     "Up to 5 times table",
+     "Up to 10 times table",
+     "Up to 12 times table",
+     "All tables but slow"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hard for you? Pick any.",
+    "options": [
+     "Forgetting answers",
+     "Too slow",
+     "Mixing up numbers",
+     "Division is hard",
+     "Word problems are hard"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What can you use to practise?",
+    "options": [
+     "Paper and pencil",
+     "Flash cards",
+     "Dice or games",
+     "A helper at home"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What do you want to use it for most?",
+    "options": [
+     "School tests",
+     "Homework in minutes",
+     "Games and fun",
+     "Shopping and real life"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "logic-and-number-puzzles": {
+  "goals": [
+   "Solve puzzles faster and easier",
+   "Have fun with daily brain games",
+   "Get better at tricky thinking",
+   "Feel calm and focused solving",
+   "Win games and contests"
+  ],
+  "questions": [
+   {
+    "id": "puzzle_level",
+    "label": "Which puzzles can you do now?",
+    "options": [
+     "Easy number puzzles",
+     "Medium Sudoku and grids",
+     "Hard logic puzzles",
+     "I am just starting"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What goes wrong when you solve?",
+    "options": [
+     "I get stuck",
+     "I make small mistakes",
+     "It takes too long",
+     "I give up early"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you use to practise?",
+    "options": [
+     "Printed pages",
+     "Pencil and paper",
+     "Phone or tablet",
+     "Books of puzzles"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "puzzle_use",
+    "label": "What will you use puzzles for?",
+    "options": [
+     "Fun at home",
+     "School or class",
+     "Family games together",
+     "Keep brain sharp"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "aptitude-and-reasoning-for-exams": {
+  "goals": [
+   "Pass job and college tests",
+   "Solve questions much faster",
+   "Master puzzles and patterns",
+   "Score high in maths logic",
+   "Feel calm in timed tests"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "Where are you with these questions now?",
+    "options": [
+     "Just starting out",
+     "I know the basics",
+     "I am okay but slow",
+     "I am strong, want top score"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong most in tests?",
+    "options": [
+     "I run out of time",
+     "Silly mistakes in maths",
+     "Logic puzzles confuse me",
+     "I forget steps and formulas"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "test_use",
+    "label": "What will you use this for?",
+    "options": [
+     "College entrance exams",
+     "Job placement tests",
+     "Olympiads and contests",
+     "Class marks and practice"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tool",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Phone or laptop",
+     "Notebook and pen",
+     "Books and past papers",
+     "Only this workbook"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "word-problems": {
+  "goals": [
+   "Solve two-step word problems",
+   "Show clear neat working",
+   "Pick the right operation fast",
+   "Check answers make sense",
+   "Feel calm on tests"
+  ],
+  "questions": [
+   {
+    "id": "level_now",
+    "label": "Where are you with word problems now?",
+    "options": [
+     "New to them",
+     "Can do one-step",
+     "Can do some two-step",
+     "Almost test ready"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "what_goes_wrong",
+    "label": "What goes wrong most often?",
+    "options": [
+     "Do not know where to start",
+     "Pick wrong plus, minus, times",
+     "Mess up the working",
+     "Give up on long text"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Paper and pencil",
+     "Small whiteboard",
+     "Counters or blocks",
+     "Someone helps me"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use word problems for?",
+    "options": [
+     "School homework",
+     "Tests and exams",
+     "Money and shopping",
+     "Games and puzzles"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "chess-tactics": {
+  "goals": [
+   "Win more games fast",
+   "Solve puzzles every day",
+   "Spot forks and pins",
+   "Stop hanging free pieces",
+   "Play cool school tournaments"
+  ],
+  "questions": [
+   {
+    "id": "chess_level",
+    "label": "How do you play chess now?",
+    "options": [
+     "I know the moves",
+     "I win sometimes",
+     "I win often",
+     "I play rated games"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "tricky_parts",
+    "label": "What goes wrong in your games?",
+    "options": [
+     "I miss easy wins",
+     "I lose pieces free",
+     "I run out of time",
+     "I get lost in attack"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Phone or computer",
+     "Real board at home",
+     "Chess clock",
+     "Friend to play"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use chess tactics for?",
+    "options": [
+     "Fun casual games",
+     "School or club games",
+     "Online fast games",
+     "Teach my family"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "critical-thinking-and-problem-solving": {
+  "goals": [
+   "Solve hard problems step by step",
+   "Spot weak ideas and mistakes",
+   "Make smart choices with facts",
+   "Explain your thinking clearly",
+   "Pass tests and job cases"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "Where are you now with problem solving?",
+    "options": [
+     "Just starting out",
+     "Can do easy ones",
+     "Okay but often slow",
+     "Strong and want challenge"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_struggle",
+    "label": "What goes wrong most for you?",
+    "options": [
+     "Do not know how to start",
+     "Miss key clues",
+     "Rush and make slips",
+     "Can solve but cannot explain"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you want to practise with?",
+    "options": [
+     "School maths problems",
+     "Puzzles and brain teasers",
+     "Money and daily choices",
+     "News claims and data"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use this skill for?",
+    "options": [
+     "School tests and homework",
+     "College and job tests",
+     "Work problems and choices",
+     "Smart everyday decisions"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "brain-fitness-for-seniors": {
+  "goals": [
+   "Keep memory sharp daily",
+   "Think faster and clearer",
+   "Feel sure with numbers",
+   "Stop forgetting small things",
+   "Have fun with puzzles"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How is your thinking and memory now?",
+    "options": [
+     "Very sharp",
+     "Okay most days",
+     "Often forgetful",
+     "Needs a lot of help"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hard for you? Pick all that fit.",
+    "options": [
+     "Remembering names and words",
+     "Remembering numbers",
+     "Solving puzzles",
+     "Staying focused"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Pen and paper",
+     "Big print pages",
+     "Someone to help",
+     "Quiet time alone"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What do you want to use this for?",
+    "options": [
+     "Daily life tasks",
+     "Games with family",
+     "Stay independent",
+     "Keep brain active"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "data-interpretation": {
+  "goals": [
+   "Read charts and tables fast",
+   "Answer test questions correctly",
+   "Spot tricks in graphs",
+   "Compare numbers with confidence",
+   "Use data for school or work"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How good are you with charts now?",
+    "options": [
+     "New to charts",
+     "I can read simple charts",
+     "I can read most charts",
+     "I am quite strong"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "tricky_parts",
+    "label": "What goes wrong for you?",
+    "options": [
+     "Reading the numbers wrong",
+     "Confusing chart types",
+     "Slow to find answers",
+     "Trick questions and scales"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "chart_types",
+    "label": "What do you need to practise with?",
+    "options": [
+     "Bar and pie charts",
+     "Line graphs and trends",
+     "Tables and lists",
+     "Mixed charts together"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use it for?",
+    "options": [
+     "School tests",
+     "College study",
+     "Job and office work",
+     "Everyday news and facts"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "business-english-and-email-writing": {
+  "goals": [
+   "Write clear polite work emails",
+   "Get a job or internship",
+   "Talk well in meetings",
+   "Sound professional with clients",
+   "Pass Business English exams"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How is your work English now?",
+    "options": [
+     "I am just starting",
+     "I can write simple emails",
+     "I am okay but slow",
+     "I am good, want polish"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "email_problems",
+    "label": "What goes wrong in your emails?",
+    "options": [
+     "Too rude or too shy",
+     "Grammar and spelling mistakes",
+     "Too long and unclear",
+     "Do not know right words"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "email_use",
+    "label": "What will you use English for?",
+    "options": [
+     "Job applications and interviews",
+     "Daily office emails",
+     "Clients and meetings",
+     "College projects"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Laptop for typing emails",
+     "Phone only",
+     "Sample work emails",
+     "No samples yet"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "reading-comprehension": {
+  "goals": [
+   "Read short stories by myself",
+   "Answer school reading questions",
+   "Learn what new words mean",
+   "Understand longer story books",
+   "Read out loud with confidence"
+  ],
+  "questions": [
+   {
+    "id": "reading_now",
+    "label": "What can you read now?",
+    "options": [
+     "Pictures and a few words",
+     "Short easy sentences",
+     "Short story books",
+     "Long chapter books"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard when you read?",
+    "options": [
+     "Knowing new words",
+     "Reading long pages",
+     "Remembering the story",
+     "Answering questions",
+     "Reading out loud"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "read_with",
+    "label": "What do you read with?",
+    "options": [
+     "Paper books",
+     "School books",
+     "Tablet or phone",
+     "Someone reads with me"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "read_for",
+    "label": "What will you use reading for?",
+    "options": [
+     "School homework and tests",
+     "Fun stories",
+     "Learning new things",
+     "Reading with family"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "english-pronunciation": {
+  "goals": [
+   "Speak clearly so others understand",
+   "Say hard English sounds right",
+   "Sound natural when speaking English",
+   "Feel confident speaking out loud",
+   "Pass school or work speaking tasks"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How is your English speaking now?",
+    "options": [
+     "Just starting",
+     "Know some words",
+     "Can talk a little",
+     "Can talk well",
+     "Very good"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hard when you say English words?",
+    "options": [
+     "Some sounds are hard",
+     "Word stress and rhythm",
+     "Speaking fast",
+     "People do not understand me",
+     "Feeling shy to speak"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What can you use to practise?",
+    "options": [
+     "Phone to record voice",
+     "Mirror to watch mouth",
+     "English books or lists",
+     "Videos or songs"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will you use English speaking most?",
+    "options": [
+     "School lessons",
+     "Friends and chatting",
+     "Work and meetings",
+     "Travel and daily life"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "public-speaking": {
+  "goals": [
+   "Speak with confidence and no fear",
+   "Give clear class presentations",
+   "Ace interviews and group discussions",
+   "Lead meetings and team talks",
+   "Tell stories people remember"
+  ],
+  "questions": [
+   {
+    "id": "speaking_now",
+    "label": "How do you feel about speaking now?",
+    "options": [
+     "Very scared, I avoid it",
+     "Nervous but I try",
+     "Okay, want to improve",
+     "Good, want to be great"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "speaking_problems",
+    "label": "What goes wrong when you speak?",
+    "options": [
+     "I freeze or feel shy",
+     "I speak too fast or unclear",
+     "I lose track of ideas",
+     "People get bored"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What can you use to practise?",
+    "options": [
+     "Phone to record myself",
+     "Mirror and voice practice",
+     "Friends or family to listen",
+     "Class or work group"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "speaking_use",
+    "label": "Where will you use speaking most?",
+    "options": [
+     "School or college talks",
+     "Job interviews and work",
+     "Stage and video talks",
+     "Daily chats and debates"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "spoken-english": {
+  "goals": [
+   "Speak clearly and with confidence",
+   "Hold daily small conversations",
+   "Talk well for school or work",
+   "Understand fast English better",
+   "Sound natural, not bookish"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How do you speak English now?",
+    "options": [
+     "Only a few words",
+     "Short simple sentences",
+     "Can talk but slow",
+     "Good, want fluency"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong when you speak?",
+    "options": [
+     "No words come",
+     "Wrong grammar",
+     "Shy or fear",
+     "Hard to understand others"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What can you practise with daily?",
+    "options": [
+     "Phone alone",
+     "Friends or family",
+     "Class or work mates",
+     "No one, only me"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will you use English most?",
+    "options": [
+     "School or college",
+     "Job and office",
+     "Travel and friends",
+     "Online videos and chat"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "vocabulary-builder": {
+  "goals": [
+   "Use new words every day",
+   "Understand books and lessons",
+   "Speak clearly with others",
+   "Write strong sentences",
+   "Do well in tests"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How many English words do you know now?",
+    "options": [
+     "Only easy words",
+     "Some school words",
+     "Many words",
+     "I can read hard books"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "word_problems",
+    "label": "What is hard about new words?",
+    "options": [
+     "I forget them fast",
+     "I do not know the meaning",
+     "Spelling is hard",
+     "I am shy to use them"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you want to learn words from?",
+    "options": [
+     "Story books",
+     "School lessons",
+     "Games and fun",
+     "Daily life"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will you use your new words most?",
+    "options": [
+     "In school",
+     "In tests",
+     "Talking with people",
+     "Writing in Word"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "english-grammar": {
+  "goals": [
+   "Write clean correct sentences",
+   "Speak with fewer mistakes",
+   "Do well in tests",
+   "Write better school work",
+   "Write better work emails"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How good is your grammar now?",
+    "options": [
+     "Just starting",
+     "Know easy rules",
+     "Okay but shaky",
+     "Quite good"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "Which parts feel hard?",
+    "options": [
+     "Verbs and tenses",
+     "Plurals and articles",
+     "Punctuation",
+     "Word order",
+     "Long sentences"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you practise with?",
+    "options": [
+     "School books",
+     "Phone or laptop",
+     "Story books",
+     "Work papers"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use grammar for most?",
+    "options": [
+     "School homework",
+     "Tests and exams",
+     "Talking with friends",
+     "Work writing"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "sanskrit-basics": {
+  "goals": [
+   "Read and write Sanskrit letters",
+   "Say simple daily sentences",
+   "Chant small shlokas correctly",
+   "Understand easy Sanskrit words",
+   "Write neat script pages"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can you do in Sanskrit now?",
+    "options": [
+     "Know nothing yet",
+     "Know some letters",
+     "Read slow words",
+     "Make small sentences"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard for you?",
+    "options": [
+     "New letters and sounds",
+     "Remembering words",
+     "Saying sentences",
+     "Writing neatly"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What can you use to practise?",
+    "options": [
+     "Printed pages",
+     "Notebook and pencil",
+     "Cards and charts",
+     "Simple story books"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use Sanskrit for?",
+    "options": [
+     "School work",
+     "Prayers and shlokas",
+     "Fun learning",
+     "Talk with family"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "translation-practice-hindi-english": {
+  "goals": [
+   "Translate school homework with ease",
+   "Speak clear English at work",
+   "Understand Hindi English both ways",
+   "Write better English sentences daily",
+   "Pass English exams with confidence"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "What can you translate now?",
+    "options": [
+     "Single words only",
+     "Short simple sentences",
+     "Long sentences with mistakes",
+     "Full passages quite well"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hard when you translate?",
+    "options": [
+     "Finding right words",
+     "Making correct grammar",
+     "Keeping real meaning",
+     "Spelling and writing clean"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you want to practise with?",
+    "options": [
+     "School books and lessons",
+     "Stories and simple books",
+     "News and daily life",
+     "Work emails and forms"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will you use translation most?",
+    "options": [
+     "School or college study",
+     "Job and office work",
+     "Exams and tests",
+     "Daily talk and reading"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "hindi-vyakaran": {
+  "goals": [
+   "Write correct Hindi sentences",
+   "Speak clear and polite Hindi",
+   "Do well in school exams",
+   "Read Hindi stories easily",
+   "Use new Hindi words daily"
+  ],
+  "questions": [
+   {
+    "id": "level_now",
+    "label": "Where are you in Hindi grammar now?",
+    "options": [
+     "Just starting",
+     "Know easy words",
+     "Make small sentences",
+     "Can read and write"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What feels hard in Hindi grammar?",
+    "options": [
+     "Sangya and sarvnaam",
+     "Visheshan and kriya",
+     "Ling and vachan",
+     "Sandhi and samaas",
+     "Vakya and muhavare"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What will you practise with?",
+    "options": [
+     "School book",
+     "Story books",
+     "Worksheets and pages",
+     "Rhymes and songs"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use Hindi for?",
+    "options": [
+     "School homework and tests",
+     "Talking at home",
+     "Writing stories and letters",
+     "Reading books"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "cartoons-and-comics": {
+  "goals": [
+   "Draw funny cartoon faces",
+   "Make short comic strips",
+   "Create your own characters",
+   "Tell stories with panels",
+   "Draw action and jokes"
+  ],
+  "questions": [
+   {
+    "id": "level_now",
+    "label": "How well can you draw cartoons now?",
+    "options": [
+     "Just starting",
+     "Can copy simple ones",
+     "Make my own pages"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hardest for you?",
+    "options": [
+     "Drawing faces and bodies",
+     "Ideas and jokes",
+     "Panels and story flow",
+     "Finishing neat pages"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_have",
+    "label": "What will you draw with?",
+    "options": [
+     "Pencil and paper",
+     "Color pens or markers",
+     "Tablet or phone"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What do you want to make?",
+    "options": [
+     "Funny strips for friends",
+     "My own comic book",
+     "School or club pages",
+     "Post online"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "drawing-basics": {
+  "goals": [
+   "Draw simple cute animals",
+   "Draw people and faces",
+   "Use colors with joy",
+   "Make my own stories",
+   "Share art with family"
+  ],
+  "questions": [
+   {
+    "id": "drawing_now",
+    "label": "How do you draw today?",
+    "options": [
+     "Only scribbles",
+     "Simple shapes",
+     "I copy pictures"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard when you draw?",
+    "options": [
+     "Lines look shaky",
+     "Shapes look wrong",
+     "Hard to finish",
+     "Do not know what to draw"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "art_tools",
+    "label": "What do you have to draw with?",
+    "options": [
+     "Crayons",
+     "Pencils and paper",
+     "Markers",
+     "Paints",
+     "Tablet"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you make with drawing?",
+    "options": [
+     "Fun at home",
+     "Gifts and cards",
+     "School art",
+     "My own book"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "interview-speaking-practice": {
+  "goals": [
+   "Answer job interview questions clearly",
+   "Sound calm and confident speaking",
+   "Get college admission or internship",
+   "Tell my story in good English",
+   "Handle hard follow-up questions"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How do you speak in interviews now?",
+    "options": [
+     "Very new and nervous",
+     "Can answer short simple answers",
+     "Can answer but make mistakes",
+     "Good, want to sound better"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_problem",
+    "label": "What goes wrong when you answer?",
+    "options": [
+     "I freeze and forget words",
+     "My answers are too short",
+     "I talk too much or off topic",
+     "Grammar and sentence mistakes",
+     "Voice sounds shy or unclear"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_setup",
+    "label": "What can you use to practise?",
+    "options": [
+     "Quiet room to record voice",
+     "Phone to record answers",
+     "Friend to listen and help",
+     "Sample questions or job post"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use this for?",
+    "options": [
+     "Job interview",
+     "Internship interview",
+     "College admission interview",
+     "Scholarship or visa interview"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "sketching-and-shading": {
+  "goals": [
+   "Shade smooth light to dark",
+   "Make flat shapes look 3D",
+   "Sketch everyday objects fast",
+   "Show light and shadow",
+   "Finish clean shading pages"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How do you sketch right now?",
+    "options": [
+     "Just start, new to it",
+     "Can draw lines and shapes",
+     "Can shade a little",
+     "Can shade well, want better"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What goes wrong when you shade?",
+    "options": [
+     "Lines look shaky",
+     "Shading looks spotty or streaky",
+     "Flat, not 3D",
+     "Light side and dark side unclear"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_have",
+    "label": "What do you have to draw with?",
+    "options": [
+     "Pencil and paper",
+     "Color pencils",
+     "Charcoal or soft pencils",
+     "Blending stump or cotton",
+     "Tablet for drawing"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use sketching for?",
+    "options": [
+     "School art work",
+     "Fun and hobby pages",
+     "Cartoons and ideas",
+     "Realistic art practice"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "french-german-or-spanish-starter": {
+  "goals": [
+   "Say hello and introduce myself",
+   "Talk about travel and food",
+   "Pass a school test",
+   "Chat with friends online",
+   "Use it for a job"
+  ],
+  "questions": [
+   {
+    "id": "starting_point",
+    "label": "What can you already do?",
+    "options": [
+     "I am brand new",
+     "I know a few words",
+     "I can say short phrases",
+     "I studied before and forgot"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "tricky_parts",
+    "label": "What feels hard for you?",
+    "options": [
+     "Remembering new words",
+     "Spelling and writing",
+     "Grammar rules",
+     "Understanding when I hear it",
+     "Feeling shy to try"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What can you practise with?",
+    "options": [
+     "My phone",
+     "A laptop or tablet",
+     "Books or paper sheets",
+     "Someone to practise with"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use it for?",
+    "options": [
+     "Travel and holidays",
+     "School or college",
+     "Work",
+     "Friends and fun"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "colour-theory-and-painting": {
+  "goals": [
+   "Mix clean bright colors",
+   "Paint pretty pictures",
+   "Understand light and dark",
+   "Make colors feel happy",
+   "Paint from real life"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How do you paint right now?",
+    "options": [
+     "I am brand new",
+     "I mix basic colors",
+     "I finish small paintings",
+     "I paint quite well"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What goes wrong when you paint?",
+    "options": [
+     "Colors turn muddy",
+     "Hard to mix skin or green",
+     "Shading looks flat",
+     "Picture looks messy"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "paints_have",
+    "label": "What paints do you have to use?",
+    "options": [
+     "Watercolors",
+     "Acrylics or tempera",
+     "Colored pencils or crayons",
+     "Only phone or tablet"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "paint_for",
+    "label": "What will you paint most?",
+    "options": [
+     "Animals and cartoons",
+     "Nature and landscapes",
+     "People and portraits",
+     "Fun patterns and crafts"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "rangoli-and-mandala": {
+  "goals": [
+   "Make easy rangoli for festivals",
+   "Draw neat mandalas for calm",
+   "Learn dots and symmetry tricks",
+   "Make art to gift others",
+   "Grow skill step by step"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can you draw now?",
+    "options": [
+     "New, never tried",
+     "Simple dots and lines",
+     "Small rangoli or mandala",
+     "Big neat designs"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard for you?",
+    "options": [
+     "Straight lines and circles",
+     "Keeping both sides same",
+     "Dot pattern gets messy",
+     "Choosing colors and fill"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "art_tools",
+    "label": "What do you have to draw with?",
+    "options": [
+     "Pencil and paper",
+     "Colors and pens",
+     "Chalk or rangoli powder",
+     "Only phone and finger"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will you use it?",
+    "options": [
+     "Home and festivals",
+     "School art pages",
+     "Gifts and cards",
+     "Calm time for me"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "craft-and-origami": {
+  "goals": [
+   "Make fun paper animals",
+   "Fold neat clean shapes",
+   "Make gifts for family",
+   "Make pretty room decorations",
+   "Learn easy cool models"
+  ],
+  "questions": [
+   {
+    "id": "fold_level",
+    "label": "What can you fold now?",
+    "options": [
+     "I am new",
+     "Simple boats and hats",
+     "Cranes and boxes",
+     "Hard models"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard for you?",
+    "options": [
+     "Folds are not neat",
+     "Hard to follow steps",
+     "Paper tears",
+     "I give up fast"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_home",
+    "label": "What do you have to make with?",
+    "options": [
+     "Plain paper",
+     "Color paper",
+     "Scissors and glue",
+     "Stickers and colors"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "make_for",
+    "label": "What do you want to make?",
+    "options": [
+     "Toys to play with",
+     "Gifts for others",
+     "Room art",
+     "School project"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "graphic-design-with-canva": {
+  "goals": [
+   "Make posters that look clean",
+   "Make posts for Instagram",
+   "Use colors and fonts well",
+   "Make designs fast and easy",
+   "Build a small portfolio"
+  ],
+  "questions": [
+   {
+    "id": "canva_now",
+    "label": "How much Canva have you used?",
+    "options": [
+     "Never used it",
+     "Tried it a little",
+     "Make simple designs",
+     "Make good designs"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "design_problem",
+    "label": "What goes wrong in your designs?",
+    "options": [
+     "Looks messy or crowded",
+     "Colors do not match",
+     "Hard to pick fonts",
+     "Don't know where to start"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "design_tools",
+    "label": "What will you design with?",
+    "options": [
+     "Phone",
+     "Laptop or computer",
+     "Tablet",
+     "Canva Pro",
+     "Free Canva"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "design_use",
+    "label": "What will you make most?",
+    "options": [
+     "School posters",
+     "Social media posts",
+     "Work or business designs",
+     "Fun personal projects"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "fashion-sketching": {
+  "goals": [
+   "Draw slim fashion figures easily",
+   "Sketch outfits from your ideas",
+   "Show fabric folds and flow",
+   "Make a small design portfolio",
+   "Draw clothes that look real"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How well can you sketch now?",
+    "options": [
+     "I am brand new",
+     "I can doodle a bit",
+     "I can draw bodies",
+     "I can sketch full outfits"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong when you sketch?",
+    "options": [
+     "Faces, hands, and feet",
+     "Poses look stiff",
+     "Clothes look flat",
+     "Shading and color"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_have",
+    "label": "What do you have to draw with?",
+    "options": [
+     "Pencil and paper",
+     "Color pencils or markers",
+     "Tablet or phone",
+     "Ruler and fashion templates"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use your sketches for?",
+    "options": [
+     "Fun and hobby",
+     "School or college work",
+     "Design my own clothes",
+     "Share online or job"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "doodle-art": {
+  "goals": [
+   "Draw cute easy doodles",
+   "Fill pages with patterns",
+   "Make cards and gifts",
+   "Calm mind by doodling",
+   "Create own doodle style"
+  ],
+  "questions": [
+   {
+    "id": "doodle_level",
+    "label": "What can you draw now?",
+    "options": [
+     "Just scribbles",
+     "Lines and shapes",
+     "Simple faces and animals",
+     "Full doodle pages"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "doodle_hard_part",
+    "label": "What is hard about doodling?",
+    "options": [
+     "No ideas to draw",
+     "Lines look messy",
+     "Do not know how to start",
+     "Cannot finish a page"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "doodle_tools",
+    "label": "What do you draw with?",
+    "options": [
+     "Pencil and paper",
+     "Crayons or markers",
+     "Pens and notebook",
+     "Tablet and stylus"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "doodle_use",
+    "label": "Where will you use your doodles?",
+    "options": [
+     "For fun at home",
+     "School work and notes",
+     "Cards and gifts",
+     "To relax and feel calm"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "music-theory-and-notation": {
+  "goals": [
+   "Read notes and rhythms fast",
+   "Play songs with both hands",
+   "Write my own short songs",
+   "Pass music tests in school",
+   "Understand chords and keys"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can you do in music theory now?",
+    "options": [
+     "I am brand new",
+     "I know some notes",
+     "I can read simple songs",
+     "I know keys and chords"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong most when you read music?",
+    "options": [
+     "Notes are too slow",
+     "Rhythm and counting",
+     "Sharps, flats and keys",
+     "Chords look confusing"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Piano or keyboard",
+     "Guitar or ukulele",
+     "Other instrument",
+     "Paper and pencil only"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use music reading for?",
+    "options": [
+     "Play for fun",
+     "School band or lessons",
+     "Write my own music",
+     "Sing in choir"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "mobile-photography": {
+  "goals": [
+   "Take clear and sharp daily photos",
+   "Take lovely photos of people",
+   "Take beautiful travel and nature shots",
+   "Edit photos to look their best",
+   "Share photos with pride online"
+  ],
+  "questions": [
+   {
+    "id": "photo_level",
+    "label": "How good are you with phone photos now?",
+    "options": [
+     "Total beginner",
+     "I take snaps",
+     "I take good shots",
+     "Quite skilled"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "photo_problems",
+    "label": "What goes wrong in your photos?",
+    "options": [
+     "Blurry or dark",
+     "Boring framing",
+     "People look bad",
+     "Colors look dull"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "phone_tools",
+    "label": "What do you have to practise with?",
+    "options": [
+     "iPhone",
+     "Android phone",
+     "Free editing apps",
+     "Selfie stick or tripod"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "photo_use",
+    "label": "What will you use your photos for?",
+    "options": [
+     "Family and friends",
+     "Social media posts",
+     "Hobby and art",
+     "School or work"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "excel": {
+  "goals": [
+   "Make clean tables and reports",
+   "Use formulas without errors",
+   "Make charts and summaries",
+   "Clean and sort data fast",
+   "Track work and budgets"
+  ],
+  "questions": [
+   {
+    "id": "excel_now",
+    "label": "What can you do in Excel right now?",
+    "options": [
+     "I am new",
+     "I can type and format",
+     "I can use simple formulas",
+     "I can use pivot tables"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "excel_hard",
+    "label": "What goes wrong for you in Excel?",
+    "options": [
+     "Formulas show errors",
+     "Data looks messy",
+     "Charts look wrong",
+     "It takes too long"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "excel_tools",
+    "label": "What do you have to practise with?",
+    "options": [
+     "School or work files",
+     "My own data",
+     "Practice files you give me",
+     "Excel on phone only"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "excel_use",
+    "label": "What will you use Excel for?",
+    "options": [
+     "Class work and grades",
+     "Job reports and files",
+     "Money and budgets",
+     "Data and lists"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "google-sheets": {
+  "goals": [
+   "Make neat tables and lists",
+   "Use formulas for work tasks",
+   "Make charts and reports",
+   "Sort and find data fast",
+   "Share sheets with others"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "Where are you with Sheets now?",
+    "options": [
+     "Never used it",
+     "Can type and save",
+     "Can use simple formulas",
+     "Can use many tools"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "struggles",
+    "label": "What goes wrong for you?",
+    "options": [
+     "Formulas show errors",
+     "Sheets look messy",
+     "Cannot find things",
+     "Charts are hard"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_on",
+    "label": "What will you practise on?",
+    "options": [
+     "Laptop",
+     "Work computer",
+     "Phone only",
+     "Tablet"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use Sheets for?",
+    "options": [
+     "School work",
+     "Job tasks",
+     "Track money",
+     "Reports for boss"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "powerpoint-and-presentations": {
+  "goals": [
+   "Make clean slides for class",
+   "Give strong talks at work",
+   "Design slides that look professional",
+   "Speak with more confidence",
+   "Get better grades or jobs"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How good are you with slides now?",
+    "options": [
+     "Never made slides",
+     "I can make simple slides",
+     "I can make good slides",
+     "I am already strong"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard for you? Pick all that apply.",
+    "options": [
+     "Design looks messy",
+     "Too much text on slides",
+     "Nervous when speaking",
+     "Do not know PowerPoint tools"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_access",
+    "label": "What will you use to practise?",
+    "options": [
+     "Microsoft PowerPoint",
+     "Google Slides",
+     "Both PowerPoint and Slides",
+     "Phone only"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use presentations for most?",
+    "options": [
+     "College class projects",
+     "Work meetings",
+     "Job interviews",
+     "Teaching others"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "interview-preparation": {
+  "goals": [
+   "Get my first job",
+   "Win an internship spot",
+   "Change to better job",
+   "Speak calm and clear",
+   "Answer hard questions well"
+  ],
+  "questions": [
+   {
+    "id": "interview_experience",
+    "label": "How many real job interviews have you done?",
+    "options": [
+     "None yet",
+     "1 to 3",
+     "4 or more",
+     "I got offers before"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "biggest_problem",
+    "label": "What goes wrong most in interviews?",
+    "options": [
+     "I feel nervous",
+     "I ramble too much",
+     "Blank on hard questions",
+     "Weak STAR stories",
+     "Poor body language"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "target_roles",
+    "label": "What jobs will you use this for?",
+    "options": [
+     "Internships",
+     "Office jobs",
+     "Shops and service",
+     "Tech and IT",
+     "Remote jobs"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_help",
+    "label": "What can you practise with?",
+    "options": [
+     "Phone to record self",
+     "Friend to practise",
+     "Old resume or CV",
+     "Real job posts"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "storytelling-aloud": {
+  "goals": [
+   "Tell fun stories that make people laugh",
+   "Tell stories with a clear voice",
+   "Make up your own short stories",
+   "Tell stories to family and friends",
+   "Record stories others love to hear"
+  ],
+  "questions": [
+   {
+    "id": "story_level",
+    "label": "How do you tell stories right now?",
+    "options": [
+     "Very new to it",
+     "Can tell a short one",
+     "Can tell a full story",
+     "Already tell well"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard when you tell a story?",
+    "options": [
+     "Feeling shy to speak",
+     "Forgetting what comes next",
+     "Voice too quiet or flat",
+     "Story feels too short"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you use to practise stories?",
+    "options": [
+     "Picture books",
+     "Toys or puppets",
+     "Make it up from head",
+     "Family stories"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will you share your recorded stories?",
+    "options": [
+     "Just for fun at home",
+     "For school or class",
+     "For family far away",
+     "To make my own show"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "resume-and-linkedin": {
+  "goals": [
+   "Get a first job or internship",
+   "Move to a better job",
+   "Look strong on LinkedIn",
+   "Show skills with no experience",
+   "Get more interview calls"
+  ],
+  "questions": [
+   {
+    "id": "current_stage",
+    "label": "Where are you with your resume now?",
+    "options": [
+     "No resume yet",
+     "Old resume needs update",
+     "Good resume, need LinkedIn",
+     "Strong both, want polish"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "biggest_problem",
+    "label": "What goes wrong most for you?",
+    "options": [
+     "Do not know what to write",
+     "Looks messy or too long",
+     "No replies from jobs",
+     "LinkedIn profile feels empty"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_access",
+    "label": "What do you have to work with?",
+    "options": [
+     "Only a phone",
+     "Computer with Word or Docs",
+     "LinkedIn account already",
+     "A past job or project"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "job_target",
+    "label": "What job will you use this for?",
+    "options": [
+     "Internship or part-time job",
+     "Office or tech job",
+     "Shop, food, or care job",
+     "Freelance or remote work"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "product-management": {
+  "goals": [
+   "Get a first product manager job",
+   "Grow in current product role",
+   "Lead products with more confidence",
+   "Build a startup product idea",
+   "Switch to product from another job"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "Where are you with product management now?",
+    "options": [
+     "Never done it before",
+     "Done school projects",
+     "Work near product teams",
+     "Already work as a PM"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hardest for you right now?",
+    "options": [
+     "Writing PRDs and specs",
+     "Choosing what to build first",
+     "Talking to users",
+     "Using data to decide",
+     "Working with engineers"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_access",
+    "label": "What can you practise with?",
+    "options": [
+     "A real product at work",
+     "My own app idea",
+     "School project",
+     "No product yet"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use this workbook for?",
+    "options": [
+     "Job interviews and resume",
+     "Better work on my job",
+     "My own startup project",
+     "College class work"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "workplace-email-etiquette": {
+  "goals": [
+   "Write clear and polite work emails",
+   "Get quick helpful replies",
+   "Look professional to bosses",
+   "Fix mistakes and sound confident",
+   "Handle tough emails calmly"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How are your work emails now?",
+    "options": [
+     "I never wrote one",
+     "I write but feel unsure",
+     "Okay, want to be better",
+     "Good, want to shine"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "email_problems",
+    "label": "What goes wrong in your emails?",
+    "options": [
+     "Too long or unclear",
+     "Sound rude or too casual",
+     "Bad subject or greeting",
+     "Slow to reply or follow up"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What will you practise with?",
+    "options": [
+     "Phone email app",
+     "Computer like Gmail or Outlook",
+     "College or work email",
+     "Sample messages we give"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "email_use",
+    "label": "What will you use work emails for?",
+    "options": [
+     "Apply for jobs or internships",
+     "Talk to boss and team",
+     "Help customers or clients",
+     "College teachers and office"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "project-management": {
+  "goals": [
+   "Finish group projects on time",
+   "Lead a small team well",
+   "Make clear plans and schedules",
+   "Handle risks and changes calmly",
+   "Get a job in projects"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "Where are you with projects now?",
+    "options": [
+     "Never led a project",
+     "Led class work only",
+     "Help on work projects",
+     "Lead work projects now"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "biggest_struggle",
+    "label": "What goes wrong most for you?",
+    "options": [
+     "Miss due dates",
+     "Team feels confused",
+     "Changes cause stress",
+     "Surprised by problems",
+     "Hard to track work"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_to_use",
+    "label": "What will you use to practise?",
+    "options": [
+     "Excel or Sheets",
+     "Trello or Asana",
+     "MS Project",
+     "Pen and paper"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_goal",
+    "label": "What will you use this for?",
+    "options": [
+     "College group project",
+     "Internship work",
+     "New job or promotion",
+     "Freelance client work"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "business-analysis": {
+  "goals": [
+   "Write clear requirements and user stories",
+   "Get a business analyst job",
+   "Talk well with clients and teams",
+   "Solve work problems with data",
+   "Pass college BA course work"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "Where are you with business analysis now?",
+    "options": [
+     "Never done it",
+     "Just learning basics",
+     "Done small class tasks",
+     "Use it at work"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What goes wrong for you most?",
+    "options": [
+     "Requirements are unclear",
+     "User stories are too vague",
+     "People want different things",
+     "Hard to draw process flows"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Word, Excel or Google Docs",
+     "Jira, Trello or Asana",
+     "A real work or class project",
+     "Nothing yet"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use it for?",
+    "options": [
+     "College project or exams",
+     "Current job tasks",
+     "Job interviews",
+     "Freelance client work"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "software-testing-qa": {
+  "goals": [
+   "Get a QA job or internship",
+   "Pass college tests in QA",
+   "Write clear test cases",
+   "Write clear bug reports",
+   "Learn test automation basics"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can you do in testing now?",
+    "options": [
+     "I am brand new",
+     "I know some basics",
+     "I can write test cases",
+     "I know some automation"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hardest for you?",
+    "options": [
+     "Finding bugs",
+     "Writing test cases",
+     "Writing bug reports",
+     "Understanding automation tools"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What can you practise with?",
+    "options": [
+     "My laptop",
+     "A test website or app",
+     "QA tools like Jira or Selenium",
+     "Sample project files"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use testing for?",
+    "options": [
+     "College work",
+     "Job or internship",
+     "Freelance work",
+     "My own projects"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "seo-basics": {
+  "goals": [
+   "Find good keywords for pages",
+   "Rank higher on Google",
+   "Fix titles and page text",
+   "Get more clicks and visitors",
+   "Learn SEO tools basics"
+  ],
+  "questions": [
+   {
+    "id": "seo_now",
+    "label": "What can you do with SEO now?",
+    "options": [
+     "I am brand new",
+     "I know a few words",
+     "I can pick keywords",
+     "I have fixed pages before"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "seo_hard",
+    "label": "What goes wrong most for you?",
+    "options": [
+     "Finding right keywords",
+     "Writing titles and headings",
+     "Knowing what Google wants",
+     "Checking if it worked"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "seo_practice",
+    "label": "What can you practise with?",
+    "options": [
+     "My own website or blog",
+     "A work or school site",
+     "A practice site idea",
+     "No site yet"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "seo_use",
+    "label": "What will you use SEO for?",
+    "options": [
+     "Job or internship work",
+     "My own business or blog",
+     "College project",
+     "Client or freelance work"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "agile-and-scrum": {
+  "goals": [
+   "Run Scrum meetings with confidence",
+   "Write clear user stories",
+   "Manage a product backlog",
+   "Work well in Scrum team",
+   "Get Scrum job ready"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How much Scrum do you know now?",
+    "options": [
+     "Never used it",
+     "Know some words",
+     "Joined a Scrum team",
+     "Led Scrum work"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hardest for you in Scrum?",
+    "options": [
+     "Writing user stories",
+     "Planning sprints",
+     "Daily meetings and teamwork",
+     "Review and problems"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What can you practise with?",
+    "options": [
+     "Jira or Trello",
+     "Class or work team",
+     "No team yet",
+     "Pen and paper"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use Scrum for?",
+    "options": [
+     "College project",
+     "Office job",
+     "New Scrum job",
+     "Lead my team"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "digital-marketing": {
+  "goals": [
+   "Get more customers online",
+   "Grow a small business",
+   "Get a marketing job",
+   "Grow social media followers",
+   "Sell products online"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "What can you do in marketing now?",
+    "options": [
+     "Total beginner",
+     "I post sometimes",
+     "I run small ads",
+     "I do client work"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong most for you?",
+    "options": [
+     "No one sees posts",
+     "No one buys",
+     "Ads cost too much",
+     "I do not know what to post"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_to_use",
+    "label": "What can you practise with?",
+    "options": [
+     "Instagram or TikTok",
+     "A business or shop",
+     "Canva",
+     "A website or shop page",
+     "Ad money to test"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use it for?",
+    "options": [
+     "My own business",
+     "My job now",
+     "Freelance clients",
+     "A new job"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "copywriting": {
+  "goals": [
+   "Write ads that get clicks",
+   "Sell products with words",
+   "Write emails people open",
+   "Get freelance copy jobs",
+   "Grow my own business"
+  ],
+  "questions": [
+   {
+    "id": "copy_level",
+    "label": "Where are you with copywriting now?",
+    "options": [
+     "Never tried it",
+     "I write sometimes",
+     "I write for work"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "copy_struggle",
+    "label": "What goes wrong most when you write?",
+    "options": [
+     "No one clicks or buys",
+     "Words sound boring",
+     "Too long and messy",
+     "Do not know where to start"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "copy_use",
+    "label": "What will you write most?",
+    "options": [
+     "Ads",
+     "Product pages",
+     "Emails",
+     "Social posts",
+     "My portfolio"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "copy_tools",
+    "label": "What do you have to practise with?",
+    "options": [
+     "A product or idea",
+     "A business or job",
+     "School project",
+     "Nothing yet"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "meta-and-instagram-ads": {
+  "goals": [
+   "Get a marketing job",
+   "Run ads for clients",
+   "Grow my own business",
+   "Promote my freelance work",
+   "Build a strong portfolio"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How much have you done with Meta ads?",
+    "options": [
+     "Never ran an ad",
+     "Only boosted posts",
+     "Ran simple ad campaigns",
+     "Manage ads for others"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_struggle",
+    "label": "What goes wrong with your ads?",
+    "options": [
+     "Costs too much, no sales",
+     "Ads get rejected",
+     "Wrong people see ads",
+     "I cannot read results"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Facebook Page and ad account",
+     "Instagram business account",
+     "Small ad budget to test",
+     "Canva or design app"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "ad_use",
+    "label": "What will you use these ads for?",
+    "options": [
+     "My small business",
+     "Clients I work for",
+     "Job or class project",
+     "My own brand or page"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "social-media-content": {
+  "goals": [
+   "Grow followers and get likes",
+   "Promote a business or side hustle",
+   "Get a job or freelance clients",
+   "Make fun posts that get shared",
+   "Plan posts fast and easy"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "Where are you with posting now?",
+    "options": [
+     "I never post",
+     "I post sometimes",
+     "I post a lot",
+     "I already get views"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_struggle",
+    "label": "What goes wrong with your posts?",
+    "options": [
+     "I have no ideas",
+     "Few likes or views",
+     "Photos and videos look bad",
+     "I forget to post",
+     "Writing captions is hard"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_use",
+    "label": "What do you have to make posts?",
+    "options": [
+     "Just my phone",
+     "Free apps like Canva",
+     "CapCut or editing apps",
+     "Laptop for planning"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use this for?",
+    "options": [
+     "My own page",
+     "A business or shop",
+     "Job or work tasks",
+     "School or club"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "video-editing": {
+  "goals": [
+   "Make shorts for TikTok and Reels",
+   "Edit YouTube videos that look clean",
+   "Get freelance or part-time editing work",
+   "Make promo videos for a job",
+   "Build a strong editing portfolio"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How well can you edit now?",
+    "options": [
+     "Never edited before",
+     "Can cut and join clips",
+     "Add text, music, effects",
+     "Edit full videos with ease"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "edit_tools",
+    "label": "What can you edit with?",
+    "options": [
+     "Phone only",
+     "Laptop or desktop",
+     "CapCut",
+     "Premiere Pro or DaVinci"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "biggest_struggle",
+    "label": "What goes wrong most when you edit?",
+    "options": [
+     "Cuts look rough",
+     "Sound is bad",
+     "Video feels slow or boring",
+     "Export and sharing is hard"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "work_use",
+    "label": "What will your edited videos be for?",
+    "options": [
+     "Social media for work",
+     "School or college projects",
+     "Clients and paid jobs",
+     "Job or business promos"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "sales-and-negotiation": {
+  "goals": [
+   "Sell with more confidence",
+   "Handle no and objections calmly",
+   "Close deals and ask for sale",
+   "Negotiate better pay and prices",
+   "Build trust with new customers"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "Where are you with selling now?",
+    "options": [
+     "Never sold before",
+     "Sold a little to friends",
+     "Sell often but get stuck",
+     "Already good, want to be better"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_struggle",
+    "label": "What goes wrong when you try to sell?",
+    "options": [
+     "I get nervous speaking",
+     "I do not know what to say",
+     "People say it costs too much",
+     "I cannot close the deal",
+     "I give up too fast"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you want to practise selling?",
+    "options": [
+     "Shop or physical products",
+     "Services or online work",
+     "Pay, fees, or job offers",
+     "Ideas for college or club"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use this skill for?",
+    "options": [
+     "College project or class",
+     "Part-time job or internship",
+     "My own small business",
+     "Office sales job"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "start-a-small-business-business-plan": {
+  "goals": [
+   "Get first paying customers fast",
+   "Make a clear one-page plan",
+   "Know costs and set price",
+   "Pick a simple business idea",
+   "Show plan to get support"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "Where are you with your business now?",
+    "options": [
+     "Just an idea",
+     "Idea plus some notes",
+     "Already selling a little",
+     "Ready to grow bigger"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hardest about the plan?",
+    "options": [
+     "Picking what to sell",
+     "Finding customers",
+     "Money, costs, and price",
+     "Writing it in one page"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "What can you practise your plan with?",
+    "options": [
+     "My own business idea",
+     "Family or friend business",
+     "Class example idea",
+     "Job or work idea"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use your plan for?",
+    "options": [
+     "Start a side job",
+     "Grow my small work",
+     "Turn in for class",
+     "Ask for money or help"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "customer-service": {
+  "goals": [
+   "Stay calm with upset customers",
+   "Write clear polite replies",
+   "Fix complaints fast and kindly",
+   "Get better job in service",
+   "Make customers feel cared for"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "Where are you with customer service now?",
+    "options": [
+     "Never done it",
+     "Just started",
+     "Some experience",
+     "Quite good already"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hardest for you?",
+    "options": [
+     "Angry or rude customers",
+     "Saying no politely",
+     "Writing good replies",
+     "Staying calm under stress"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What do you use to help customers?",
+    "options": [
+     "Phone calls",
+     "Email",
+     "Live chat or messages",
+     "Face to face"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will you use this skill?",
+    "options": [
+     "Shop or restaurant job",
+     "Call centre or office",
+     "Online business",
+     "College work or internship"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "prompt-engineering-and-ai-tools": {
+  "goals": [
+   "Write clear prompts that work",
+   "Get better answers from AI",
+   "Make school or work faster",
+   "Create pictures and videos",
+   "Use AI safely and smartly"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How do you use AI now?",
+    "options": [
+     "Never tried it",
+     "I ask simple questions",
+     "I use it often",
+     "I try hard prompts"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_problem",
+    "label": "What goes wrong with AI for you?",
+    "options": [
+     "Answers are wrong or unclear",
+     "I do not know what to type",
+     "It takes too many tries",
+     "I worry about safety or cheating"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_access",
+    "label": "What can you practise with?",
+    "options": [
+     "Phone only",
+     "Computer",
+     "Free AI apps",
+     "Paid AI apps"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use AI for most?",
+    "options": [
+     "School and homework",
+     "Work and business",
+     "Fun and hobbies",
+     "Daily life help"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "bookkeeping-and-tally-basics": {
+  "goals": [
+   "Record daily sales and bills",
+   "Make ledgers clean and correct",
+   "Use Tally for real work",
+   "Pass college tests with ease",
+   "Get a bookkeeping job"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can you do in bookkeeping now?",
+    "options": [
+     "I am new",
+     "I know debit and credit",
+     "I make simple entries",
+     "I use Tally a little"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong for you most?",
+    "options": [
+     "Debit and credit mix up",
+     "Errors in ledgers",
+     "Tally steps confuse me",
+     "Slow and fear mistakes"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Laptop with Tally",
+     "Laptop without Tally",
+     "Only phone",
+     "Bills and notebooks"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use this for?",
+    "options": [
+     "College work and exams",
+     "Office or shop job",
+     "My own small business",
+     "Freelance accounts work"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "gst-basics-for-small-business": {
+  "goals": [
+   "Make correct GST bills",
+   "File GST returns on time",
+   "Claim input tax credit",
+   "Pick right GST rates",
+   "Avoid fines and mistakes",
+   "Add GST to prices"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What do you know about GST now?",
+    "options": [
+     "Nothing yet",
+     "I know a little",
+     "I bill but not sure",
+     "I file returns"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong for you with GST?",
+    "options": [
+     "Bills have mistakes",
+     "Rates confuse me",
+     "Returns feel hard",
+     "Fear of fines"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "What can you practise with?",
+    "options": [
+     "My shop bills",
+     "Phone or laptop",
+     "Sales notebook",
+     "Old returns"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use GST for?",
+    "options": [
+     "My shop",
+     "My service work",
+     "Selling online",
+     "New business"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "python-basics": {
+  "goals": [
+   "Write my first Python programs",
+   "Fix errors in my code",
+   "Build small games and apps",
+   "Use Python for school or work",
+   "Get ready for AI and data"
+  ],
+  "questions": [
+   {
+    "id": "python_now",
+    "label": "What can you do in Python right now?",
+    "options": [
+     "Never coded before",
+     "Can print and use variables",
+     "Can use loops and if",
+     "Can write small programs"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "python_hard",
+    "label": "What is hard for you in Python?",
+    "options": [
+     "Errors I do not understand",
+     "Loops and if rules",
+     "Functions and lists",
+     "Making a full program"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "python_tools",
+    "label": "What will you code on?",
+    "options": [
+     "Phone only",
+     "Laptop or desktop",
+     "School computer",
+     "Online coding site"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "python_use",
+    "label": "What will you use Python for?",
+    "options": [
+     "School homework",
+     "Fun projects and games",
+     "Job and office work",
+     "AI, data, or apps"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "ai-for-students": {
+  "goals": [
+   "Finish homework faster with AI",
+   "Study smarter for tests",
+   "Write better essays and reports",
+   "Learn new topics quickly",
+   "Use AI safely and honestly"
+  ],
+  "questions": [
+   {
+    "id": "ai_level",
+    "label": "How much have you used AI for school?",
+    "options": [
+     "Never used it",
+     "Tried it a little",
+     "Use it often",
+     "Very good with it"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "big_problem",
+    "label": "What goes wrong when you use AI?",
+    "options": [
+     "Answers are wrong",
+     "Sounds like a robot",
+     "Teacher says no",
+     "Do not know what to ask"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_use",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Phone only",
+     "Laptop or Chromebook",
+     "Free AI tools",
+     "School AI tool"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "school_use",
+    "label": "What will you use AI for most?",
+    "options": [
+     "Homework and essays",
+     "Test prep",
+     "Projects and ideas",
+     "Learning new skills"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "html-and-css": {
+  "goals": [
+   "Build my first web page",
+   "Make pages look nice",
+   "Create a personal portfolio site",
+   "Build a site for business",
+   "Learn skills for a tech job"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can you do in HTML and CSS now?",
+    "options": [
+     "Never tried it",
+     "I know some tags",
+     "I can make simple pages",
+     "I can style with CSS",
+     "I have built a website"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hard for you?",
+    "options": [
+     "Page layout moves around",
+     "Colors and fonts look bad",
+     "Site looks bad on phones",
+     "Code has many errors",
+     "I do not know where to start"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_have",
+    "label": "What will you use to practise?",
+    "options": [
+     "Laptop or desktop",
+     "Tablet only",
+     "Phone only",
+     "School or library computer"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use your website for?",
+    "options": [
+     "School project",
+     "Personal blog or hobby",
+     "Portfolio for jobs",
+     "Business or club site",
+     "Just for fun and learning"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "computer-basics": {
+  "goals": [
+   "Use computer without fear",
+   "Send emails and messages",
+   "Video call family and friends",
+   "Stay safe from scams",
+   "Find things on the internet"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can you do on a computer now?",
+    "options": [
+     "Never used one",
+     "Can turn on and off",
+     "Can open apps and internet",
+     "Can email and use apps"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hard or scary for you?",
+    "options": [
+     "Mouse and keyboard",
+     "Passwords get lost",
+     "Fear of breaking it",
+     "Fear of scams"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "my_device",
+    "label": "What will you practise on?",
+    "options": [
+     "Windows computer",
+     "Apple computer",
+     "Tablet",
+     "Smartphone"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What do you want to use it for?",
+    "options": [
+     "Talk to family",
+     "Photos and fun",
+     "Health and bills",
+     "News and shopping"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "no-code-automation": {
+  "goals": [
+   "Automate boring school tasks",
+   "Save time at work",
+   "Connect apps without coding",
+   "Build flows for projects",
+   "Get freelance automation jobs"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can you do now with automation?",
+    "options": [
+     "Never tried it",
+     "Used a ready template",
+     "Made one simple flow",
+     "Made many flows"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong for you most?",
+    "options": [
+     "Do not know where to start",
+     "Apps do not connect",
+     "Flow stops with errors",
+     "Do not trust it to run"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_have",
+    "label": "What tools can you practise with?",
+    "options": [
+     "Google Sheets and Gmail",
+     "Zapier or Make",
+     "Notion or Airtable",
+     "Excel and Outlook"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use it for first?",
+    "options": [
+     "College assignments and notes",
+     "Internship or part-time work",
+     "Club or team work",
+     "Own small business"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "cybersecurity-basics": {
+  "goals": [
+   "Spot scam texts and emails fast",
+   "Keep passwords and accounts safe",
+   "Shop and browse safely online",
+   "Know what to do if hacked",
+   "Use phones and apps more safely"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What do you know about online safety now?",
+    "options": [
+     "Almost nothing yet",
+     "A little bit",
+     "I know the basics",
+     "I know a lot"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "tricky_parts",
+    "label": "What tricks you or worries you most?",
+    "options": [
+     "Fake texts and emails",
+     "Weak or reused passwords",
+     "Unsafe links and websites",
+     "Someone taking my account"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "devices_use",
+    "label": "What do you use to practise with?",
+    "options": [
+     "Phone",
+     "Laptop or computer",
+     "Tablet",
+     "School or work computer"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will you use this skill most?",
+    "options": [
+     "School work",
+     "Job and money",
+     "Social media and friends",
+     "Help family stay safe"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "sql": {
+  "goals": [
+   "Get a data job or internship",
+   "Pass SQL tests and interviews",
+   "Do college work with ease",
+   "Analyze data for work",
+   "Build fast reports and dashboards"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "What can you do in SQL right now?",
+    "options": [
+     "Never used SQL before",
+     "Can do simple SELECT",
+     "Can join two tables",
+     "Can use GROUP BY and subqueries"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "tricky_parts",
+    "label": "What goes wrong most in SQL?",
+    "options": [
+     "JOINs give wrong rows",
+     "GROUP BY is confusing",
+     "Queries run slow",
+     "Many syntax errors"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_setup",
+    "label": "What will you practise SQL on?",
+    "options": [
+     "My laptop with MySQL or Postgres",
+     "Online SQL tool, no install",
+     "College lab computer",
+     "Work database only"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_use",
+    "label": "What will you use SQL for most?",
+    "options": [
+     "College exams and projects",
+     "Job tests and interviews",
+     "Daily work data tasks",
+     "Client or freelance work"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "data-analysis": {
+  "goals": [
+   "Clean and explore messy data",
+   "Make charts that explain clearly",
+   "Find trends and answer questions",
+   "Build simple dashboards and reports",
+   "Get ready for analyst jobs"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "What can you do in data analysis now?",
+    "options": [
+     "Never done it",
+     "Basic sums and charts",
+     "Filters and pivot tables",
+     "Dashboards or basic Python/SQL"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_struggle",
+    "label": "What goes wrong for you most?",
+    "options": [
+     "Messy or missing data",
+     "Do not know formulas",
+     "Charts look confusing",
+     "Do not trust my results"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_available",
+    "label": "What can you practise with?",
+    "options": [
+     "Excel or Google Sheets",
+     "Python notebook",
+     "SQL",
+     "Power BI or Tableau"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use analysis for?",
+    "options": [
+     "College class projects",
+     "Get an analyst job",
+     "Do better at my job",
+     "Client or freelance work"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "study-skills-and-memory-techniques": {
+  "goals": [
+   "Remember lessons for tests",
+   "Finish homework in less time",
+   "Take neat and clear notes",
+   "Stop forgetting what you read",
+   "Focus better while studying"
+  ],
+  "questions": [
+   {
+    "id": "study_now",
+    "label": "How do you study right now?",
+    "options": [
+     "Just read again",
+     "Write notes",
+     "Use flashcards",
+     "Watch videos",
+     "I do not study yet"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hardest about studying?",
+    "options": [
+     "Cannot focus",
+     "Forget things fast",
+     "Notes are messy",
+     "Too much to learn",
+     "Feel bored or tired"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "study_for",
+    "label": "What will you use this for?",
+    "options": [
+     "School tests",
+     "Homework",
+     "Learn a new skill",
+     "Remember words and facts"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you want to practise with?",
+    "options": [
+     "My school books",
+     "Class notes",
+     "Word lists",
+     "Fun facts and stories"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "smartphone-and-upi-safety": {
+  "goals": [
+   "Spot scam calls and messages",
+   "Pay safely with UPI apps",
+   "Keep OTPs and PINs secret",
+   "Shop and bank without fear",
+   "Block and report fraud fast"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How do you use phone payments now?",
+    "options": [
+     "I do not use UPI",
+     "Family helps me pay",
+     "I pay small amounts",
+     "I pay on my own"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "big_worry",
+    "label": "What scares you most?",
+    "options": [
+     "Fake calls and SMS",
+     "Wrong UPI payment sent",
+     "Sharing OTP or PIN",
+     "Fake shopping links"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What phone and apps do you have to practise?",
+    "options": [
+     "Android with GPay/PhonePe",
+     "iPhone with UPI app",
+     "Only bank SMS alerts",
+     "Family phone for help"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use safe UPI for?",
+    "options": [
+     "Shops and bills",
+     "Send money to family",
+     "Online shopping",
+     "Check fraud cases at work"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "time-management": {
+  "goals": [
+   "Finish work without rushing",
+   "Stop missing deadlines",
+   "Have free time daily",
+   "Focus better, less phone time",
+   "Feel calm and in control"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How are you with time now?",
+    "options": [
+     "I often run late",
+     "Sometimes okay, sometimes not",
+     "Mostly okay, want better"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_problem",
+    "label": "What goes wrong most?",
+    "options": [
+     "I put things off",
+     "Phone distracts me",
+     "Too much to do",
+     "I forget tasks"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "plan_tools",
+    "label": "What will you use to plan?",
+    "options": [
+     "Paper notebook or planner",
+     "Phone calendar or app",
+     "Weekly plan pages",
+     "Just memory"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What do you need time for?",
+    "options": [
+     "School and homework",
+     "College classes and job",
+     "Work and home life",
+     "Study plus fun and rest"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "budgeting-and-money-basics": {
+  "goals": [
+   "Spend less than I earn",
+   "Save money every month",
+   "Stop running out of cash",
+   "Pay bills on time",
+   "Plan for big buys"
+  ],
+  "questions": [
+   {
+    "id": "money_now",
+    "label": "Where are you with money right now?",
+    "options": [
+     "No budget yet",
+     "I try but it fails",
+     "I track some spending",
+     "I budget and save"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "money_problem",
+    "label": "What goes wrong most with money?",
+    "options": [
+     "Impulse buying",
+     "Food and going out",
+     "Forgetting bills",
+     "No savings left"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "money_tools",
+    "label": "What can you practise with?",
+    "options": [
+     "My own income",
+     "Allowance from family",
+     "Bank app",
+     "Cash only"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "money_use",
+    "label": "What will you use your budget for?",
+    "options": [
+     "Daily spending",
+     "College costs",
+     "First job pay",
+     "Big saving goal"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "goal-setting-and-habits": {
+  "goals": [
+   "Start a good habit that lasts",
+   "Stop a bad habit for good",
+   "Reach a school or work goal",
+   "Plan days with less stress",
+   "Stay on track every week"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "Where are you now with goals and habits?",
+    "options": [
+     "I never set goals",
+     "I start but quit fast",
+     "I do okay sometimes",
+     "I am steady already"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong most for you?",
+    "options": [
+     "I forget to do it",
+     "I lose interest fast",
+     "I am too busy",
+     "I set too big goals",
+     "I feel stressed"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you have to plan and track with?",
+    "options": [
+     "Paper and pen",
+     "Phone apps or notes",
+     "Wall calendar",
+     "Planner or journal",
+     "Just this workbook"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What do you want this for most?",
+    "options": [
+     "School or study",
+     "Work or money",
+     "Health and body",
+     "Home and family",
+     "Happy mind and time"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "mindfulness-journaling": {
+  "goals": [
+   "Feel calmer each day",
+   "Sleep better at night",
+   "Know my feelings better",
+   "Grow thanks and kindness",
+   "Focus and worry less"
+  ],
+  "questions": [
+   {
+    "id": "journal_now",
+    "label": "How do you journal now?",
+    "options": [
+     "Never tried",
+     "I start and stop",
+     "I write sometimes",
+     "I write often"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hardest about journaling?",
+    "options": [
+     "Finding quiet time",
+     "Knowing what to write",
+     "Big feelings come up",
+     "Sticking with it"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What will you write with?",
+    "options": [
+     "Paper notebook",
+     "Phone or tablet",
+     "Printed pages",
+     "Voice notes first"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "When will you use your pages most?",
+    "options": [
+     "Morning calm start",
+     "School or work stress",
+     "Evening rest",
+     "Hard feelings"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "emotional-intelligence": {
+  "goals": [
+   "Know what I am feeling",
+   "Stay calm when upset",
+   "Understand other people's feelings",
+   "Solve fights in a kind way",
+   "Speak up with confidence"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "When you feel a big feeling, what happens?",
+    "options": [
+     "I do not know what I feel",
+     "I know the feeling but react fast",
+     "I can pause and calm down",
+     "I can calm down and talk it out"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_moments",
+    "label": "Which moments are hardest for you? Pick all that fit.",
+    "options": [
+     "Anger and losing temper",
+     "Worry and stress",
+     "Sadness or feeling left out",
+     "Fights with friends or family",
+     "Shyness to speak up"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What do you want to practise with?",
+    "options": [
+     "Stories about kids",
+     "Stories about teens",
+     "School and study stress",
+     "Family life",
+     "Friends and teamwork"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where do you want to use this skill most?",
+    "options": [
+     "At school",
+     "At home",
+     "With friends",
+     "Sports and clubs",
+     "Future job"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "sewing-basics": {
+  "goals": [
+   "Fix clothes by hand",
+   "Use a sewing machine safely",
+   "Sew straight neat seams",
+   "Add buttons and zippers",
+   "Make simple clothes and gifts"
+  ],
+  "questions": [
+   {
+    "id": "sewing_now",
+    "label": "What can you do with sewing right now?",
+    "options": [
+     "Never sewed before",
+     "Can thread a needle",
+     "Can sew by hand",
+     "Can use a machine a little"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What goes wrong when you try to sew?",
+    "options": [
+     "Thread tangles or breaks",
+     "Seams look crooked",
+     "Machine feels scary",
+     "Do not know how to start"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "tools_have",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Needles and thread",
+     "Hand tools and fabric",
+     "Working sewing machine",
+     "Machine plus hand tools"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use sewing for most?",
+    "options": [
+     "Fix rips and hems",
+     "Make clothes",
+     "Make home things like bags",
+     "Fun gifts and crafts"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "cooking-basics": {
+  "goals": [
+   "Cook simple meals by myself",
+   "Make quick cheap healthy food",
+   "Learn to use knives safely",
+   "Cook for family and friends",
+   "Stop burning or wasting food"
+  ],
+  "questions": [
+   {
+    "id": "cooking_now",
+    "label": "What can you cook right now?",
+    "options": [
+     "Almost nothing yet",
+     "Eggs, noodles, toast",
+     "A few simple meals",
+     "I can follow recipes"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "kitchen_tools",
+    "label": "What do you have to cook with?",
+    "options": [
+     "Stove and basic pots",
+     "Oven too",
+     "Microwave or hot plate only",
+     "Few tools or small kitchen"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "big_problem",
+    "label": "What goes wrong most when you cook?",
+    "options": [
+     "Burns or undercooked food",
+     "Bad taste or texture",
+     "Too slow or messy",
+     "Scared of knives or heat"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "cook_for",
+    "label": "What will you mostly cook for?",
+    "options": [
+     "Meals for myself",
+     "Family dinners",
+     "Friends or roommates",
+     "Lunchbox and work food"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "positive-parenting": {
+  "goals": [
+   "Stay calm during tough moments",
+   "Set clear rules with love",
+   "Build strong bond daily",
+   "Handle tantrums without yelling",
+   "Help kids listen first time"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How do you parent right now?",
+    "options": [
+     "Very strict",
+     "Mostly strict",
+     "Mix of both",
+     "Mostly gentle",
+     "Not sure"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_moment",
+    "label": "Which moment is hardest at home?",
+    "options": [
+     "Morning rush and school",
+     "Homework and chores",
+     "Tantrums and crying",
+     "Bedtime battles",
+     "Sibling fights"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "Who will you practise with?",
+    "options": [
+     "Baby or toddler",
+     "Young child 3-8",
+     "Older child 9-12",
+     "Teen child",
+     "More than one child"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What do you want to use it for?",
+    "options": [
+     "Calmer mornings",
+     "Better bedtime",
+     "Less shouting",
+     "Written home plan"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "hanuman-chalisa-learn-and-write": {
+  "goals": [
+   "Chant Chalisa with clear words",
+   "Write verses in neat handwriting",
+   "Know meaning of each verse",
+   "Learn all 40 verses by heart",
+   "Sing with family on Tuesdays"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "What can you do now?",
+    "options": [
+     "New to Chalisa",
+     "Know some lines",
+     "Can chant full",
+     "Can write some verses"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard for you?",
+    "options": [
+     "Hard Hindi words",
+     "Remembering order",
+     "Writing neatly",
+     "Meaning of verses"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "What will you practise with?",
+    "options": [
+     "Printed book",
+     "Notebook and pen",
+     "Phone audio",
+     "With family"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "How will you use Chalisa?",
+    "options": [
+     "Daily morning prayer",
+     "Tuesday temple visit",
+     "School culture program",
+     "Write for festival"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "naam-jaap-writing": {
+  "goals": [
+   "Write holy name daily",
+   "Sit calm and focus",
+   "Fill full notebook pages",
+   "Write neat clean letters",
+   "Give pages at temple"
+  ],
+  "questions": [
+   {
+    "id": "now_level",
+    "label": "How much naam writing do you do now?",
+    "options": [
+     "Never tried yet",
+     "Just started",
+     "Sometimes write",
+     "Write every day"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard for you?",
+    "options": [
+     "Mind runs away",
+     "Hand gets tired",
+     "Letters look messy",
+     "I miss days",
+     "No quiet time"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "write_with",
+    "label": "What will you write with?",
+    "options": [
+     "Plain notebook and pen",
+     "Printed naam book",
+     "Loose paper sheets",
+     "Slate or board"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "Why will you use your pages?",
+    "options": [
+     "Daily prayer at home",
+     "Give at temple",
+     "Family group writing",
+     "Calm my mind"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "home-organisation": {
+  "goals": [
+   "Keep room tidy every day",
+   "Find things fast",
+   "Share flat with no fights",
+   "Clean fast with less stress",
+   "Make small space feel big"
+  ],
+  "questions": [
+   {
+    "id": "home_now",
+    "label": "Where do you live now?",
+    "options": [
+     "College dorm",
+     "Shared flat",
+     "Family home",
+     "Own flat or studio"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "messy_spot",
+    "label": "What places get messy fast?",
+    "options": [
+     "Clothes and bed",
+     "Desk and study stuff",
+     "Kitchen",
+     "Bathroom",
+     "Papers and bills"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "storage_have",
+    "label": "What do you have to store things?",
+    "options": [
+     "Small closet",
+     "Shelves",
+     "Boxes or bins",
+     "Under-bed space",
+     "Almost nothing"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What do you want it for most?",
+    "options": [
+     "Calm room to study",
+     "Easy shared living",
+     "Fast morning routine",
+     "Show before-and-after photos"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "kitchen-gardening": {
+  "goals": [
+   "Grow herbs for family cooking",
+   "Grow fresh veggies at home",
+   "Start a small balcony garden",
+   "Grow food and save money",
+   "Learn safe and fun gardening"
+  ],
+  "questions": [
+   {
+    "id": "experience",
+    "label": "What can you grow now?",
+    "options": [
+     "Nothing yet",
+     "Water a plant",
+     "Grow herbs in pots",
+     "Grow veggies from seeds"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "growing_space",
+    "label": "Where will you grow plants?",
+    "options": [
+     "Window pots",
+     "Small balcony",
+     "Home backyard",
+     "Terrace or rooftop"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "problems",
+    "label": "What goes wrong for you?",
+    "options": [
+     "Plants dry out",
+     "Too many bugs",
+     "Plants do not grow",
+     "No good soil or pots"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_goal",
+    "label": "What will you use your garden for?",
+    "options": [
+     "Family meals",
+     "School project",
+     "Fun hobby",
+     "Share with neighbours"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "aartis-and-shlokas": {
+  "goals": [
+   "Say daily morning prayers alone",
+   "Sing aartis at festivals",
+   "Learn shloka meanings by heart",
+   "Gain calm and good focus",
+   "Lead family prayer with confidence"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "What can you do now?",
+    "options": [
+     "I am fully new",
+     "I know a few lines",
+     "I can say 1-2 full prayers",
+     "I can recite many clearly"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard for you?",
+    "options": [
+     "I forget the words",
+     "Hard words to say right",
+     "I feel shy to sing loud",
+     "I do not know the meaning"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_help",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Prayer book or print",
+     "Audio or video to follow",
+     "Home prayer place",
+     "Someone to guide me"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "Where will you use it most?",
+    "options": [
+     "Daily home prayer",
+     "Festivals and family events",
+     "Temple or group prayer",
+     "Teach my kids"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "festivals-and-traditions-of-india": {
+  "goals": [
+   "Know main festivals of India",
+   "Learn festival stories and meaning",
+   "Join family celebrations happily",
+   "Make crafts and sing songs",
+   "Share kindness and good habits"
+  ],
+  "questions": [
+   {
+    "id": "now_knows",
+    "label": "What do you know about Indian festivals now?",
+    "options": [
+     "Almost nothing yet",
+     "A few festival names",
+     "Some stories and songs",
+     "Can tell others about them"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_parts",
+    "label": "What is hard about festivals and traditions?",
+    "options": [
+     "Remembering names and dates",
+     "Remembering stories",
+     "Knowing what to do",
+     "Being shy to join"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "have_home",
+    "label": "What do you have to play and learn with?",
+    "options": [
+     "Crayons and paper",
+     "Story books",
+     "Music and dance space",
+     "Family to celebrate with"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "When will you use what you learn?",
+    "options": [
+     "Celebrate at home",
+     "Share at school",
+     "Make art and play",
+     "Be kind each day"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "ramayan-and-mahabharat-stories": {
+  "goals": [
+   "Know Rama, Krishna, and heroes",
+   "Learn good values from stories",
+   "Tell short stories to others",
+   "Enjoy festival stories with family",
+   "Remember good vs bad lessons"
+  ],
+  "questions": [
+   {
+    "id": "story_level",
+    "label": "What does the child know now?",
+    "options": [
+     "No stories yet",
+     "Few names like Rama, Krishna",
+     "Some full stories",
+     "Many stories well"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard about these stories?",
+    "options": [
+     "Hard names and words",
+     "Stories too long",
+     "Forgets who is who",
+     "Scary fighting parts"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_with",
+    "label": "What will the child use to practise?",
+    "options": [
+     "Picture books",
+     "Crayons and drawing paper",
+     "Toys and dolls",
+     "Family story time"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "story_use",
+    "label": "Where will the child use the stories?",
+    "options": [
+     "Tell family at home",
+     "Share in class",
+     "Festivals like Diwali",
+     "Learn good habits daily"
+    ],
+    "type": "multi"
+   }
+  ]
+ },
+ "sanskar-values-for-kids": {
+  "goals": [
+   "Learn daily good manners",
+   "Respect elders and family",
+   "Tell truth and be kind",
+   "Share and care for others",
+   "Pray and say thank you"
+  ],
+  "questions": [
+   {
+    "id": "value_level",
+    "label": "How much does your child know about good values now?",
+    "options": [
+     "Just starting",
+     "Knows a little",
+     "Knows some",
+     "Very good already"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_moments",
+    "label": "What is hard for your child? Pick all that fit.",
+    "options": [
+     "Sharing toys",
+     "Telling the truth",
+     "Listening to elders",
+     "Anger and fighting",
+     "Saying sorry"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_place",
+    "label": "Where will your child do daily value tasks?",
+    "options": [
+     "At home",
+     "At school",
+     "With family",
+     "With friends",
+     "In temple or group"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What do you want values for most?",
+    "options": [
+     "Happy family life",
+     "Good friends",
+     "School behaviour",
+     "Festivals and prayer"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "notes-making": {
+  "goals": [
+   "Remember chapters for tests",
+   "Finish notes in less time",
+   "Make neat chapter pages",
+   "Understand hard lessons better",
+   "Revise fast before exams"
+  ],
+  "questions": [
+   {
+    "id": "note_level",
+    "label": "How do you make notes now?",
+    "options": [
+     "I do not make notes",
+     "I copy from the book",
+     "I write long messy notes",
+     "I make short clear notes"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "note_problem",
+    "label": "What goes wrong with your notes?",
+    "options": [
+     "Too long and slow",
+     "Hard to understand later",
+     "Messy and not neat",
+     "I miss key points"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practise_with",
+    "label": "What will you make notes from?",
+    "options": [
+     "School textbook chapters",
+     "Class notes or slides",
+     "Story books",
+     "Exam guides"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What are your notes for?",
+    "options": [
+     "School class tests",
+     "Big board exams",
+     "College exams",
+     "Learn on my own"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "bhagavad-gita-one-shloka-a-day": {
+  "goals": [
+   "Daily calm and clear mind",
+   "Understand Gita wisdom simply",
+   "Remember favourite shlokas by heart",
+   "Use Gita in daily life",
+   "Grow faith and good values"
+  ],
+  "questions": [
+   {
+    "id": "gita_now",
+    "label": "Where are you with the Gita now?",
+    "options": [
+     "Never read it",
+     "Know a few shlokas",
+     "Read meaning before",
+     "Studied with a teacher"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What is hard about learning a shloka?",
+    "options": [
+     "Sanskrit words are hard",
+     "Meaning is confusing",
+     "Forget it fast",
+     "Writing reflection is hard"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "have_now",
+    "label": "What do you have to practise with?",
+    "options": [
+     "A Gita book",
+     "Phone for reading",
+     "Notebook for writing",
+     "Someone to learn with"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "How will you use one shloka a day?",
+    "options": [
+     "For peace and stress",
+     "For study and work",
+     "For family and values",
+     "For prayer and faith"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "board-exam-answer-writing": {
+  "goals": [
+   "Finish full paper on time",
+   "Write neat and clear answers",
+   "Get full step-by-step marks",
+   "Remember key points fast",
+   "Stay calm in board exams"
+  ],
+  "questions": [
+   {
+    "id": "current_level",
+    "label": "How do you write answers now?",
+    "options": [
+     "Never tried board style",
+     "Write but lose marks",
+     "Get okay marks",
+     "Get good marks"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "main_problem",
+    "label": "What goes wrong most?",
+    "options": [
+     "Time runs out",
+     "Miss key points",
+     "Messy presentation",
+     "Forget diagrams and steps",
+     "Blank out in fear"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "study_tools",
+    "label": "What do you have to practise with?",
+    "options": [
+     "Textbooks and notes",
+     "Past board papers",
+     "Sample papers",
+     "Teacher checked copies"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "exam_use",
+    "label": "What will you use this for?",
+    "options": [
+     "Class 10 board exams",
+     "Class 12 board exams",
+     "School unit tests",
+     "Boards plus entrance tests"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "science-experiments-journal": {
+  "goals": [
+   "Pass science class with good marks",
+   "Do neat and safe experiments",
+   "Write clear observations and results",
+   "Understand how and why things work",
+   "Make a proud project journal"
+  ],
+  "questions": [
+   {
+    "id": "science_level",
+    "label": "What can you do in science now?",
+    "options": [
+     "New to experiments",
+     "I watch but need help",
+     "I can do simple tests",
+     "I can write results alone"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_part",
+    "label": "What goes wrong in your experiments?",
+    "options": [
+     "I do not know steps",
+     "Messy or unsafe setup",
+     "I forget what I saw",
+     "Hard to write it down"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "practice_tools",
+    "label": "What can you use to practise?",
+    "options": [
+     "Kitchen safe items",
+     "School science kit",
+     "Plants or backyard",
+     "Phone camera for photos"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use your journal for?",
+    "options": [
+     "School homework",
+     "Exams and tests",
+     "Science fair project",
+     "Just for fun"
+    ],
+    "type": "single"
+   }
+  ]
+ },
+ "science-concepts-class-6-10": {
+  "goals": [
+   "Pass school science tests well",
+   "Understand science ideas clearly",
+   "Make neat explain-and-draw pages",
+   "Finish homework without fear",
+   "Get ready for next class"
+  ],
+  "questions": [
+   {
+    "id": "class_level",
+    "label": "Which class are you in now?",
+    "options": [
+     "Class 5-6",
+     "Class 7-8",
+     "Class 9-10",
+     "Behind my class"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "hard_chapters",
+    "label": "Which science parts feel hard?",
+    "options": [
+     "Physics - motion, light, electricity",
+     "Chemistry - acids, atoms, reactions",
+     "Biology - body, plants, cells",
+     "Diagrams and definitions"
+    ],
+    "type": "multi"
+   },
+   {
+    "id": "big_problem",
+    "label": "What goes wrong in tests?",
+    "options": [
+     "I forget answers",
+     "Diagrams look wrong",
+     "Do not understand question",
+     "Run out of time"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "study_help",
+    "label": "What do you have to study with?",
+    "options": [
+     "School book only",
+     "Book and notebook",
+     "Videos and book",
+     "Tuition help"
+    ],
+    "type": "single"
+   },
+   {
+    "id": "use_for",
+    "label": "What will you use this workbook for?",
+    "options": [
+     "School exams",
+     "Homework help",
+     "Revise basics",
+     "NTSE and Olympiad"
+    ],
+    "type": "single"
+   }
+  ]
+ }
+}

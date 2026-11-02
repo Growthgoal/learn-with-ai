@@ -27,6 +27,12 @@ export interface Skill {
   /** GrowthGoal already sells a workbook or course for it. */
   weSell: boolean
   band: Band
+  /**
+   * Writing itself is the skill (handwriting, scripts, written recitation),
+   * so tracing and copying belong in its workbook. Everywhere else they are
+   * padding: a senior learning UPI safety does not need handwriting practice.
+   */
+  writing: boolean
 }
 
 /**
@@ -172,6 +178,9 @@ const ROWS: [string, string, string, string, 0 | 1, string][] = [
 const slug = (s: string) =>
   s.toLowerCase().replace(/[–—]/g, '-').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
+const WRITING = new Set(['hanuman-chalisa-learn-and-write', 'naam-jaap-writing', 'sanskrit-basics', 'school-maths-class-1-5'])
+const WRITING_GROUPS = new Set(['Handwriting and writing', 'Early learning'])
+
 /** Everyday safety skills stay affordable even though they sit under Tech. */
 const EVERYDAY = new Set(['computer-basics', 'smartphone-and-upi-safety', 'cybersecurity-basics'])
 const bandOf = (id: string, group: string, ages: Age[]): Band =>
@@ -186,7 +195,7 @@ const bandOf = (id: string, group: string, ages: Age[]): Band =>
 export const SKILLS: Skill[] = ROWS.map(([group, name, ages, proof, weSell, handIn]) => {
   const a = ages.split(' ').map((x) => A[x])
   const id = slug(name)
-  return { id, group, name, ages: a, proof: P[proof], handIn, weSell: weSell === 1, band: bandOf(id, group, a) }
+  return { id, group, name, ages: a, proof: P[proof], handIn, weSell: weSell === 1, band: bandOf(id, group, a), writing: WRITING.has(id) || WRITING_GROUPS.has(group) }
 })
 
 export const skillById = (id: string) => SKILLS.find((s) => s.id === id)

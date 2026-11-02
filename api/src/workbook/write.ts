@@ -1,6 +1,6 @@
 import { chatJson, Effort } from '../meta.js'
 import { LEVELS, Skill } from '../catalog/skills.js'
-import { WORKBOOK_SCHEMA, Workbook } from './schema.js'
+import { Workbook, workbookSchema } from './schema.js'
 
 /** What the intake chat learns about a person before their workbook is written. */
 export interface Learner {
@@ -16,6 +16,10 @@ export interface Learner {
   interests: string[]
   /** Who reads the instructions: the learner, or a parent beside a small child. */
   readBy: 'learner' | 'parent'
+  /** The skill's own form, question by question, as the learner answered it. */
+  answers?: { question: string; answer: string }[]
+  /** Anything else they wanted to say, and their replies to the AI's few questions. */
+  notes?: string
 }
 
 /** How big a workbook is. The price follows the size. */
@@ -30,7 +34,7 @@ export type Size = keyof typeof SIZES
 
 const PROOF_RULES: Record<Skill['proof'], string> = {
   pages:
-    'The learner works on paper, in this printed workbook. Every task must be doable in the space printed under it, and checkable from a phone photo of that page. Use "trace" tasks (with the exact text in "trace") for letters and words to copy over, "write" for writing, "draw" for drawing, "solve" for working out.',
+    'The learner works on paper, in this printed workbook. Every task must be doable in the space printed under it, and checkable from a phone photo of that page. Use "write" for written answers, "draw" for drawing, "solve" for working out.',
   file: 'The learner works on a computer or phone app. Each task says exactly what to make and what to save or share at the end (file type and file name). Use "file" tasks with space "none". Give sample data inline when a task needs data.',
   result:
     'The learner makes or does something real and photographs it. Each task says what to make and how to photograph it so the result can be judged from the photo. Use "make" tasks; keep a small "box" space for notes.',
@@ -46,6 +50,11 @@ function brief(skill: Skill, level: number, learner: Learner, size: Size, focus?
 
 SKILL: ${skill.name} (group: ${skill.group}). Level ${level}, ${levelName}.
 HOW WORK IS HANDED IN: ${skill.proof}. ${PROOF_RULES[skill.proof]}
+${
+  skill.writing
+    ? 'Writing is part of this skill: use "trace" tasks (with the exact text in "trace") for letters, words and lines to write over, then "write" tasks to write them freely.'
+    : 'Writing is NOT this skill. Never set handwriting, tracing or copying practice ("write this line neatly", "trace the words"). Written answers are fine only where they are the skill\'s own work (a budget, a plan, a solved problem).'
+}
 
 LEARNER
 - Name: ${learner.name}, age ${learner.age}
@@ -60,7 +69,9 @@ LEARNER
 - Goal: ${learner.goal}
 - Starting point: ${learner.startingPoint}
 - Time: ${learner.minutesPerDay} minutes a day
-- Likes: ${learner.interests.join(', ') || 'not given'}
+- Likes: ${learner.interests.join(', ') || 'not given'}${
+    learner.answers?.length ? `\n\nWHAT THEY TOLD US ABOUT THIS SKILL\n${learner.answers.map((a) => `- ${a.question} ${a.answer}`).join('\n')}` : ''
+  }${learner.notes ? `\n\nIN THEIR OWN WORDS\n${learner.notes}` : ''}
 
 SIZE: exactly ${s.chapters} chapters, ${s.tasksPerChapter} tasks in each, plus one final task that uses everything.${
     focus
@@ -75,6 +86,8 @@ ${focus}`
 const RULES = `You are GrowthGoal's AI teacher. You write workbooks that a learner finishes on their own and comes out able to do something new. You are patient and warm, and you never make anyone feel slow.
 
 How to write:
+- Teach only the skill named, and every task practises that skill itself. No warm-ups, extras or practice from other skills.
+- For learners aged 60 and over: respectful and practical, one small step at a time, never school-style drills, and never handwriting practice unless writing is the skill.
 - One idea per chapter. Order chapters so each needs only what came before.
 - Lessons are short: 2 to 4 brief paragraphs a learner of this age reads in two minutes. No jargon without a plain explanation.
 - Every chapter has one worked example, step by step, before any task.
@@ -106,7 +119,7 @@ export async function writeWorkbook(skill: Skill, level: number, learner: Learne
       { role: 'system', content: RULES },
       { role: 'user', content: brief(skill, level, learner, size, o.focus) },
     ],
-    { task: 'write-workbook', ref: o.ref, effort: o.effort ?? 'low', maxTokens: 48000, schema: WORKBOOK_SCHEMA },
+    { task: 'write-workbook', ref: o.ref, effort: o.effort ?? 'low', maxTokens: 48000, schema: workbookSchema(skill.writing) },
   )
   return { workbook: value, usage }
 }

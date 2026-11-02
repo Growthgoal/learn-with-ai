@@ -25,7 +25,7 @@ for (const g of GUIDES) {
       const pdf = catalog.guidePath(g.slug, lang)
       if (fs.existsSync(pdf)) { console.log('kept', g.slug, lang); continue }
       // A guide is a workbook too, so it is written by the same engine, for everyone.
-      const skill: Skill = { id: g.slug, group: 'Free guides', name: lang === 'hi' ? g.titleHi : g.title, ages: ['teens', 'college', 'working', 'seniors'], proof: 'pages', handIn: 'Nothing; this guide is yours to keep', weSell: false, band: 'life' }
+      const skill: Skill = { id: g.slug, group: 'Free guides', name: lang === 'hi' ? g.titleHi : g.title, ages: ['teens', 'college', 'working', 'seniors'], proof: 'pages', handIn: 'Nothing; this guide is yours to keep', weSell: false, band: 'life', writing: false }
       const learner: Learner = {
         name: lang === 'hi' ? 'आप' : 'You',
         age: 16,

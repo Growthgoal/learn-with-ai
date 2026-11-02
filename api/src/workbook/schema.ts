@@ -70,6 +70,25 @@ const task = {
   },
 }
 
+/** The schema for one skill: trace tasks exist only where writing is the skill. */
+export function workbookSchema(allowTrace: boolean) {
+  if (allowTrace) return WORKBOOK_SCHEMA
+  const kinds = ['write', 'draw', 'solve', 'speak', 'make', 'type', 'file']
+  const noTrace = { ...task, properties: { ...task.properties, kind: { type: 'string', enum: kinds } } }
+  const s = WORKBOOK_SCHEMA.schema
+  return {
+    name: 'Workbook',
+    schema: {
+      ...s,
+      properties: {
+        ...s.properties,
+        chapters: { ...s.properties.chapters, items: { ...s.properties.chapters.items, properties: { ...s.properties.chapters.items.properties, tasks: { type: 'array', items: noTrace } } } },
+        finalTask: noTrace,
+      },
+    },
+  }
+}
+
 export const WORKBOOK_SCHEMA = {
   name: 'Workbook',
   schema: {

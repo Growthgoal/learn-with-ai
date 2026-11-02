@@ -12,7 +12,8 @@ import { Learner, Size, SIZES, writeWorkbook } from './workbook/write.js'
 import { image } from './meta.js'
 import { workbookPdf } from './workbook/render.js'
 import { Task, Workbook } from './workbook/schema.js'
-import { intakeTurn } from './teach/intake.js'
+import { followUps } from './teach/followups.js'
+import { formFor } from './catalog/forms.js'
 import { teacherReply } from './teach/teacher.js'
 import { gather, typedAnswers } from './check/evidence.js'
 import { mark } from './check/mark.js'
@@ -38,6 +39,8 @@ const learnerSchema = z.object({
   minutesPerDay: z.number().int().min(5).max(240),
   interests: z.array(z.string().max(60)).max(6),
   readBy: z.enum(['learner', 'parent']),
+  answers: z.array(z.object({ question: z.string().max(300), answer: z.string().max(600) })).max(20).optional(),
+  notes: z.string().max(3000).optional(),
 })
 
 /**
@@ -88,16 +91,26 @@ r.get('/api/skills', (_req, res) => {
 
 // ------------------------------------------------------------------ intake
 
-r.post('/api/intake', async (req, res) => {
-  const body = z.object({ skillId: z.string(), messages: z.array(message).max(30) }).safeParse(req.body)
+/** The skill's own form; filling it costs nothing. */
+r.get('/api/skills/:id/form', (req, res) => {
+  const skill = skillById(req.params.id)
+  const form = skill && formFor(skill.id)
+  if (!skill || !form) return res.status(404).json({ error: 'No form for this skill yet.' })
+  res.json(form)
+})
+
+/** One AI call after the form: the few questions it still needs, if any. */
+r.post('/api/followups', async (req, res) => {
+  const body = z.object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema }).safeParse(req.body)
   const skill = body.success ? skillById(body.data.skillId) : undefined
-  if (!body.success || !skill) return res.status(400).json({ error: 'Pick a skill and say hello.' })
+  if (!body.success || !skill) return res.status(400).json({ error: 'Something in the form is missing. Go back and check it.' })
   if (!allow('intake', req.ip ?? '')) return res.status(429).json(TOO_MANY)
   try {
-    res.json(await intakeTurn(skill, body.data.messages))
+    res.json(await followUps(skill, body.data.level, body.data.learner as Learner))
   } catch (e) {
     console.error(e)
-    res.status(502).json({ error: 'The AI teacher could not answer just now. Try again in a moment.' })
+    // Questions are a nicety; without them the workbook can still be written.
+    res.json({ intro: '', questions: [] })
   }
 })
 

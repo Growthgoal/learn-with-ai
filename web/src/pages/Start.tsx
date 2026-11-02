@@ -1,36 +1,175 @@
-import { FormEvent, useEffect, useRef, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { Send, Sparkles } from 'lucide-react'
-import { api, Learner, Size } from '../api'
+import { ArrowLeft, ArrowRight, Send, Sparkles } from 'lucide-react'
+import { api, Learner } from '../api'
 import { useCatalogue } from '../useCatalogue'
 
-interface Msg { role: 'user' | 'assistant'; content: string }
-interface Turn { reply: string; done: boolean; learner: Learner | null; level: number; size: Size }
+/**
+ * Getting started: the skill's own form (no AI, so it costs nothing), the
+ * price, then the AI's few remaining questions, then the workbook.
+ */
+
+interface FormQuestion { id: string; label: string; type: 'single' | 'multi' | 'text'; options: string[] }
+interface SkillForm { goals: string[]; questions: FormQuestion[] }
+
+const LANGS: { value: Learner['language']; label: string }[] = [
+  { value: 'English', label: 'English' },
+  { value: 'Hindi', label: 'हिंदी' },
+  { value: 'Hinglish', label: 'Hinglish' },
+]
+const MINUTES = [10, 15, 20, 30, 45, 60]
+const LIKES = ['Cricket', 'Music', 'Cooking', 'Animals', 'Movies', 'Travel', 'Drawing', 'Gaming', 'Family', 'Business', 'Festivals', 'Nature']
+
+function Chips({ options, value, onChange, multi = false }: { options: string[]; value: string[]; onChange: (v: string[]) => void; multi?: boolean }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map((o) => {
+        const on = value.includes(o)
+        return (
+          <button
+            key={o}
+            type="button"
+            aria-pressed={on}
+            onClick={() => onChange(multi ? (on ? value.filter((x) => x !== o) : [...value, o]) : [o])}
+            className={`rounded-2xl px-4 py-2.5 text-left text-sm font-semibold transition ${on ? 'bg-lime-500 text-white' : 'bg-white text-ink ring-1 ring-ink/10 hover:ring-lime-400'}`}
+          >
+            {o}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+const field = 'w-full rounded-2xl border border-ink/10 bg-white px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-lime-400'
 
 export default function Start() {
-  const { id } = useParams()
+  const { id = '' } = useParams()
   const cat = useCatalogue()
   const skill = cat?.skills.find((s) => s.id === id)
   const navigate = useNavigate()
   const [params] = useSearchParams()
-  // The level picked on the skill page; the AI's suggestion fills in when there is none.
   const asked = Number(params.get('level'))
-  const [level, setLevel] = useState<number | null>([1, 2, 3].includes(asked) ? asked : null)
-  const [messages, setMessages] = useState<Msg[]>([])
-  const [text, setText] = useState('')
+  const [level, setLevel] = useState([1, 2, 3].includes(asked) ? asked : 1)
+
+  const [form, setForm] = useState<SkillForm | null>(null)
+  const [step, setStep] = useState(0)
+  const [name, setName] = useState('')
+  const [age, setAge] = useState('')
+  const [readBy, setReadBy] = useState<'learner' | 'parent'>('learner')
+  const [language, setLanguage] = useState<Learner['language']>('English')
+  const [goal, setGoal] = useState<string[]>([])
+  const [goalOther, setGoalOther] = useState('')
+  const [answers, setAnswers] = useState<Record<string, string[]>>({})
+  const [minutes, setMinutes] = useState(15)
+  const [likes, setLikes] = useState<string[]>([])
+  const [likesOther, setLikesOther] = useState('')
+  const [notes, setNotes] = useState('')
+
+  // After the form: the AI's own few questions, answered one at a time.
+  const [ai, setAi] = useState<{ intro: string; questions: string[] } | null>(null)
+  const [aiAnswers, setAiAnswers] = useState<string[]>([])
+  const [reply, setReply] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [plan, setPlan] = useState<Turn | null>(null)
-  const [creating, setCreating] = useState(false)
-  const end = useRef<HTMLDivElement>(null)
 
-  async function send(next: Msg[]) {
+  useEffect(() => {
+    api<SkillForm>(`/skills/${id}/form`).then(setForm).catch(() => setForm({ goals: [], questions: [] }))
+  }, [id])
+
+  if (!cat || !form) return <div className="h-60 animate-pulse rounded-3xl bg-white/60" />
+  if (!skill) return <p>We do not teach that skill yet. <Link to="/">See all skills</Link></p>
+
+  const kid = Number(age) > 0 && Number(age) < 10
+  const goalText = [...goal.filter((g) => g !== 'Something else'), goal.includes('Something else') ? goalOther.trim() : ''].filter(Boolean).join('; ')
+  const learner = (): Learner & { answers: { question: string; answer: string }[]; notes?: string } => ({
+    name: name.trim(),
+    age: Number(age),
+    language,
+    goal: goalText || `Get good at ${skill.name.toLowerCase()}`,
+    startingPoint: form.questions[0] ? (answers[form.questions[0].id] ?? []).join(', ') || 'Not said' : 'Not said',
+    minutesPerDay: minutes,
+    interests: [...likes, ...likesOther.split(',').map((x) => x.trim())].filter(Boolean).slice(0, 6),
+    readBy: kid ? 'parent' : readBy,
+    answers: form.questions.map((q) => ({ question: q.label, answer: (answers[q.id] ?? []).join(', ') || 'Not answered' })),
+    notes: notes.trim() || undefined,
+  })
+
+  // The steps of the form; each says whether it is complete enough to move on.
+  const steps: { title: string; ok: boolean; body: JSX.Element }[] = [
+    {
+      title: 'Who is learning?',
+      ok: name.trim().length > 0 && Number(age) >= 3 && Number(age) <= 100,
+      body: (
+        <div className="flex flex-col gap-4">
+          <label className="flex flex-col gap-1.5 text-sm font-bold">Learner's first name<input value={name} onChange={(e) => setName(e.target.value.slice(0, 40))} className={field} placeholder="e.g. Aarav" /></label>
+          <label className="flex flex-col gap-1.5 text-sm font-bold">Age<input value={age} onChange={(e) => setAge(e.target.value.replace(/\D/g, '').slice(0, 3))} inputMode="numeric" className={field} placeholder="e.g. 7" /></label>
+          {!kid && (
+            <div className="flex flex-col gap-1.5 text-sm font-bold">Who is filling this in?
+              <Chips options={['The learner', 'A parent']} value={[readBy === 'parent' ? 'A parent' : 'The learner']} onChange={(v) => setReadBy(v[0] === 'A parent' ? 'parent' : 'learner')} />
+            </div>
+          )}
+          <div className="flex flex-col gap-1.5 text-sm font-bold">Workbook language
+            <Chips options={LANGS.map((l) => l.label)} value={[LANGS.find((l) => l.value === language)!.label]} onChange={(v) => setLanguage(LANGS.find((l) => l.label === v[0])!.value)} />
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: `What do you want from ${skill.name}?`,
+      ok: goal.length > 0 && (!goal.includes('Something else') || goalOther.trim().length > 2),
+      body: (
+        <div className="flex flex-col gap-3">
+          <p className="text-sm text-ink-soft">Pick any that fit.</p>
+          <Chips multi options={[...form.goals, 'Something else']} value={goal} onChange={setGoal} />
+          {goal.includes('Something else') && <input value={goalOther} onChange={(e) => setGoalOther(e.target.value.slice(0, 200))} className={field} placeholder="Your goal, in a few words" />}
+        </div>
+      ),
+    },
+    ...form.questions.map((q) => ({
+      title: q.label,
+      ok: q.type === 'text' ? true : (answers[q.id] ?? []).length > 0,
+      body:
+        q.type === 'text' ? (
+          <textarea value={(answers[q.id] ?? [''])[0]} onChange={(e) => setAnswers({ ...answers, [q.id]: [e.target.value.slice(0, 500)] })} rows={3} className={field} placeholder="A sentence or two (you can skip this)" />
+        ) : (
+          <div className="flex flex-col gap-2">
+            {q.type === 'multi' && <p className="text-sm text-ink-soft">Pick any that fit.</p>}
+            <Chips multi={q.type === 'multi'} options={q.options} value={answers[q.id] ?? []} onChange={(v) => setAnswers({ ...answers, [q.id]: v })} />
+          </div>
+        ),
+    })),
+    {
+      title: 'Time and the things you love',
+      ok: true,
+      body: (
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-1.5 text-sm font-bold">Minutes a day
+            <Chips options={MINUTES.map((m) => `${m} min`)} value={[`${minutes} min`]} onChange={(v) => setMinutes(parseInt(v[0]))} />
+          </div>
+          <div className="flex flex-col gap-1.5 text-sm font-bold">What do you love? Your examples will be about these.
+            <Chips multi options={LIKES} value={likes} onChange={(v) => setLikes(v.slice(0, 4))} />
+            <input value={likesOther} onChange={(e) => setLikesOther(e.target.value.slice(0, 80))} className={field} placeholder="Anything else you love (optional)" />
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: 'Anything else you want us to know?',
+      ok: true,
+      body: <textarea value={notes} onChange={(e) => setNotes(e.target.value.slice(0, 1500))} rows={5} className={field} placeholder="Optional. For example: what you have tried before, an exam date, a teacher's comment, what makes it hard." />,
+    },
+  ]
+  const onPrice = step === steps.length
+  const current = steps[step]
+
+  async function toAi() {
     setBusy(true)
     setError(null)
     try {
-      const turn = await api<Turn>('/intake', { method: 'POST', json: { skillId: id, messages: next } })
-      setMessages([...next, { role: 'assistant', content: turn.reply }])
-      if (turn.done && turn.learner) setPlan(turn)
+      const r = await api<{ intro: string; questions: string[] }>('/followups', { method: 'POST', json: { skillId: id, level, learner: learner() } })
+      setAi(r)
+      if (r.questions.length === 0) await write([])
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Try again.')
     } finally {
@@ -38,104 +177,92 @@ export default function Start() {
     }
   }
 
-  // The teacher speaks first.
-  useEffect(() => {
-    if (skill && messages.length === 0) void send([{ role: 'user', content: `Hello! I want to learn ${skill.name}.` }])
-  }, [skill]) // eslint-disable-line react-hooks/exhaustive-deps
-  // Braces, not an expression: scrollIntoView returns a promise in newer browsers.
-  useEffect(() => {
-    end.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages, plan])
-
-  function submit(e: FormEvent) {
-    e.preventDefault()
-    if (!text.trim() || busy) return
-    const next = [...messages, { role: 'user' as const, content: text.trim() }]
-    setMessages(next)
-    setText('')
-    void send(next)
-  }
-
-  async function create() {
-    if (!plan?.learner) return
-    setCreating(true)
+  async function write(extra: string[]) {
+    setBusy(true)
     setError(null)
+    const l = learner()
+    const qa = ai?.questions.map((q, i) => `${q} ${extra[i] ?? ''}`.trim()).join('\n')
     try {
-      const { code } = await api<{ code: string }>('/workbooks', { method: 'POST', json: { skillId: id, level: level ?? plan.level, learner: plan.learner } })
+      const { code } = await api<{ code: string }>('/workbooks', {
+        method: 'POST',
+        json: { skillId: id, level, learner: { ...l, notes: [l.notes, qa ? `Answers to the AI teacher's questions:\n${qa}` : ''].filter(Boolean).join('\n\n') || undefined } },
+      })
       navigate(`/w/${code}`)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Try again.')
-      setCreating(false)
+      setBusy(false)
     }
   }
 
-  if (!cat) return <div className="h-60 animate-pulse rounded-3xl bg-white/60" />
-  if (!skill) return <p>We do not teach that skill yet. <Link to="/">See all skills</Link></p>
-  // The first, scripted hello is not shown; the conversation starts with the teacher.
-  const shown = messages.slice(1)
-  const l = plan?.learner
+  function answerAi(e: FormEvent) {
+    e.preventDefault()
+    if (!ai || !reply.trim()) return
+    const next = [...aiAnswers, reply.trim()]
+    setAiAnswers(next)
+    setReply('')
+    if (next.length >= ai.questions.length) void write(next)
+  }
+
+  const price = skill.prices[level - 1].price
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-4">
       <Link to={`/skill/${skill.id}`} className="text-sm font-bold text-ink-soft hover:text-ink">← {skill.name}</Link>
-      <div className="flex flex-col gap-3 rounded-4xl bg-white p-4 shadow-card sm:p-6">
-        <p className="flex items-center gap-2 text-sm font-bold text-lime-700"><Sparkles size={16} /> Your AI teacher</p>
-        {shown.map((m, i) => (
-          <div key={i} className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-[15px] ${m.role === 'assistant' ? 'self-start bg-cream-dim' : 'self-end bg-lime-500 text-white'}`}>
-            {m.content}
+
+      {!ai && !onPrice && (
+        <div className="flex flex-col gap-5 rounded-4xl bg-white p-5 shadow-card sm:p-8">
+          <div className="h-2 overflow-hidden rounded-full bg-cream-dim"><div className="h-full rounded-full bg-lime-500 transition-all" style={{ width: `${((step + 1) / (steps.length + 1)) * 100}%` }} /></div>
+          <p className="text-xs font-bold uppercase tracking-wide text-ink-faint">Step {step + 1} of {steps.length + 1}</p>
+          <h1 className="text-2xl font-extrabold leading-tight sm:text-3xl">{current.title}</h1>
+          {current.body}
+          <div className="flex items-center justify-between gap-3 pt-2">
+            <button type="button" onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0} className="flex items-center gap-1 rounded-2xl px-4 py-3 font-bold text-ink-soft disabled:opacity-30"><ArrowLeft size={16} /> Back</button>
+            <button type="button" onClick={() => setStep(step + 1)} disabled={!current.ok} className="flex items-center gap-1 rounded-2xl bg-lime-500 px-6 py-3 font-bold text-white disabled:opacity-40">Next <ArrowRight size={16} /></button>
           </div>
-        ))}
-        {busy && <div className="self-start rounded-2xl bg-cream-dim px-4 py-2.5 text-ink-faint">Thinking…</div>}
-        {l && plan && cat && (
-          <div className="mt-2 flex flex-col gap-3 rounded-3xl border-2 border-lime-500 bg-lime-50 p-5">
-            <p className="font-display text-xl font-extrabold">Your workbook plan</p>
-            <ul className="grid gap-1 text-sm">
-              <li><b>For:</b> {l.name}, {l.age}{l.readBy === 'parent' ? ' (with a parent)' : ''}</li>
-              <li><b>Goal:</b> {l.goal}</li>
-              <li><b>Starting from:</b> {l.startingPoint}</li>
-              <li><b>Language:</b> {l.language} · <b>{l.minutesPerDay} minutes</b> a day</li>
-            </ul>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="Workbook">
-              {cat.levels.map((lv) => {
-                const on = (level ?? plan.level) === lv.n
-                return (
-                  <button
-                    key={lv.n}
-                    type="button"
-                    onClick={() => setLevel(lv.n)}
-                    aria-pressed={on}
-                    className={`rounded-full px-4 py-2 text-sm font-bold ${on ? 'bg-lime-500 text-white' : 'bg-white text-ink-soft ring-1 ring-ink/10 hover:ring-lime-400'}`}
-                  >
-                    {lv.name} · ₹{skill.prices[lv.n - 1].price}
-                    {lv.n === plan.level && !on ? ' (suggested)' : ''}
-                  </button>
-                )
-              })}
-            </div>
-            <button
-              onClick={create}
-              disabled={creating}
-              className="rounded-2xl bg-lime-500 px-5 py-3.5 font-bold text-white hover:bg-lime-600 disabled:opacity-60"
-            >
-              {creating ? 'Starting…' : cat.payments ? `Pay ₹${skill.prices[(level ?? plan.level) - 1].price} and write my workbook` : `Write my workbook · ₹${skill.prices[(level ?? plan.level) - 1].price}, free during the hackathon`}
-            </button>
+        </div>
+      )}
+
+      {!ai && onPrice && (
+        <div className="flex flex-col gap-4 rounded-4xl bg-white p-5 shadow-card sm:p-8">
+          <h1 className="text-2xl font-extrabold sm:text-3xl">{name.trim()}'s {skill.name} workbook</h1>
+          <p className="text-ink-soft">{goalText || skill.name} · {LANGS.find((l) => l.value === language)!.label} · {minutes} minutes a day</p>
+          <div className="grid gap-2 sm:grid-cols-3">
+            {cat.levels.map((l) => (
+              <button key={l.n} type="button" onClick={() => setLevel(l.n)} aria-pressed={l.n === level} className={`rounded-2xl p-4 text-left ${l.n === level ? 'bg-lime-50 ring-2 ring-lime-500' : 'bg-cream ring-1 ring-ink/10'}`}>
+                <span className="block font-bold">{l.name}</span>
+                <span className="font-display text-2xl font-extrabold">₹{skill.prices[l.n - 1].price}</span>
+              </button>
+            ))}
           </div>
-        )}
-        {error && <p className="rounded-2xl bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</p>}
-        <div ref={end} />
-      </div>
-      {!plan && (
-        <form onSubmit={submit} className="sticky bottom-3 flex gap-2 rounded-2xl bg-white p-2 shadow-card-lg">
-          <input
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Type your answer…"
-            autoFocus
-            className="min-w-0 flex-1 rounded-xl px-3 py-2.5 text-[15px] focus:outline-none"
-          />
-          <button disabled={busy || !text.trim()} className="grid h-11 w-11 place-items-center rounded-xl bg-lime-500 text-white disabled:opacity-40" aria-label="Send">
-            <Send size={18} />
+          <button onClick={toAi} disabled={busy} className="flex items-center justify-center gap-2 rounded-2xl bg-sun-400 px-6 py-4 font-bold text-ink shadow-[0_5px_0_0_#A16207] disabled:opacity-60">
+            <Sparkles size={18} /> {busy ? 'Reading your answers…' : cat.payments ? `Pay ₹${price} and continue` : `Continue · ₹${price}, free during the hackathon`}
           </button>
-        </form>
+          <button type="button" onClick={() => setStep(step - 1)} className="text-sm font-bold text-ink-soft">← Change my answers</button>
+          {error && <p className="rounded-2xl bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</p>}
+        </div>
+      )}
+
+      {ai && (
+        <div className="flex flex-col gap-3 rounded-4xl bg-white p-5 shadow-card sm:p-6">
+          <p className="flex items-center gap-2 text-sm font-bold text-lime-700"><Sparkles size={16} /> Your AI teacher {ai.questions.length > 0 ? `· ${Math.min(aiAnswers.length + 1, ai.questions.length)} of ${ai.questions.length}` : ''}</p>
+          {ai.intro && <div className="max-w-[90%] self-start rounded-2xl bg-cream-dim px-4 py-2.5">{ai.intro}</div>}
+          {ai.questions.slice(0, aiAnswers.length + 1).map((q, i) => (
+            <div key={i} className="flex flex-col gap-2">
+              <div className="max-w-[90%] self-start rounded-2xl bg-cream-dim px-4 py-2.5">{q}</div>
+              {aiAnswers[i] && <div className="max-w-[90%] self-end rounded-2xl bg-lime-500 px-4 py-2.5 text-white">{aiAnswers[i]}</div>}
+            </div>
+          ))}
+          {busy && <div className="self-start rounded-2xl bg-cream-dim px-4 py-2.5 text-ink-faint">Writing {name.trim()}'s workbook…</div>}
+          {!busy && aiAnswers.length < ai.questions.length && (
+            <form onSubmit={answerAi} className="flex gap-2">
+              <input value={reply} onChange={(e) => setReply(e.target.value.slice(0, 400))} autoFocus placeholder="Your answer" className="min-w-0 flex-1 rounded-xl border border-ink/10 px-3 py-2.5 text-[15px] focus:outline-none focus:ring-2 focus:ring-lime-400" />
+              <button disabled={!reply.trim()} className="grid h-11 w-11 place-items-center rounded-xl bg-lime-500 text-white disabled:opacity-40" aria-label="Send"><Send size={18} /></button>
+            </form>
+          )}
+          {!busy && aiAnswers.length < ai.questions.length && (
+            <button type="button" onClick={() => write(aiAnswers)} className="self-start text-sm font-bold text-ink-soft">Skip the rest and write my workbook →</button>
+          )}
+          {error && <p className="rounded-2xl bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</p>}
+        </div>
       )}
     </div>
   )
