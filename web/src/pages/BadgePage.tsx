@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Award, Copy } from 'lucide-react'
+import { Award, Copy, Trophy } from 'lucide-react'
 import { api, Badge } from '../api'
 
 /** A badge anyone can open from a shared link, to see what the learner can now do. */
@@ -31,6 +31,9 @@ export default function BadgePage() {
         <h1 className="mt-2 text-3xl font-extrabold">{b.name}</h1>
         <p className="mt-2 text-lg">Earned by <b>{b.learnerName}</b></p>
         <p className="text-ink-soft">{b.skillName} · Level {b.level} · {b.percent}% on the final check</p>
+        <p className="mx-auto mt-3 inline-flex items-center gap-2 rounded-full bg-sun-100 px-4 py-1.5 font-display text-lg font-extrabold">
+          <Trophy size={18} className="text-sun-600" /> +{b.points} skill points
+        </p>
         <div className="mt-6 rounded-3xl bg-cream p-5 text-left">
           <p className="font-bold">{b.learnerName} can now:</p>
           <ul className="mt-2 list-disc pl-5">{b.canDo.map((x) => <li key={x}>{x}</li>)}</ul>
@@ -42,6 +45,7 @@ export default function BadgePage() {
       <div className="flex flex-wrap justify-center gap-2">
         <button onClick={share} className="inline-flex items-center gap-2 rounded-2xl bg-lime-500 px-5 py-3 font-bold text-white"><Copy size={16} /> {copied ? 'Link copied' : 'Copy the link to share'}</button>
         <Link to={`/skill/${b.skillId}`} className="rounded-2xl bg-white px-5 py-3 font-bold shadow-card">Start the next level</Link>
+        <Link to="/leaderboard" className="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 font-bold shadow-card"><Trophy size={16} /> Leaderboard</Link>
       </div>
     </div>
   )

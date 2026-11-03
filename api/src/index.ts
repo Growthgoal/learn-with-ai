@@ -22,6 +22,8 @@ import { teacherReply } from './teach/teacher.js'
 import { gather, typedAnswers } from './check/evidence.js'
 import { mark } from './check/mark.js'
 import { badges, catalog, checks, newCode, WorkbookRecord, workbooks } from './store.js'
+import { ageBand, BoardFilter, leaderboard, learnerIdOf, pointsFor } from './points.js'
+import type { Age } from './catalog/skills.js'
 
 const app = express()
 // Traefik sits in front on the server, so the visitor's address is one hop back.
@@ -206,7 +208,7 @@ async function build(rec: WorkbookRecord, focus?: string) {
 
 r.post('/api/workbooks', (req, res) => {
   const body = z
-    .object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema })
+    .object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema, device: z.string().regex(/^[a-z0-9]{12,40}$/).optional() })
     .safeParse(req.body)
   const skill = body.success ? findSkill(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Something is missing about the learner. Go back to the chat and finish it.' })
@@ -219,6 +221,7 @@ r.post('/api/workbooks', (req, res) => {
     // The level decides the size: Basic is the short book, Pro the long one.
     size: sizeForLevel(body.data.level) as Size,
     learner: body.data.learner as Learner,
+    device: body.data.device,
     status: 'writing',
     workbook: null,
     createdAt: new Date().toISOString(),
@@ -247,6 +250,7 @@ r.get('/api/workbooks/:code', async (req, res) => {
     questionsLeft: Math.max(0, QUESTIONS[rec.size] - rec.questions),
     checks: rec.checks.map((id) => checks.get(id)).filter(Boolean),
     badgeId: rec.badgeId ?? null,
+    badgePoints: rec.badgeId ? badges.get(rec.badgeId)?.points ?? null : null,
     fixUpOf: rec.fixUpOf ?? null,
     pages,
     print: PRINT_ON,
@@ -412,6 +416,9 @@ r.post('/api/workbooks/:code/check', upload.array('files', 40), async (req, res)
         canDo: rec.workbook.badge.canDo,
         percent: result.percent,
         at: check.at,
+        points: pointsFor(rec.level, result.percent),
+        learnerId: learnerIdOf(rec.device, rec.learner.name, rec.code),
+        ageBand: ageBand(rec.learner.age),
       })
     }
     // A badge check that did not pass gets a free fix-up workbook for just the gaps.
@@ -430,7 +437,7 @@ r.post('/api/workbooks/:code/check', upload.array('files', 40), async (req, res)
     }
     checks.put(check)
     workbooks.put({ ...rec, checks: [...rec.checks, id], badgeId })
-    res.json({ ...check, badgeId: badgeId ?? null })
+    res.json({ ...check, badgeId: badgeId ?? null, points: badgeId ? badges.get(badgeId)?.points ?? null : null })
   } catch (e) {
     console.error('check', rec.code, e)
     res.status(502).json({ error: 'Checking did not finish. Try again in a moment; your work was not saved anywhere.' })
@@ -440,7 +447,33 @@ r.post('/api/workbooks/:code/check', upload.array('files', 40), async (req, res)
 r.get('/api/badges/:id', (req, res) => {
   const b = badges.get(req.params.id)
   if (!b) return res.status(404).json({ error: 'No badge with this number.' })
-  res.json(b)
+  res.json({ ...b, points: b.points ?? pointsFor(b.level, b.percent) })
+})
+
+// ------------------------------------------------------------- leaderboard
+
+const AGE_BANDS: Age[] = ['kids-3-7', 'kids-8-12', 'teens', 'college', 'working', 'seniors']
+
+/**
+ * Skill points, best first: everyone, an age group, a shelf or one skill, this
+ * month or all time. With ?device= it also says where this browser's own
+ * learners stand, even when they are not in the top 50.
+ */
+r.get('/api/leaderboard', (req, res) => {
+  const q = (k: string) => (typeof req.query[k] === 'string' ? (req.query[k] as string) : '')
+  const f: BoardFilter = {}
+  if (AGE_BANDS.includes(q('age') as Age)) f.age = q('age') as Age
+  if (q('skill') && findSkill(q('skill'))) f.skillIds = new Set([q('skill')])
+  else if (q('group') && GROUPS.includes(q('group'))) f.skillIds = new Set(SKILLS.filter((s) => s.group === q('group')).map((s) => s.id))
+  if (q('period') === 'month') {
+    const now = new Date()
+    f.since = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1))
+  }
+  const rows = leaderboard(badges.all(), f)
+  const device = /^[a-z0-9]{12,40}$/.test(q('device')) ? q('device') : ''
+  const mine = device ? rows.filter((r) => r.learnerId === learnerIdOf(device, r.name, '')) : []
+  const strip = ({ learnerId, ...r }: (typeof rows)[number]) => ({ ...r, you: mine.some((m) => m.learnerId === learnerId) })
+  res.json({ rows: rows.slice(0, 50).map(strip), mine: mine.map(strip), total: rows.length })
 })
 
 // --------------------------------------------------------------- web app

@@ -65,9 +65,13 @@ export interface WorkbookView {
   pages: number | null
   /** Whether a printed copy can be ordered from the shop yet. */
   print: boolean
+  /** Skill points the badge earned, once there is one. */
+  badgePoints: number | null
 }
 export interface Guide { slug: string; title: string; titleHi: string; en: boolean; hi: boolean; cover: boolean }
-export interface Badge { id: string; code: string; learnerName: string; skillId: string; skillName: string; level: number; name: string; canDo: string[]; percent: number; at: string }
+export interface Badge { id: string; code: string; learnerName: string; skillId: string; skillName: string; level: number; name: string; canDo: string[]; percent: number; at: string; points: number }
+export interface BoardRow { rank: number; name: string; ageBand: Age; points: number; badges: number; you: boolean }
+export interface Board { rows: BoardRow[]; mine: BoardRow[]; total: number }
 
 export const iconUrl = (name: string) => `${BASE}icons/${name}.svg`
 

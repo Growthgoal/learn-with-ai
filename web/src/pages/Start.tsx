@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Send, Sparkles } from 'lucide-react'
 import { api, Learner, Skill } from '../api'
 import { useCatalogue } from '../useCatalogue'
+import { deviceKey } from '../device'
 
 /**
  * Getting started: the skill's own form (no AI, so it costs nothing), the
@@ -211,7 +212,7 @@ export default function Start() {
     try {
       const { code } = await api<{ code: string }>('/workbooks', {
         method: 'POST',
-        json: { skillId: id, level, learner: { ...l, notes: [l.notes, qa ? `Answers to the AI teacher's questions:\n${qa}` : ''].filter(Boolean).join('\n\n') || undefined } },
+        json: { skillId: id, level, device: deviceKey(), learner: { ...l, notes: [l.notes, qa ? `Answers to the AI teacher's questions:\n${qa}` : ''].filter(Boolean).join('\n\n') || undefined } },
       })
       navigate(`/w/${code}`)
     } catch (e) {

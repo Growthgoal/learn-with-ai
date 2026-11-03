@@ -315,7 +315,7 @@ export default function WorkbookPage() {
         <p className="mt-4">{w.welcome}</p>
         <div className="mt-5 flex flex-wrap gap-2">
           <a href={`${BASE}api/workbooks/${code}/pdf`} className="inline-flex items-center gap-2 rounded-2xl bg-lime-500 px-5 py-3 font-bold text-white hover:bg-lime-600"><Download size={18} /> Download the PDF to print</a>
-          {wb.badgeId && <Link to={`/badge/${wb.badgeId}`} className="inline-flex items-center gap-2 rounded-2xl bg-sun-400 px-5 py-3 font-bold"><Award size={18} /> See your badge</Link>}
+          {wb.badgeId && <Link to={`/badge/${wb.badgeId}`} className="inline-flex items-center gap-2 rounded-2xl bg-sun-400 px-5 py-3 font-bold"><Award size={18} /> See your badge{wb.badgePoints ? ` · +${wb.badgePoints} skill points` : ''}</Link>}
         </div>
         <p className="mt-3 text-xs text-ink-faint">Workbook code {code}. Keep this page: it is your online copy, your help and your hand-in desk.</p>
       </section>

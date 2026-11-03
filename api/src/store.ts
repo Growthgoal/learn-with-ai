@@ -5,6 +5,7 @@ import { OUTPUT } from './env.js'
 import type { Workbook } from './workbook/schema.js'
 import type { Learner, Size } from './workbook/write.js'
 import type { CheckResult } from './check/mark.js'
+import type { Age } from './catalog/skills.js'
 
 /**
  * Learner records as JSON files, one per workbook, check and badge.
@@ -32,6 +33,8 @@ export interface WorkbookRecord {
   fixUpOf?: string
   /** Pages in the PDF: what a printed copy is priced by. */
   pages?: number
+  /** The browser it was made in, random: with the first name, who the learner is on the leaderboard. */
+  device?: string
   /** Questions asked to our AI teacher so far; the price includes a fixed number. */
   questions: number
   checks: string[]
@@ -57,6 +60,10 @@ export interface BadgeRecord {
   canDo: string[]
   percent: number
   at: string
+  /** Skill points it is worth (see points.ts), and whose they are. */
+  points?: number
+  learnerId?: string
+  ageBand?: Age
 }
 
 /** Short, unambiguous, hard to guess: what goes in a printed URL. */
@@ -97,7 +104,22 @@ export const catalog = {
   guideCoverPath: (slug: string) => path.join(dir('catalog/guides'), `${slug}.jpg`),
 }
 
+let allBadges: { at: number; list: BadgeRecord[] } | null = null
 export const badges = {
   get: (id: string) => load<BadgeRecord>('badges', id),
-  put: (b: BadgeRecord) => save('badges', b.id, b),
+  put: (b: BadgeRecord) => {
+    save('badges', b.id, b)
+    allBadges = null
+  },
+  /** Every badge, for the leaderboard; read from disk at most every half minute. */
+  all: (): BadgeRecord[] => {
+    if (allBadges && Date.now() - allBadges.at < 30_000) return allBadges.list
+    const d = dir('badges')
+    const list = fs
+      .readdirSync(d)
+      .filter((f) => f.endsWith('.json'))
+      .map((f) => JSON.parse(fs.readFileSync(path.join(d, f), 'utf8')) as BadgeRecord)
+    allBadges = { at: Date.now(), list }
+    return list
+  },
 }

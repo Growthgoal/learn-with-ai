@@ -55,7 +55,7 @@ export default function Home() {
             ['Get your workbook', 'Written for you, as a PDF and online.'],
             ['Stuck? Ask', 'Our AI teacher, or the ready prompt in your own ChatGPT, Gemini or Claude.'],
             ['Hand it in', 'Scan the QR code, then a photo, a file or a recording.'],
-            ['Earn the badge', 'Or a free fix-up workbook for the gaps.'],
+            ['Earn the badge', 'And skill points for the leaderboard. Not there yet? A free fix-up workbook for the gaps.'],
           ].map(([t, d], i) => (
             <li key={t} className="flex gap-3 rounded-2xl bg-cream p-3">
               <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sun-400 font-display text-sm font-extrabold">{i + 1}</span>

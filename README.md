@@ -23,7 +23,7 @@ Learn with AI keeps what makes a workbook work (doing the task yourself, on pape
 2. **Get your workbook.** Muse Spark writes it to a strict JSON schema: chapters, short lessons, worked examples, graded tasks, a final task, a daily plan, and a rubric for every task. Muse Image draws a cover for this learner. It prints as a PDF (dotted trace rows drawn from the font's own outline, Hindi shaped correctly) and lives online.
 3. **Stuck? Ask.** Every task carries a ready prompt the learner can paste into ChatGPT, Gemini or Claude, which explains and never answers. Our own AI teacher answers too, for a set number of questions, and never does the task for them.
 4. **Hand it in.** Photos of the pages, a spreadsheet or code file, a photo of what they made, a voice recording, or typed answers.
-5. **Get checked, earn the badge.** The checker marks every task against its rubric and quotes exact evidence back. Pass: a shareable badge listing what the learner can now do. Not yet: a free fix-up workbook for just the gaps.
+5. **Get checked, earn the badge.** The checker marks every task against its rubric and quotes exact evidence back. Pass: a shareable badge listing what the learner can now do, and skill points (Basic 100, Advanced 250, Pro 500, times the score; each skill and level counts once) on a leaderboard by month, age group and shelf that shows first names only. Not yet: a free fix-up workbook for just the gaps.
 
 ```mermaid
 flowchart LR
