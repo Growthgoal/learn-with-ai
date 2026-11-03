@@ -1,9 +1,10 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Send, Sparkles } from 'lucide-react'
-import { api, Learner, Skill } from '../api'
+import { api, Badge, Learner, Skill } from '../api'
 import { useCatalogue } from '../useCatalogue'
 import { deviceKey } from '../device'
+import { Earned, opener, useProgress } from '../progress'
 
 /**
  * Getting started: the skill's own form (no AI, so it costs nothing), the
@@ -64,6 +65,11 @@ export default function Start() {
   const [params] = useSearchParams()
   const asked = Number(params.get('level'))
   const [level, setLevel] = useState([1, 2, 3].includes(asked) ? asked : 1)
+  // Advanced and Pro open with the badge of the level before: from this browser, or a pasted badge link.
+  const earned = useProgress()
+  const [pasted, setPasted] = useState<Earned | null>(null)
+  const [badgeLink, setBadgeLink] = useState('')
+  const [badgeError, setBadgeError] = useState<string | null>(null)
 
   const [form, setForm] = useState<SkillForm | null>(null)
   const [step, setStep] = useState(0)
@@ -194,7 +200,7 @@ export default function Start() {
     setBusy(true)
     setError(null)
     try {
-      const r = await api<{ intro: string; questions: string[] }>('/followups', { method: 'POST', json: { skillId: id, level, learner: learner() } })
+      const r = await api<{ intro: string; questions: string[] }>('/followups', { method: 'POST', json: { skillId: id, level, learner: learner(), fromBadge: openerFor(level)?.badgeId } })
       setAi(r)
       if (r.questions.length === 0) await write([])
     } catch (e) {
@@ -212,7 +218,7 @@ export default function Start() {
     try {
       const { code } = await api<{ code: string }>('/workbooks', {
         method: 'POST',
-        json: { skillId: id, level, device: deviceKey(), learner: { ...l, notes: [l.notes, qa ? `Answers to the AI teacher's questions:\n${qa}` : ''].filter(Boolean).join('\n\n') || undefined } },
+        json: { skillId: id, level, device: deviceKey(), fromBadge: openerFor(level)?.badgeId, learner: { ...l, notes: [l.notes, qa ? `Answers to the AI teacher's questions:\n${qa}` : ''].filter(Boolean).join('\n\n') || undefined } },
       })
       navigate(`/w/${code}`)
     } catch (e) {
@@ -231,6 +237,26 @@ export default function Start() {
   }
 
   const price = skill.prices[level - 1].price
+  const who = name.trim().split(/\s+/)[0]?.toLowerCase() ?? ''
+  const openerFor = (n: number) =>
+    opener(earned, skill.id, n, name) ?? (pasted && pasted.level === n - 1 && pasted.name.toLowerCase() === who ? pasted : null)
+  const isOpen = (n: number) => n === 1 || !!openerFor(n)
+  const prevName = cat.levels[level - 2]?.name
+
+  async function applyPastedBadge() {
+    setBadgeError(null)
+    const id = /badge\/([a-z0-9]+)/i.exec(badgeLink)?.[1] ?? badgeLink.trim()
+    try {
+      const b = await api<Badge>(`/badges/${encodeURIComponent(id)}`)
+      const first = b.learnerName.trim().split(/\s+/)[0] ?? ''
+      if (b.skillId !== skill!.id) return setBadgeError(`That badge is for ${b.skillName}, not ${skill!.name}.`)
+      if (b.level !== level - 1) return setBadgeError(`That is a Level ${b.level} badge; ${cat!.levels[level - 1].name} needs the ${prevName} badge.`)
+      if (first.toLowerCase() !== who) return setBadgeError(`That badge was earned by ${first}. Use the same first name as on the badge.`)
+      setPasted({ skillId: b.skillId, level: b.level, badgeId: b.id, name: first })
+    } catch {
+      setBadgeError('We could not find that badge. Copy the link from the badge page and paste it here.')
+    }
+  }
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-4">
       <Link to={skill.custom ? '/' : `/skill/${skill.id}`} className="text-sm font-bold text-ink-soft hover:text-ink">← {skill.custom ? 'All skills' : skill.name}</Link>
@@ -257,10 +283,25 @@ export default function Start() {
               <button key={l.n} type="button" onClick={() => setLevel(l.n)} aria-pressed={l.n === level} className={`rounded-2xl p-4 text-left ${l.n === level ? 'bg-lime-50 ring-2 ring-lime-500' : 'bg-cream ring-1 ring-ink/10'}`}>
                 <span className="block font-bold">{l.name}</span>
                 <span className="font-display text-2xl font-extrabold">₹{skill.prices[l.n - 1].price}</span>
+                {l.n > 1 && <span className="block text-xs font-bold text-ink-soft">{isOpen(l.n) ? '✓ Unlocked' : `🔒 After ${cat.levels[l.n - 2].name}`}</span>}
               </button>
             ))}
           </div>
-          <button onClick={toAi} disabled={busy} className="flex items-center justify-center gap-2 rounded-2xl bg-sun-400 px-6 py-4 font-bold text-ink shadow-[0_5px_0_0_#A16207] disabled:opacity-60">
+          {!isOpen(level) && (
+            <div className="flex flex-col gap-2 rounded-2xl bg-cream-dim p-4 text-sm">
+              <p>
+                <b>{cat.levels[level - 1].name}</b> opens with {name.trim() || 'the learner'}'s <b>{prevName}</b> badge in {skill.name}. It is written from that
+                checked work, to polish what needs it and go a level higher. No badge yet? Start with {prevName}.
+              </p>
+              <p className="font-bold">Earned it on another phone? Paste the badge link:</p>
+              <div className="flex gap-2">
+                <input value={badgeLink} onChange={(e) => setBadgeLink(e.target.value)} placeholder="growthgoal.in/learn/badge/…" className={`${field} py-2`} />
+                <button type="button" onClick={applyPastedBadge} disabled={!badgeLink.trim()} className="shrink-0 rounded-2xl bg-ink px-4 font-bold text-white disabled:opacity-40">Use it</button>
+              </div>
+              {badgeError && <p className="font-semibold text-red-700">{badgeError}</p>}
+            </div>
+          )}
+          <button onClick={toAi} disabled={busy || !isOpen(level)} className="flex items-center justify-center gap-2 rounded-2xl bg-sun-400 px-6 py-4 font-bold text-ink shadow-[0_5px_0_0_#A16207] disabled:opacity-60">
             <Sparkles size={18} /> {busy ? 'Reading your answers…' : cat.payments ? `Pay ₹${price} and continue` : `Continue · ₹${price}, free during the hackathon`}
           </button>
           <button type="button" onClick={() => setStep(step - 1)} className="text-sm font-bold text-ink-soft">← Change my answers</button>

@@ -80,6 +80,23 @@ function allow(kind: keyof typeof LIMITS, ip: string) {
 }
 const TOO_MANY = { error: 'That is the limit for today while Learn with AI is free. Come back tomorrow.' }
 
+/**
+ * Levels are steps, not separate products: Advanced opens with the Basic badge
+ * in the same skill, Pro with the Advanced badge. The badge is the proof, and
+ * the workbook it was earned on is what the next level is built from.
+ */
+function unlockedBy(skillId: string, level: number, fromBadge: string | undefined) {
+  if (level === 1) return { ok: true as const, badge: null }
+  const b = fromBadge ? badges.get(fromBadge) : null
+  const need = LEVELS.find((l) => l.n === level - 1)?.name ?? 'the level before'
+  const want = LEVELS.find((l) => l.n === level)?.name ?? 'This level'
+  if (!b || b.skillId !== skillId || b.level !== level - 1) {
+    return { ok: false as const, error: `${want} opens once you have the ${need} badge in this skill. Finish ${need}, hand it in, and it unlocks.` }
+  }
+  return { ok: true as const, badge: b }
+}
+const fromBadge = z.string().regex(/^[a-z0-9]{6,20}$/).optional()
+
 /** Every task with the answer key removed: what a learner's browser may see. */
 function forLearner(w: Workbook) {
   const strip = (t: Task) => ({ ...t, answer: undefined })
@@ -165,9 +182,11 @@ r.post('/api/custom-skills', async (req, res) => {
 
 /** One AI call after the form: the few questions it still needs, if any. */
 r.post('/api/followups', async (req, res) => {
-  const body = z.object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema }).safeParse(req.body)
+  const body = z.object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema, fromBadge }).safeParse(req.body)
   const skill = body.success ? findSkill(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Something in the form is missing. Go back and check it.' })
+  const gate = unlockedBy(skill.id, body.data.level, body.data.fromBadge)
+  if (!gate.ok) return res.status(403).json({ error: gate.error })
   if (!allow('intake', req.ip ?? '')) return res.status(429).json(TOO_MANY)
   try {
     res.json(await followUps(skill, body.data.level, body.data.learner as Learner))
@@ -184,8 +203,21 @@ r.post('/api/followups', async (req, res) => {
 async function build(rec: WorkbookRecord, focus?: string) {
   try {
     const skill = findSkill(rec.skillId)!
-    const earlier = rec.builtOn ? workbooks.get(rec.builtOn)?.workbook : null
-    const before = earlier && rec.builtOn ? { level: workbooks.get(rec.builtOn)!.level, chapters: earlier.chapters.map((c) => c.title) } : undefined
+    const prev = rec.builtOn ? workbooks.get(rec.builtOn) : null
+    // The check that earned the badge says what to polish before going further.
+    const passed = prev?.checks
+      .map((id) => checks.get(id))
+      .filter((c) => c?.result.scope === 'badge' && c.result.passed)
+      .at(-1)?.result
+    const before = prev?.workbook
+      ? {
+          level: prev.level,
+          chapters: prev.workbook.chapters.map((c) => c.title),
+          strengths: passed?.strengths ?? [],
+          needs: [...(passed?.toImprove ?? []), ...(passed?.tasks.filter((t) => t.score < 1 || t.criteria.some((c) => !c.met)).map((t) => `${t.id}: ${t.feedback}`) ?? [])].slice(0, 8),
+          percent: passed?.percent,
+        }
+      : undefined
     const { workbook } = await writeWorkbook(skill, rec.level, rec.learner, rec.size, { ref: rec.code, focus, before })
     // A cover picture drawn for this learner. A workbook without one is still a workbook.
     let cover: string | undefined
@@ -210,19 +242,13 @@ async function build(rec: WorkbookRecord, focus?: string) {
 
 r.post('/api/workbooks', (req, res) => {
   const body = z
-    .object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema, device: z.string().regex(/^[a-z0-9]{12,40}$/).optional() })
+    .object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema, device: z.string().regex(/^[a-z0-9]{12,40}$/).optional(), fromBadge })
     .safeParse(req.body)
   const skill = body.success ? findSkill(body.data.skillId) : undefined
-  if (!body.success || !skill) return res.status(400).json({ error: 'Something is missing about the learner. Go back to the chat and finish it.' })
+  if (!body.success || !skill) return res.status(400).json({ error: 'Something is missing about the learner. Go back and finish the form.' })
+  const gate = unlockedBy(skill.id, body.data.level, body.data.fromBadge)
+  if (!gate.ok) return res.status(403).json({ error: gate.error })
   if (!allow('workbook', req.ip ?? '')) return res.status(429).json(TOO_MANY)
-  // The same learner's highest earlier level in this skill, from this browser: this one starts where it ended.
-  const who = firstName(body.data.learner.name).toLowerCase()
-  const earlier = body.data.device
-    ? workbooks
-        .byDevice(body.data.device)
-        .filter((w) => w.skillId === skill.id && w.level < body.data.level && w.size !== 'fixup' && w.workbook && firstName(w.learner.name).toLowerCase() === who)
-        .sort((a, b) => b.level - a.level)[0]
-    : undefined
   // Payment happens on growthgoal.in before this point; during the hackathon it is free.
   const rec: WorkbookRecord = {
     code: newCode(),
@@ -232,7 +258,8 @@ r.post('/api/workbooks', (req, res) => {
     size: sizeForLevel(body.data.level) as Size,
     learner: body.data.learner as Learner,
     device: body.data.device,
-    builtOn: earlier?.code,
+    // The workbook the badge was earned on: this level is written from it and its check.
+    builtOn: gate.badge?.code,
     status: 'writing',
     workbook: null,
     createdAt: new Date().toISOString(),
@@ -459,6 +486,18 @@ r.get('/api/badges/:id', (req, res) => {
   const b = badges.get(req.params.id)
   if (!b) return res.status(404).json({ error: 'No badge with this number.' })
   res.json({ ...b, points: b.points ?? pointsFor(b.level, b.percent) })
+})
+
+/** The badges earned in this browser, by skill and level: which levels are open to whom. */
+r.get('/api/progress', (req, res) => {
+  const device = typeof req.query.device === 'string' && /^[a-z0-9]{12,40}$/.test(req.query.device) ? req.query.device : ''
+  if (!device) return res.json({ badges: [] })
+  const earned = workbooks
+    .byDevice(device)
+    .map((w) => (w.badgeId ? badges.get(w.badgeId) : null))
+    .filter((b): b is NonNullable<typeof b> => !!b)
+    .map((b) => ({ skillId: b.skillId, level: b.level, badgeId: b.id, name: firstName(b.learnerName) }))
+  res.json({ badges: earned })
 })
 
 // ------------------------------------------------------------- leaderboard

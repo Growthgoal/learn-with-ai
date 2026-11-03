@@ -40,9 +40,9 @@ export interface Skill {
  * one before, and starts where it ended.
  */
 export const LEVELS = [
-  { n: 1, name: 'Basic', size: 'starter', about: 'First steps: the core idea, practised until it is easy.' },
-  { n: 2, name: 'Advanced', size: 'standard', about: 'Builds on Basic: more of the skill, in real situations.' },
-  { n: 3, name: 'Pro', size: 'pro', about: 'The whole skill, done well and on your own.' },
+  { n: 1, name: 'Basic', size: 'starter', about: 'Your first real result: the core of the skill, used in your own life.' },
+  { n: 2, name: 'Advanced', size: 'standard', about: 'Opens with your Basic badge: your checked work polished, then a level harder.' },
+  { n: 3, name: 'Pro', size: 'pro', about: 'Opens with your Advanced badge: mastery, the whole skill done well on your own.' },
 ] as const
 export const sizeForLevel = (n: number) => LEVELS.find((l) => l.n === n)?.size ?? 'standard'
 

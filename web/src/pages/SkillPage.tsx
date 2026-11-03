@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { ArrowRight, Award, Bot, ChevronLeft, ChevronRight, FileText, Mic, QrCode, Sparkles, Sprout, TrendingUp } from 'lucide-react'
 import { AGE_LABEL, BASE, PROOF_LABEL, Skill, iconUrl } from '../api'
 import { useCatalogue } from '../useCatalogue'
+import { opener, useProgress } from '../progress'
 import { HOW_IT_WORKS } from '../Gallery'
 
 /**
@@ -45,6 +46,7 @@ export default function SkillPage() {
   const cat = useCatalogue()
   const skill = cat?.skills.find((s) => s.id === id)
   const [level, setLevel] = useState(1)
+  const earned = useProgress()
   const [showBar, setShowBar] = useState(false)
   useEffect(() => {
     const onScroll = () => setShowBar(window.scrollY > 700)
@@ -58,7 +60,10 @@ export default function SkillPage() {
 
   const lv = cat.levels[level - 1]
   const price = skill.prices[level - 1]
-  const start = `/start/${skill.id}?level=${level}`
+  // A later level is a step up from the one before: it opens with that level's badge.
+  const locked = level > 1 && !opener(earned, skill.id, level)
+  const prevName = cat.levels[level - 2]?.name
+  const start = `/start/${skill.id}?level=${locked ? 1 : level}`
   const samplePdf = skill.samples[level - 1] ? `${BASE}api/samples/${skill.id}/${level}.pdf` : null
   const pages = Array.from({ length: skill.samplePages?.[level - 1] ?? 0 }, (_, i) => i + 1)
   const more = cat.skills.filter((s) => s.group === skill.group && s.id !== skill.id).slice(0, 8)
@@ -88,7 +93,7 @@ export default function SkillPage() {
           </div>
 
           <div>
-            <p className="mb-2 font-bold">Choose your workbook</p>
+            <p className="mb-2 font-bold">Your level</p>
             <div className="grid gap-3 sm:grid-cols-3">
               {cat.levels.map((l) => {
                 const Icon = LEVEL_ICON[l.n - 1]
@@ -103,6 +108,11 @@ export default function SkillPage() {
                   >
                     <span className={`grid h-9 w-9 place-items-center rounded-xl ${on ? 'bg-lime-500 text-white' : 'bg-cream-dim text-lime-700'}`}><Icon size={18} /></span>
                     <span className="font-bold">{l.name}</span>
+                    {l.n > 1 && (
+                      <span className={`self-start rounded-full px-2 py-0.5 text-xs font-bold ${opener(earned, skill.id, l.n) ? 'bg-lime-100 text-lime-800' : 'bg-cream-dim text-ink-soft'}`}>
+                        {opener(earned, skill.id, l.n) ? '✓ Unlocked' : `🔒 After the ${cat.levels[l.n - 2].name} badge`}
+                      </span>
+                    )}
                     <span className="text-sm leading-snug text-ink-soft">{l.about}</span>
                     <span className="mt-auto text-xs text-ink-faint">{SIZE_TEXT[l.size]}</span>
                     <span className="font-display text-lg font-extrabold">₹{skill.prices[l.n - 1].price}</span>
@@ -121,12 +131,18 @@ export default function SkillPage() {
               <span />
             )}
             <Link to={start} className="flex items-center justify-center gap-2 rounded-2xl bg-sun-400 px-5 py-4 font-bold text-ink shadow-[0_5px_0_0_#A16207] hover:bg-sun-300">
-              <Sparkles size={18} /> Start with the AI teacher
+              <Sparkles size={18} /> {locked ? 'Start with Basic' : 'Start with the AI teacher'}
             </Link>
           </div>
+          {locked && (
+            <p className="rounded-2xl bg-cream-dim p-3 text-sm text-ink-soft">
+              <b>{lv.name}</b> opens once you have the <b>{prevName}</b> badge in {skill.name}: finish that workbook, hand it in, and pass the check. Then your
+              {' '}{lv.name} workbook is written from your checked work, to polish what needs it and take you a level higher.
+            </p>
+          )}
 
           <ul className="flex flex-col gap-2.5 rounded-3xl bg-white p-5 text-sm shadow-card">
-            <li className="flex gap-3"><Bot size={18} className="shrink-0 text-lime-600" />Written for you after a 3-minute chat: your goal, your level, your language{cat.payments ? '' : '. Free while the hackathon runs.'}</li>
+            <li className="flex gap-3"><Bot size={18} className="shrink-0 text-lime-600" />Written for you from a short form made for this skill: your goal, your own situation, your language{cat.payments ? '' : '. Free while the hackathon runs.'}</li>
             <li className="flex gap-3"><Sparkles size={18} className="shrink-0 text-lime-600" />{cat.questions[lv.size]} questions to our AI teacher, and unlimited help from your own ChatGPT, Gemini or Claude</li>
             <li className="flex gap-3"><QrCode size={18} className="shrink-0 text-lime-600" />Scan the QR on your workbook to hand in: {skill.handIn.toLowerCase()}</li>
             <li className="flex gap-3"><Award size={18} className="shrink-0 text-lime-600" />Pass for a skill badge; not yet, and you get a free fix-up workbook</li>
@@ -176,8 +192,9 @@ export default function SkillPage() {
         <div className="rounded-4xl bg-white p-6 shadow-card">
           <h2 className="text-2xl font-extrabold">About this skill</h2>
           <p className="mt-2 text-ink-soft">
-            {skill.name}, for {ages.toLowerCase()}. Three workbooks take you from your first steps to doing it well on your own: Basic, Advanced and Pro. Each is
-            written for you from a short chat, in English, Hindi or Hinglish, with examples from your own life and the things you love.
+            {skill.name}, for {ages.toLowerCase()}. Three levels, one after another, take you from your first real result to mastering it: Basic, then Advanced
+            once you have the Basic badge, then Pro once you have the Advanced badge. Each is written for you, in English, Hindi or Hinglish, from your own
+            situation, and each level starts from your checked work in the one before.
           </p>
           <ul className="mt-4 flex flex-col gap-2 text-sm">
             {cat.levels.map((l) => (
@@ -189,7 +206,7 @@ export default function SkillPage() {
           <h2 className="text-2xl font-extrabold">How you learn it</h2>
           <ol className="mt-3 flex flex-col gap-2.5 text-sm">
             {[
-              ['Chat for 3 minutes', 'The AI teacher asks about your goal, your level and your language.'],
+              ['Fill a short form', 'Questions made for this skill: your goal, your own situation, your language.'],
               ['Get your workbook', 'As a PDF to print and online, with a QR code on every page.'],
               ['Stuck? Ask', 'Our AI teacher explains as often as you need, or paste the ready prompt into your own AI.'],
               ['Hand in', `${PROOF_LABEL[skill.proof]}: scan the QR, then send it. Check one page any time.`],
@@ -210,10 +227,10 @@ export default function SkillPage() {
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-white/95 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
             {skill.cover && <img src={`${BASE}api/skills/${skill.id}/cover`} alt="" className="hidden h-12 w-12 rounded-xl object-cover sm:block" />}
-            <p className="hidden min-w-0 flex-1 truncate font-display font-bold sm:block">{skill.name} · {lv.name}</p>
-            <span className="font-display text-xl font-extrabold">₹{price.price}</span>
+            <p className="hidden min-w-0 flex-1 truncate font-display font-bold sm:block">{skill.name} · {locked ? cat.levels[0].name : lv.name}</p>
+            <span className="font-display text-xl font-extrabold">₹{locked ? skill.prices[0].price : price.price}</span>
             <Link to={start} className="ml-auto flex items-center gap-2 rounded-2xl bg-sun-400 px-5 py-3 font-bold text-ink shadow-[0_4px_0_0_#A16207] sm:ml-0">
-              Start <ArrowRight size={16} />
+              {locked ? 'Start with Basic' : 'Start'} <ArrowRight size={16} />
             </Link>
           </div>
         </div>

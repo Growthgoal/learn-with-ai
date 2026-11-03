@@ -52,8 +52,8 @@ const LEVEL_RULES: Record<number, string> = {
 - By the last page the learner can do one real, useful thing with this skill in their own life. The final task is exactly that thing, made for real from their own situation (their own sales sheet, their own one-page plan, their own two-minute introduction), never a practice exercise.
 - Chapter 1 ends with a small win they can use the same day.
 - Teach the core that gives the most result for the least effort; leave the rest for Advanced. Every lesson has a worked example, tasks build in small steps, hints are generous.`,
-  2: `ADVANCED. For someone who can already do the Basic. Chapter 1's lesson opens with a one-paragraph recap, then the workbook goes further: real situations from the learner's own life and work, the common mistakes and how to fix them, doing it faster and more accurately, and combining several parts of the skill. Fewer hints; most tasks have more than one step. The final task is a real piece of their own work, bigger than Basic's.`,
-  3: `PRO. For someone who can already do it and wants to do it well, on their own. Teach judgement: choosing between ways of doing it, checking their own work, handling the hard cases. Most tasks are multi-step and built on the learner's real situation; hints are short and few. The final task is a complete, real piece of work they could show to a customer, teacher or employer.`,
+  2: `ADVANCED. This learner earned the Basic badge, and their checked Basic work is below. Chapter 1 polishes exactly what that check said still needs practice, with a fresh example. Then the workbook goes a level harder: real situations from their own life and work, the common mistakes and how to fix them, doing it faster and more accurately, and combining several parts of the skill. Fewer hints; most tasks have more than one step. The final task is a real piece of their own work, bigger and harder than Basic's.`,
+  3: `PRO. This learner earned the Advanced badge, and their checked Advanced work is below. This is the last level: by the end they have mastered the skill and do the whole of it well on their own. Start by closing what the Advanced check said still needs work, then teach judgement: choosing between ways of doing it, checking their own work, handling the hard and unusual cases. Most tasks are multi-step and built on their real situation; hints are short and few. The final task is a complete, real piece of work they could show to a customer, teacher or employer.`,
 }
 
 function brief(skill: Skill, level: number, learner: Learner, size: Size, focus?: string, before?: WriteOptions['before']) {
@@ -64,8 +64,14 @@ function brief(skill: Skill, level: number, learner: Learner, size: Size, focus?
 SKILL: ${skill.name} (group: ${skill.group}). Level ${level}, ${levelName}.
 ${focus ? '' : LEVEL_RULES[level] ?? ''}${
     before
-      ? `\nTHEY ALREADY FINISHED ${LEVELS.find((l) => l.n === before.level)?.name.toUpperCase() ?? 'AN EARLIER LEVEL'}, which taught: ${before.chapters.join('; ')}. Do not teach these again; build on them.`
-      : ''
+      ? `\nTHEIR ${LEVELS.find((l) => l.n === before.level)?.name.toUpperCase() ?? 'EARLIER'} WORKBOOK taught: ${before.chapters.join('; ')}. Do not teach these again; build on them.${
+          before.percent != null ? `\nIts final check: ${before.percent}%.` : ''
+        }${before.strengths?.length ? `\nThey did well at: ${before.strengths.join('; ')}.` : ''}${
+          before.needs?.length ? `\nStill needs practice: ${before.needs.join('; ')}.` : ''
+        }`
+      : level > 1 && !focus
+        ? '\nTheir earlier workbook and its check are not available: assume they finished the level before, and polish its usual weak spots.'
+        : ''
   }
 HOW WORK IS HANDED IN: ${skill.proof}. ${PROOF_RULES[skill.proof]}
 ${
@@ -132,7 +138,7 @@ export interface WriteOptions {
   /** For a fix-up workbook: what the check said needs more practice. */
   focus?: string
   /** The level this learner finished before in the same skill, so this one starts where it ended. */
-  before?: { level: number; chapters: string[] }
+  before?: { level: number; chapters: string[]; strengths?: string[]; needs?: string[]; percent?: number }
 }
 
 export async function writeWorkbook(skill: Skill, level: number, learner: Learner, size: Size, o: WriteOptions = {}) {
