@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Routes, useLocation, useNavigationType } from 'react-router-dom'
 import './index.css'
 import Home from './pages/Home'
 import SkillPage from './pages/SkillPage'
@@ -8,6 +8,16 @@ import Start from './pages/Start'
 import WorkbookPage from './pages/WorkbookPage'
 import BadgePage from './pages/BadgePage'
 import NewSkill from './pages/NewSkill'
+
+/** A new page opens at its top, like any website; Back still returns to where you were. */
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  const how = useNavigationType()
+  useEffect(() => {
+    if (how !== 'POP') window.scrollTo(0, 0)
+  }, [pathname, how])
+  return null
+}
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
@@ -34,6 +44,7 @@ function Shell({ children }: { children: React.ReactNode }) {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter basename="/learn">
+      <ScrollToTop />
       <Shell>
         <Routes>
           <Route path="/" element={<Home />} />

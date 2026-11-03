@@ -62,7 +62,8 @@ export default function Start() {
   const [step, setStep] = useState(0)
   const [name, setName] = useState('')
   const [age, setAge] = useState('')
-  const [readBy, setReadBy] = useState<'learner' | 'parent'>('learner')
+  // Asked only for a child under 12; anyone older fills it in for themselves.
+  const [readBy, setReadBy] = useState<'learner' | 'parent' | null>(null)
   const [language, setLanguage] = useState<Learner['language']>('English')
   const [goal, setGoal] = useState<string[]>([])
   const [goalOther, setGoalOther] = useState('')
@@ -86,7 +87,7 @@ export default function Start() {
   if (!cat || !form || (!listed && own === undefined)) return <div className="h-60 animate-pulse rounded-3xl bg-white/60" />
   if (!skill) return <p>We do not teach that skill yet. <Link to="/">See all skills</Link></p>
 
-  const kid = Number(age) > 0 && Number(age) < 10
+  const young = Number(age) > 0 && Number(age) < 12
   const goalText = [...goal.filter((g) => g !== 'Something else'), goal.includes('Something else') ? goalOther.trim() : ''].filter(Boolean).join('; ')
   const learner = (): Learner & { answers: { question: string; answer: string }[]; notes?: string } => ({
     name: name.trim(),
@@ -96,7 +97,7 @@ export default function Start() {
     startingPoint: form.questions[0] ? (answers[form.questions[0].id] ?? []).join(', ') || 'Not said' : 'Not said',
     minutesPerDay: minutes,
     interests: [...likes, ...likesOther.split(',').map((x) => x.trim())].filter(Boolean).slice(0, 6),
-    readBy: kid ? 'parent' : readBy,
+    readBy: young ? readBy ?? 'parent' : 'learner',
     answers: form.questions.map((q) => ({ question: q.label, answer: (answers[q.id] ?? []).join(', ') || 'Not answered' })),
     notes: notes.trim() || undefined,
   })
@@ -105,14 +106,18 @@ export default function Start() {
   const steps: { title: string; ok: boolean; body: JSX.Element }[] = [
     {
       title: 'Who is learning?',
-      ok: name.trim().length > 0 && Number(age) >= 3 && Number(age) <= 100,
+      ok: name.trim().length > 0 && Number(age) >= 3 && Number(age) <= 100 && (!young || readBy !== null),
       body: (
         <div className="flex flex-col gap-4">
           <label className="flex flex-col gap-1.5 text-sm font-bold">Learner's first name<input value={name} onChange={(e) => setName(e.target.value.slice(0, 40))} className={field} placeholder="e.g. Aarav" /></label>
           <label className="flex flex-col gap-1.5 text-sm font-bold">Age<input value={age} onChange={(e) => setAge(e.target.value.replace(/\D/g, '').slice(0, 3))} inputMode="numeric" className={field} placeholder="e.g. 7" /></label>
-          {!kid && (
+          {young && (
             <div className="flex flex-col gap-1.5 text-sm font-bold">Who is filling this in?
-              <Chips options={['The learner', 'A parent']} value={[readBy === 'parent' ? 'A parent' : 'The learner']} onChange={(v) => setReadBy(v[0] === 'A parent' ? 'parent' : 'learner')} />
+              <Chips
+                options={[`${name.trim() || 'The child'} (the learner)`, 'A parent']}
+                value={readBy === 'parent' ? ['A parent'] : readBy === 'learner' ? [`${name.trim() || 'The child'} (the learner)`] : []}
+                onChange={(v) => setReadBy(v[0] === 'A parent' ? 'parent' : 'learner')}
+              />
             </div>
           )}
           <div className="flex flex-col gap-1.5 text-sm font-bold">Workbook language
