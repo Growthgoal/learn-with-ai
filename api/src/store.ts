@@ -35,6 +35,8 @@ export interface WorkbookRecord {
   pages?: number
   /** The browser it was made in, random: with the first name, who the learner is on the leaderboard. */
   device?: string
+  /** The same learner's earlier level in this skill, which this one builds on. */
+  builtOn?: string
   /** Questions asked to our AI teacher so far; the price includes a fixed number. */
   questions: number
   checks: string[]
@@ -85,6 +87,13 @@ function load<T>(kind: string, id: string): T | null {
 
 export const workbooks = {
   get: (code: string) => load<WorkbookRecord>('workbooks', code),
+  /** Every workbook made in one browser: few enough to read each time. */
+  byDevice: (device: string) =>
+    fs
+      .readdirSync(dir('workbooks'))
+      .filter((f) => f.endsWith('.json'))
+      .map((f) => JSON.parse(fs.readFileSync(path.join(dir('workbooks'), f), 'utf8')) as WorkbookRecord)
+      .filter((w) => w.device === device),
   put: (w: WorkbookRecord) => save('workbooks', w.code, w),
   pdfPath: (code: string) => path.join(dir('pdf'), `${code}.pdf`),
   coverPath: (code: string) => path.join(dir('img'), `${code}.jpg`),

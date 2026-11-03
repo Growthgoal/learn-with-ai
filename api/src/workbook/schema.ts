@@ -45,6 +45,8 @@ export interface Workbook {
   chapters: Chapter[]
   finalTask: Task
   badge: { name: string; canDo: string[] }
+  /** The rules, steps, formulas or phrases worth keeping: printed as a page of its own. Older workbooks have none. */
+  quickReference?: string[]
 }
 
 const str = { type: 'string' }
@@ -94,7 +96,7 @@ export const WORKBOOK_SCHEMA = {
   schema: {
     type: 'object',
     additionalProperties: false,
-    required: ['title', 'subtitle', 'welcome', 'howToUse', 'plan', 'chapters', 'finalTask', 'badge'],
+    required: ['title', 'subtitle', 'welcome', 'howToUse', 'plan', 'chapters', 'finalTask', 'badge', 'quickReference'],
     properties: {
       title: str,
       subtitle: str,
@@ -132,6 +134,7 @@ export const WORKBOOK_SCHEMA = {
         },
       },
       finalTask: task,
+      quickReference: strList,
       badge: {
         type: 'object',
         additionalProperties: false,

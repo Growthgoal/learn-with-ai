@@ -43,12 +43,30 @@ const PROOF_RULES: Record<Skill['proof'], string> = {
     'The learner records themselves speaking on a phone. Each "speak" task gives what to say or talk about and how long (in seconds), and is judged from the transcript and from how complete and fluent it is. Keep a small "lines" space for a written outline when it helps.',
 }
 
-function brief(skill: Skill, level: number, learner: Learner, size: Size, focus?: string) {
+/**
+ * What each level is for. Most people only ever buy Basic, so Basic has to be
+ * worth it on its own: a real result in their own life, not a taster.
+ */
+const LEVEL_RULES: Record<number, string> = {
+  1: `BASIC. This is the workbook most people buy, and often the only one, so it must be worth it on its own.
+- By the last page the learner can do one real, useful thing with this skill in their own life. The final task is exactly that thing, made for real from their own situation (their own sales sheet, their own one-page plan, their own two-minute introduction), never a practice exercise.
+- Chapter 1 ends with a small win they can use the same day.
+- Teach the core that gives the most result for the least effort; leave the rest for Advanced. Every lesson has a worked example, tasks build in small steps, hints are generous.`,
+  2: `ADVANCED. For someone who can already do the Basic. Chapter 1's lesson opens with a one-paragraph recap, then the workbook goes further: real situations from the learner's own life and work, the common mistakes and how to fix them, doing it faster and more accurately, and combining several parts of the skill. Fewer hints; most tasks have more than one step. The final task is a real piece of their own work, bigger than Basic's.`,
+  3: `PRO. For someone who can already do it and wants to do it well, on their own. Teach judgement: choosing between ways of doing it, checking their own work, handling the hard cases. Most tasks are multi-step and built on the learner's real situation; hints are short and few. The final task is a complete, real piece of work they could show to a customer, teacher or employer.`,
+}
+
+function brief(skill: Skill, level: number, learner: Learner, size: Size, focus?: string, before?: WriteOptions['before']) {
   const s = SIZES[size]
   const levelName = LEVELS.find((l) => l.n === level)?.name ?? 'Starter'
   return `Write a personal workbook.
 
 SKILL: ${skill.name} (group: ${skill.group}). Level ${level}, ${levelName}.
+${focus ? '' : LEVEL_RULES[level] ?? ''}${
+    before
+      ? `\nTHEY ALREADY FINISHED ${LEVELS.find((l) => l.n === before.level)?.name.toUpperCase() ?? 'AN EARLIER LEVEL'}, which taught: ${before.chapters.join('; ')}. Do not teach these again; build on them.`
+      : ''
+  }
 HOW WORK IS HANDED IN: ${skill.proof}. ${PROOF_RULES[skill.proof]}
 ${
   skill.writing
@@ -104,6 +122,7 @@ How to write:
 - "trace" is only for trace tasks; otherwise null.
 - "plan": spread the chapters over days so each day fits the learner's minutes; the final task gets its own day.
 - "badge": a name for what they earn, and 3 to 5 things they can do once they finish ("can write all 26 capital letters on the line").
+- "quickReference": 6 to 10 short lines worth keeping once the workbook is done: the key rules, steps, formulas, phrases or numbers it taught, one line each, in the learner's language. It is printed as a page to keep on the wall or in a wallet.
 - Safe for every age. Law, health and money skills teach general knowledge: what the law says, how a system works, and when to see a lawyer, doctor or adviser. Never advice on the learner's own case, never a diagnosis or a medicine dose, never what to buy or invest in.
 - Physical skills (sport, fitness, yoga, self-defence, first aid, repairs) put safety first: warm up, stop if it hurts, and do anything risky only with a trained adult.`
 
@@ -112,13 +131,15 @@ export interface WriteOptions {
   ref?: string
   /** For a fix-up workbook: what the check said needs more practice. */
   focus?: string
+  /** The level this learner finished before in the same skill, so this one starts where it ended. */
+  before?: { level: number; chapters: string[] }
 }
 
 export async function writeWorkbook(skill: Skill, level: number, learner: Learner, size: Size, o: WriteOptions = {}) {
   const { value, usage } = await chatJson<Workbook>(
     [
       { role: 'system', content: RULES },
-      { role: 'user', content: brief(skill, level, learner, size, o.focus) },
+      { role: 'user', content: brief(skill, level, learner, size, o.focus, o.before) },
     ],
     { task: 'write-workbook', ref: o.ref, effort: o.effort ?? 'low', maxTokens: 48000, schema: workbookSchema(skill.writing) },
   )

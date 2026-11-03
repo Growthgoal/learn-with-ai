@@ -19,6 +19,7 @@ const WORDS = {
     check: 'Check yourself', madeFor: 'Made for', online: 'Your workbook online, prompts for every task, and where to hand it in:',
     hello: 'Hello', earn: 'Earn your badge', handIn: 'When you have done every task, hand in your work at', canDo: 'Once it passes, your profile shows that you can:',
     fixUp: 'Not there yet? You get a short fix-up workbook for just the parts that need more practice, at no extra cost.',
+    keep: 'Keep this page', keepSub: 'Your quick reference: cut it out, pin it up, or keep a photo on your phone.',
   },
   hi: {
     howTo: 'इस कॉपी को कैसे इस्तेमाल करें', plan: (m: number) => `आपकी योजना · कुल लगभग ${m} मिनट`, day: 'दिन', what: 'क्या', minutes: 'मिनट',
@@ -27,6 +28,7 @@ const WORDS = {
     check: 'ख़ुद जाँचें', madeFor: 'किसके लिए', online: 'आपकी कॉपी ऑनलाइन, हर काम के लिए सवाल, और काम जमा करने की जगह:',
     hello: 'नमस्ते', earn: 'अपना बैज पाएँ', handIn: 'सारे काम पूरे होने पर अपना काम यहाँ जमा करें:', canDo: 'पास होने पर आपकी प्रोफ़ाइल में दिखेगा कि आप:',
     fixUp: 'अभी पूरा नहीं हुआ? जिन हिस्सों में और अभ्यास चाहिए, उनके लिए एक छोटी कॉपी मुफ़्त मिलेगी।',
+    keep: 'यह पन्ना संभालकर रखें', keepSub: 'आपकी झटपट याद-सूची: काटकर दीवार पर लगाएँ, या फ़ोन में फ़ोटो रख लें।',
   },
 }
 const words = (l: Learner) => (l.language === 'Hindi' ? WORDS.hi : WORDS.en)
@@ -155,6 +157,7 @@ export async function workbookHtml({ workbook: w, skill, level, learner: l, code
   .trace .deva { font-family: Mukta, sans-serif; font-weight: 600; }
   .check { margin-top: 2mm; font-size: 10pt; border-left: 3px solid var(--sun); padding-left: 3mm; }
   .end { page-break-before: always; }
+  .keep { page-break-before: always; }
   .badge { border: 2px dashed var(--lime); border-radius: 4mm; padding: 6mm; margin-top: 6mm; }
 </style></head><body>
 
@@ -221,6 +224,18 @@ ${w.chapters
   </div>`
   }
 </section>
+${
+  w.quickReference?.length
+    ? `<section class="keep">
+  <div class="badge" style="border-style:solid">
+    <h2 style="margin:0 0 1mm">${t.keep}</h2>
+    <p style="color:var(--soft);margin-top:0">${t.keepSub}</p>
+    <ol style="font-size:13pt">${w.quickReference.map((x) => `<li style="margin:3mm 0">${esc(x)}</li>`).join('')}</ol>
+    <p style="font-size:9pt;color:var(--soft)">${esc(w.title)} · ${esc(skill.name)} · growthgoal.in/learn</p>
+  </div>
+</section>`
+    : ''
+}
 </body></html>`
 }
 

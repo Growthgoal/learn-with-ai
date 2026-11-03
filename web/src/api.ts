@@ -51,6 +51,8 @@ export interface Workbook {
   chapters: { number: number; title: string; goal: string; lesson: string[]; example: { title: string; steps: string[] }; tasks: Task[]; checkpoint: string }[]
   finalTask: Task
   badge: { name: string; canDo: string[] }
+  /** Printed as a page to keep; older workbooks have none. */
+  quickReference?: string[]
 }
 export interface TaskMark { id: string; found: boolean; criteria: { criterion: string; met: boolean }[]; score: number; feedback: string }
 export interface Check {

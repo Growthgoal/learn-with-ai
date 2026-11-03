@@ -350,6 +350,14 @@ export default function WorkbookPage() {
         </div>
       </section>
 
+      {w.quickReference && w.quickReference.length > 0 && (
+        <section className="rounded-4xl border-2 border-lime-500 bg-white p-6 lg:p-8">
+          <h2 className="text-xl font-extrabold">Keep this: your quick reference</h2>
+          <p className="text-sm text-ink-soft">The rules and steps worth remembering. It is also the last page of your PDF.</p>
+          <ol className="mt-3 list-decimal space-y-1.5 pl-5">{w.quickReference.map((x) => <li key={x}>{x}</li>)}</ol>
+        </section>
+      )}
+
       <section className="flex flex-col gap-3 rounded-4xl bg-ink p-6 text-white lg:p-8">
         <h2 className="text-2xl font-extrabold">Hand in your work</h2>
         <p className="text-white/80">

@@ -22,7 +22,7 @@ import { teacherReply } from './teach/teacher.js'
 import { gather, typedAnswers } from './check/evidence.js'
 import { mark } from './check/mark.js'
 import { badges, catalog, checks, newCode, WorkbookRecord, workbooks } from './store.js'
-import { ageBand, BoardFilter, leaderboard, learnerIdOf, pointsFor } from './points.js'
+import { ageBand, BoardFilter, firstName, leaderboard, learnerIdOf, pointsFor } from './points.js'
 import type { Age } from './catalog/skills.js'
 
 const app = express()
@@ -184,7 +184,9 @@ r.post('/api/followups', async (req, res) => {
 async function build(rec: WorkbookRecord, focus?: string) {
   try {
     const skill = findSkill(rec.skillId)!
-    const { workbook } = await writeWorkbook(skill, rec.level, rec.learner, rec.size, { ref: rec.code, focus })
+    const earlier = rec.builtOn ? workbooks.get(rec.builtOn)?.workbook : null
+    const before = earlier && rec.builtOn ? { level: workbooks.get(rec.builtOn)!.level, chapters: earlier.chapters.map((c) => c.title) } : undefined
+    const { workbook } = await writeWorkbook(skill, rec.level, rec.learner, rec.size, { ref: rec.code, focus, before })
     // A cover picture drawn for this learner. A workbook without one is still a workbook.
     let cover: string | undefined
     try {
@@ -213,6 +215,14 @@ r.post('/api/workbooks', (req, res) => {
   const skill = body.success ? findSkill(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Something is missing about the learner. Go back to the chat and finish it.' })
   if (!allow('workbook', req.ip ?? '')) return res.status(429).json(TOO_MANY)
+  // The same learner's highest earlier level in this skill, from this browser: this one starts where it ended.
+  const who = firstName(body.data.learner.name).toLowerCase()
+  const earlier = body.data.device
+    ? workbooks
+        .byDevice(body.data.device)
+        .filter((w) => w.skillId === skill.id && w.level < body.data.level && w.size !== 'fixup' && w.workbook && firstName(w.learner.name).toLowerCase() === who)
+        .sort((a, b) => b.level - a.level)[0]
+    : undefined
   // Payment happens on growthgoal.in before this point; during the hackathon it is free.
   const rec: WorkbookRecord = {
     code: newCode(),
@@ -222,6 +232,7 @@ r.post('/api/workbooks', (req, res) => {
     size: sizeForLevel(body.data.level) as Size,
     learner: body.data.learner as Learner,
     device: body.data.device,
+    builtOn: earlier?.code,
     status: 'writing',
     workbook: null,
     createdAt: new Date().toISOString(),
@@ -430,7 +441,7 @@ r.post('/api/workbooks/:code/check', upload.array('files', 40), async (req, res)
         ...weak.map((t) => `- Task ${t.id}: ${allTasks(rec.workbook!).find((x) => x.id === t.id)?.instruction} — ${t.feedback}`),
         ...result.toImprove.map((x) => `- ${x}`),
       ].join('\n')
-      const fix: WorkbookRecord = { ...rec, code: newCode(), size: 'fixup', status: 'writing', workbook: null, createdAt: check.at, fixUpOf: rec.code, questions: 0, checks: [], badgeId: undefined }
+      const fix: WorkbookRecord = { ...rec, code: newCode(), size: 'fixup', status: 'writing', workbook: null, createdAt: check.at, fixUpOf: rec.code, builtOn: undefined, questions: 0, checks: [], badgeId: undefined }
       workbooks.put(fix)
       void build(fix, focus)
       check.fixUpCode = fix.code
