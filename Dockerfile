@@ -3,7 +3,7 @@
 # Muse Voice Transcribe takes and shrinks photos before checking.
 FROM node:22-bookworm-slim
 RUN apt-get update \
- && apt-get install -y --no-install-recommends chromium ffmpeg fonts-noto-core fonts-noto-color-emoji ca-certificates \
+ && apt-get install -y --no-install-recommends chromium ffmpeg poppler-utils fonts-noto-core fonts-noto-color-emoji ca-certificates \
  && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY api/package.json api/package-lock.json api/

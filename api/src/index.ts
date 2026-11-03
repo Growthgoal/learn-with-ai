@@ -1,5 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
 import express from 'express'
 import cors from 'cors'
 import multer from 'multer'
@@ -12,7 +14,7 @@ import { priceOf, QUESTIONS } from './catalog/prices.js'
 import { GUIDES } from './catalog/guides.js'
 import { Learner, Size, SIZES, writeWorkbook } from './workbook/write.js'
 import { image } from './meta.js'
-import { workbookPdf } from './workbook/render.js'
+import { SITE, workbookPdf } from './workbook/render.js'
 import { Task, Workbook } from './workbook/schema.js'
 import { followUps } from './teach/followups.js'
 import { formFor } from './catalog/forms.js'
@@ -82,6 +84,29 @@ function forLearner(w: Workbook) {
   return { ...w, chapters: w.chapters.map((c) => ({ ...c, tasks: c.tasks.map(strip) })), finalTask: strip(w.finalTask) }
 }
 const allTasks = (w: Workbook) => [...w.chapters.flatMap((c) => c.tasks), w.finalTask]
+
+/**
+ * Printed copies are sold through the GrowthGoal shop's checkout. The button
+ * stays hidden until the shop that takes the order is live: PRINT_ORDERS=on.
+ */
+const PRINT_ON = process.env.PRINT_ORDERS === 'on'
+
+const run = promisify(execFile)
+/** Pages in a workbook's PDF, read once and kept on the record: a printed copy is priced by them. */
+async function pagesOf(rec: WorkbookRecord) {
+  if (rec.pages) return rec.pages
+  const file = workbooks.pdfPath(rec.code)
+  if (rec.status !== 'ready' || !fs.existsSync(file)) return null
+  try {
+    const { stdout } = await run('pdfinfo', [file])
+    const pages = Number(/^Pages:\s+(\d+)/m.exec(stdout)?.[1]) || null
+    if (pages) workbooks.put({ ...rec, pages })
+    return pages
+  } catch (e) {
+    console.error('pdfinfo', rec.code, e)
+    return null
+  }
+}
 
 // ---------------------------------------------------------------- catalogue
 
@@ -205,9 +230,10 @@ r.post('/api/workbooks', (req, res) => {
   res.status(202).json({ code: rec.code })
 })
 
-r.get('/api/workbooks/:code', (req, res) => {
+r.get('/api/workbooks/:code', async (req, res) => {
   const rec = workbooks.get(req.params.code)
   if (!rec) return res.status(404).json({ error: 'No workbook at this address. Check the code printed on your workbook.' })
+  const pages = await pagesOf(rec)
   const skill = findSkill(rec.skillId)!
   res.json({
     code: rec.code,
@@ -222,6 +248,28 @@ r.get('/api/workbooks/:code', (req, res) => {
     checks: rec.checks.map((id) => checks.get(id)).filter(Boolean),
     badgeId: rec.badgeId ?? null,
     fixUpOf: rec.fixUpOf ?? null,
+    pages,
+    print: PRINT_ON,
+  })
+})
+
+/**
+ * What the GrowthGoal shop needs to sell a printed copy: it asks here, from
+ * its own server, so the page count it charges by is ours and never the buyer's.
+ */
+r.get('/api/workbooks/:code/print', async (req, res) => {
+  const rec = workbooks.get(req.params.code)
+  const pages = rec && (await pagesOf(rec))
+  if (!rec?.workbook || !pages) return res.status(404).json({ error: 'This workbook is not ready to print yet.' })
+  res.json({
+    code: rec.code,
+    title: rec.workbook.title,
+    skillName: findSkill(rec.skillId)?.name ?? rec.skillId,
+    learnerName: rec.learner.name,
+    levelLabel: rec.size === 'fixup' ? 'Fix-up' : LEVELS.find((l) => l.n === rec.level)?.name ?? '',
+    pages,
+    pdfUrl: `${SITE}/api/workbooks/${rec.code}/pdf`,
+    coverUrl: fs.existsSync(workbooks.coverPath(rec.code)) ? `${SITE}/api/workbooks/${rec.code}/cover` : null,
   })
 })
 

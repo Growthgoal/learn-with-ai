@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Award, ChevronDown, Copy, Download, HelpCircle, Loader2, Mic, Send, Square, Upload } from 'lucide-react'
+import { Award, ChevronDown, Copy, Download, HelpCircle, Loader2, Mic, Printer, Send, Square, Upload } from 'lucide-react'
 import { api, BASE, Check, PROOF_LABEL, Task, WorkbookView } from '../api'
 
 function useWorkbook(code: string) {
@@ -166,6 +166,57 @@ function CheckCard({ check, code }: { check: Check; code: string }) {
   )
 }
 
+/**
+ * Rupees a printed page, binding and packing included. The GrowthGoal shop
+ * charges by its own copy of these (server/src/lib/learnPrint.ts) and by the
+ * page count it reads from our server; keep the two the same.
+ */
+const PRINT_RATE = { bw: 2, colour: 5 }
+
+/** A printed copy, posted: a separate order in the GrowthGoal shop, paid there. */
+function PrintCopy({ code, pages }: { code: string; pages: number }) {
+  const [colour, setColour] = useState(false)
+  const options = [
+    { colour: false, label: 'Black and white', rate: PRINT_RATE.bw },
+    { colour: true, label: 'Colour', rate: PRINT_RATE.colour },
+  ]
+  return (
+    <section className="flex flex-col gap-4 rounded-4xl bg-white p-6 shadow-card lg:p-8">
+      <div className="flex items-start gap-3">
+        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-lime-100 text-lime-700"><Printer size={22} /></span>
+        <div>
+          <h2 className="text-xl font-extrabold">Want it printed and posted?</h2>
+          <p className="text-sm text-ink-soft">
+            We print this workbook ({pages} pages), bind it and send it to your door. Paid separately from the workbook itself.
+          </p>
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        {options.map((o) => (
+          <button
+            key={o.label}
+            type="button"
+            onClick={() => setColour(o.colour)}
+            aria-pressed={colour === o.colour}
+            className={`flex flex-col items-start rounded-2xl border-2 p-3 text-left ${colour === o.colour ? 'border-lime-500 bg-lime-50' : 'border-ink/10 bg-white hover:border-ink/30'}`}
+          >
+            <span className="text-sm font-bold">{o.label}</span>
+            <span className="font-display text-2xl font-extrabold">₹{pages * o.rate}</span>
+            <span className="text-xs text-ink-faint">₹{o.rate} a page × {pages}</span>
+          </button>
+        ))}
+      </div>
+      <a
+        href={`/checkout?print=${encodeURIComponent(code)}&colour=${colour ? 1 : 0}`}
+        className="inline-flex items-center justify-center gap-2 rounded-2xl bg-ink px-5 py-3 font-bold text-white hover:bg-ink/90"
+      >
+        <Printer size={18} /> Order the printed copy · ₹{pages * (colour ? PRINT_RATE.colour : PRINT_RATE.bw)}
+      </a>
+      <p className="text-xs text-ink-faint">Delivery as in the GrowthGoal shop: ₹49, free on orders of ₹999 and above.</p>
+    </section>
+  )
+}
+
 export default function WorkbookPage() {
   const { code = '' } = useParams()
   const { wb, error, reload } = useWorkbook(code)
@@ -268,6 +319,8 @@ export default function WorkbookPage() {
         </div>
         <p className="mt-3 text-xs text-ink-faint">Workbook code {code}. Keep this page: it is your online copy, your help and your hand-in desk.</p>
       </section>
+
+      {wb.print && wb.pages && <PrintCopy code={code} pages={wb.pages} />}
 
       <section className="flex flex-col gap-3">
         <h2 className="text-2xl font-extrabold">Your chapters</h2>

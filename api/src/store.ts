@@ -30,6 +30,8 @@ export interface WorkbookRecord {
   createdAt: string
   /** Set on a fix-up workbook: the one whose check it follows. */
   fixUpOf?: string
+  /** Pages in the PDF: what a printed copy is priced by. */
+  pages?: number
   /** Questions asked to our AI teacher so far; the price includes a fixed number. */
   questions: number
   checks: string[]

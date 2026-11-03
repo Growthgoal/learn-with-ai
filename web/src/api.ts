@@ -61,6 +61,10 @@ export interface WorkbookView {
   code: string; status: 'writing' | 'ready' | 'failed'; skill: Skill; level: number; size: Size | 'fixup'; sizeLabel: string
   learner: Pick<Learner, 'name' | 'age' | 'language' | 'readBy'>
   workbook: Workbook | null; questionsLeft: number; checks: Check[]; badgeId: string | null; fixUpOf: string | null
+  /** Pages in the PDF, once it is ready: a printed copy is priced by them. */
+  pages: number | null
+  /** Whether a printed copy can be ordered from the shop yet. */
+  print: boolean
 }
 export interface Guide { slug: string; title: string; titleHi: string; en: boolean; hi: boolean; cover: boolean }
 export interface Badge { id: string; code: string; learnerName: string; skillId: string; skillName: string; level: number; name: string; canDo: string[]; percent: number; at: string }
