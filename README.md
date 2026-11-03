@@ -42,6 +42,10 @@ flowchart LR
   K -->|not yet| M[Fix-up workbook]
 ```
 
+### Three levels, a ladder
+
+Basic, Advanced and Pro are steps, not three products. Basic is open to everyone and is worth it on its own: its final task is a real result in the learner's own life (their own billing sheet, their own business plan, their own interview introduction). Advanced opens only with the Basic badge in the same skill, and Pro only with the Advanced badge; the server checks the badge. Each level is written from the workbook that earned the badge and from its check, so it starts by polishing what the check found weak, then goes a level harder. Pro aims at mastery. Every workbook ends with a quick-reference page worth keeping.
+
 ## How each Meta model is used
 
 | Model | What it does here |
