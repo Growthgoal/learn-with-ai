@@ -9,7 +9,13 @@ import { useCatalogue } from '../useCatalogue'
  * price, then the AI's few remaining questions, then the workbook.
  */
 
-interface FormQuestion { id: string; label: string; type: 'single' | 'multi' | 'text'; options: string[] }
+interface FormQuestion {
+  id: string; label: string; type: 'single' | 'multi' | 'text'; options: string[]
+  /** The workbook cannot be written without it. */
+  required?: boolean
+  /** Asked only when an earlier answer opens it. */
+  showIf?: { id: string; anyOf: string[] } | null
+}
 interface SkillForm { goals: string[]; questions: FormQuestion[] }
 
 const LANGS: { value: Learner['language']; label: string }[] = [
@@ -88,17 +94,20 @@ export default function Start() {
   if (!skill) return <p>We do not teach that skill yet. <Link to="/">See all skills</Link></p>
 
   const young = Number(age) > 0 && Number(age) < 12
+  // A follow-up question appears only once the answer it hangs on is given.
+  const shown = form.questions.filter((q) => !q.showIf || (answers[q.showIf.id] ?? []).some((a) => q.showIf!.anyOf.includes(a)))
+  const said = (q: FormQuestion) => (answers[q.id] ?? []).map((a) => a.trim()).filter(Boolean)
   const goalText = [...goal.filter((g) => g !== 'Something else'), goal.includes('Something else') ? goalOther.trim() : ''].filter(Boolean).join('; ')
   const learner = (): Learner & { answers: { question: string; answer: string }[]; notes?: string } => ({
     name: name.trim(),
     age: Number(age),
     language,
     goal: goalText || `Get good at ${skill.name.toLowerCase()}`,
-    startingPoint: form.questions[0] ? (answers[form.questions[0].id] ?? []).join(', ') || 'Not said' : 'Not said',
+    startingPoint: (shown.find((q) => q.type !== 'text') ? said(shown.find((q) => q.type !== 'text')!).join(', ') : '') || 'Not said',
     minutesPerDay: minutes,
     interests: [...likes, ...likesOther.split(',').map((x) => x.trim())].filter(Boolean).slice(0, 6),
     readBy: young ? readBy ?? 'parent' : 'learner',
-    answers: form.questions.map((q) => ({ question: q.label, answer: (answers[q.id] ?? []).join(', ') || 'Not answered' })),
+    answers: shown.map((q) => ({ question: q.label, answer: said(q).join(', ') || 'Not answered' })),
     notes: notes.trim() || undefined,
   })
 
@@ -137,12 +146,18 @@ export default function Start() {
         </div>
       ),
     },
-    ...form.questions.map((q) => ({
+    ...shown.map((q) => ({
       title: q.label,
-      ok: q.type === 'text' ? true : (answers[q.id] ?? []).length > 0,
+      ok: q.type === 'text' ? !q.required || (said(q)[0] ?? '').length >= 2 : said(q).length > 0,
       body:
         q.type === 'text' ? (
-          <textarea value={(answers[q.id] ?? [''])[0]} onChange={(e) => setAnswers({ ...answers, [q.id]: [e.target.value.slice(0, 500)] })} rows={3} className={field} placeholder="A sentence or two (you can skip this)" />
+          <textarea
+            value={(answers[q.id] ?? [''])[0]}
+            onChange={(e) => setAnswers({ ...answers, [q.id]: [e.target.value.slice(0, 500)] })}
+            rows={3}
+            className={field}
+            placeholder={q.required ? 'A sentence or two, in your own words' : 'A sentence or two (you can skip this)'}
+          />
         ) : (
           <div className="flex flex-col gap-2">
             {q.type === 'multi' && <p className="text-sm text-ink-soft">Pick any that fit.</p>}
