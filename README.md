@@ -108,6 +108,10 @@ api/src/meta.ts    Meta Model API client with per-call cost logging
 web/src            the learner's app
 ```
 
+## Licence
+
+Code: [MIT](LICENSE). Icons in `web/public/icons`: Microsoft's Fluent Emoji, MIT ([their licence](web/public/icons/LICENSE.txt)).
+
 ## Team
 
 GrowthGoal, India. GrowthGoal already sells printed and digital workbooks to Indian families; Learn with AI is the same workbook, made personal.
