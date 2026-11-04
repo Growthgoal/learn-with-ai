@@ -488,16 +488,28 @@ r.get('/api/badges/:id', (req, res) => {
   res.json({ ...b, points: b.points ?? pointsFor(b.level, b.percent) })
 })
 
-/** The badges earned in this browser, by skill and level: which levels are open to whom. */
+/**
+ * What this browser has made and earned. There are no accounts, so this is how
+ * a learner finds their workbook again, and which levels are open to whom.
+ */
 r.get('/api/progress', (req, res) => {
   const device = typeof req.query.device === 'string' && /^[a-z0-9]{12,40}$/.test(req.query.device) ? req.query.device : ''
-  if (!device) return res.json({ badges: [] })
-  const earned = workbooks
-    .byDevice(device)
+  if (!device) return res.json({ badges: [], workbooks: [] })
+  const mine = workbooks.byDevice(device).sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+  const earned = mine
     .map((w) => (w.badgeId ? badges.get(w.badgeId) : null))
     .filter((b): b is NonNullable<typeof b> => !!b)
     .map((b) => ({ skillId: b.skillId, level: b.level, badgeId: b.id, name: firstName(b.learnerName) }))
-  res.json({ badges: earned })
+  const made = mine.slice(0, 12).map((w) => ({
+    code: w.code,
+    skillId: w.skillId,
+    skillName: findSkill(w.skillId)?.name ?? w.skillId,
+    level: w.size === 'fixup' ? 'Fix-up' : LEVELS.find((l) => l.n === w.level)?.name ?? `Level ${w.level}`,
+    name: firstName(w.learner.name),
+    status: w.status,
+    badgeId: w.badgeId ?? null,
+  }))
+  res.json({ badges: earned, workbooks: made })
 })
 
 // ------------------------------------------------------------- leaderboard

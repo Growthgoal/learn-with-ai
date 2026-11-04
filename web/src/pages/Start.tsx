@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Send, Sparkles } from 'lucide-react'
 import { api, Badge, Learner, Skill } from '../api'
 import { useCatalogue } from '../useCatalogue'
 import { deviceKey } from '../device'
-import { Earned, opener, useProgress } from '../progress'
+import { Earned, forgetProgress, opener, useProgress } from '../progress'
 
 /**
  * Getting started: the skill's own form (no AI, so it costs nothing), the
@@ -220,6 +220,7 @@ export default function Start() {
         method: 'POST',
         json: { skillId: id, level, device: deviceKey(), fromBadge: openerFor(level)?.badgeId, learner: { ...l, notes: [l.notes, qa ? `Answers to the AI teacher's questions:\n${qa}` : ''].filter(Boolean).join('\n\n') || undefined } },
       })
+      forgetProgress()
       navigate(`/w/${code}`)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Try again.')

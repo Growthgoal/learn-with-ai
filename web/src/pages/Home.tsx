@@ -4,6 +4,7 @@ import { Camera, FileUp, Keyboard, Mic, Search, Sparkles, Hammer, Wand2, X } fro
 import { Age, AGE_LABEL, api, BASE, Guide, iconUrl, Proof, Skill } from '../api'
 import { useCatalogue } from '../useCatalogue'
 import { search } from '../search'
+import { useMyWorkbooks } from '../progress'
 
 export const PROOF_ICON: Record<Proof, typeof Camera> = { pages: Camera, file: FileUp, result: Hammer, typed: Keyboard, voice: Mic }
 
@@ -64,6 +65,8 @@ export default function Home() {
           ))}
         </ol>
       </section>
+
+      <YourWorkbooks skills={skills} />
 
       {guides.length > 0 && (
         <section className="flex flex-col gap-3">
@@ -199,6 +202,43 @@ function Grid({ skills }: { skills: Skill[] }) {
 }
 
 /** The way out when we do not list a skill: the AI sets up any skill the learner names. */
+/**
+ * The workbooks made on this phone or computer. There is no sign-in: the code
+ * on each workbook is the learner's ticket, and this is where they find it
+ * again without the PDF to hand.
+ */
+function YourWorkbooks({ skills }: { skills: Skill[] }) {
+  const mine = useMyWorkbooks()
+  if (!mine?.length) return null
+  const state = (w: (typeof mine)[number]) =>
+    w.badgeId ? 'Badge earned' : w.status === 'writing' ? 'Being written' : w.status === 'failed' ? 'Could not be written' : 'Ready: hand it in when done'
+  return (
+    <section className="flex flex-col gap-3">
+      <div>
+        <h2 className="text-2xl font-extrabold">Your workbooks</h2>
+        <p className="text-ink-soft">Made on this phone or computer. Open one to ask for help or hand in your work. The QR code on your workbook opens the same page.</p>
+      </div>
+      <div className="flex snap-x gap-3 overflow-x-auto pb-2">
+        {mine.map((w) => {
+          const icon = skills.find((s) => s.id === w.skillId)?.icon
+          return (
+            <Link key={w.code} to={`/w/${w.code}`} className="flex w-60 shrink-0 snap-start flex-col gap-2 rounded-3xl bg-white p-4 shadow-card hover:ring-2 hover:ring-lime-400">
+              <span className="flex items-center gap-2">
+                {icon && <img src={iconUrl(icon)} alt="" className="h-8 w-8" />}
+                <span className="min-w-0">
+                  <span className="block truncate font-display font-extrabold leading-tight">{w.skillName}</span>
+                  <span className="block text-sm text-ink-soft">{w.level} · {w.name}</span>
+                </span>
+              </span>
+              <span className={`mt-auto self-start rounded-full px-3 py-1 text-xs font-bold ${w.badgeId ? 'bg-sun-400' : w.status === 'failed' ? 'bg-red-50 text-red-700' : 'bg-lime-100 text-lime-800'}`}>{state(w)}</span>
+            </Link>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
 function AskAnySkill({ q, strong }: { q: string; strong?: boolean }) {
   return (
     <Link

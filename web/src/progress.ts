@@ -5,20 +5,33 @@ import { deviceKey } from './device'
 /** A badge earned in this browser: what opens the next level of its skill. */
 export interface Earned { skillId: string; level: number; badgeId: string; name: string }
 
-let cached: Earned[] | null = null
+/** A workbook made in this browser, newest first: how a learner without an account finds it again. */
+export interface Made { code: string; skillId: string; skillName: string; level: string; name: string; status: 'writing' | 'ready' | 'failed'; badgeId: string | null }
 
-export function useProgress() {
-  const [earned, setEarned] = useState<Earned[] | null>(cached)
-  useEffect(() => {
-    if (cached) return
-    const d = deviceKey()
-    if (!d) return setEarned((cached = []))
-    api<{ badges: Earned[] }>(`/progress?device=${d}`)
-      .then((r) => setEarned((cached = r.badges)))
-      .catch(() => setEarned([]))
-  }, [])
-  return earned
+interface Progress { badges: Earned[]; workbooks: Made[] }
+
+let cached: Progress | null = null
+
+/** After a new workbook or a new badge, so the next page asks again. */
+export const forgetProgress = () => {
+  cached = null
 }
+
+function useMine() {
+  const [mine, setMine] = useState<Progress | null>(cached)
+  useEffect(() => {
+    if (cached) return setMine(cached)
+    const d = deviceKey()
+    if (!d) return setMine((cached = { badges: [], workbooks: [] }))
+    api<Progress>(`/progress?device=${d}`)
+      .then((r) => setMine((cached = r)))
+      .catch(() => setMine({ badges: [], workbooks: [] }))
+  }, [])
+  return mine
+}
+
+export const useProgress = () => useMine()?.badges ?? null
+export const useMyWorkbooks = () => useMine()?.workbooks ?? null
 
 /**
  * The badge that opens this level of this skill, if this browser has one:

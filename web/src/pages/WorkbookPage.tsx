@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Award, ChevronDown, Copy, Download, HelpCircle, Loader2, Mic, Printer, Send, Square, Upload } from 'lucide-react'
 import { api, BASE, Check, PROOF_LABEL, Task, WorkbookView } from '../api'
+import { forgetProgress } from '../progress'
 
 function useWorkbook(code: string) {
   const [wb, setWb] = useState<WorkbookView | null>(null)
@@ -268,6 +269,7 @@ export default function WorkbookPage() {
     if (typed) form.append('answers', JSON.stringify(answers))
     try {
       await api<Check>(`/workbooks/${code}/check`, { method: 'POST', body: form })
+      forgetProgress()
       setFiles([])
       await reload()
       document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' })
