@@ -1,6 +1,6 @@
 # Learn with AI
 
-**A patient AI teacher for any skill, at the price of a workbook.**
+**A workbook written just for you, for any skill and any age, with help when you are stuck and a fair check at the end.**
 
 A learner tells the AI who they are and what they want to learn. The AI writes a workbook just for them, helps whenever they are stuck, checks the finished work and awards a skill badge. If the work is not there yet, it writes a short fix-up workbook for the gaps. One engine serves **309 listed skills**, and any other safe skill a learner names, for every age: from three-year-olds learning to hold a pencil to job-seekers learning Power BI, gym trainers planning client programmes, and grandparents learning to spot a UPI scam.
 
@@ -12,9 +12,9 @@ Live: **https://growthgoal.in/learn** (free while the hackathon runs)
 
 ## Why
 
-Good teaching is patient, personal and costly. In India, 27% of students take private coaching, and a city family spends close to ₹10,000 a year on it for one higher-secondary student ([NSS education survey 2025](https://news.careers360.com/27-of-students-rely-on-private-coaching-urban-participation-higher-cms-education-survey-2025/amp)). A human teacher who explains the same thing for the fortieth time gets tired. An AI teacher does not.
+Everyone is learning something: a six-year-old's first letters, a grandmother's first safe UPI payment, the spreadsheet that runs a family shop, the answer a student will give at an interview. We learn best when the lesson is about our own life (our examples, our language, our pace) and when we can see ourselves getting better.
 
-Learn with AI keeps what makes a workbook work (doing the task yourself, on paper or on screen) and adds what a workbook never had: one written for you, help at the moment you are stuck, and an honest check at the end.
+GrowthGoal's idea is simple: grow a little every day. Learn with AI makes that possible for anyone. It keeps what makes a workbook work, doing the task yourself on paper or on screen, and adds three things: a workbook written for you, help at the moment you are stuck, and an honest check that ends in a badge. It works beside the people who help us grow, such as parents, teachers and coaches, and costs about the price of a book.
 
 ## How it works
 

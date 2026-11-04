@@ -36,9 +36,9 @@ export default function Home() {
     <div className="flex flex-col gap-10">
       <section className="grid gap-6 rounded-4xl bg-white p-6 shadow-card lg:grid-cols-[1.4fr_1fr] lg:p-10">
         <div className="flex min-w-0 flex-col gap-4">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime-700">A patient teacher for every skill</p>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime-700">For every age and every skill</p>
           <h1 className="text-4xl font-extrabold leading-tight lg:text-5xl">
-            Learn anything with an AI teacher that never gets tired of explaining.
+            Grow a little every day, with a workbook written just for you.
           </h1>
           <p className="text-lg text-ink-soft">
             Tell it who you are. It writes a workbook just for you, helps whenever you are stuck, checks your finished work, and gives you a
