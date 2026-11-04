@@ -8,6 +8,17 @@ Built by [GrowthGoal](https://growthgoal.in), an Indian learning shop, for the *
 
 Live: **https://growthgoal.in/learn** (free while the hackathon runs)
 
+Every AI call in this repository goes to the Meta Model API, through one client ([`api/src/meta.ts`](api/src/meta.ts)) that also logs what each call costs.
+
+| | |
+|---|---|
+| ![Home: search 309 skills, filter by age](docs/home.jpg) | ![A learner's own workbook, cover by Muse Image](docs/workbook.jpg) |
+| ![SAM 3.1 finds every letter; one B floats above the line](docs/sam-letters.jpg) | ![A skill badge with skill points](docs/badge.jpg) |
+
+![The checker reads a spreadsheet cell by cell and quotes the cell back](docs/check.jpg)
+
+<sub>Screens from the running app. Priya and Aarav are demo learners; Aarav's page is a sample made for the demo, and SAM's boxes and the check on it are real output.</sub>
+
 ---
 
 ## Why
@@ -21,7 +32,7 @@ GrowthGoal's idea is simple: grow a little every day. Learn with AI makes that p
 1. **Tell the AI about you.** Each skill has its own short form (written once by Muse Spark, so filling it costs nothing): who is learning, their goal, where they are now, what goes wrong, minutes a day, what they love, and anything else. Muse Spark then reads it once and asks at most a few follow-up questions, in English, Hindi or Hinglish, before it writes.
    Don't see your skill? Name it. One Muse Spark call checks it is safe and legal to teach (it turns down weapons, hacking, cheating, licensed work like surgery, and suggests something close), gives it a name, a shelf, a price band and its own form. Asked again, it costs nothing.
 2. **Get your workbook.** Muse Spark writes it to a strict JSON schema: chapters, short lessons, worked examples, graded tasks, a final task, a daily plan, and a rubric for every task. Muse Image draws a cover for this learner. It prints as a PDF (dotted trace rows drawn from the font's own outline, Hindi shaped correctly) and lives online.
-3. **Stuck? Ask.** Every task carries a ready prompt the learner can paste into ChatGPT, Gemini or Claude, which explains and never answers. Our own AI teacher answers too, for a set number of questions, and never does the task for them.
+3. **Stuck? Ask.** Our AI teacher (Muse Spark) explains the task another way, as often as the learner needs within the level's question allowance, and never does the task for them. Each task also carries a copy-ready prompt, plain text the learner can take to any AI assistant they already use for unlimited free help; the app itself calls no AI but Meta's.
 4. **Hand it in.** Photos of the pages, a spreadsheet or code file, a photo of what they made, a voice recording, or typed answers.
 5. **Get checked, earn the badge.** The checker marks every task against its rubric and quotes exact evidence back. Pass: a shareable badge listing what the learner can now do, and skill points (Basic 100, Advanced 250, Pro 500, times the score; each skill and level counts once) on a leaderboard by month, age group and shelf that shows first names only. Not yet: a free fix-up workbook for just the gaps.
 
@@ -51,7 +62,7 @@ Basic, Advanced and Pro are steps, not three products. Basic is open to everyone
 | Model | What it does here |
 |---|---|
 | **Muse Spark 1.3** | Writes each skill's form once, and sets up any skill a learner names; asks the few follow-up questions; writes every workbook to a JSON schema (structured output); the patient "Stuck?" teacher; reads page photos and marks them against each task's rubric (vision, up to 50 images in one call). |
-| **SAM 3.1** | On handwriting pages, segments every letter. From the boxes we measure each letter's lift above the line, height spread and spacing, so feedback says "your second B floats 41% of a letter above the line", not "be neater". |
+| **SAM 3.1** | On handwriting pages, segments every letter. From the boxes we measure each letter's lift above the line, height spread and spacing, so feedback says "the first B in row 4 floats 56% above the line", not "be neater". |
 | **Muse Voice Transcribe** | Speaking skills (spoken English, pronunciation, public speaking, interview answers, recitation): the transcript plus words per minute and filler words go to the checker. |
 | **Muse Image** | A cover picture for each learner's workbook, from their interests (a six-year-old who loves cricket and dinosaurs gets both). |
 
@@ -82,7 +93,8 @@ Search understands how people type: word starts, typos ("exel", "public speking"
 
 ## Safety and privacy
 
-- A parent sits with any child under 10; the form never asks for a phone number, address, school or photo of a person.
+- For a learner under 12, the form asks whether the child or a parent is filling it in; with a parent, every instruction is written for the parent to read aloud. The form never asks for a phone number, address, school or photo of a person.
+- There are no accounts. A workbook's code, printed on it with a QR code, is the learner's ticket to help and hand-in; the leaderboard shows first names and age groups only.
 - Uploaded photos and recordings are used to check the work and are not stored. Only marks, feedback and badges are kept.
 - No ads or tracking on learning pages.
 - The teacher explains and never does the task; it declines anything unsafe or off-topic. Law, health and money skills teach general knowledge, never advice on the learner's own case; physical skills put safety first.
@@ -91,15 +103,22 @@ Search understands how people type: word starts, typos ("exel", "public speking"
 
 ## Run it
 
-Needs Node 22, Chrome or Chromium, and ffmpeg.
+Needs Node 22, Chrome or Chromium (for PDFs; set `CHROME_PATH` if it is not in the usual place), ffmpeg, and optionally poppler's `pdfinfo` (page counts for printed copies).
 
 ```bash
-cp .env.example .env            # paste your Meta Model API key
-cd api && npm install && npx tsx src/index.ts      # API on :4300
-cd web && npm install && npm run dev               # web app on :5190
+cp .env.example .env                      # paste your Meta Model API key
+cd api && npm install && npm start        # API on :4300
 ```
 
-Or `docker build -t learn-with-ai . && docker run -p 4300:4300 --env-file .env learn-with-ai`.
+In a second terminal:
+
+```bash
+cd web && npm install && npm run dev      # app on http://localhost:5190/learn
+```
+
+Or in one container: `docker build -t learn-with-ai . && docker run -p 4300:4300 --env-file .env learn-with-ai`, then open http://localhost:4300/learn.
+
+Tests (no API key needed): `cd api && npm test` checks skill points and the leaderboard, every skill's form, the age shelves, the level prices, and search with typos, Hinglish and Hindi.
 
 ## Layout
 
@@ -109,8 +128,12 @@ api/src/workbook   writer (Muse Spark) and PDF renderer
 api/src/teach      follow-up questions and the Stuck? teacher
 api/src/check      evidence (SAM 3.1, transcription, files) and marking
 api/src/meta.ts    Meta Model API client with per-call cost logging
+api/src/points.ts  skill points and the leaderboard
+api/test           tests
 web/src            the learner's app
 ```
+
+TypeScript throughout: an Express API, a React + Vite + Tailwind app, Chromium (puppeteer-core) for the PDFs, and JSON files for storage.
 
 ## Licence
 
