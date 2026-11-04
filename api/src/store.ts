@@ -113,6 +113,44 @@ export const catalog = {
   guideCoverPath: (slug: string) => path.join(dir('catalog/guides'), `${slug}.jpg`),
 }
 
+/**
+ * A learner's word on their workbook, one per workbook. It goes on the
+ * testimonials page only once the GrowthGoal admin, which reads and writes
+ * this folder, sets it to approved.
+ */
+export interface ReviewRecord {
+  code: string
+  skillId: string
+  level: number
+  size: Size
+  /** First name only; with `by: 'parent'` it is the child's. */
+  name: string
+  ageBand: Age
+  by: 'learner' | 'parent'
+  stars: number
+  text: string
+  at: string
+  status: 'pending' | 'approved' | 'hidden'
+}
+
+export const reviews = {
+  get: (code: string) => load<ReviewRecord>('reviews', code),
+  put: (r: ReviewRecord) => save('reviews', r.code, r),
+  all: (): ReviewRecord[] => {
+    const d = dir('reviews')
+    return fs
+      .readdirSync(d)
+      .filter((f) => f.endsWith('.json'))
+      .flatMap((f) => {
+        try {
+          return [JSON.parse(fs.readFileSync(path.join(d, f), 'utf8')) as ReviewRecord]
+        } catch {
+          return []
+        }
+      })
+  },
+}
+
 let allBadges: { at: number; list: BadgeRecord[] } | null = null
 export const badges = {
   get: (id: string) => load<BadgeRecord>('badges', id),

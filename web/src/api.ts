@@ -77,5 +77,11 @@ export interface Board { rows: BoardRow[]; mine: BoardRow[]; total: number }
 
 export const iconUrl = (name: string) => `${BASE}icons/${name}.svg`
 
+/** This workbook's own review, as its learner sees it. */
+export interface MyReview { stars: number; text: string; status: 'pending' | 'approved' | 'hidden' }
+
+/** An approved review on the testimonials page: first name and age group only. */
+export interface Testimonial { name: string; ageBand: Age; by: 'learner' | 'parent'; skillId: string; skillName: string; level: string; stars: number; text: string; at: string; badge: boolean }
+
 export const AGE_LABEL: Record<Age, string> = { 'kids-3-7': 'Kids 3–7', 'kids-8-12': 'Kids 8–12', teens: 'Teens', college: 'College', working: 'Working', seniors: 'Seniors' }
 export const PROOF_LABEL: Record<Proof, string> = { pages: 'Photo of your pages', file: 'Upload a file', result: 'Photo of what you made', typed: 'Type your answers', voice: 'Record your voice' }

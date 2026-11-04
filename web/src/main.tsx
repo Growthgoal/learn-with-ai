@@ -9,6 +9,7 @@ import WorkbookPage from './pages/WorkbookPage'
 import BadgePage from './pages/BadgePage'
 import NewSkill from './pages/NewSkill'
 import Leaderboard from './pages/Leaderboard'
+import Testimonials from './pages/Testimonials'
 
 /** A new page opens at its top, like any website; Back still returns to where you were. */
 function ScrollToTop() {
@@ -30,6 +31,7 @@ function Shell({ children }: { children: React.ReactNode }) {
             <span className="hidden text-xs font-bold text-lime-700 sm:inline">by GrowthGoal</span>
           </Link>
           <nav className="flex items-center gap-4">
+            <Link to="/testimonials" className="whitespace-nowrap text-sm font-bold text-lime-700 hover:text-ink">💬<span className="hidden sm:inline"> Reviews</span></Link>
             <Link to="/leaderboard" className="whitespace-nowrap text-sm font-bold text-lime-700 hover:text-ink">🏆<span className="hidden sm:inline"> Leaderboard</span></Link>
             <a href="/" className="whitespace-nowrap text-sm font-bold text-ink-soft hover:text-ink">
               ← GrowthGoal<span className="hidden sm:inline"> shop</span>
@@ -56,6 +58,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/start/:id" element={<Start />} />
           <Route path="/new" element={<NewSkill />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/w/:code" element={<WorkbookPage />} />
           <Route path="/badge/:id" element={<BadgePage />} />
         </Routes>

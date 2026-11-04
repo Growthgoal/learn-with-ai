@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Camera, FileUp, Keyboard, Mic, Search, Sparkles, Hammer, Wand2, X } from 'lucide-react'
-import { Age, AGE_LABEL, api, BASE, Guide, iconUrl, Proof, Skill } from '../api'
+import { Age, AGE_LABEL, api, BASE, Guide, iconUrl, Proof, Skill, Testimonial } from '../api'
 import { useCatalogue } from '../useCatalogue'
 import { search } from '../search'
 import { useMyWorkbooks } from '../progress'
+import { ReviewCard } from './Testimonials'
 
 export const PROOF_ICON: Record<Proof, typeof Camera> = { pages: Camera, file: FileUp, result: Hammer, typed: Keyboard, voice: Mic }
 
@@ -67,6 +68,8 @@ export default function Home() {
       </section>
 
       <YourWorkbooks skills={skills} />
+
+      <LearnersSay skills={skills} />
 
       {guides.length > 0 && (
         <section className="flex flex-col gap-3">
@@ -234,6 +237,26 @@ function YourWorkbooks({ skills }: { skills: Skill[] }) {
             </Link>
           )
         })}
+      </div>
+    </section>
+  )
+}
+
+/** The newest approved reviews; nothing at all until there are some. */
+function LearnersSay({ skills }: { skills: Skill[] }) {
+  const [list, setList] = useState<Testimonial[]>([])
+  useEffect(() => {
+    api<{ reviews: Testimonial[] }>('/testimonials').then((r) => setList(r.reviews)).catch(() => setList([]))
+  }, [])
+  if (!list.length) return null
+  return (
+    <section className="flex flex-col gap-3">
+      <div className="flex items-end justify-between gap-3">
+        <h2 className="text-2xl font-extrabold">What learners say</h2>
+        <Link to="/testimonials" className="shrink-0 text-sm font-bold text-lime-700 hover:text-ink">All reviews →</Link>
+      </div>
+      <div className="grid gap-3 md:grid-cols-3">
+        {list.slice(0, 3).map((r) => <ReviewCard key={`${r.at}-${r.name}`} r={r} icon={skills.find((s) => s.id === r.skillId)?.icon} />)}
       </div>
     </section>
   )

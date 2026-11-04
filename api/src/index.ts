@@ -21,7 +21,7 @@ import { formFor } from './catalog/forms.js'
 import { teacherReply } from './teach/teacher.js'
 import { gather, typedAnswers } from './check/evidence.js'
 import { mark } from './check/mark.js'
-import { badges, catalog, checks, newCode, WorkbookRecord, workbooks } from './store.js'
+import { badges, catalog, checks, newCode, reviews, WorkbookRecord, workbooks } from './store.js'
 import { ageBand, BoardFilter, firstName, leaderboard, learnerIdOf, pointsFor } from './points.js'
 import type { Age } from './catalog/skills.js'
 
@@ -62,7 +62,7 @@ const learnerSchema = z.object({
  * While workbooks are free (the hackathon), a cap keeps one visitor, or a
  * bot, from spending the AI credit: per address per day, and in all.
  */
-const LIMITS = { workbook: { perIp: 6, total: 300 }, check: { perIp: 40, total: 1500 }, intake: { perIp: 120, total: 6000 }, custom: { perIp: 8, total: 400 } }
+const LIMITS = { workbook: { perIp: 6, total: 300 }, check: { perIp: 40, total: 1500 }, intake: { perIp: 120, total: 6000 }, custom: { perIp: 8, total: 400 }, review: { perIp: 10, total: 1000 } }
 const used = new Map<string, number>()
 let usedDay = ''
 function allow(kind: keyof typeof LIMITS, ip: string) {
@@ -510,6 +510,67 @@ r.get('/api/progress', (req, res) => {
     badgeId: w.badgeId ?? null,
   }))
   res.json({ badges: earned, workbooks: made })
+})
+
+// ---------------------------------------------------------------- reviews
+
+/**
+ * A learner's word on their workbook. Only someone holding the workbook's code
+ * can write one, so every review comes from a real workbook. It shows on the
+ * testimonials page once the GrowthGoal admin has read and approved it, and
+ * the page never shows the code itself: that is the learner's ticket.
+ */
+const reviewSchema = z.object({ stars: z.number().int().min(1).max(5), text: z.string().trim().min(20).max(600), consent: z.literal(true) })
+const levelLabel = (size: string, level: number) => (size === 'fixup' ? 'Fix-up' : LEVELS.find((l) => l.n === level)?.name ?? `Level ${level}`)
+
+r.get('/api/workbooks/:code/review', (req, res) => {
+  const rv = reviews.get(req.params.code)
+  res.json({ review: rv ? { stars: rv.stars, text: rv.text, status: rv.status } : null })
+})
+
+r.post('/api/workbooks/:code/review', (req, res) => {
+  const rec = workbooks.get(req.params.code)
+  if (!rec?.workbook) return res.status(404).json({ error: 'There is no workbook here to review.' })
+  const body = reviewSchema.safeParse(req.body)
+  if (!body.success) return res.status(400).json({ error: 'Choose the stars, write at least a sentence, and tick the box so we may show it.' })
+  if (!allow('review', req.ip ?? '')) return res.status(429).json(TOO_MANY)
+  const { stars, text } = body.data
+  // A changed review is read again before it shows.
+  reviews.put({
+    code: rec.code,
+    skillId: rec.skillId,
+    level: rec.level,
+    size: rec.size,
+    name: firstName(rec.learner.name),
+    ageBand: ageBand(rec.learner.age),
+    by: rec.learner.readBy,
+    stars,
+    text,
+    at: new Date().toISOString(),
+    status: 'pending',
+  })
+  res.json({ review: { stars, text, status: 'pending' } })
+})
+
+r.get('/api/testimonials', (_req, res) => {
+  const list = reviews
+    .all()
+    .filter((rv) => rv.status === 'approved')
+    .sort((a, b) => b.at.localeCompare(a.at))
+    .slice(0, 200)
+    .map((rv) => ({
+      name: rv.name,
+      ageBand: rv.ageBand,
+      by: rv.by,
+      skillId: rv.skillId,
+      skillName: findSkill(rv.skillId)?.name ?? rv.skillId,
+      level: levelLabel(rv.size, rv.level),
+      stars: rv.stars,
+      text: rv.text,
+      at: rv.at,
+      badge: !!workbooks.get(rv.code)?.badgeId,
+    }))
+  res.json({ reviews: list })
 })
 
 // ------------------------------------------------------------- leaderboard

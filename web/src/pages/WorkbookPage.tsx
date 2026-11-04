@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Award, ChevronDown, Copy, Download, HelpCircle, Loader2, Mic, Printer, Send, Square, Upload } from 'lucide-react'
-import { api, BASE, Check, PROOF_LABEL, Task, WorkbookView } from '../api'
+import { Award, ChevronDown, Copy, Download, HelpCircle, Loader2, MessageSquareHeart, Mic, Printer, Send, Square, Star, Upload } from 'lucide-react'
+import { api, BASE, Check, MyReview, PROOF_LABEL, Task, WorkbookView } from '../api'
 import { forgetProgress } from '../progress'
 
 function useWorkbook(code: string) {
@@ -218,6 +218,104 @@ function PrintCopy({ code, pages }: { code: string; pages: number }) {
   )
 }
 
+/**
+ * The learner's word on this workbook. Only this page can send one, so every
+ * review on the testimonials page comes from a real workbook. It shows there
+ * once GrowthGoal has read it.
+ */
+function ReviewBox({ code, name, parent }: { code: string; name: string; parent: boolean }) {
+  const first = name.trim().split(/\s+/)[0] || name
+  const [mine, setMine] = useState<MyReview | null | undefined>(undefined)
+  const [stars, setStars] = useState(0)
+  const [text, setText] = useState('')
+  const [consent, setConsent] = useState(false)
+  const [editing, setEditing] = useState(false)
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    api<{ review: MyReview | null }>(`/workbooks/${code}/review`)
+      .then((r) => {
+        setMine(r.review)
+        if (r.review) {
+          setStars(r.review.stars)
+          setText(r.review.text)
+        }
+      })
+      .catch(() => setMine(null))
+  }, [code])
+
+  async function send(e: FormEvent) {
+    e.preventDefault()
+    setBusy(true)
+    setError(null)
+    try {
+      const r = await api<{ review: MyReview }>(`/workbooks/${code}/review`, { method: 'POST', json: { stars, text, consent } })
+      setMine(r.review)
+      setEditing(false)
+      setConsent(false)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Try again.')
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  if (mine === undefined) return null
+  if (mine && !editing)
+    return (
+      <section className="rounded-4xl bg-white p-6 shadow-card lg:p-8">
+        <h2 className="text-xl font-extrabold">Thank you for your review</h2>
+        <p className="mt-2 flex gap-0.5">{[1, 2, 3, 4, 5].map((n) => <Star key={n} size={18} className={n <= mine.stars ? 'fill-sun-400 text-sun-400' : 'text-ink/15'} />)}</p>
+        <p className="mt-2 whitespace-pre-line">“{mine.text}”</p>
+        <p className="mt-2 text-sm text-ink-soft">
+          {mine.status === 'approved' ? (
+            <>It is on the <Link to="/testimonials" className="font-bold underline">reviews page</Link>.</>
+          ) : mine.status === 'pending' ? (
+            'It goes on the reviews page once GrowthGoal has read it.'
+          ) : (
+            'It is not shown on the reviews page.'
+          )}
+        </p>
+        <button onClick={() => setEditing(true)} className="mt-3 text-sm font-bold underline">Change it</button>
+      </section>
+    )
+  return (
+    <form onSubmit={send} className="flex flex-col gap-4 rounded-4xl bg-white p-6 shadow-card lg:p-8">
+      <div className="flex items-start gap-3">
+        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-sun-100 text-ink"><MessageSquareHeart size={22} /></span>
+        <div>
+          <h2 className="text-xl font-extrabold">How is it going{parent ? ` for ${first}` : ''}?</h2>
+          <p className="text-sm text-ink-soft">Tell other learners what this workbook has done for {parent ? first : 'you'}. Honest words help most, whatever they are.</p>
+        </div>
+      </div>
+      <div className="flex gap-1" role="radiogroup" aria-label="Stars">
+        {[1, 2, 3, 4, 5].map((n) => (
+          <button key={n} type="button" role="radio" aria-checked={stars === n} aria-label={`${n} star${n > 1 ? 's' : ''}`} onClick={() => setStars(n)} className="p-1">
+            <Star size={30} className={n <= stars ? 'fill-sun-400 text-sun-400' : 'text-ink/20 hover:text-sun-400'} />
+          </button>
+        ))}
+      </div>
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        rows={4}
+        maxLength={600}
+        placeholder="What changed? What would you tell a friend who is thinking of trying it?"
+        className="w-full rounded-2xl border border-ink/10 p-3 focus:outline-none focus:ring-2 focus:ring-lime-400"
+      />
+      <label className="flex items-start gap-3 text-sm">
+        <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 h-4 w-4 accent-lime-600" />
+        <span>Show this on the Learn with AI reviews page {parent ? `as “${first}'s parent”` : `as ${first}`}, with the age group only.</span>
+      </label>
+      {error && <p className="rounded-xl bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</p>}
+      <button type="submit" disabled={busy || !stars || text.trim().length < 20 || !consent} className="self-start rounded-2xl bg-lime-500 px-5 py-3 font-bold text-white hover:bg-lime-600 disabled:opacity-50">
+        {busy ? 'Sending…' : 'Send my review'}
+      </button>
+    </form>
+  )
+}
+
 export default function WorkbookPage() {
   const { code = '' } = useParams()
   const { wb, error, reload } = useWorkbook(code)
@@ -393,6 +491,8 @@ export default function WorkbookPage() {
           {[...wb.checks].reverse().map((c) => <CheckCard key={c.id} check={c} code={code} />)}
         </section>
       )}
+
+      <ReviewBox code={code} name={wb.learner.name} parent={wb.learner.readBy === 'parent'} />
     </div>
   )
 }
