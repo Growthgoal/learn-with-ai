@@ -62,7 +62,7 @@ const learnerSchema = z.object({
  * While workbooks are free (the hackathon), a cap keeps one visitor, or a
  * bot, from spending the AI credit: per address per day, and in all.
  */
-const LIMITS = { workbook: { perIp: 6, total: 300 }, check: { perIp: 40, total: 1500 }, intake: { perIp: 120, total: 6000 }, custom: { perIp: 8, total: 400 }, review: { perIp: 10, total: 1000 } }
+const LIMITS = { workbook: { perIp: 40, total: 300 }, check: { perIp: 40, total: 1500 }, intake: { perIp: 120, total: 6000 }, custom: { perIp: 8, total: 400 }, review: { perIp: 40, total: 1000 } }
 const used = new Map<string, number>()
 let usedDay = ''
 function allow(kind: keyof typeof LIMITS, ip: string) {
