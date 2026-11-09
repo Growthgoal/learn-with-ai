@@ -4,6 +4,7 @@ import { Camera, FileUp, Keyboard, Mic, Search, Sparkles, Hammer, Wand2, X } fro
 import { Age, AGE_LABEL, api, BASE, Guide, iconUrl, Proof, Skill, Testimonial } from '../api'
 import { useCatalogue } from '../useCatalogue'
 import { search } from '../search'
+import { addToGrowthGoal } from '../growthgoal'
 import { useMyWorkbooks } from '../progress'
 import { ReviewCard } from './Testimonials'
 
@@ -220,6 +221,9 @@ function YourWorkbooks({ skills }: { skills: Skill[] }) {
       <div>
         <h2 className="text-2xl font-extrabold">Your workbooks</h2>
         <p className="text-ink-soft">Made on this phone or computer. Open one to ask for help or hand in your work. The QR code on your workbook opens the same page.</p>
+        <a href={addToGrowthGoal(mine.map((w) => w.code))} className="mt-2 inline-block text-sm font-bold text-lime-700 underline">
+          Add these to my GrowthGoal profile
+        </a>
       </div>
       <div className="flex snap-x gap-3 overflow-x-auto pb-2">
         {mine.map((w) => {

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Award, Copy, Trophy } from 'lucide-react'
 import { api, Badge } from '../api'
+import { useMyWorkbooks } from '../progress'
+import { addToGrowthGoal } from '../growthgoal'
 
 /** A badge anyone can open from a shared link, to see what the learner can now do. */
 export default function BadgePage() {
@@ -9,6 +11,9 @@ export default function BadgePage() {
   const [b, setB] = useState<Badge | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
+  // Only on the phone or computer it was earned on: a shared badge link never
+  // carries the workbook's code.
+  const own = useMyWorkbooks()?.find((w) => w.badgeId === id)
   useEffect(() => {
     api<Badge>(`/badges/${id}`).then(setB).catch((e) => setError(e.message))
   }, [id])
@@ -46,6 +51,7 @@ export default function BadgePage() {
         <button onClick={share} className="inline-flex items-center gap-2 rounded-2xl bg-lime-500 px-5 py-3 font-bold text-white"><Copy size={16} /> {copied ? 'Link copied' : 'Copy the link to share'}</button>
         <Link to={`/skill/${b.skillId}`} className="rounded-2xl bg-white px-5 py-3 font-bold shadow-card">Start the next level</Link>
         <Link to="/leaderboard" className="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 font-bold shadow-card"><Trophy size={16} /> Leaderboard</Link>
+        {own && <a href={addToGrowthGoal([own.code])} className="rounded-2xl bg-white px-5 py-3 font-bold shadow-card">Add to my GrowthGoal profile</a>}
       </div>
     </div>
   )

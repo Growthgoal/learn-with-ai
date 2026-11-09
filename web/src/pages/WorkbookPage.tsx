@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Award, ChevronDown, Copy, Download, HelpCircle, Loader2, MessageSquareHeart, Mic, Printer, Send, Square, Star, Upload } from 'lucide-react'
 import { api, BASE, Check, MyReview, PROOF_LABEL, Task, WorkbookView } from '../api'
+import { addToGrowthGoal } from '../growthgoal'
 import { forgetProgress } from '../progress'
 
 function useWorkbook(code: string) {
@@ -493,6 +494,12 @@ export default function WorkbookPage() {
       )}
 
       <ReviewBox code={code} name={wb.learner.name} parent={wb.learner.readBy === 'parent'} />
+
+      <p className="text-center text-sm text-ink-soft">
+        Have a GrowthGoal account?{' '}
+        <a href={addToGrowthGoal([code])} className="font-bold text-lime-700 underline">Add this workbook to your profile</a> to see its badge
+        and skill points there too.
+      </p>
     </div>
   )
 }
