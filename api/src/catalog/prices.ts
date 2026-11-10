@@ -22,11 +22,11 @@ const AI_RUPEES: Record<Exclude<Size, 'fixup'>, number> = {
 /** Questions to our AI teacher included in the price; their own AI is unlimited. */
 export const QUESTIONS: Record<Size, number> = { starter: 10, standard: 20, pro: 40, fixup: 10 }
 
-/** Basic, Advanced and Pro by band, in rupees. */
+/** Basic, Advanced and Pro by band, in rupees. ₹30 up on every level when Learn with AI went paid (the owner's call, 10 Nov 2026). */
 const FIRST_THREE: Record<Band, [number, number, number]> = {
-  kids: [69, 99, 129],
-  life: [79, 119, 169],
-  career: [99, 149, 199],
+  kids: [99, 129, 159],
+  life: [109, 149, 199],
+  career: [129, 179, 229],
 }
 /** Expert and Master: each ₹75 more than the level before (the owner's rule, 10 Nov 2026). */
 export const STEP_ABOVE_PRO = 75

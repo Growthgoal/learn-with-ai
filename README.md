@@ -85,7 +85,7 @@ Measured on real runs (`output/usage.jsonl` logs every paid call):
 | Checking a page (with SAM on handwriting) | ₹1.1 |
 | Checking a recording | ₹0.6 |
 
-A full workbook level, with the help and the checks included, costs us roughly ₹15–25 in AI. The learner pays once per level, before the AI starts, through the GrowthGoal shop's checkout (Razorpay); the shop tells Learn with AI when it is paid, and only then is anything written. The price covers the AI cost with a 30% safety margin, plus ₹39 to keep the service running. Prices differ by skill: children's skills ₹69–129, life skills ₹79–169, career skills ₹99–199 for Basic, Advanced and Pro, then ₹75 more for Expert and ₹75 more again for Master, never below that cost-plus floor. No subscription. Help from the learner's own AI assistant costs us nothing, which is why it is unlimited.
+A full workbook level, with the help and the checks included, costs us roughly ₹15–25 in AI. The learner pays once per level, before the AI starts, through the GrowthGoal shop's checkout (Razorpay); the shop tells Learn with AI when it is paid, and only then is anything written. The price covers the AI cost with a 30% safety margin, plus ₹39 to keep the service running. Prices differ by skill: children's skills ₹99–159, life skills ₹109–199, career skills ₹129–229 for Basic, Advanced and Pro, then ₹75 more for Expert and ₹75 more again for Master, never below that cost-plus floor. No subscription. Help from the learner's own AI assistant costs us nothing, which is why it is unlimited.
 
 ## Skills
 

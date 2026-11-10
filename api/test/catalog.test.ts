@@ -38,8 +38,8 @@ test('five levels, each costing more than the one before', () => {
 test('Expert and Master are each ₹75 more than the level before', () => {
   const career = SKILLS.find((s) => s.band === 'career')!
   const kids = SKILLS.find((s) => s.band === 'kids')!
-  assert.deepEqual(LEVELS.map((l) => priceOf(career, l.n).price), [99, 149, 199, 274, 349])
-  assert.deepEqual(LEVELS.map((l) => priceOf(kids, l.n).price), [69, 99, 129, 204, 279])
+  assert.deepEqual(LEVELS.map((l) => priceOf(career, l.n).price), [129, 179, 229, 304, 379])
+  assert.deepEqual(LEVELS.map((l) => priceOf(kids, l.n).price), [99, 129, 159, 234, 309])
 })
 
 test('search forgives typos, Hinglish and Hindi', () => {
