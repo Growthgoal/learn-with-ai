@@ -25,8 +25,14 @@ export interface WorkbookRecord {
   level: number
   size: Size
   learner: Learner
-  /** Writing takes up to a minute or two; the page waits on this. */
-  status: 'writing' | 'ready' | 'failed'
+  /**
+   * Writing takes up to a minute or two; the page waits on this. "unpaid":
+   * the form is filled and saved, and nothing is written until the
+   * GrowthGoal shop says the level is paid for.
+   */
+  status: 'unpaid' | 'writing' | 'ready' | 'failed'
+  /** The shop order that paid for it. */
+  paid?: { order: string; at: string }
   workbook: Workbook | null
   createdAt: string
   /** Set on a fix-up workbook: the one whose check it follows. */

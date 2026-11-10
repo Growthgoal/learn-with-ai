@@ -8,7 +8,7 @@ Built by [GrowthGoal](https://growthgoal.in), an Indian learning shop, for the *
 
 **Demo video (3 min): https://youtu.be/ysKWsq9ADbA**
 
-Live: **https://growthgoal.in/learn** (free while the hackathon runs)
+Live: **https://growthgoal.in/learn**
 
 Every AI call in this repository goes to the Meta Model API, through one client ([`api/src/meta.ts`](api/src/meta.ts)) that also logs what each call costs.
 
@@ -36,7 +36,7 @@ GrowthGoal's idea is simple: grow a little every day. Learn with AI makes that p
 2. **Get your workbook.** Muse Spark writes it to a strict JSON schema: chapters, short lessons, worked examples, graded tasks, a final task, a daily plan, and a rubric for every task. Muse Image draws a cover for this learner. It prints as a PDF (dotted trace rows drawn from the font's own outline, Hindi shaped correctly) and lives online.
 3. **Stuck? Ask.** Our AI teacher (Muse Spark) explains the task another way, as often as the learner needs within the level's question allowance, and never does the task for them. Each task also carries a copy-ready prompt, plain text the learner can take to any AI assistant they already use for unlimited free help; the app itself calls no AI but Meta's.
 4. **Hand it in.** Photos of the pages, a spreadsheet or code file, a photo of what they made, a voice recording, or typed answers.
-5. **Get checked, earn the badge.** The checker marks every task against its rubric and quotes exact evidence back. Pass: a shareable badge listing what the learner can now do, and skill points (Basic 100, Advanced 250, Pro 500, times the score; each skill and level counts once) on a leaderboard by month, age group and shelf that shows first names only. Not yet: a free fix-up workbook for just the gaps.
+5. **Get checked, earn the badge.** The checker marks every task against its rubric and quotes exact evidence back. Pass: a shareable badge listing what the learner can now do, and skill points (Basic 100, Advanced 250, Pro 500, Expert 750, Master 1000, times the score; each skill and level counts once) on a leaderboard by month, age group and shelf that shows first names only. Not yet: a free fix-up workbook for just the gaps.
 
 ```mermaid
 flowchart LR
@@ -55,9 +55,9 @@ flowchart LR
   K -->|not yet| M[Fix-up workbook]
 ```
 
-### Three levels, a ladder
+### Five levels, a ladder
 
-Basic, Advanced and Pro are steps, not three products. Basic is open to everyone and is worth it on its own: its final task is a real result in the learner's own life (their own billing sheet, their own business plan, their own interview introduction). Advanced opens only with the Basic badge in the same skill, and Pro only with the Advanced badge; the server checks the badge. Each level is written from the workbook that earned the badge and from its check, so it starts by polishing what the check found weak, then goes a level harder. Pro aims at mastery. Every workbook ends with a quick-reference page worth keeping.
+Basic, Advanced, Pro, Expert and Master are steps, not five products. Basic is open to everyone and is worth it on its own: its final task is a real result in the learner's own life (their own billing sheet, their own business plan, their own interview introduction). Each level opens only with the badge of the level before it in the same skill (Advanced with Basic, Pro with Advanced, and so on up to Master); the server checks the badge. Each level is written from the workbook that earned the badge and from its check, so it starts by polishing what the check found weak, then goes a level harder. Pro aims at doing the whole skill well alone; Expert at the hard and unusual cases; Master at the learner's own large project and teaching the skill to someone else. Every workbook ends with a quick-reference page worth keeping.
 
 ## How each Meta model is used
 
@@ -85,7 +85,7 @@ Measured on real runs (`output/usage.jsonl` logs every paid call):
 | Checking a page (with SAM on handwriting) | ₹1.1 |
 | Checking a recording | ₹0.6 |
 
-A full workbook level, with the help and the checks included, costs us roughly ₹15–25 in AI. The learner pays once per level, before the AI starts: the AI cost with a 30% safety margin, plus ₹39 to keep the service running. Prices differ by skill: children's skills ₹69–129, life skills ₹79–169, career skills ₹99–199 for Basic, Advanced and Pro, never below that cost-plus floor. No subscription. Help from the learner's own AI assistant costs us nothing, which is why it is unlimited.
+A full workbook level, with the help and the checks included, costs us roughly ₹15–25 in AI. The learner pays once per level, before the AI starts, through the GrowthGoal shop's checkout (Razorpay); the shop tells Learn with AI when it is paid, and only then is anything written. The price covers the AI cost with a 30% safety margin, plus ₹39 to keep the service running. Prices differ by skill: children's skills ₹69–129, life skills ₹79–169, career skills ₹99–199 for Basic, Advanced and Pro, then ₹75 more for Expert and ₹75 more again for Master, never below that cost-plus floor. No subscription. Help from the learner's own AI assistant costs us nothing, which is why it is unlimited.
 
 ## Skills
 
@@ -101,7 +101,7 @@ Search understands how people type: word starts, typos ("exel", "public speking"
 - No ads or tracking on learning pages.
 - The teacher explains and never does the task; it declines anything unsafe or off-topic. Law, health and money skills teach general knowledge, never advice on the learner's own case; physical skills put safety first.
 - Pages send a strict Content-Security-Policy: no script, frame or plugin from any other site can run on them.
-- While it is free, each visitor has a daily cap so the AI budget cannot be drained.
+- Each visitor has a daily cap so the AI budget cannot be drained.
 
 ## Run it
 

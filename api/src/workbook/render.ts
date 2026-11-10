@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import QRCode from 'qrcode'
 import puppeteer from 'puppeteer-core'
-import { Skill } from '../catalog/skills.js'
+import { LEVELS, Skill } from '../catalog/skills.js'
 import { Task, Workbook } from './schema.js'
 import { Learner } from './write.js'
 
@@ -164,7 +164,7 @@ export async function workbookHtml({ workbook: w, skill, level, learner: l, code
 <section class="cover">
   <div class="brand">GrowthGoal · Learn with AI${sample ? ` <span class="sample">${esc(sample.label ?? 'Sample workbook · yours is written for you after a short chat')}</span>` : ''}</div>
   <div>
-    <span class="pill">${esc(skill.name)}</span><span class="pill">${free ? (l.language === 'Hindi' ? 'मुफ़्त गाइड' : 'Free guide') : ['Basic', 'Advanced', 'Pro'][level - 1] ?? `Level ${level}`}</span>
+    <span class="pill">${esc(skill.name)}</span><span class="pill">${free ? (l.language === 'Hindi' ? 'मुफ़्त गाइड' : 'Free guide') : LEVELS.find((x) => x.n === level)?.name ?? `Level ${level}`}</span>
     <h1 style="margin-top:6mm">${esc(w.title)}</h1>
     <p class="sub">${esc(w.subtitle)}</p>
     ${cover ? `<img class="art" src="${cover}" alt="">` : ''}
@@ -259,7 +259,7 @@ export async function workbookPdf(input: RenderInput) {
       printBackground: true,
       displayHeaderFooter: true,
       headerTemplate: '<span></span>',
-      footerTemplate: `<div style="width:100%;font-size:8px;color:#5E6B45;padding:0 14mm;display:flex;justify-content:space-between;font-family:sans-serif"><span>${input.sample ? 'Sample · ' : ''}${esc(input.learner.name)} · ${esc(input.skill.name)} · ${['Basic', 'Advanced', 'Pro'][input.level - 1] ?? ''} · ${esc(input.code)}</span><span>growthgoal.in · page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>`,
+      footerTemplate: `<div style="width:100%;font-size:8px;color:#5E6B45;padding:0 14mm;display:flex;justify-content:space-between;font-family:sans-serif"><span>${input.sample ? 'Sample · ' : ''}${esc(input.learner.name)} · ${esc(input.skill.name)} · ${LEVELS.find((x) => x.n === input.level)?.name ?? ''} · ${esc(input.code)}</span><span>growthgoal.in · page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>`,
       margin: { top: '14mm', bottom: '18mm', left: '14mm', right: '14mm' },
     })
     return { html, pdf: Buffer.from(pdf) }

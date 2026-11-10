@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowRight, Award, Bot, ChevronLeft, ChevronRight, FileText, Mic, QrCode, Sparkles, Sprout, TrendingUp } from 'lucide-react'
+import { ArrowRight, Award, Bot, ChevronLeft, ChevronRight, Crown, FileText, Gem, Mic, QrCode, Sparkles, Sprout, TrendingUp } from 'lucide-react'
 import { AGE_LABEL, BASE, PROOF_LABEL, Skill, iconUrl } from '../api'
 import { useCatalogue } from '../useCatalogue'
 import { opener, useProgress } from '../progress'
@@ -12,7 +12,7 @@ import { HOW_IT_WORKS } from '../Gallery'
  * more like this, and what learning it here involves.
  */
 
-const LEVEL_ICON = [Sprout, TrendingUp, Award]
+const LEVEL_ICON = [Sprout, TrendingUp, Award, Gem, Crown]
 const SIZE_TEXT = { starter: '4 chapters · about 12 tasks', standard: '6 chapters · about 24 tasks', pro: '8 chapters · about 40 tasks' } as const
 
 function Pictures({ skill }: { skill: Skill }) {
@@ -192,9 +192,9 @@ export default function SkillPage() {
         <div className="rounded-4xl bg-white p-6 shadow-card">
           <h2 className="text-2xl font-extrabold">About this skill</h2>
           <p className="mt-2 text-ink-soft">
-            {skill.name}, for {ages.toLowerCase()}. Three levels, one after another, take you from your first real result to mastering it: Basic, then Advanced
-            once you have the Basic badge, then Pro once you have the Advanced badge. Each is written for you, in English, Hindi or Hinglish, from your own
-            situation, and each level starts from your checked work in the one before.
+            {skill.name}, for {ages.toLowerCase()}. Five levels, one after another, take you from your first real result to mastering it: Basic, then
+            Advanced, Pro, Expert and Master, each opening once you have the badge of the level before. Each is written for you, in English, Hindi or
+            Hinglish, from your own situation, and each level starts from your checked work in the one before.
           </p>
           <ul className="mt-4 flex flex-col gap-2 text-sm">
             {cat.levels.map((l) => (

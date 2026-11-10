@@ -22,14 +22,21 @@ const AI_RUPEES: Record<Exclude<Size, 'fixup'>, number> = {
 /** Questions to our AI teacher included in the price; their own AI is unlimited. */
 export const QUESTIONS: Record<Size, number> = { starter: 10, standard: 20, pro: 40, fixup: 10 }
 
-/** Basic, Advanced, Pro by band, in rupees. */
-export const BAND_PRICES: Record<Band, [number, number, number]> = {
+/** Basic, Advanced and Pro by band, in rupees. */
+const FIRST_THREE: Record<Band, [number, number, number]> = {
   kids: [69, 99, 129],
   life: [79, 119, 169],
   career: [99, 149, 199],
 }
+/** Expert and Master: each ₹75 more than the level before (the owner's rule, 10 Nov 2026). */
+export const STEP_ABOVE_PRO = 75
 
-const SIZE_OF_LEVEL: Exclude<Size, 'fixup'>[] = ['starter', 'standard', 'pro']
+/** Every level's price by band: Basic, Advanced, Pro, Expert, Master. */
+export const BAND_PRICES: Record<Band, number[]> = Object.fromEntries(
+  Object.entries(FIRST_THREE).map(([band, [a, b, c]]) => [band, [a, b, c, c + STEP_ABOVE_PRO, c + 2 * STEP_ABOVE_PRO]]),
+) as Record<Band, number[]>
+
+const SIZE_OF_LEVEL: Exclude<Size, 'fixup'>[] = ['starter', 'standard', 'pro', 'pro', 'pro']
 const nine = (x: number) => Math.ceil((x + 1) / 10) * 10 - 1
 
 export function priceOf(skill: Pick<Skill, 'band'>, level: number) {

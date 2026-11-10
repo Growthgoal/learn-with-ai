@@ -6,7 +6,8 @@ import type { BadgeRecord } from './store.js'
  * Skill points and the leaderboard they add up to.
  *
  * A badge is worth its level's points times the score on the final check:
- * Basic 100, Advanced 250, Pro 500, so 85% on Basic is 85 points. Each skill
+ * Basic 100, Advanced 250, Pro 500, Expert 750, Master 1000, so 85% on Basic
+ * is 85 points. Each skill
  * and level counts once per learner, at its best score, so doing the same
  * workbook again never climbs the board.
  *
@@ -14,7 +15,7 @@ import type { BadgeRecord } from './store.js'
  * name: two children on one phone stay two learners. When Learn with AI
  * joins GrowthGoal accounts, these move onto the child's profile.
  */
-export const LEVEL_POINTS: Record<number, number> = { 1: 100, 2: 250, 3: 500 }
+export const LEVEL_POINTS: Record<number, number> = { 1: 100, 2: 250, 3: 500, 4: 750, 5: 1000 }
 
 export const pointsFor = (level: number, percent: number) => Math.round(((LEVEL_POINTS[level] ?? 100) * Math.max(0, Math.min(100, percent))) / 100)
 

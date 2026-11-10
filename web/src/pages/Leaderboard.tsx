@@ -41,7 +41,7 @@ export default function Leaderboard() {
           <div>
             <h1 className="text-3xl font-extrabold">Leaderboard</h1>
             <p className="text-ink-soft">
-              Every badge earns skill points: Basic 100, Advanced 250, Pro 500, times your score on the final check. Each skill and level counts once.
+              Every badge earns skill points: Basic 100, Advanced 250, Pro 500, Expert 750, Master 1000, times your score on the final check. Each skill and level counts once.
             </p>
           </div>
         </div>

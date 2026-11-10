@@ -19,9 +19,9 @@ export type Size = 'starter' | 'standard' | 'pro'
 export interface Skill {
   id: string; group: string; name: string; ages: Age[]; proof: Proof; handIn: string; weSell: boolean
   band: 'kids' | 'life' | 'career'
-  /** Basic, Advanced, Pro. */
+  /** Basic, Advanced, Pro, Expert, Master. */
   prices: { price: number; ai: number }[]
-  /** Whether a sample workbook exists for Basic, Advanced, Pro. */
+  /** Whether a sample workbook exists for each level (Basic, Advanced and Pro have them). */
   samples: boolean[]
   /** How many "Look inside" page pictures each sample has. */
   samplePages: number[]
@@ -60,13 +60,15 @@ export interface Check {
   result: { readable: boolean; unreadableReason: string | null; tasks: TaskMark[]; integrity: { ok: boolean; note: string }; strengths: string[]; toImprove: string[]; summary: string; score: number; max: number; percent: number; passed: boolean; scope: 'badge' | 'page' }
 }
 export interface WorkbookView {
-  code: string; status: 'writing' | 'ready' | 'failed'; skill: Skill; level: number; size: Size | 'fixup'; sizeLabel: string
+  code: string; status: 'unpaid' | 'writing' | 'ready' | 'failed'; skill: Skill; level: number; size: Size | 'fixup'; sizeLabel: string
   learner: Pick<Learner, 'name' | 'age' | 'language' | 'readBy'>
   workbook: Workbook | null; questionsLeft: number; checks: Check[]; badgeId: string | null; fixUpOf: string | null
   /** Pages in the PDF, once it is ready: a printed copy is priced by them. */
   pages: number | null
   /** Whether a printed copy can be ordered from the shop yet. */
   print: boolean
+  /** Set while it waits to be paid for: what the shop will charge. */
+  price: number | null
   /** Skill points the badge earned, once there is one. */
   badgePoints: number | null
 }

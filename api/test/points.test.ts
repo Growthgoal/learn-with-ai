@@ -7,6 +7,8 @@ test('a badge is worth its level times the score', () => {
   assert.equal(pointsFor(1, 85), 85)
   assert.equal(pointsFor(2, 80), 200)
   assert.equal(pointsFor(3, 100), 500)
+  assert.equal(pointsFor(4, 100), 750)
+  assert.equal(pointsFor(5, 90), 900)
   assert.equal(pointsFor(1, 140), 100, 'a score never counts above 100%')
   assert.equal(pointsFor(1, -5), 0)
 })

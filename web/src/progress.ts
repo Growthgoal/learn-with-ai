@@ -6,7 +6,7 @@ import { deviceKey } from './device'
 export interface Earned { skillId: string; level: number; badgeId: string; name: string }
 
 /** A workbook made in this browser, newest first: how a learner without an account finds it again. */
-export interface Made { code: string; skillId: string; skillName: string; level: string; name: string; status: 'writing' | 'ready' | 'failed'; badgeId: string | null }
+export interface Made { code: string; skillId: string; skillName: string; level: string; name: string; status: 'unpaid' | 'writing' | 'ready' | 'failed'; badgeId: string | null }
 
 interface Progress { badges: Earned[]; workbooks: Made[] }
 

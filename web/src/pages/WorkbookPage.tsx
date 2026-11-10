@@ -17,7 +17,8 @@ function useWorkbook(code: string) {
   }, [code]) // eslint-disable-line react-hooks/exhaustive-deps
   // Writing takes about a minute; keep asking until it is ready.
   useEffect(() => {
-    if (wb?.status !== 'writing') return
+    // Writing, or waiting for a payment to land: keep asking.
+    if (wb?.status !== 'writing' && wb?.status !== 'unpaid') return
     const t = setInterval(load, 4000)
     return () => clearInterval(t)
   }, [wb?.status]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -343,6 +344,20 @@ export default function WorkbookPage() {
 
   if (error) return <p className="rounded-3xl bg-red-50 p-6 text-red-700">{error}</p>
   if (!wb) return <div className="h-60 animate-pulse rounded-3xl bg-white/60" />
+  if (wb.status === 'unpaid')
+    return (
+      <div className="mx-auto flex max-w-xl flex-col items-center gap-4 rounded-4xl bg-white p-10 text-center shadow-card">
+        <h1 className="text-2xl font-extrabold">{wb.learner.name}'s {wb.skill.name} workbook is waiting</h1>
+        <p className="text-ink-soft">
+          Everything {wb.learner.name} told us is saved. Pay for the {wb.sizeLabel} level and your AI teacher starts writing straight away. This page
+          updates by itself once the payment is through.
+        </p>
+        <a href={`/checkout?learn=${wb.code}`} className="rounded-2xl bg-sun-400 px-6 py-4 font-bold text-ink shadow-[0_5px_0_0_#A16207]">
+          Pay ₹{wb.price} on GrowthGoal
+        </a>
+        <p className="text-xs text-ink-faint">Workbook code {wb.code}. Keep it: it is your ticket back here.</p>
+      </div>
+    )
   if (wb.status === 'writing')
     return (
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4 rounded-4xl bg-white p-10 text-center shadow-card">

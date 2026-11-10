@@ -78,12 +78,13 @@ function allow(kind: keyof typeof LIMITS, ip: string) {
   used.set(all, (used.get(all) ?? 0) + 1)
   return true
 }
-const TOO_MANY = { error: 'That is the limit for today while Learn with AI is free. Come back tomorrow.' }
+const TOO_MANY = { error: 'That is the limit for today. Come back tomorrow.' }
 
 /**
  * Levels are steps, not separate products: Advanced opens with the Basic badge
- * in the same skill, Pro with the Advanced badge. The badge is the proof, and
- * the workbook it was earned on is what the next level is built from.
+ * in the same skill, Pro with the Advanced badge, and so on up to Master. The
+ * badge is the proof, and the workbook it was earned on is what the next
+ * level is built from.
  */
 function unlockedBy(skillId: string, level: number, fromBadge: string | undefined) {
   if (level === 1) return { ok: true as const, badge: null }
@@ -109,6 +110,42 @@ const allTasks = (w: Workbook) => [...w.chapters.flatMap((c) => c.tasks), w.fina
  * stays hidden until the shop that takes the order is live: PRINT_ORDERS=on.
  */
 const PRINT_ON = process.env.PRINT_ORDERS === 'on'
+
+/**
+ * Paying for a level. With PAYMENTS=on a workbook is saved as "unpaid" and
+ * the learner goes to the GrowthGoal shop's checkout (/checkout?learn=<code>),
+ * which asks this server for the price and takes the payment. Nothing is
+ * written, and no AI credit spent, until the shop says it is paid: asked
+ * here, server to server, whenever the workbook is opened (the shop opens it
+ * once itself the moment a payment lands).
+ */
+const PAYMENTS_ON = process.env.PAYMENTS === 'on'
+const SHOP_API = (process.env.SHOP_API_URL ?? 'https://growthgoal.in/api').replace(/\/$/, '')
+const askedShop = new Map<string, number>()
+
+async function settlePayment(rec: WorkbookRecord) {
+  if (rec.status !== 'unpaid') return
+  // At most once every few seconds a workbook: the page polls while it waits.
+  const last = askedShop.get(rec.code) ?? 0
+  if (Date.now() - last < 4000) return
+  askedShop.set(rec.code, Date.now())
+  try {
+    const res = await fetch(`${SHOP_API}/orders/learn-paid/${rec.code}`, { signal: AbortSignal.timeout(6000) })
+    if (!res.ok) return
+    const body = (await res.json()) as { paid?: boolean; order?: string }
+    if (!body.paid) return
+    // Read again: another request may have started it a moment ago.
+    const now = workbooks.get(rec.code)
+    if (!now || now.status !== 'unpaid') return
+    now.status = 'writing'
+    now.paid = { order: String(body.order ?? ''), at: new Date().toISOString() }
+    workbooks.put(now)
+    askedShop.delete(rec.code)
+    void build(now)
+  } catch (err) {
+    console.error('[pay] could not ask the shop about', rec.code, err)
+  }
+}
 
 const run = promisify(execFile)
 /** Pages in a workbook's PDF, read once and kept on the record: a printed copy is priced by them. */
@@ -182,7 +219,7 @@ r.post('/api/custom-skills', async (req, res) => {
 
 /** One AI call after the form: the few questions it still needs, if any. */
 r.post('/api/followups', async (req, res) => {
-  const body = z.object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema, fromBadge }).safeParse(req.body)
+  const body = z.object({ skillId: z.string(), level: z.number().int().min(1).max(LEVELS.length), learner: learnerSchema, fromBadge }).safeParse(req.body)
   const skill = body.success ? findSkill(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Something in the form is missing. Go back and check it.' })
   const gate = unlockedBy(skill.id, body.data.level, body.data.fromBadge)
@@ -200,7 +237,7 @@ r.post('/api/followups', async (req, res) => {
 // --------------------------------------------------------------- workbooks
 
 /** Writes and prints a workbook in the background; the page polls for it. */
-async function build(rec: WorkbookRecord, focus?: string) {
+async function build(rec: WorkbookRecord, focus?: string, attempt = 1) {
   try {
     const skill = findSkill(rec.skillId)!
     const prev = rec.builtOn ? workbooks.get(rec.builtOn) : null
@@ -235,21 +272,26 @@ async function build(rec: WorkbookRecord, focus?: string) {
     fs.writeFileSync(workbooks.pdfPath(rec.code), pdf)
     workbooks.put({ ...rec, workbook, status: 'ready' })
   } catch (e) {
-    console.error('workbook', rec.code, e)
+    console.error('workbook', rec.code, `attempt ${attempt}`, e)
+    // A paid level gets another go by itself before anyone is told it failed:
+    // most failures are a busy moment at the model, gone a minute later.
+    if (rec.paid && attempt < 3) {
+      setTimeout(() => void build(rec, focus, attempt + 1), 30_000 * attempt)
+      return
+    }
     workbooks.put({ ...rec, status: 'failed' })
   }
 }
 
 r.post('/api/workbooks', (req, res) => {
   const body = z
-    .object({ skillId: z.string(), level: z.number().int().min(1).max(3), learner: learnerSchema, device: z.string().regex(/^[a-z0-9]{12,40}$/).optional(), fromBadge })
+    .object({ skillId: z.string(), level: z.number().int().min(1).max(LEVELS.length), learner: learnerSchema, device: z.string().regex(/^[a-z0-9]{12,40}$/).optional(), fromBadge })
     .safeParse(req.body)
   const skill = body.success ? findSkill(body.data.skillId) : undefined
   if (!body.success || !skill) return res.status(400).json({ error: 'Something is missing about the learner. Go back and finish the form.' })
   const gate = unlockedBy(skill.id, body.data.level, body.data.fromBadge)
   if (!gate.ok) return res.status(403).json({ error: gate.error })
   if (!allow('workbook', req.ip ?? '')) return res.status(429).json(TOO_MANY)
-  // Payment happens on growthgoal.in before this point; during the hackathon it is free.
   const rec: WorkbookRecord = {
     code: newCode(),
     skillId: skill.id,
@@ -260,20 +302,46 @@ r.post('/api/workbooks', (req, res) => {
     device: body.data.device,
     // The workbook the badge was earned on: this level is written from it and its check.
     builtOn: gate.badge?.code,
-    status: 'writing',
+    // Paid levels wait for the shop; nothing is written before the payment.
+    status: PAYMENTS_ON ? 'unpaid' : 'writing',
     workbook: null,
     createdAt: new Date().toISOString(),
     questions: 0,
     checks: [],
   }
   workbooks.put(rec)
+  if (rec.status === 'unpaid') return res.status(202).json({ code: rec.code, pay: `/checkout?learn=${rec.code}` })
   void build(rec)
   res.status(202).json({ code: rec.code })
 })
 
-r.get('/api/workbooks/:code', async (req, res) => {
+/**
+ * What the GrowthGoal shop charges for a workbook waiting to be paid for. It
+ * asks from its own server, so the price is ours and never the buyer's.
+ */
+r.get('/api/workbooks/:code/quote', (req, res) => {
   const rec = workbooks.get(req.params.code)
+  const skill = rec && findSkill(rec.skillId)
+  if (!rec || !skill || rec.size === 'fixup') return res.status(404).json({ error: 'No workbook to pay for at this address.' })
+  res.json({
+    code: rec.code,
+    status: rec.status,
+    skillName: skill.name,
+    level: rec.level,
+    levelLabel: LEVELS.find((l) => l.n === rec.level)?.name ?? `Level ${rec.level}`,
+    learnerName: rec.learner.name.trim().split(/\s+/)[0] || 'Learner',
+    price: priceOf(skill, rec.level).price,
+    coverUrl: fs.existsSync(catalog.coverPath(skill.id)) ? `${SITE}/api/skills/${skill.id}/cover` : null,
+  })
+})
+
+r.get('/api/workbooks/:code', async (req, res) => {
+  let rec = workbooks.get(req.params.code)
   if (!rec) return res.status(404).json({ error: 'No workbook at this address. Check the code printed on your workbook.' })
+  if (rec.status === 'unpaid') {
+    await settlePayment(rec)
+    rec = workbooks.get(req.params.code) ?? rec
+  }
   const pages = await pagesOf(rec)
   const skill = findSkill(rec.skillId)!
   res.json({
@@ -292,6 +360,7 @@ r.get('/api/workbooks/:code', async (req, res) => {
     fixUpOf: rec.fixUpOf ?? null,
     pages,
     print: PRINT_ON,
+    price: rec.status === 'unpaid' ? priceOf(skill, rec.level).price : null,
   })
 })
 

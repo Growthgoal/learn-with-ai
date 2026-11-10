@@ -215,7 +215,7 @@ function YourWorkbooks({ skills }: { skills: Skill[] }) {
   const mine = useMyWorkbooks()
   if (!mine?.length) return null
   const state = (w: (typeof mine)[number]) =>
-    w.badgeId ? 'Badge earned' : w.status === 'writing' ? 'Being written' : w.status === 'failed' ? 'Could not be written' : 'Ready: hand it in when done'
+    w.badgeId ? 'Badge earned' : w.status === 'unpaid' ? 'Waiting for payment' : w.status === 'writing' ? 'Being written' : w.status === 'failed' ? 'Could not be written' : 'Ready: hand it in when done'
   return (
     <section className="flex flex-col gap-3">
       <div>

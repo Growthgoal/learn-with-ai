@@ -27,11 +27,19 @@ test('the Seniors shelf has no children\'s handwriting', () => {
   assert.deepEqual(seniors.filter((s) => s.group === 'Handwriting' || s.group === 'Early learning').map((s) => s.id), [])
 })
 
-test('each level costs more than the one before', () => {
+test('five levels, each costing more than the one before', () => {
+  assert.deepEqual(LEVELS.map((l) => l.name), ['Basic', 'Advanced', 'Pro', 'Expert', 'Master'])
   for (const s of SKILLS) {
     const p = LEVELS.map((l) => priceOf(s, l.n).price)
-    assert.ok(p[0] < p[1] && p[1] < p[2], `${s.id}: ${p.join(' / ')}`)
+    assert.ok(p.every((x, i) => i === 0 || x > p[i - 1]), `${s.id}: ${p.join(' / ')}`)
   }
+})
+
+test('Expert and Master are each ₹75 more than the level before', () => {
+  const career = SKILLS.find((s) => s.band === 'career')!
+  const kids = SKILLS.find((s) => s.band === 'kids')!
+  assert.deepEqual(LEVELS.map((l) => priceOf(career, l.n).price), [99, 149, 199, 274, 349])
+  assert.deepEqual(LEVELS.map((l) => priceOf(kids, l.n).price), [69, 99, 129, 204, 279])
 })
 
 test('search forgives typos, Hinglish and Hindi', () => {

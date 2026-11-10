@@ -64,7 +64,7 @@ export default function Start() {
   const navigate = useNavigate()
   const [params] = useSearchParams()
   const asked = Number(params.get('level'))
-  const [level, setLevel] = useState([1, 2, 3].includes(asked) ? asked : 1)
+  const [level, setLevel] = useState(asked >= 1 && asked <= 5 ? asked : 1)
   // Advanced and Pro open with the badge of the level before: from this browser, or a pasted badge link.
   const earned = useProgress()
   const [pasted, setPasted] = useState<Earned | null>(null)
@@ -216,11 +216,17 @@ export default function Start() {
     const l = learner()
     const qa = ai?.questions.map((q, i) => `${q} ${extra[i] ?? ''}`.trim()).join('\n')
     try {
-      const { code } = await api<{ code: string }>('/workbooks', {
+      const { code, pay } = await api<{ code: string; pay?: string }>('/workbooks', {
         method: 'POST',
         json: { skillId: id, level, device: deviceKey(), fromBadge: openerFor(level)?.badgeId, learner: { ...l, notes: [l.notes, qa ? `Answers to the AI teacher's questions:\n${qa}` : ''].filter(Boolean).join('\n\n') || undefined } },
       })
       forgetProgress()
+      // A paid level: on to the GrowthGoal checkout, a page of the same site
+      // outside this app. Writing starts the moment the payment lands.
+      if (pay) {
+        window.location.assign(pay)
+        return
+      }
       navigate(`/w/${code}`)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Try again.')
@@ -303,7 +309,7 @@ export default function Start() {
             </div>
           )}
           <button onClick={toAi} disabled={busy || !isOpen(level)} className="flex items-center justify-center gap-2 rounded-2xl bg-sun-400 px-6 py-4 font-bold text-ink shadow-[0_5px_0_0_#A16207] disabled:opacity-60">
-            <Sparkles size={18} /> {busy ? 'Reading your answers…' : cat.payments ? `Pay ₹${price} and continue` : `Continue · ₹${price}, free during the hackathon`}
+            <Sparkles size={18} /> {busy ? 'Reading your answers…' : cat.payments ? `Continue · ₹${price}, paid before writing starts` : `Continue · ₹${price}, free for now`}
           </button>
           <button type="button" onClick={() => setStep(step - 1)} className="text-sm font-bold text-ink-soft">← Change my answers</button>
           {error && <p className="rounded-2xl bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</p>}

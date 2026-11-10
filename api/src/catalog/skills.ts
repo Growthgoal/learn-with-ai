@@ -43,6 +43,8 @@ export const LEVELS = [
   { n: 1, name: 'Basic', size: 'starter', about: 'Your first real result: the core of the skill, used in your own life.' },
   { n: 2, name: 'Advanced', size: 'standard', about: 'Opens with your Basic badge: your checked work polished, then a level harder.' },
   { n: 3, name: 'Pro', size: 'pro', about: 'Opens with your Advanced badge: mastery, the whole skill done well on your own.' },
+  { n: 4, name: 'Expert', size: 'pro', about: 'Opens with your Pro badge: hard, real-world work and the judgement to handle the unusual cases.' },
+  { n: 5, name: 'Master', size: 'pro', about: 'Opens with your Expert badge: your own big project, done to a standard you could teach from.' },
 ] as const
 export const sizeForLevel = (n: number) => LEVELS.find((l) => l.n === n)?.size ?? 'standard'
 
